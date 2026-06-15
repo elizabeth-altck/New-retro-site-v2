@@ -1,0 +1,127 @@
+Initial commit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Internet Was Different</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #1a1a2e, #000);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* лёгкий шум */
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.container {
+  text-align: center;
+  padding: 40px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+}
+
+h1 {
+  font-size: 28px;
+  letter-spacing: 3px;
+}
+
+p {
+  opacity: 0.7;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background: white;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #ddd;
+}
+
+/* бегущая строка */
+.marquee {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll 12s linear infinite;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+/* кнопки музыки */
+.controls {
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>INTERNET WAS DIFFERENT</h1>
+  <p>a place, not an algorithm</p>
+
+  <button onclick="toggleMusic()">play / pause music</button>
+
+  <div class="controls">
+    <audio id="audio" loop autoplay>
+      <!-- сюда вставишь свою музыку -->
+      <source src="audio.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</div>
+
+<div class="marquee">
+  <span>✦ welcome to your space ✦ no algorithms ✦ just vibe ✦ internet feels alive again ✦</span>
+</div>
+
+<script>
+const audio = document.getElementById("audio");
+let playing = true;
+
+function toggleMusic() {
+  if (playing) {
+    audio.pause();
+  } else {
+    audio.play();
+  }
+  playing = !playing;
+}
+</script>
+
+</body>
+</html>
