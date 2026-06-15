@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MAIN WORLD</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Press Start 2P', monospace;
+      color: white;
+
+      background: black;
+    }
+
+    /* 🔥 верхняя панель */
+    .topbar {
+      background: rgba(0,0,0,0.85);
+      border-bottom: 2px solid white;
+      padding: 10px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* 🌙 контейнер */
+    .container {
+      padding: 40px;
+    }
+
+    /* 🧱 блоки */
+    .block {
+      border: 2px solid white;
+      padding: 20px;
+      margin-bottom: 20px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    h1 {
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 10px;
+      opacity: 0.8;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+
+    /* 🔥 бегущая строка */
+    .marquee {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.8);
+      padding: 10px 0;
+      overflow: hidden;
+      font-size: 10px;
+    }
+
+    .marquee span {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll 12s linear infinite;
+      padding-left: 100%;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* 🎮 кнопка назад */
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px;
+      border: 2px solid white;
+      font-size: 10px;
+    }
+
+    .back:hover {
+      background: white;
+      color: black;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    MAIN SYSTEM ACTIVE • SIGNAL STABLE • ARCHIVE MODE ON
+  </div>
+
+  <div class="container">
+
+    <div class="block">
+      <h1>WELCOME INSIDE</h1>
+      <p>
+        YOU ENTERED THE MAIN SPACE.<br>
+        THIS IS THE CORE OF THE SITE.<br>
+        EVERYTHING IS STILL BUILDING.
+      </p>
+    </div>
+
+    <div class="block">
+      <h1>SECTIONS</h1>
+      <p>
+        • GALLERY (SOON)<br>
+        • 2010s AESTHETIC WALL (SOON)<br>
+        • MUSIC ROOM (SOON)<br>
+        • GLITCH EXPERIMENTS (SOON)
+      </p>
+    </div>
+
+    <a class="back" href="index.html">← BACK TO ENTRY</a>
+
+  </div>
+
+  <div class="marquee">
+    <span>WELCOME TO THE MAIN WORLD • EVERYTHING IS UNDER CONSTRUCTION • RETRO SYSTEM ONLINE • SIGNAL IS UNSTABLE •</span>
+  </div>
+
+</body>
+</html>
