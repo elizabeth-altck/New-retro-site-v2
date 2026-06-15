@@ -12,15 +12,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: 'Press Start 2P', monospace;
+      color: white;
 
-      /* 🌲 ТВОЙ ФОН (локальный файл) */
-      background-image: url("forest_and_lake.jpeg");
+      background-image: url("forest.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-
-      font-family: 'Press Start 2P', monospace;
-      color: white;
     }
 
     .overlay {
@@ -34,26 +32,23 @@
 
     .box {
       position: relative;
-      z-index: 1;
-
+      z-index: 2;
       text-align: center;
-
       padding: 40px;
       border: 2px solid white;
-
       background: rgba(0,0,0,0.4);
       box-shadow: 0 0 20px rgba(255,255,255,0.2);
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 26px;
       text-transform: uppercase;
       letter-spacing: 3px;
     }
 
     p {
       margin-top: 15px;
-      opacity: 0.8;
+      opacity: 0.85;
       text-transform: uppercase;
       font-size: 10px;
       line-height: 1.8;
@@ -62,14 +57,11 @@
     button {
       margin-top: 25px;
       padding: 15px 20px;
-
       font-family: 'Press Start 2P', monospace;
       font-size: 10px;
-
       border: 2px solid white;
       background: transparent;
       color: white;
-
       cursor: pointer;
       text-transform: uppercase;
       transition: 0.2s;
@@ -80,6 +72,34 @@
       color: black;
       transform: scale(1.05);
     }
+
+    /* 🔥 БЕГУЩАЯ СТРОКА */
+    .marquee {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      z-index: 3;
+    }
+
+    .marquee span {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll 10s linear infinite;
+      padding-left: 100%;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
   </style>
 </head>
 
@@ -101,6 +121,11 @@
       <button>ENTER</button>
     </a>
 
+  </div>
+
+  <!-- 🔥 бегущая строка -->
+  <div class="marquee">
+    <span>WARNING • THIS IS A RETRO SYSTEM • ENTER AT YOUR OWN RISK • SIGNAL UNSTABLE • WELCOME TO THE ARCHIVE •</span>
   </div>
 
 </body>
