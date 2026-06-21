@@ -14,7 +14,7 @@ body {
   color: #111;
 }
 
-/* TOP CHAOS */
+/* TOP BAR */
 .hotdog-banner {
   width: 100%;
   overflow: hidden;
@@ -42,74 +42,71 @@ body {
   padding: 25px;
 }
 
-/* LEFT */
-.left {
-  width: 12%;
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(6px);
-  padding: 12px;
-}
-
-/* CENTER */
+.left { width: 12%; background: rgba(255,255,255,0.2); padding: 12px; }
 .center { width: 76%; }
+.right { width: 12%; background: rgba(0,0,0,0.4); color: white; padding: 15px; }
 
+/* CORE */
 .core {
   min-height: 80vh;
-  background: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.78);
   padding: 25px;
   position: relative;
   overflow: hidden;
-}
-
-/* RIGHT */
-.right {
-  width: 12%;
-  background: rgba(20,20,20,0.35);
-  color: white;
-  padding: 15px;
 }
 
 /* BUTTONS */
 button {
   margin: 5px;
   padding: 6px 10px;
-  border: 1px solid black;
+  border: 2px solid black;
   background: white;
   cursor: pointer;
 }
 
-/* POPUP SYSTEM */
+/* =========================
+   POPUP — UPGRADED CHAOS
+========================= */
+
 .popup {
   position: fixed;
-  top: 25%;
+  top: 22%;
   left: 50%;
   transform: translateX(-50%);
   background: #fff;
-  border: 3px solid black;
-  padding: 15px;
+  border: 6px solid #ff2d2d; /* 🔥 thicker + aggressive */
+  padding: 18px;
   display: none;
   z-index: 999;
-  width: 300px;
+  width: 320px;
+  box-shadow: 0 0 25px rgba(255,0,0,0.5);
+  font-family: 'Press Start 2P';
 }
 
-/* INPUT STYLE */
-input {
-  width: 100%;
-  padding: 6px;
-  border: 1px solid black;
+.popup button {
+  margin-top: 10px;
+  border: 2px solid black;
 }
 
-/* FLOATING CHAOS */
+/* CHAOS FROGS */
 .frog {
   position: absolute;
-  width: 80px;
+  width: 70px;
   animation: jump 4s infinite ease-in-out;
 }
 
 @keyframes jump {
   0% { transform: translateY(0); }
-  50% { transform: translateY(-30px) rotate(10deg); }
+  50% { transform: translateY(-25px) rotate(8deg); }
   100% { transform: translateY(0); }
+}
+
+/* QUIZ BLOCKS */
+.quiz {
+  margin-top: 15px;
+  padding: 10px;
+  border: 2px dashed black;
+  background: rgba(255,255,255,0.6);
 }
 </style>
 </head>
@@ -118,7 +115,7 @@ input {
 
 <div class="hotdog-banner">
   <div class="hotdog-text">
-    🌭 SYSTEM BROADCAST: FREE HOTDOG EVENT ACTIVE • DO NOT TRUST REALITY • CLICK ANYTHING
+    🌭 SYSTEM ALERT: FREE HOTDOG DISTRIBUTION ACTIVE • REALITY UNSTABLE • CLICK RANDOMLY •
   </div>
 </div>
 
@@ -129,6 +126,7 @@ input {
   gallery<br>diary<br>music
 </div>
 
+<!-- ================= CENTER ================= -->
 <div class="center">
 <div class="core">
 
@@ -137,27 +135,46 @@ input {
   <p id="txt">stable memory stream...</p>
 
   <button onclick="openCode()">ENTER CODE</button>
-  <button onclick="glitchText()">GLITCH TEXT</button>
-  <button onclick="spawnFrogs()">SUMMON FROGS</button>
+  <button onclick="glitchText()">GLITCH</button>
+
+  <!-- 🧠 INTERACTIVE CHAOS BLOCKS -->
+  <div class="quiz">
+    <b>QUESTION 01:</b><br>
+    ты сейчас кто?<br>
+    <button onclick="react('lost')">потерянный</button>
+    <button onclick="react('fine')">норм</button>
+    <button onclick="react('chaos')">хаос</button>
+  </div>
+
+  <div class="quiz">
+    <b>QUESTION 02:</b><br>
+    выбрать состояние системы:<br>
+    <button onclick="react('ok')">ok</button>
+    <button onclick="react('error')">error</button>
+    <button onclick="react('hotdog')">hotdog</button>
+  </div>
+
+  <p id="reactionText"></p>
 
   <!-- FROGS -->
-  <img class="frog" id="frog1" src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" style="top:20px;left:40px;">
-  <img class="frog" id="frog2" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" style="top:200px;left:300px;">
+  <img class="frog" style="top:30px;left:40px;" src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif">
+  <img class="frog" style="top:220px;left:280px;" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
 
 </div>
 </div>
 
+<!-- RIGHT -->
 <div class="right">
   <h3>STATUS</h3>
   ONLINE<br>
-  unstable but ok
+  unstable
 </div>
 
 </div>
 
-<!-- CODE POPUP -->
+<!-- ================= POPUP ================= -->
 <div class="popup" id="codePopup">
-  <p>ENTER ACCESS CODE:</p>
+  <p>ENTER CODE</p>
   <input id="codeInput" placeholder="xxxx-xxxx">
   <button onclick="checkCode()">SUBMIT</button>
   <p id="result"></p>
@@ -170,30 +187,34 @@ function openCode(){
 }
 
 function checkCode(){
-  const val = document.getElementById("codeInput").value;
-  const res = document.getElementById("result");
-
   const outcomes = [
     "ACCESS GRANTED (maybe)",
     "NOTHING HAPPENED",
-    "SYSTEM IGNORED YOU",
-    "▒▒▒ ERROR BUT OK",
-    "HOTDOG DETECTED"
+    "SYSTEM IGNORED INPUT",
+    "▒▒ ERROR BUT OK",
+    "HOTDOG SIGNAL FOUND"
   ];
 
-  res.innerText = outcomes[Math.floor(Math.random()*outcomes.length)];
+  document.getElementById("result").innerText =
+    outcomes[Math.floor(Math.random()*outcomes.length)];
 }
 
 function glitchText(){
   document.getElementById("txt").innerText =
-  "signal corrupted... reality unstable...";
+  "signal corrupted... user unstable...";
 }
 
-function spawnFrogs(){
-  document.querySelectorAll(".frog").forEach(f=>{
-    f.style.left = Math.random()*80 + "%";
-    f.style.top = Math.random()*70 + "%";
-  });
+function react(type){
+  const map = {
+    lost: "system: user is drifting",
+    fine: "system: stable but suspicious",
+    chaos: "system: MATCH DETECTED",
+    ok: "ok noted (ignored)",
+    error: "ERROR: nothing is broken but everything feels broken",
+    hotdog: "HOTDOG STATUS ACTIVATED 🌭"
+  };
+
+  document.getElementById("reactionText").innerText = map[type];
 }
 
 </script>
