@@ -1,20 +1,12 @@
-<!-- TEST CHANGE 999 -->
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RETRO ENTRY</title>
+  <title>ENTER PAGE</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <style>
     body {
-     
-<h1> style="color:blue; font-size:60px;">
-  INDEX.HTML IS HERE
-</h1>
-
-</body>
-</h1>
       margin: 0;
       height: 100vh;
       display: flex;
@@ -23,7 +15,7 @@
       font-family: 'Press Start 2P', monospace;
       color: white;
 
-      background-image: url("forest_and_lake.jpeg");
+      background-image: url("images/forest_and_lake.jpeg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -38,23 +30,40 @@
       background: rgba(0,0,0,0.65);
     }
 
+    .datetime {
+      position: fixed;
+      top: 15px;
+      left: 20px;
+      z-index: 4;
+      font-size: 10px;
+      font-family: 'Press Start 2P', monospace;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid white;
+      padding: 10px;
+      text-transform: uppercase;
+    }
+
     .box {
       position: relative;
       z-index: 2;
       text-align: center;
-      padding: 40px;
+      padding: 25px;
       border: 2px solid white;
       background: rgba(0,0,0,0.4);
       box-shadow: 0 0 20px rgba(255,255,255,0.2);
+      width: fit-content;
+      max-width: 80vw;
     }
 
     h1 {
+      font-family: 'Press Start 2P', monospace;
       font-size: 26px;
       text-transform: uppercase;
       letter-spacing: 3px;
     }
 
     p {
+      font-family: 'Press Start 2P', monospace;
       margin-top: 15px;
       opacity: 0.85;
       text-transform: uppercase;
@@ -108,12 +117,66 @@
       100% { transform: translateX(-100%); }
     }
 
+    .status {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      z-index: 4;
+      font-size: 10px;
+      font-family: 'Press Start 2P', monospace;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid white;
+      padding: 10px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #00ff66;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #00ff66;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    .boot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
   </style>
 </head>
 
 <body>
 
   <div class="overlay"></div>
+  <div class="boot" id="boot">SYSTEM BOOTING...</div>
+  <div class="datetime" id="datetime"></div>
+  <div class="status">
+    <div class="dot"></div>
+    ONLINE
+  </div>
 
   <div class="box">
 
@@ -122,7 +185,10 @@
     <p>
       ENTER THE SITE<br>
       SYSTEM LOADING...<br>
-      DO NOT TRUST THE SIGNAL
+      DO NOT TRUST THE SIGNAL<br><br>
+      ВХОД В СИСТЕМУ<br>
+      ЗАГРУЗКА СИГНАЛА...<br>
+      НЕ ДОВЕРЯЙ СИГНАЛУ
     </p>
 
     <a href="gateway.html">
@@ -133,8 +199,47 @@
 
   <!-- 🔥 бегущая строка -->
   <div class="marquee">
-    <span>WARNING • THIS IS A RETRO SYSTEM • ENTER AT YOUR OWN RISK • SIGNAL UNSTABLE • WELCOME TO THE ARCHIVE •</span>
+    <span>WARNING • THIS IS A RETRO SYSTEM • ENTER AT YOUR OWN RISK • SIGNAL UNSTABLE • WELCOME TO THE ARCHIVE • ПРЕДУПРЕЖДЕНИЕ • ЭТО РЕТРО СИСТЕМА • ДОБРО ПОЖАЛОВАТЬ В АРХИВ •</span>
   </div>
 
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+
+      const date = now.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      });
+
+      const time = now.toLocaleTimeString('en-GB');
+
+      document.getElementById('datetime').textContent = `${date} | ${time}`;
+    }
+
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+    const bootStates = [
+      "SYSTEM BOOTING",
+      "SYSTEM BOOTING.",
+      "SYSTEM BOOTING..",
+      "SYSTEM BOOTING..."
+    ];
+
+    let bootIndex = 0;
+    const bootEl = document.getElementById('boot');
+
+    const bootInterval = setInterval(() => {
+      if (bootEl) {
+        bootEl.textContent = bootStates[bootIndex];
+        bootIndex = (bootIndex + 1) % bootStates.length;
+      }
+    }, 400);
+
+    setTimeout(() => {
+      clearInterval(bootInterval);
+      if (bootEl) bootEl.style.display = 'none';
+    }, 1800);
+  </script>
 </body>
 </html>
