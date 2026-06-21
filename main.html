@@ -49,13 +49,8 @@
     }
 
     @keyframes hotdogScroll {
-      from {
-        transform: translateX(100%);
-      }
-
-      to {
-        transform: translateX(-100%);
-      }
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
     }
 
     .hotdog-button {
@@ -71,6 +66,8 @@
       cursor: pointer;
     }
 
+    /* LAYOUT */
+
     .layout {
       display: flex;
       justify-content: space-between;
@@ -79,12 +76,18 @@
       align-items: flex-start;
     }
 
-    /* LEFT */
+    /* LEFT PANEL (now readable glass) */
 
     .left {
       width: 12%;
       font-size: 14px;
       line-height: 1.8;
+
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(6px);
+
+      padding: 12px;
     }
 
     .left h3 {
@@ -97,6 +100,7 @@
       display: block;
       color: #222;
       text-decoration: none;
+      padding: 2px 0;
     }
 
     .left a:hover {
@@ -114,11 +118,9 @@
       min-height: calc(100vh - 120px);
 
       background: rgba(255,255,255,0.72);
-
       border: 1px solid rgba(0,0,0,0.35);
 
       padding: 30px;
-
       box-sizing: border-box;
     }
 
@@ -133,12 +135,18 @@
       line-height: 1.7;
     }
 
-    /* RIGHT */
+    /* RIGHT PANEL (glass + slightly darker for contrast) */
 
     .right {
       width: 12%;
       font-size: 13px;
       line-height: 1.6;
+
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(6px);
+
+      padding: 12px;
     }
 
     .widget {
@@ -173,44 +181,33 @@
 <div class="hotdog-banner">
   <div class="hotdog-text">
     🌭 ВЫ ВЫИГРАЛИ БЕСПЛАТНЫЙ ХОТ-ДОГ!!! 🌭
+    FREE HOTDOG • MAYBE REAL • MAYBE NOT •
     ЗАБРАТЬ 32 ИЮНЯ В 25:61 •
-    FREE HOTDOG FOR EVERYONE •
-    ЭТО ТОЧНО НЕ ОБМАН •
-    MAYBE •
 
-    <button
-      class="hotdog-button"
-      onclick="alert('Извините. Все хот-доги закончились ещё в 2007 году 🌭')">
-      ПОЛУЧИТЬ ХОТ-ДОГ
+    <button class="hotdog-button"
+      onclick="alert('Хот-доги временно исчезли из реальности 🌭')">
+      ПОЛУЧИТЬ
     </button>
 
-    • ВЫ ВЫИГРАЛИ БЕСПЛАТНЫЙ ХОТ-ДОГ •
-    FREE DRAGONS COMING SOON •
-    ВОЗМОЖНОСТЬ ПОЛУЧИТЬ ЛЯГУШКУ БЕСПЛАТНО •
+    • FREE DRAGONS COMING SOON • LUCKY FROG SYSTEM ACTIVE •
   </div>
 </div>
 
 <div class="layout">
 
   <!-- LEFT -->
-
   <div class="left">
-
     <h3>NAV</h3>
-
     <a href="#">→ gallery</a>
     <a href="#">→ diary</a>
     <a href="#">→ music</a>
     <a href="#">→ links</a>
     <a href="#">→ secret door</a>
     <a href="#">→ definitely not a trap</a>
-
   </div>
 
   <!-- CENTER -->
-
   <div class="center">
-
     <div class="core">
 
       <h1>MAIN WORLD</h1>
@@ -230,41 +227,33 @@
       </p>
 
       <p>
-        Со временем здесь появятся страницы, музыка,
-        картинки, странные ссылки и прочие артефакты.
+        Со временем здесь появятся страницы, музыка, картинки, странные ссылки и артефакты.
       </p>
 
     </div>
-
   </div>
 
   <!-- RIGHT -->
-
   <div class="right">
 
     <div class="widget">
       <div class="widget-title">STATUS</div>
-
       ONLINE<br>
       THREAT LEVEL: LOW
     </div>
 
     <div class="widget">
       <div class="widget-title">MOOD</div>
-
       🌻 probably okay
     </div>
 
     <div class="widget">
       <div class="widget-title">FACT</div>
-
-      owner forgot what
-      she wanted to put here
+      something is watching the site
     </div>
 
     <div class="widget">
       <div class="widget-title">MUSIC</div>
-
       <button>PLAY</button>
     </div>
 
