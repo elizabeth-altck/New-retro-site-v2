@@ -7,25 +7,42 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 <style>
+
+/* ================= BODY ================= */
+
 body {
   margin: 0;
   font-family: 'Share Tech Mono', monospace;
-  background: url("images/поле.jpeg") center/cover fixed;
+
+  background-image: url("images/поле.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  cursor: url("images/snail-slug.gif"), auto;
 }
 
-/* TOP CHAOS */
-.hotdog-banner {
+/* ================= TOP + BOTTOM SCROLL ================= */
+
+.marquee {
   width: 100%;
   overflow: hidden;
-  background: repeating-linear-gradient(45deg,#ffea00,#ffea00 20px,#ff8800 20px,#ff8800 40px);
+  background: repeating-linear-gradient(
+    45deg,
+    #ffea00,
+    #ffea00 20px,
+    #ff8800 20px,
+    #ff8800 40px
+  );
   border-bottom: 3px solid black;
 }
 
-.hotdog-text {
+.marquee span {
+  display: inline-block;
   white-space: nowrap;
   font-family: 'Press Start 2P';
-  font-size: 11px;
-  padding: 14px 0;
+  font-size: 10px;
+  padding: 12px 0;
   animation: scroll 18s linear infinite;
 }
 
@@ -34,176 +51,235 @@ body {
   to { transform: translateX(-100%); }
 }
 
-/* LAYOUT */
-.layout { display: flex; gap: 20px; padding: 25px; }
+/* ================= LAYOUT ================= */
 
-.left { width: 12%; background: rgba(255,255,255,0.2); padding: 10px; }
-.center { width: 76%; }
-.right { width: 12%; background: rgba(0,0,0,0.5); color: white; padding: 12px; }
-
-/* CORE */
-.core {
-  min-height: 80vh;
-  background: rgba(255,255,255,0.78);
-  padding: 25px;
-  position: relative;
-  overflow: hidden;
+.layout {
+  display: flex;
+  gap: 12px;
+  padding: 18px;
 }
 
-/* 🎨 BRIGHT INTERNET WIDGETS */
-.widget {
-  margin: 10px 0;
+/* LEFT NAV */
+.left {
+  width: 12%;
+  background: rgba(255,255,255,0.2);
   padding: 10px;
-  border: 2px solid black;
-  font-weight: bold;
 }
 
-.w1 { background: #ff4d4d; color: white; }
-.w2 { background: #4dff88; }
-.w3 { background: #4da6ff; color: white; }
+/* CENTER */
+.center {
+  width: 66%;
+}
 
-/* BUTTONS */
+/* RIGHT POLAROIDS */
+.right {
+  width: 22%;
+}
+
+/* ================= CENTER CORE (SKEUOMORPH) ================= */
+
+.core {
+  min-height: 85vh;
+
+  background: rgba(255,255,255,0.72);
+  border-radius: 18px;
+
+  border: 2px solid rgba(0,0,0,0.3);
+
+  box-shadow:
+    inset 0 2px 10px rgba(0,0,0,0.2),
+    0 10px 20px rgba(0,0,0,0.3);
+
+  padding: 20px;
+}
+
+/* TITLE */
+h1 {
+  font-family: 'Press Start 2P';
+  text-shadow: 2px 2px white, 4px 4px #888;
+}
+
+/* ================= NOTE BLOCK ================= */
+
+.note-box {
+  margin-top: 15px;
+  padding: 15px;
+
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.85);
+
+  box-shadow:
+    inset 0 3px 6px rgba(0,0,0,0.25),
+    0 6px 10px rgba(0,0,0,0.25);
+
+  border: 2px solid black;
+}
+
+textarea {
+  width: 100%;
+  height: 80px;
+  margin-top: 8px;
+  border: 2px solid black;
+  padding: 10px;
+}
+
 button {
-  margin: 5px;
+  margin-top: 6px;
   padding: 6px 10px;
   border: 2px solid black;
+  background: white;
   cursor: pointer;
 }
 
-/* POPUP */
-.popup {
+/* ================= POLAROIDS ================= */
+
+.polaroid {
+  background: white;
+  margin-bottom: 14px;
+
+  padding: 8px;
+  border: 2px solid black;
+
+  box-shadow: 6px 6px 0px black;
+  transform: rotate(-1deg);
+}
+
+.polaroid img {
+  width: 100%;
+}
+
+.caption {
+  font-size: 11px;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* ================= HOVER TOOLTIP ================= */
+
+.tooltip {
   position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-  border: 6px solid #ff0000;
-  padding: 15px;
-  width: 320px;
+  bottom: 20px;
+  left: 20px;
+
+  background: black;
+  color: white;
+
+  padding: 8px 10px;
+  font-size: 12px;
+
   display: none;
-  z-index: 999;
+  max-width: 250px;
 }
 
-/* close button */
-.close {
-  float: right;
-  cursor: pointer;
-  font-weight: bold;
+/* ================= GHOST FLOAT OBJECT ================= */
+
+.float-snail {
+  position: absolute;
+  top: 60%;
+  left: 40%;
+  width: 80px;
+  opacity: 0.7;
 }
 
-/* chaos glow */
-.glow {
-  box-shadow: 0 0 20px rgba(255,0,0,0.4);
-}
 </style>
 </head>
 
 <body>
 
-<div class="hotdog-banner">
-  <div class="hotdog-text">
-    🌭 FREE HOTDOG SYSTEM ACTIVE • INTERNET IS BREAKING • CLICK ANYTHING •
-  </div>
+<!-- TOP SCROLL -->
+<div class="marquee">
+  <span>
+    🌭 FREE HOTDOG SYSTEM ACTIVE • CLICK EVERYTHING • MEMORY CORRUPTION IN PROGRESS • BUY 3 KG CUCUMBERS FOR SECRET ACCESS •
+  </span>
 </div>
 
 <div class="layout">
 
-<!-- LEFT -->
+<!-- LEFT NAV -->
 <div class="left">
-  <b>NAV</b><br>
-  gallery<br>diary<br>music
+  <b>NAV</b><br><br>
+
+  <div onmouseover="tip('enter gallery of broken memories')">gallery</div>
+  <div onmouseover="tip('diary that sometimes lies')">diary</div>
+  <div onmouseover="tip('sound fragments')">music</div>
+  <div onmouseover="tip('hidden layer')">secret</div>
 </div>
 
 <!-- CENTER -->
 <div class="center">
-<div class="core" id="core">
+<div class="core">
 
 <h1>MAIN WORLD</h1>
 
-<p id="txt">stable memory stream...</p>
+<p>you are inside a living system.</p>
+<p>this is not a website. it is a room.</p>
 
-<button onclick="openCode()">ENTER CODE</button>
-<button onclick="chaosColor()">GLITCH COLOR</button>
+<div class="note-box"
+     onmouseover="tip('write something and system will pretend to remember it')">
 
-<!-- 🧨 BRIGHT “WEB WIDGETS” -->
-<div class="widget w1">
-  ОПРОС 1: ты сейчас кто?<br>
-  <button onclick="answer('хаос')">хаос</button>
-  <button onclick="answer('норм')">норм</button>
+<b>Ты можешь написать сюда заметку</b>
+
+<textarea id="note"></textarea>
+
+<button onclick="fakeSave()">send to system</button>
 </div>
-
-<div class="widget w2">
-  ОПРОС 2: сайт живой?<br>
-  <button onclick="answer('да')">да</button>
-  <button onclick="answer('нет')">нет</button>
-</div>
-
-<div class="widget w3">
-  СИСТЕМА ВЫБОР:<br>
-  <button onclick="effect()">АКТИВИРОВАТЬ ЭФФЕКТ</button>
-</div>
-
-<p id="reaction"></p>
 
 </div>
 </div>
 
-<!-- RIGHT -->
+<!-- RIGHT POLAROIDS -->
 <div class="right">
-  STATUS: ONLINE<br>
-  unstable signals<br>
+
+<div class="polaroid"
+     onmouseover="tip('memory fragment #12')">
+<img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
+<div class="caption">FREE MEMORY PACK</div>
+</div>
+
+<div class="polaroid"
+     onmouseover="tip('this frog is probably illegal')">
+<img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+<div class="caption">DIGITAL FROG</div>
+</div>
+
+<div class="polaroid"
+     onmouseover="tip('system artifact')">
+<img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif">
+<div class="caption">ERROR BEAUTY</div>
 </div>
 
 </div>
 
-<!-- 🪟 POPUP -->
-<div class="popup" id="popup">
-  <span class="close" onclick="closePopup()">X</span>
-
-  <p>ENTER CODE:</p>
-  <input id="code" placeholder="xxxx">
-
-  <button onclick="check()">RUN</button>
-
-  <p id="result"></p>
 </div>
+
+<!-- FLOAT OBJECT -->
+<img class="float-snail" src="images/snail-slug.gif">
+
+<!-- TOOLTIP -->
+<div class="tooltip" id="tip"></div>
 
 <script>
 
-function openCode(){
-  document.getElementById("popup").style.display = "block";
+/* ===== TOOLTIP SYSTEM ===== */
+
+function tip(text){
+  const t = document.getElementById("tip");
+  t.style.display = "block";
+  t.innerText = text;
 }
 
-function closePopup(){
-  document.getElementById("popup").style.display = "none";
-}
+/* ===== FAKE SAVE ===== */
 
-function check(){
-  const results = [
-    "ACCESS DENIED",
-    "NOTHING HAPPENS",
-    "SYSTEM ACCEPTED YOU (maybe)",
-    "ERROR BUT OK",
-    "HOTDOG SIGNAL FOUND 🌭"
+function fakeSave(){
+  const msgs = [
+    "system received nothing",
+    "memory attempted but failed",
+    "your thought is now floating",
+    "saved (probably not)"
   ];
 
-  document.getElementById("result").innerText =
-    results[Math.floor(Math.random()*results.length)];
-}
-
-function answer(v){
-  document.getElementById("reaction").innerText =
-    "SYSTEM RESPONSE: " + v;
-}
-
-function chaosColor(){
-  const colors = ["#ffdddd","#ddffdd","#ddddff","#fff0aa"];
-  document.getElementById("core").style.background =
-    colors[Math.floor(Math.random()*colors.length)];
-}
-
-function effect(){
-  document.getElementById("core").classList.toggle("glow");
+  alert(msgs[Math.floor(Math.random()*msgs.length)]);
 }
 
 </script>
