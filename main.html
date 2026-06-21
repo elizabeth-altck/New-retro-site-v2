@@ -10,17 +10,11 @@
 body {
   margin: 0;
   font-family: 'Share Tech Mono', monospace;
-  color: #1b1b1b;
-
-  background-image: url("images/поле.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  overflow-x: hidden;
+  background: url("images/поле.jpeg") center/cover fixed;
+  color: #111;
 }
 
-/* TOP CHAOS BANNER */
+/* TOP CHAOS */
 .hotdog-banner {
   width: 100%;
   overflow: hidden;
@@ -33,24 +27,12 @@ body {
   font-family: 'Press Start 2P';
   font-size: 11px;
   padding: 14px 0;
-  animation: hotdogScroll 18s linear infinite;
+  animation: scroll 18s linear infinite;
 }
 
-@keyframes hotdogScroll {
+@keyframes scroll {
   from { transform: translateX(100%); }
   to { transform: translateX(-100%); }
-}
-
-/* SECOND CHAOS TICKER */
-.ticker2 {
-  position: sticky;
-  top: 0;
-  background: black;
-  color: lime;
-  font-size: 10px;
-  padding: 6px;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 /* LAYOUT */
@@ -66,20 +48,17 @@ body {
   background: rgba(255,255,255,0.18);
   backdrop-filter: blur(6px);
   padding: 12px;
-  border: 1px solid rgba(0,0,0,0.2);
 }
 
 /* CENTER */
-.center {
-  width: 76%;
-}
+.center { width: 76%; }
 
 .core {
   min-height: 80vh;
-  background: rgba(255,255,255,0.72);
+  background: rgba(255,255,255,0.75);
   padding: 25px;
-  border: 1px solid rgba(0,0,0,0.3);
   position: relative;
+  overflow: hidden;
 }
 
 /* RIGHT */
@@ -87,51 +66,50 @@ body {
   width: 12%;
   background: rgba(20,20,20,0.35);
   color: white;
-  backdrop-filter: blur(10px);
   padding: 15px;
-  border: 1px solid rgba(255,255,255,0.15);
 }
 
-/* FLOATING CHAOS ELEMENTS */
-.gift {
-  position: absolute;
-  width: 120px;
-  animation: float 6s infinite ease-in-out;
-  opacity: 0.85;
-  pointer-events: none;
+/* BUTTONS */
+button {
+  margin: 5px;
+  padding: 6px 10px;
+  border: 1px solid black;
+  background: white;
+  cursor: pointer;
 }
 
-.g1 { top: 10px; right: 10px; }
-.g2 { bottom: 50px; left: 20px; animation-duration: 9s; }
-.g3 { top: 200px; left: 40%; animation-duration: 7s; }
-
-@keyframes float {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
-}
-
-/* POPUPS */
+/* POPUP SYSTEM */
 .popup {
   position: fixed;
-  top: 30%;
+  top: 25%;
   left: 50%;
   transform: translateX(-50%);
-  background: white;
-  border: 2px solid black;
-  padding: 20px;
+  background: #fff;
+  border: 3px solid black;
+  padding: 15px;
   display: none;
   z-index: 999;
+  width: 300px;
 }
 
-/* SMALL GLITCH */
-.glitch {
-  animation: flicker 3s infinite;
+/* INPUT STYLE */
+input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid black;
 }
 
-@keyframes flicker {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0.85; }
+/* FLOATING CHAOS */
+.frog {
+  position: absolute;
+  width: 80px;
+  animation: jump 4s infinite ease-in-out;
+}
+
+@keyframes jump {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-30px) rotate(10deg); }
+  100% { transform: translateY(0); }
 }
 </style>
 </head>
@@ -140,78 +118,84 @@ body {
 
 <div class="hotdog-banner">
   <div class="hotdog-text">
-    🌭 FREE HOTDOG SYSTEM ACTIVE • WARNING: REALITY UNSTABLE • CLICK EVERYTHING • MAYBE NOT SAFE •
+    🌭 SYSTEM BROADCAST: FREE HOTDOG EVENT ACTIVE • DO NOT TRUST REALITY • CLICK ANYTHING
   </div>
-</div>
-
-<div class="ticker2">
-  SYSTEM ALERT: memory leak detected • system alert: something is watching • system alert: hotdog still missing
 </div>
 
 <div class="layout">
 
-<!-- LEFT -->
 <div class="left">
-  <b>NAV</b>
-  <div>gallery</div>
-  <div>diary</div>
-  <div>music</div>
+  <b>NAV</b><br>
+  gallery<br>diary<br>music
 </div>
 
-<!-- CENTER -->
 <div class="center">
-<div class="core glitch">
+<div class="core">
 
   <h1>MAIN WORLD</h1>
 
-  <p>YOU ARE INSIDE THE MEMORY FIELD</p>
+  <p id="txt">stable memory stream...</p>
 
-  <button onclick="openPopup()">OPEN MEMORY</button>
-  <button onclick="spawnPopup()">RANDOM ALERT</button>
+  <button onclick="openCode()">ENTER CODE</button>
+  <button onclick="glitchText()">GLITCH TEXT</button>
+  <button onclick="spawnFrogs()">SUMMON FROGS</button>
 
-  <p id="dynamicText">stable stream...</p>
-
-  <!-- CHAOS GIFS -->
-  <img class="gift g1" src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif">
-  <img class="gift g2" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
-  <img class="gift g3" src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif">
+  <!-- FROGS -->
+  <img class="frog" id="frog1" src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" style="top:20px;left:40px;">
+  <img class="frog" id="frog2" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" style="top:200px;left:300px;">
 
 </div>
 </div>
 
-<!-- RIGHT -->
 <div class="right">
-  <h3>LIVE SYSTEM</h3>
-  <p>STATUS: ONLINE</p>
-  <p>FIELD: unstable</p>
+  <h3>STATUS</h3>
+  ONLINE<br>
+  unstable but ok
 </div>
 
 </div>
 
-<div class="popup" id="popup">
-  <p>MEMORY ACCESS GRANTED</p>
-  <button onclick="closePopup()">close</button>
+<!-- CODE POPUP -->
+<div class="popup" id="codePopup">
+  <p>ENTER ACCESS CODE:</p>
+  <input id="codeInput" placeholder="xxxx-xxxx">
+  <button onclick="checkCode()">SUBMIT</button>
+  <p id="result"></p>
 </div>
 
 <script>
-function openPopup(){
-  document.getElementById("popup").style.display = "block";
+
+function openCode(){
+  document.getElementById("codePopup").style.display = "block";
 }
 
-function closePopup(){
-  document.getElementById("popup").style.display = "none";
+function checkCode(){
+  const val = document.getElementById("codeInput").value;
+  const res = document.getElementById("result");
+
+  const outcomes = [
+    "ACCESS GRANTED (maybe)",
+    "NOTHING HAPPENED",
+    "SYSTEM IGNORED YOU",
+    "▒▒▒ ERROR BUT OK",
+    "HOTDOG DETECTED"
+  ];
+
+  res.innerText = outcomes[Math.floor(Math.random()*outcomes.length)];
 }
 
-function spawnPopup(){
-  const p = document.createElement("div");
-  p.className = "popup";
-  p.style.display = "block";
-  p.style.top = Math.random()*70 + "%";
-  p.innerHTML = "⚠ SYSTEM ERROR: unknown event";
-  document.body.appendChild(p);
-
-  setTimeout(()=>p.remove(), 2500);
+function glitchText(){
+  document.getElementById("txt").innerText =
+  "signal corrupted... reality unstable...";
 }
+
+function spawnFrogs(){
+  document.querySelectorAll(".frog").forEach(f=>{
+    f.style.left = Math.random()*80 + "%";
+    f.style.top = Math.random()*70 + "%";
+  });
+}
+
 </script>
 
 </body>
