@@ -21,11 +21,61 @@
       min-height: 100vh;
     }
 
+    /* HOTDOG BANNER */
+
+    .hotdog-banner {
+      width: 100%;
+      overflow: hidden;
+
+      background: repeating-linear-gradient(
+        45deg,
+        #ffea00,
+        #ffea00 20px,
+        #ff8800 20px,
+        #ff8800 40px
+      );
+
+      border-bottom: 3px solid black;
+    }
+
+    .hotdog-text {
+      white-space: nowrap;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 11px;
+      color: black;
+      padding: 14px 0;
+
+      animation: hotdogScroll 22s linear infinite;
+    }
+
+    @keyframes hotdogScroll {
+      from {
+        transform: translateX(100%);
+      }
+
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    .hotdog-button {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
+
+      margin: 0 15px;
+      padding: 6px 10px;
+
+      border: 2px solid black;
+      background: white;
+
+      cursor: pointer;
+    }
+
     .layout {
       display: flex;
       justify-content: space-between;
-      padding: 40px;
-      gap: 15px;
+      padding: 30px;
+      gap: 20px;
       align-items: flex-start;
     }
 
@@ -33,21 +83,24 @@
 
     .left {
       width: 12%;
-      font-size: 12px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .left h3 {
+      margin-top: 0;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 11px;
     }
 
     .left a {
       display: block;
-      margin: 6px 0;
+      color: #222;
       text-decoration: none;
-      color: #2b2b2b;
-      background: rgba(255,255,255,0.35);
-      padding: 4px 6px;
-      border-radius: 4px;
     }
 
     .left a:hover {
-      background: rgba(255,255,255,0.6);
+      text-decoration: underline;
     }
 
     /* CENTER */
@@ -58,13 +111,13 @@
 
     .core {
       width: 100%;
-      min-height: calc(100vh - 80px);
+      min-height: calc(100vh - 120px);
+
+      background: rgba(255,255,255,0.72);
 
       border: 1px solid rgba(0,0,0,0.35);
 
       padding: 30px;
-
-      background: rgba(255,255,255,0.35);
 
       box-sizing: border-box;
     }
@@ -72,61 +125,92 @@
     .core h1 {
       font-family: 'Press Start 2P', monospace;
       font-size: 18px;
-      color: #1f1f1f;
       margin-top: 0;
     }
 
     .core p {
-      font-size: 13px;
-      line-height: 1.6;
-      color: #2b2b2b;
+      font-size: 14px;
+      line-height: 1.7;
     }
 
     /* RIGHT */
 
     .right {
       width: 12%;
-      font-size: 12px;
+      font-size: 13px;
+      line-height: 1.6;
     }
 
-    .right .block {
-      margin-bottom: 18px;
-      padding: 10px;
-      background: rgba(255,255,255,0.4);
-      border-radius: 6px;
+    .widget {
+      margin-bottom: 25px;
+    }
+
+    .widget-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      margin-bottom: 8px;
     }
 
     button {
       font-family: 'Share Tech Mono', monospace;
-      background: rgba(255,255,255,0.5);
-      color: #1b1b1b;
-      border: 1px solid rgba(0,0,0,0.2);
-      padding: 6px 10px;
+      background: rgba(255,255,255,0.7);
+
+      border: 1px solid rgba(0,0,0,0.3);
+
+      padding: 5px 8px;
+
       cursor: pointer;
-      border-radius: 4px;
-      margin-top: 4px;
     }
 
     button:hover {
-      background: rgba(255,255,255,0.8);
+      background: white;
     }
   </style>
 </head>
 
 <body>
 
+<div class="hotdog-banner">
+  <div class="hotdog-text">
+    🌭 ВЫ ВЫИГРАЛИ БЕСПЛАТНЫЙ ХОТ-ДОГ!!! 🌭
+    ЗАБРАТЬ 32 ИЮНЯ В 25:61 •
+    FREE HOTDOG FOR EVERYONE •
+    ЭТО ТОЧНО НЕ ОБМАН •
+    MAYBE •
+
+    <button
+      class="hotdog-button"
+      onclick="alert('Извините. Все хот-доги закончились ещё в 2007 году 🌭')">
+      ПОЛУЧИТЬ ХОТ-ДОГ
+    </button>
+
+    • ВЫ ВЫИГРАЛИ БЕСПЛАТНЫЙ ХОТ-ДОГ •
+    FREE DRAGONS COMING SOON •
+    ВОЗМОЖНОСТЬ ПОЛУЧИТЬ ЛЯГУШКУ БЕСПЛАТНО •
+  </div>
+</div>
+
 <div class="layout">
 
   <!-- LEFT -->
+
   <div class="left">
-    <a href="#">ENTER LOGS</a>
-    <a href="#">MEMORY FILES</a>
-    <a href="#">GALLERY</a>
-    <a href="#">??? CORRUPTED</a>
+
+    <h3>NAV</h3>
+
+    <a href="#">→ gallery</a>
+    <a href="#">→ diary</a>
+    <a href="#">→ music</a>
+    <a href="#">→ links</a>
+    <a href="#">→ secret door</a>
+    <a href="#">→ definitely not a trap</a>
+
   </div>
 
   <!-- CENTER -->
+
   <div class="center">
+
     <div class="core">
 
       <h1>MAIN WORLD</h1>
@@ -141,30 +225,47 @@
         МЯГКИЙ АРХИВ СОСТОЯНИЙ И СИГНАЛОВ.
       </p>
 
-      <!-- сюда потом будем добавлять контент -->
+      <p>
+        This area will slowly become the main room of the website.
+      </p>
+
+      <p>
+        Со временем здесь появятся страницы, музыка,
+        картинки, странные ссылки и прочие артефакты.
+      </p>
 
     </div>
+
   </div>
 
   <!-- RIGHT -->
+
   <div class="right">
 
-    <div class="block">
-      <b>MUSIC</b><br><br>
-      <button>PLAY / PAUSE</button>
+    <div class="widget">
+      <div class="widget-title">STATUS</div>
+
+      ONLINE<br>
+      THREAT LEVEL: LOW
     </div>
 
-    <div class="block">
-      <b>STATUS</b><br>
-      MEMORY: STABLE<br>
-      FIELD: ACTIVE
+    <div class="widget">
+      <div class="widget-title">MOOD</div>
+
+      🌻 probably okay
     </div>
 
-    <div class="block">
-      <b>FEELING CHECK</b><br><br>
-      <button>CALM</button><br>
-      <button>LOST</button><br>
-      <button>CURIOSITY</button>
+    <div class="widget">
+      <div class="widget-title">FACT</div>
+
+      owner forgot what
+      she wanted to put here
+    </div>
+
+    <div class="widget">
+      <div class="widget-title">MUSIC</div>
+
+      <button>PLAY</button>
     </div>
 
   </div>
