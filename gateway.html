@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GATEWAY</title>
+  <title>Gateway</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
@@ -9,78 +9,136 @@
     body {
       margin: 0;
       font-family: 'Press Start 2P', monospace;
+      /* Press Start 2P supports Cyrillic, so no separate Russian font is required. */
       color: white;
+
       background: black;
     }
 
-    .top {
-      padding: 20px;
+    /* 🔥 верхняя панель */
+    .topbar {
+      background: rgba(0,0,0,0.85);
       border-bottom: 2px solid white;
-      text-align: center;
-      font-size: 12px;
+      padding: 10px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* 🌙 контейнер */
+    .container {
+      padding: 40px;
+    }
+
+    /* 🧱 блоки */
+    .block {
+      border: 2px solid white;
+      padding: 20px;
+      margin-bottom: 20px;
+      background: rgba(255,255,255,0.05);
+    }
+
+    h1 {
+      font-size: 18px;
       text-transform: uppercase;
     }
 
-    .container {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 60px;
-      flex-wrap: wrap;
+    p {
+      font-size: 10px;
+      opacity: 0.8;
+      line-height: 1.6;
+      text-transform: uppercase;
     }
 
-    .card {
-      width: 300px;
+    /* 🔥 бегущая строка */
+    .marquee {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.8);
+      padding: 10px 0;
+      overflow: hidden;
+      font-size: 10px;
+    }
+
+    .marquee span {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll 12s linear infinite;
+      padding-left: 100%;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* 🎮 кнопка назад */
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px;
       border: 2px solid white;
-      padding: 20px;
-      text-align: center;
-      background: rgba(255,255,255,0.05);
-      cursor: pointer;
-      transition: 0.2s;
+      font-size: 10px;
     }
 
-    .card:hover {
-      transform: scale(1.05);
+    .back:hover {
       background: white;
       color: black;
     }
 
-    .ru {
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      margin-top: 10px;
-      text-transform: none;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
   </style>
 </head>
 
 <body>
 
-  <div class="top">
-    GATEWAY SYSTEM / ВЫБОР РЕЖИМА
+  <div class="topbar">
+    MAIN SYSTEM ACTIVE • SIGNAL STABLE • ARCHIVE MODE ON
   </div>
 
   <div class="container">
 
-    <a href="forest.html">
-      <div class="card">
-        FOREST MODE<br>
-        <div class="ru">РЕЖИМ ЛЕСА / АТМОСФЕРА / ХАОС</div>
-      </div>
-    </a>
+    <div class="block">
+      <h1>WELCOME INSIDE</h1>
+      <p>
+        YOU ENTERED THE MAIN SPACE.<br>
+        THIS IS A PERSONAL ARCHIVE AND CREATIVE SPACE.<br>
+        MUSIC, MEMORIES, DRAWINGS AND ATMOSPHERE LIVE HERE.
+      </p>
+      <p>
+        ДОБРО ПОЖАЛОВАТЬ ВНУТРЬ.<br>
+        ЭТО ЛИЧНОЕ ПРОСТРАНСТВО И НЕБОЛЬШОЙ АРХИВ.<br>
+        ЗДЕСЬ СОБРАНЫ МУЗЫКА, ВОСПОМИНАНИЯ, РИСУНКИ И АТМОСФЕРА.
+      </p>
+    </div>
 
-    <a href="system.html">
-      <div class="card">
-        SYSTEM MODE<br>
-        <div class="ru">СИСТЕМА / СТРУКТУРА / ИНФОРМАЦИЯ</div>
-      </div>
-    </a>
+    <div class="block">
+      <h1>SECTIONS</h1>
+      <p>
+        • GALLERY<br>
+        • MUSIC ROOM<br>
+        • ARCHIVE<br>
+        • EXPERIMENTS
+      </p>
+      <p>
+        • ГАЛЕРЕЯ<br>
+        • МУЗЫКАЛЬНАЯ КОМНАТА<br>
+        • АРХИВ<br>
+        • ЭКСПЕРИМЕНТЫ
+      </p>
+    </div>
 
+    <a class="back" href="main.html">ENTER THE MAIN WORLD →</a>
+
+  </div>
+
+  <div class="marquee">
+    <span>WELCOME TO THE ARCHIVE • ДОБРО ПОЖАЛОВАТЬ В АРХИВ • RETRO SYSTEM ONLINE • SIGNAL STABLE •</span>
   </div>
 
 </body>
