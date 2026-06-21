@@ -22,18 +22,20 @@ body {
   cursor: url("images/snail-slug.gif"), auto;
 }
 
-/* ================= TOP MARQUEE ================= */
+/* ================= MARQUEE ================= */
 
 .marquee {
   width: 100%;
   overflow: hidden;
+
   background: repeating-linear-gradient(
     45deg,
-    #ffea00,
-    #ffea00 20px,
-    #ff8800 20px,
-    #ff8800 40px
+    #ff0,
+    #ff8800,
+    #ff00aa,
+    #00ffff
   );
+
   border-bottom: 3px solid black;
 }
 
@@ -43,7 +45,7 @@ body {
   font-family: 'Press Start 2P';
   font-size: 10px;
   padding: 12px 0;
-  animation: scroll 18s linear infinite;
+  animation: scroll 14s linear infinite;
 }
 
 @keyframes scroll {
@@ -54,110 +56,143 @@ body {
 /* ================= LAYOUT ================= */
 
 .layout {
-  display: flex;
-  gap: 12px;
-  padding: 18px;
+  display: grid;
+  grid-template-columns: 1fr minmax(720px, 900px) 1fr;
+
+  gap: 16px;
+  padding: 16px;
 }
 
-.left { width: 12%; }
-.center { width: 66%; }
-.right { width: 22%; }
+/* ================= SIDE PANELS (CHAOS STYLE) ================= */
+
+.left,
+.right {
+  border: 3px solid black;
+
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255,0,150,0.15),
+      rgba(255,0,150,0.15) 10px,
+      rgba(0,255,255,0.15) 10px,
+      rgba(0,255,255,0.15) 20px
+    );
+
+  box-shadow: 6px 6px 0 black;
+
+  padding: 12px;
+}
+
+/* ================= CENTER ================= */
+
+.center {
+  display: flex;
+  justify-content: center;
+}
 
 /* ================= CORE ================= */
 
 .core {
+  width: 100%;
   min-height: 85vh;
 
-  background: linear-gradient(135deg,#fff,#ffd6ff,#d6f7ff);
-  border-radius: 20px;
+  background: linear-gradient(145deg,#fff,#ffd6ff,#d6f7ff,#fff2b3);
 
-  border: 3px solid black;
+  border: 4px solid black;
 
   box-shadow:
-    inset 0 6px 14px rgba(0,0,0,0.25),
-    0 18px 30px rgba(0,0,0,0.35);
+    inset 0 10px 20px rgba(0,0,0,0.35),
+    0 20px 40px rgba(0,0,0,0.4);
 
-  padding: 20px;
-
-  overflow: hidden;
+  padding: 22px;
 }
 
-/* ================= MALINOVY HEADER (RESTORED) ================= */
+/* ================= TITLE (RETRO + MALINOVY CHAOS) ================= */
 
 h1 {
+  text-align: center;
   font-family: 'Press Start 2P';
 
-  font-size: 46px;
-
-  display: inline-block;
-  padding: 14px 18px;
-
-  background: linear-gradient(90deg, #ff2bd6, #ff4d6d, #ff00aa);
+  font-size: 44px;
 
   color: white;
+
+  background: linear-gradient(90deg,#ff0055,#ff00cc,#ff8800,#00ffff);
 
   border: 4px solid black;
 
   box-shadow:
     6px 6px 0 black,
-    0 0 20px rgba(255, 0, 170, 0.8),
-    0 0 40px rgba(255, 0, 200, 0.5);
+    0 0 30px rgba(255,0,150,0.8);
 
-  text-shadow:
-    2px 2px black,
-    0 0 10px #fff;
-
-  animation: titleGlitch 0.9s infinite alternate;
+  text-shadow: 2px 2px black;
 }
 
-@keyframes titleGlitch {
-  0% { transform: translate(0,0) scale(1); filter: hue-rotate(0deg); }
-  50% { transform: translate(1px,-1px) scale(1.02); }
-  100% { transform: translate(-1px,1px) scale(1); filter: hue-rotate(25deg); }
-}
-
-/* ================= NOTE BOX ================= */
+/* ================= NOTE BOX (БОЛЕЕ “ЖИВОЙ”) ================= */
 
 .note-box {
-  margin-top: 15px;
-  padding: 16px;
+  margin-top: 18px;
+  padding: 18px;
 
-  border-radius: 18px;
+  border-radius: 14px;
 
-  background: rgba(255,255,255,0.85);
+  background:
+    linear-gradient(135deg,#ffffff,#ffe6ff,#e6f7ff);
 
   border: 3px solid black;
 
   box-shadow:
-    inset 0 4px 10px rgba(0,0,0,0.25),
-    0 10px 18px rgba(0,0,0,0.35);
+    inset 0 8px 14px rgba(0,0,0,0.4),
+    inset 0 -4px 10px rgba(255,255,255,0.9),
+    0 10px 20px rgba(0,0,0,0.35);
+}
+
+textarea {
+  width: 100%;
+  height: 90px;
+
+  border: 3px solid black;
+
+  padding: 10px;
+  background: #fff7ff;
+}
+
+button {
+  margin-top: 8px;
+
+  padding: 6px 10px;
+
+  border: 3px solid black;
+
+  background: linear-gradient(90deg,#fff,#ffccff);
+
+  cursor: pointer;
 }
 
 /* ================= GALLERY ================= */
 
 .gallery {
-  margin-top: 20px;
-  width: 100%;
-  overflow: hidden;
+  margin-top: 22px;
 
-  border: 3px solid black;
+  border: 4px solid black;
+
   background: linear-gradient(90deg,#fff,#ffe6ff,#e6f7ff);
 
-  border-radius: 16px;
-  padding: 10px;
+  overflow: hidden;
 }
 
 .gallery-track {
   display: flex;
   gap: 10px;
+
   width: max-content;
 
-  animation: slide 12s linear infinite;
+  animation: slide 10s linear infinite;
 }
 
 @keyframes slide {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-60%); }
 }
 
 .gallery-item {
@@ -165,11 +200,8 @@ h1 {
   height: 120px;
 
   border: 2px solid black;
-  background: white;
 
   box-shadow: 5px 5px 0 black;
-
-  overflow: hidden;
 }
 
 .gallery-item img {
@@ -184,16 +216,17 @@ h1 {
 <body>
 
 <div class="marquee">
-  <span>⚠ SYSTEM ACTIVE • MEMORY LOOP • HOTDOG ERROR • CLICK EVERYTHING •</span>
+  <span>⚠ HOTDOG ERROR SYSTEM ACTIVE • MEMORY CORRUPTION • BUY 3 KG CUCUMBERS •</span>
 </div>
 
 <div class="layout">
 
 <div class="left">
-  <div>gallery</div>
-  <div>diary</div>
-  <div>music</div>
-  <div>secret</div>
+  NAV SYSTEM<br><br>
+  gallery<br>
+  diary<br>
+  music<br>
+  secret<br>
 </div>
 
 <div class="center">
@@ -201,15 +234,16 @@ h1 {
 
 <h1>MAIN WORLD</h1>
 
-<p>you are inside a living system.</p>
+<p>system unstable but alive</p>
 
 <div class="note-box">
   <b>Ты можешь написать сюда заметку</b>
   <textarea></textarea>
+  <button>send</button>
 </div>
 
-<!-- GALLERY -->
 <div class="gallery">
+
   <div class="gallery-track">
 
     <div class="gallery-item">
@@ -225,9 +259,16 @@ h1 {
     </div>
 
   </div>
+
 </div>
 
 </div>
+</div>
+
+<div class="right">
+  system noise<br>
+  artifacts active<br>
+  memory drifting
 </div>
 
 </div>
