@@ -1,195 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>MAIN WORLD</title>
+  <meta charset="UTF-8">
+  <title>MAIN WORLD</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Share Tech Mono', monospace;
-  color: #1b1b1b;
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Share Tech Mono', monospace;
+      color: #1b1b1b;
 
-  background-image: url("images/поле.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
+      background-image: url("images/поле.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
 
-/* HOTDOG */
-.hotdog-banner {
-  width: 100%;
-  overflow: hidden;
-  background: repeating-linear-gradient(45deg,#ffea00,#ffea00 20px,#ff8800 20px,#ff8800 40px);
-  border-bottom: 3px solid black;
-}
+      min-height: 100vh;
+    }
 
-.hotdog-text {
-  white-space: nowrap;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 11px;
-  padding: 14px 0;
-  animation: hotdogScroll 22s linear infinite;
-}
+    /* HOTDOG BANNER */
 
-@keyframes hotdogScroll {
-  from { transform: translateX(100%); }
-  to { transform: translateX(-100%); }
-}
+    .hotdog-banner {
+      width: 100%;
+      overflow: hidden;
 
-/* LAYOUT */
-.layout {
-  display: flex;
-  gap: 20px;
-  padding: 25px;
-}
+      background: repeating-linear-gradient(
+        45deg,
+        #ffea00,
+        #ffea00 20px,
+        #ff8800 20px,
+        #ff8800 40px
+      );
 
-/* LEFT */
-.left {
-  width: 12%;
-  background: rgba(255,255,255,0.18);
-  backdrop-filter: blur(6px);
-  padding: 12px;
-  border: 1px solid rgba(0,0,0,0.2);
-}
+      border-bottom: 3px solid black;
+    }
 
-.left a {
-  display: block;
-  text-decoration: none;
-  color: #111;
-  margin: 6px 0;
-}
+    .hotdog-text {
+      white-space: nowrap;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 11px;
+      color: black;
+      padding: 14px 0;
 
-/* CENTER */
-.center {
-  width: 58%;
-}
+      animation: hotdogScroll 22s linear infinite;
+    }
 
-.core {
-  min-height: 80vh;
-  background: rgba(255,255,255,0.72);
-  padding: 25px;
-  border: 1px solid rgba(0,0,0,0.3);
-}
+    @keyframes hotdogScroll {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
 
-.core h1 {
-  font-family: 'Press Start 2P';
-}
+    .hotdog-button {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px;
 
-/* INTERACTIVE BUTTONS */
-.action-btn {
-  margin: 5px;
-  padding: 6px 10px;
-  border: 1px solid black;
-  background: white;
-  cursor: pointer;
-}
+      margin: 0 15px;
+      padding: 6px 10px;
 
-/* RIGHT — EXPANDED + DARKER GLASS */
-.right {
-  width: 30%;
-  background: rgba(20,20,20,0.35);
-  color: white;
-  backdrop-filter: blur(10px);
-  padding: 15px;
-  border: 1px solid rgba(255,255,255,0.15);
-}
+      border: 2px solid black;
+      background: white;
 
-/* POPUP */
-.popup {
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  border: 2px solid black;
-  padding: 20px;
-  display: none;
-  z-index: 999;
-}
-</style>
+      cursor: pointer;
+    }
+
+    /* LAYOUT */
+
+    .layout {
+      display: flex;
+      justify-content: space-between;
+      padding: 30px;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    /* LEFT PANEL (now readable glass) */
+
+    .left {
+      width: 12%;
+      font-size: 14px;
+      line-height: 1.8;
+
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(6px);
+
+      padding: 12px;
+    }
+
+    .left h3 {
+      margin-top: 0;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 11px;
+    }
+
+    .left a {
+      display: block;
+      color: #222;
+      text-decoration: none;
+      padding: 2px 0;
+    }
+
+    .left a:hover {
+      text-decoration: underline;
+    }
+
+    /* CENTER */
+
+    .center {
+      width: 76%;
+    }
+
+    .core {
+      width: 100%;
+      min-height: calc(100vh - 120px);
+
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(0,0,0,0.35);
+
+      padding: 30px;
+      box-sizing: border-box;
+    }
+
+    .core h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 18px;
+      margin-top: 0;
+    }
+
+    .core p {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* RIGHT PANEL (glass + slightly darker for contrast) */
+
+    .right {
+      width: 12%;
+      font-size: 13px;
+      line-height: 1.6;
+
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(6px);
+
+      padding: 12px;
+    }
+
+    .widget {
+      margin-bottom: 25px;
+    }
+
+    .widget-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      margin-bottom: 8px;
+    }
+
+    button {
+      font-family: 'Share Tech Mono', monospace;
+      background: rgba(255,255,255,0.7);
+
+      border: 1px solid rgba(0,0,0,0.3);
+
+      padding: 5px 8px;
+
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: white;
+    }
+  </style>
 </head>
 
 <body>
 
 <div class="hotdog-banner">
   <div class="hotdog-text">
-    🌭 FREE HOTDOG SYSTEM ACTIVE • CLICK FOR REWARD • MAYBE REAL • MAYBE NOT •
+    🌭 ВЫ ВЫИГРАЛИ БЕСПЛАТНЫЙ ХОТ-ДОГ!!! 🌭
+    FREE HOTDOG • MAYBE REAL • MAYBE NOT •
+    ЗАБРАТЬ 32 ИЮНЯ В 25:61 •
+
+    <button class="hotdog-button"
+      onclick="alert('Хот-доги временно исчезли из реальности 🌭')">
+      ПОЛУЧИТЬ
+    </button>
+
+    • FREE DRAGONS COMING SOON • LUCKY FROG SYSTEM ACTIVE •
   </div>
 </div>
 
 <div class="layout">
 
-<!-- LEFT -->
-<div class="left">
-  <b>NAV</b>
-  <a href="#">gallery</a>
-  <a href="#">diary</a>
-  <a href="#">music</a>
-  <a href="#">secret door</a>
-</div>
+  <!-- LEFT -->
+  <div class="left">
+    <h3>NAV</h3>
+    <a href="#">→ gallery</a>
+    <a href="#">→ diary</a>
+    <a href="#">→ music</a>
+    <a href="#">→ links</a>
+    <a href="#">→ secret door</a>
+    <a href="#">→ definitely not a trap</a>
+  </div>
 
-<!-- CENTER -->
-<div class="center">
-  <div class="core">
+  <!-- CENTER -->
+  <div class="center">
+    <div class="core">
 
-    <h1>MAIN WORLD</h1>
+      <h1>MAIN WORLD</h1>
 
-    <p>YOU ARE INSIDE THE MEMORY FIELD</p>
+      <p>
+        YOU ARE INSIDE THE MEMORY FIELD.<br>
+        A SOFT ARCHIVE OF MOMENTS AND SIGNALS.
+      </p>
 
-    <button class="action-btn" onclick="openPopup()">OPEN MEMORY</button>
-    <button class="action-btn" onclick="glitch()">GLITCH</button>
-    <button class="action-btn" onclick="changeText()">ALTER TEXT</button>
+      <p>
+        ВЫ ВНУТРИ ПОЛЯ ПАМЯТИ.<br>
+        МЯГКИЙ АРХИВ СОСТОЯНИЙ И СИГНАЛОВ.
+      </p>
 
-    <p id="dynamicText">stable memory stream...</p>
+      <p>
+        This area will slowly become the main room of the website.
+      </p>
+
+      <p>
+        Со временем здесь появятся страницы, музыка, картинки, странные ссылки и артефакты.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+
+    <div class="widget">
+      <div class="widget-title">STATUS</div>
+      ONLINE<br>
+      THREAT LEVEL: LOW
+    </div>
+
+    <div class="widget">
+      <div class="widget-title">MOOD</div>
+      🌻 probably okay
+    </div>
+
+    <div class="widget">
+      <div class="widget-title">FACT</div>
+      something is watching the site
+    </div>
+
+    <div class="widget">
+      <div class="widget-title">MUSIC</div>
+      <button>PLAY</button>
+    </div>
 
   </div>
-</div>
-
-<!-- RIGHT -->
-<div class="right">
-  <h3>LIVE SYSTEM</h3>
-
-  <p>STATUS: ONLINE</p>
-  <p>FIELD: unstable but fine</p>
-
-  <p>EVENTS:</p>
-  <ul>
-    <li>hotdog broadcast active</li>
-    <li>unknown signal detected</li>
-  </ul>
-</div>
 
 </div>
-
-<!-- POPUP -->
-<div class="popup" id="popup">
-  <p>MEMORY ACCESS GRANTED (maybe)</p>
-  <button onclick="closePopup()">close</button>
-</div>
-
-<script>
-function openPopup(){
-  document.getElementById("popup").style.display = "block";
-}
-
-function closePopup(){
-  document.getElementById("popup").style.display = "none";
-}
-
-function glitch(){
-  document.body.style.filter = "hue-rotate(90deg)";
-  setTimeout(()=>document.body.style.filter="none",500);
-}
-
-function changeText(){
-  document.getElementById("dynamicText").innerText =
-  "signal corrupted... maybe something changed";
-}
-</script>
 
 </body>
 </html>
