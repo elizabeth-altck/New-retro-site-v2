@@ -11,10 +11,9 @@ body {
   margin: 0;
   font-family: 'Share Tech Mono', monospace;
   background: url("images/поле.jpeg") center/cover fixed;
-  color: #111;
 }
 
-/* TOP BAR */
+/* TOP CHAOS */
 .hotdog-banner {
   width: 100%;
   overflow: hidden;
@@ -36,15 +35,11 @@ body {
 }
 
 /* LAYOUT */
-.layout {
-  display: flex;
-  gap: 20px;
-  padding: 25px;
-}
+.layout { display: flex; gap: 20px; padding: 25px; }
 
-.left { width: 12%; background: rgba(255,255,255,0.2); padding: 12px; }
+.left { width: 12%; background: rgba(255,255,255,0.2); padding: 10px; }
 .center { width: 76%; }
-.right { width: 12%; background: rgba(0,0,0,0.4); color: white; padding: 15px; }
+.right { width: 12%; background: rgba(0,0,0,0.5); color: white; padding: 12px; }
 
 /* CORE */
 .core {
@@ -55,58 +50,50 @@ body {
   overflow: hidden;
 }
 
+/* 🎨 BRIGHT INTERNET WIDGETS */
+.widget {
+  margin: 10px 0;
+  padding: 10px;
+  border: 2px solid black;
+  font-weight: bold;
+}
+
+.w1 { background: #ff4d4d; color: white; }
+.w2 { background: #4dff88; }
+.w3 { background: #4da6ff; color: white; }
+
 /* BUTTONS */
 button {
   margin: 5px;
   padding: 6px 10px;
   border: 2px solid black;
-  background: white;
   cursor: pointer;
 }
 
-/* =========================
-   POPUP — UPGRADED CHAOS
-========================= */
-
+/* POPUP */
 .popup {
   position: fixed;
-  top: 22%;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
   background: #fff;
-  border: 6px solid #ff2d2d; /* 🔥 thicker + aggressive */
-  padding: 18px;
+  border: 6px solid #ff0000;
+  padding: 15px;
+  width: 320px;
   display: none;
   z-index: 999;
-  width: 320px;
-  box-shadow: 0 0 25px rgba(255,0,0,0.5);
-  font-family: 'Press Start 2P';
 }
 
-.popup button {
-  margin-top: 10px;
-  border: 2px solid black;
+/* close button */
+.close {
+  float: right;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-/* CHAOS FROGS */
-.frog {
-  position: absolute;
-  width: 70px;
-  animation: jump 4s infinite ease-in-out;
-}
-
-@keyframes jump {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-25px) rotate(8deg); }
-  100% { transform: translateY(0); }
-}
-
-/* QUIZ BLOCKS */
-.quiz {
-  margin-top: 15px;
-  padding: 10px;
-  border: 2px dashed black;
-  background: rgba(255,255,255,0.6);
+/* chaos glow */
+.glow {
+  box-shadow: 0 0 20px rgba(255,0,0,0.4);
 }
 </style>
 </head>
@@ -115,106 +102,108 @@ button {
 
 <div class="hotdog-banner">
   <div class="hotdog-text">
-    🌭 SYSTEM ALERT: FREE HOTDOG DISTRIBUTION ACTIVE • REALITY UNSTABLE • CLICK RANDOMLY •
+    🌭 FREE HOTDOG SYSTEM ACTIVE • INTERNET IS BREAKING • CLICK ANYTHING •
   </div>
 </div>
 
 <div class="layout">
 
+<!-- LEFT -->
 <div class="left">
   <b>NAV</b><br>
   gallery<br>diary<br>music
 </div>
 
-<!-- ================= CENTER ================= -->
+<!-- CENTER -->
 <div class="center">
-<div class="core">
+<div class="core" id="core">
 
-  <h1>MAIN WORLD</h1>
+<h1>MAIN WORLD</h1>
 
-  <p id="txt">stable memory stream...</p>
+<p id="txt">stable memory stream...</p>
 
-  <button onclick="openCode()">ENTER CODE</button>
-  <button onclick="glitchText()">GLITCH</button>
+<button onclick="openCode()">ENTER CODE</button>
+<button onclick="chaosColor()">GLITCH COLOR</button>
 
-  <!-- 🧠 INTERACTIVE CHAOS BLOCKS -->
-  <div class="quiz">
-    <b>QUESTION 01:</b><br>
-    ты сейчас кто?<br>
-    <button onclick="react('lost')">потерянный</button>
-    <button onclick="react('fine')">норм</button>
-    <button onclick="react('chaos')">хаос</button>
-  </div>
+<!-- 🧨 BRIGHT “WEB WIDGETS” -->
+<div class="widget w1">
+  ОПРОС 1: ты сейчас кто?<br>
+  <button onclick="answer('хаос')">хаос</button>
+  <button onclick="answer('норм')">норм</button>
+</div>
 
-  <div class="quiz">
-    <b>QUESTION 02:</b><br>
-    выбрать состояние системы:<br>
-    <button onclick="react('ok')">ok</button>
-    <button onclick="react('error')">error</button>
-    <button onclick="react('hotdog')">hotdog</button>
-  </div>
+<div class="widget w2">
+  ОПРОС 2: сайт живой?<br>
+  <button onclick="answer('да')">да</button>
+  <button onclick="answer('нет')">нет</button>
+</div>
 
-  <p id="reactionText"></p>
+<div class="widget w3">
+  СИСТЕМА ВЫБОР:<br>
+  <button onclick="effect()">АКТИВИРОВАТЬ ЭФФЕКТ</button>
+</div>
 
-  <!-- FROGS -->
-  <img class="frog" style="top:30px;left:40px;" src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif">
-  <img class="frog" style="top:220px;left:280px;" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+<p id="reaction"></p>
 
 </div>
 </div>
 
 <!-- RIGHT -->
 <div class="right">
-  <h3>STATUS</h3>
-  ONLINE<br>
-  unstable
+  STATUS: ONLINE<br>
+  unstable signals<br>
 </div>
 
 </div>
 
-<!-- ================= POPUP ================= -->
-<div class="popup" id="codePopup">
-  <p>ENTER CODE</p>
-  <input id="codeInput" placeholder="xxxx-xxxx">
-  <button onclick="checkCode()">SUBMIT</button>
+<!-- 🪟 POPUP -->
+<div class="popup" id="popup">
+  <span class="close" onclick="closePopup()">X</span>
+
+  <p>ENTER CODE:</p>
+  <input id="code" placeholder="xxxx">
+
+  <button onclick="check()">RUN</button>
+
   <p id="result"></p>
 </div>
 
 <script>
 
 function openCode(){
-  document.getElementById("codePopup").style.display = "block";
+  document.getElementById("popup").style.display = "block";
 }
 
-function checkCode(){
-  const outcomes = [
-    "ACCESS GRANTED (maybe)",
-    "NOTHING HAPPENED",
-    "SYSTEM IGNORED INPUT",
-    "▒▒ ERROR BUT OK",
-    "HOTDOG SIGNAL FOUND"
+function closePopup(){
+  document.getElementById("popup").style.display = "none";
+}
+
+function check(){
+  const results = [
+    "ACCESS DENIED",
+    "NOTHING HAPPENS",
+    "SYSTEM ACCEPTED YOU (maybe)",
+    "ERROR BUT OK",
+    "HOTDOG SIGNAL FOUND 🌭"
   ];
 
   document.getElementById("result").innerText =
-    outcomes[Math.floor(Math.random()*outcomes.length)];
+    results[Math.floor(Math.random()*results.length)];
 }
 
-function glitchText(){
-  document.getElementById("txt").innerText =
-  "signal corrupted... user unstable...";
+function answer(v){
+  document.getElementById("reaction").innerText =
+    "SYSTEM RESPONSE: " + v;
 }
 
-function react(type){
-  const map = {
-    lost: "system: user is drifting",
-    fine: "system: stable but suspicious",
-    chaos: "system: MATCH DETECTED",
-    ok: "ok noted (ignored)",
-    error: "ERROR: nothing is broken but everything feels broken",
-    hotdog: "HOTDOG STATUS ACTIVATED 🌭"
-  };
+function chaosColor(){
+  const colors = ["#ffdddd","#ddffdd","#ddddff","#fff0aa"];
+  document.getElementById("core").style.background =
+    colors[Math.floor(Math.random()*colors.length)];
+}
 
-  document.getElementById("reactionText").innerText = map[type];
+function effect(){
+  document.getElementById("core").classList.toggle("glow");
 }
 
 </script>
