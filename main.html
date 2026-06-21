@@ -8,8 +8,6 @@
 
 <style>
 
-/* ================= BODY ================= */
-
 body {
   margin: 0;
   font-family: 'Share Tech Mono', monospace;
@@ -19,10 +17,21 @@ body {
   background-position: center;
   background-attachment: fixed;
 
-  cursor: url("images/snail-slug.gif"), auto;
+  cursor: none;
 }
 
-/* ================= TOP + BOTTOM SCROLL ================= */
+/* ================= CURSOR ================= */
+
+#cursor {
+  position: fixed;
+  width: 42px;
+  height: 42px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+}
+
+/* ================= MARQUEE ================= */
 
 .marquee {
   width: 100%;
@@ -59,127 +68,124 @@ body {
   padding: 18px;
 }
 
-/* LEFT NAV */
-.left {
-  width: 12%;
-  background: rgba(255,255,255,0.2);
-  padding: 10px;
-}
+.left { width: 12%; }
+.center { width: 66%; overflow: hidden; }
+.right { width: 22%; }
 
-/* CENTER */
-.center {
-  width: 66%;
-}
-
-/* RIGHT POLAROIDS */
-.right {
-  width: 22%;
-}
-
-/* ================= CENTER CORE (SKEUOMORPH) ================= */
+/* ================= MAIN WORLD UPGRADE ================= */
 
 .core {
   min-height: 85vh;
 
-  background: rgba(255,255,255,0.72);
-  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.85), rgba(255,240,255,0.65));
+  border-radius: 22px;
 
-  border: 2px solid rgba(0,0,0,0.3);
+  border: 3px solid rgba(0,0,0,0.4);
 
   box-shadow:
-    inset 0 2px 10px rgba(0,0,0,0.2),
-    0 10px 20px rgba(0,0,0,0.3);
+    inset 0 6px 14px rgba(0,0,0,0.25),
+    0 18px 30px rgba(0,0,0,0.35);
 
   padding: 20px;
+
+  position: relative;
 }
 
-/* TITLE */
+/* ================= BIG TITLE (MAIN WORLD) ================= */
+
 h1 {
   font-family: 'Press Start 2P';
-  text-shadow: 2px 2px white, 4px 4px #888;
-}
+  font-size: 22px;
 
-/* ================= NOTE BLOCK ================= */
+  background: white;
+  display: inline-block;
 
-.note-box {
-  margin-top: 15px;
-  padding: 15px;
+  padding: 10px 14px;
 
-  border-radius: 16px;
-
-  background: rgba(255,255,255,0.85);
+  border: 3px solid black;
 
   box-shadow:
-    inset 0 3px 6px rgba(0,0,0,0.25),
-    0 6px 10px rgba(0,0,0,0.25);
+    4px 4px 0 black,
+    8px 8px 0 rgba(0,0,0,0.3);
 
-  border: 2px solid black;
-}
-
-textarea {
-  width: 100%;
-  height: 80px;
-  margin-top: 8px;
-  border: 2px solid black;
-  padding: 10px;
-}
-
-button {
-  margin-top: 6px;
-  padding: 6px 10px;
-  border: 2px solid black;
-  background: white;
-  cursor: pointer;
-}
-
-/* ================= POLAROIDS ================= */
-
-.polaroid {
-  background: white;
-  margin-bottom: 14px;
-
-  padding: 8px;
-  border: 2px solid black;
-
-  box-shadow: 6px 6px 0px black;
   transform: rotate(-1deg);
 }
 
-.polaroid img {
-  width: 100%;
+/* ================= GIF WORLD TITLE ================= */
+
+.gif-world {
+  margin-top: 12px;
+
+  font-family: 'Press Start 2P';
+  font-size: 18px;
+
+  color: #ff00cc;
+
+  text-shadow:
+    2px 2px black,
+    0 0 10px #ff00cc,
+    0 0 20px #00ffff;
+
+  animation: glitch 1.5s infinite;
 }
 
-.caption {
-  font-size: 11px;
-  text-align: center;
-  margin-top: 4px;
+@keyframes glitch {
+  0% { transform: translate(0,0); }
+  20% { transform: translate(1px,-1px); }
+  40% { transform: translate(-1px,1px); }
+  60% { transform: translate(2px,0); }
+  80% { transform: translate(-2px,1px); }
+  100% { transform: translate(0,0); }
 }
 
-/* ================= HOVER TOOLTIP ================= */
+/* ================= NOTE ================= */
 
-.tooltip {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
+.note-box {
+  margin-top: 15px;
+  padding: 18px;
 
-  background: black;
-  color: white;
+  border-radius: 18px;
 
-  padding: 8px 10px;
-  font-size: 12px;
+  background: linear-gradient(135deg,#fff,#ffd6ff,#d6f7ff);
 
-  display: none;
-  max-width: 250px;
+  border: 3px solid black;
+
+  box-shadow:
+    inset 0 4px 10px rgba(0,0,0,0.25),
+    0 10px 18px rgba(0,0,0,0.35);
 }
 
-/* ================= GHOST FLOAT OBJECT ================= */
+/* ================= GALLERY ================= */
 
-.float-snail {
-  position: absolute;
-  top: 60%;
-  left: 40%;
-  width: 80px;
-  opacity: 0.7;
+.gallery {
+  margin-top: 20px;
+  padding: 10px;
+
+  border: 2px solid black;
+  background: rgba(255,255,255,0.6);
+
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: move 14s linear infinite;
+}
+
+.carousel img {
+  width: 140px;
+  height: 100px;
+  object-fit: cover;
+  border: 2px solid black;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes move {
+  from { transform: translateX(0); }
+  to { transform: translateX(-40%); }
 }
 
 </style>
@@ -187,100 +193,63 @@ button {
 
 <body>
 
-<!-- TOP SCROLL -->
+<img id="cursor" src="images/snail-slug.gif">
+
 <div class="marquee">
-  <span>
-    🌭 FREE HOTDOG SYSTEM ACTIVE • CLICK EVERYTHING • MEMORY CORRUPTION IN PROGRESS • BUY 3 KG CUCUMBERS FOR SECRET ACCESS •
-  </span>
+  <span>🌭 SYSTEM ACTIVE • MEMORY CORRUPTION • CLICK EVERYTHING • GLITCH WORLD ONLINE •</span>
 </div>
 
 <div class="layout">
 
-<!-- LEFT NAV -->
 <div class="left">
-  <b>NAV</b><br><br>
-
-  <div onmouseover="tip('enter gallery of broken memories')">gallery</div>
-  <div onmouseover="tip('diary that sometimes lies')">diary</div>
-  <div onmouseover="tip('sound fragments')">music</div>
-  <div onmouseover="tip('hidden layer')">secret</div>
+  <div>gallery</div>
+  <div>diary</div>
+  <div>music</div>
+  <div>secret</div>
 </div>
 
-<!-- CENTER -->
 <div class="center">
 <div class="core">
 
+<!-- 🧠 MAIN TITLE UPGRADED -->
 <h1>MAIN WORLD</h1>
 
+<!-- ✨ NEW TITLE -->
+<div class="gif-world">GIF WORLD</div>
+
 <p>you are inside a living system.</p>
-<p>this is not a website. it is a room.</p>
 
-<div class="note-box"
-     onmouseover="tip('write something and system will pretend to remember it')">
+<!-- NOTE -->
+<div class="note-box">
+  <b>Ты можешь написать сюда заметку</b>
+  <textarea></textarea>
+</div>
 
-<b>Ты можешь написать сюда заметку</b>
+<!-- GALLERY -->
+<div class="gallery">
+  <div class="carousel">
 
-<textarea id="note"></textarea>
+    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
+    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+    <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif">
+    <img src="https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif">
 
-<button onclick="fakeSave()">send to system</button>
+  </div>
 </div>
 
 </div>
 </div>
 
-<!-- RIGHT POLAROIDS -->
-<div class="right">
-
-<div class="polaroid"
-     onmouseover="tip('memory fragment #12')">
-<img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif">
-<div class="caption">FREE MEMORY PACK</div>
 </div>
-
-<div class="polaroid"
-     onmouseover="tip('this frog is probably illegal')">
-<img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
-<div class="caption">DIGITAL FROG</div>
-</div>
-
-<div class="polaroid"
-     onmouseover="tip('system artifact')">
-<img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif">
-<div class="caption">ERROR BEAUTY</div>
-</div>
-
-</div>
-
-</div>
-
-<!-- FLOAT OBJECT -->
-<img class="float-snail" src="images/snail-slug.gif">
-
-<!-- TOOLTIP -->
-<div class="tooltip" id="tip"></div>
 
 <script>
 
-/* ===== TOOLTIP SYSTEM ===== */
+const cursor = document.getElementById("cursor");
 
-function tip(text){
-  const t = document.getElementById("tip");
-  t.style.display = "block";
-  t.innerText = text;
-}
-
-/* ===== FAKE SAVE ===== */
-
-function fakeSave(){
-  const msgs = [
-    "system received nothing",
-    "memory attempted but failed",
-    "your thought is now floating",
-    "saved (probably not)"
-  ];
-
-  alert(msgs[Math.floor(Math.random()*msgs.length)]);
-}
+document.addEventListener("mousemove", e => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
 
 </script>
 
