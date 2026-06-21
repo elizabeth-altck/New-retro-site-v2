@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MAIN WORLD TEST</title>
+  <title>MAIN WORLD</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
@@ -17,37 +17,22 @@
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-    }
 
-    /* soft atmospheric tint */
-    .tint {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        120deg,
-        rgba(255, 244, 214, 0.35),
-        rgba(210, 240, 255, 0.25),
-        rgba(220, 255, 230, 0.25)
-      );
-      z-index: 1;
+      min-height: 100vh;
     }
 
     .layout {
-      position: relative;
-      z-index: 2;
       display: flex;
       justify-content: space-between;
       padding: 40px;
-      gap: 20px;
+      gap: 15px;
       align-items: flex-start;
     }
 
     /* LEFT */
+
     .left {
-      width: 16%;
+      width: 12%;
       font-size: 12px;
     }
 
@@ -66,27 +51,29 @@
     }
 
     /* CENTER */
+
     .center {
-      width: 68%;
-      display: flex;
-      justify-content: center;
+      width: 76%;
     }
 
     .core {
       width: 100%;
-      max-width: 800px;
+      min-height: calc(100vh - 80px);
 
-      border: 1px solid rgba(0,0,0,0.25);
+      border: 1px solid rgba(0,0,0,0.35);
+
       padding: 30px;
 
-      background: rgba(255,255,255,0.55);
-      backdrop-filter: blur(4px);
+      background: rgba(255,255,255,0.35);
+
+      box-sizing: border-box;
     }
 
     .core h1 {
       font-family: 'Press Start 2P', monospace;
       font-size: 18px;
       color: #1f1f1f;
+      margin-top: 0;
     }
 
     .core p {
@@ -96,8 +83,9 @@
     }
 
     /* RIGHT */
+
     .right {
-      width: 16%;
+      width: 12%;
       font-size: 12px;
     }
 
@@ -116,6 +104,7 @@
       padding: 6px 10px;
       cursor: pointer;
       border-radius: 4px;
+      margin-top: 4px;
     }
 
     button:hover {
@@ -125,8 +114,6 @@
 </head>
 
 <body>
-
-<div class="tint"></div>
 
 <div class="layout">
 
@@ -141,13 +128,21 @@
   <!-- CENTER -->
   <div class="center">
     <div class="core">
+
       <h1>MAIN WORLD</h1>
+
       <p>
         YOU ARE INSIDE THE MEMORY FIELD.<br>
-        A SOFT ARCHIVE OF MOMENTS AND SIGNALS.<br><br>
+        A SOFT ARCHIVE OF MOMENTS AND SIGNALS.
+      </p>
+
+      <p>
         ВЫ ВНУТРИ ПОЛЯ ПАМЯТИ.<br>
         МЯГКИЙ АРХИВ СОСТОЯНИЙ И СИГНАЛОВ.
       </p>
+
+      <!-- сюда потом будем добавлять контент -->
+
     </div>
   </div>
 
@@ -167,8 +162,8 @@
 
     <div class="block">
       <b>FEELING CHECK</b><br><br>
-      <button>CALM</button>
-      <button>LOST</button>
+      <button>CALM</button><br>
+      <button>LOST</button><br>
       <button>CURIOSITY</button>
     </div>
 
