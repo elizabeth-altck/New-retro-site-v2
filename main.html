@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>MAIN WORLD</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -86,26 +86,124 @@ body {
   padding: 8px var(--page-padding) var(--page-padding);
 }
 
-/* LEFT */
-.left {
+/* SIDEBARS */
+.left,
+.right {
+  font-family: 'Jura', sans-serif;
   background: rgba(0, 0, 0, 0.55);
   color: #f2f2f2;
-  padding: 14px 12px;
+  padding: 16px 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.left b {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 13px;
+.left {
+  box-shadow:
+    inset 14px 0 22px -8px rgba(22, 58, 35, 0.92),
+    inset 0 5px 12px -7px rgba(22, 58, 35, 0.5);
 }
 
-.left a {
+.right {
+  box-shadow:
+    inset -14px 0 22px -8px rgba(22, 58, 35, 0.92),
+    inset 0 5px 12px -7px rgba(22, 58, 35, 0.5);
+}
+
+.left-nav-title {
+  font-size: 22px;
+  font-weight: normal;
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  line-height: 1.3;
+  color: #f5ecd4;
+  border-bottom: 1px solid rgba(245, 236, 212, 0.22);
+}
+
+.left-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.left-nav-list li + li {
+  margin-top: 2px;
+}
+
+.left-nav-list a {
   display: block;
-  text-decoration: none;
+  padding: 10px 8px 10px 6px;
+  font-size: 18px;
+  line-height: 1.4;
   color: #f2f2f2;
-  margin: 8px 0;
-  font-size: 13px;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.left-nav-list a::before {
+  content: '>';
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.left-nav-list li:nth-child(1) a::before { color: #e8a0c8; }
+.left-nav-list li:nth-child(2) a::before { color: #8fd4a8; }
+.left-nav-list li:nth-child(3) a::before { color: #9ec5e8; }
+.left-nav-list li:nth-child(4) a::before { color: #e8c86a; }
+
+.left-nav-list a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.07);
+  border-left-color: rgba(245, 236, 212, 0.45);
+}
+
+.right h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 16px;
+  line-height: 1.3;
+}
+
+.right-line {
+  font-size: 18px;
+  margin: 12px 0;
+  line-height: 1.45;
+}
+
+.right-line strong {
+  font-weight: 600;
+}
+
+.status-online {
+  font-weight: 500;
+  animation: statusBlink 1.4s ease-in-out infinite;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: #3dd96a;
+  box-shadow: 0 0 6px rgba(61, 217, 106, 0.85);
+  vertical-align: middle;
+  animation: statusBlink 1.4s ease-in-out infinite;
+}
+
+@keyframes statusBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.right ul {
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+
+.right li {
+  font-size: 18px;
+  margin: 10px 0;
+  line-height: 1.45;
 }
 
 .core {
@@ -128,19 +226,11 @@ body {
   margin: 0 0 18px;
   letter-spacing: 0;
   text-shadow:
-    -2px -2px 0 rgba(255, 250, 219, 0.6),
-    -1px -1px 0 rgba(255, 250, 219, 0.6),
+    -1px -1px 0 rgba(198, 192, 178, 0.52),
+    -2px -2px 2px rgba(172, 167, 155, 0.38),
     4px 4px 0 #36391C,
     8px 8px 0 #2a2520,
     13px 13px 0 #141414;
-}
-
-/* RIGHT */
-.right {
-  background: rgba(0, 0, 0, 0.55);
-  color: #f2f2f2;
-  padding: 14px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 </style>
@@ -164,11 +254,15 @@ body {
 
 <!-- LEFT -->
 <div class="left">
-  <b>NAV</b>
-  <a href="#">gallery</a>
-  <a href="#">diary</a>
-  <a href="#">music</a>
-  <a href="#">secret door</a>
+  <nav class="left-nav" aria-label="Navigation">
+    <h3 class="left-nav-title">Navigation</h3>
+    <ul class="left-nav-list">
+      <li><a href="#">gallery</a></li>
+      <li><a href="#">diary</a></li>
+      <li><a href="#">music</a></li>
+      <li><a href="#">secret door</a></li>
+    </ul>
+  </nav>
 </div>
 
 <!-- CENTER -->
@@ -184,10 +278,15 @@ body {
 <div class="right">
   <h3>LIVE SYSTEM</h3>
 
-  <p>STATUS: ONLINE</p>
-  <p>FIELD: unstable but fine</p>
+  <p class="right-line">
+    <strong>STATUS:</strong>
+    <span class="status-online">
+      <span class="status-dot" aria-hidden="true"></span>ONLINE
+    </span>
+  </p>
+  <p class="right-line"><strong>FIELD:</strong> unstable but fine</p>
 
-  <p>EVENTS:</p>
+  <p class="right-line"><strong>EVENTS:</strong></p>
   <ul>
     <li>hotdog broadcast active</li>
     <li>unknown signal detected</li>
