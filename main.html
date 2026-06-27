@@ -84,6 +84,13 @@ body {
   grid-template-columns: 15fr 70fr 15fr;
   gap: var(--column-gap);
   padding: 8px var(--page-padding) var(--page-padding);
+  overflow: visible;
+}
+
+.center {
+  overflow: visible;
+  padding-right: 8px;
+  padding-bottom: 8px;
 }
 
 /* SIDEBARS */
@@ -207,14 +214,20 @@ body {
 }
 
 .core {
+  position: relative;
   min-height: 80vh;
   background: rgba(155, 143, 67, 0.9);
   padding: 25px;
-  border: 2px solid rgba(232, 228, 196, 0.85);
+  border-top: 2px solid rgba(240, 235, 210, 0.8);
+  border-left: 2px solid rgba(240, 235, 210, 0.8);
+  border-right: none;
+  border-bottom: none;
   box-shadow:
-    5px 6px 14px rgba(0, 0, 0, 0.42),
-    inset 2px 2px 0 rgba(255, 248, 210, 0.55),
-    inset -2px -2px 0 rgba(60, 55, 30, 0.22);
+    inset 0 1px 0 rgba(255, 248, 210, 0.7),
+    inset 1px 0 0 rgba(255, 248, 210, 0.7),
+    inset -2px -2px 0 rgba(35, 32, 20, 0.55),
+    3px 3px 0 rgba(0, 0, 0, 0.55),
+    4px 4px 0 rgba(0, 0, 0, 0.88);
 }
 
 .core-title {
@@ -231,6 +244,151 @@ body {
     4px 4px 0 #36391C,
     8px 8px 0 #2a2520,
     13px 13px 0 #141414;
+}
+
+/* MINI-GAME */
+.mini-world {
+  margin-top: 22px;
+  padding: 12px 12px 14px;
+  border: 2px dashed rgba(35, 32, 20, 0.6);
+  color: #141414;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 248, 210, 0.5),
+      rgba(252, 245, 225, 0.44) 42%,
+      rgba(255, 252, 235, 0.48)
+    );
+  box-shadow: inset 0 0 0 1px rgba(255, 248, 210, 0.45);
+}
+
+.mini-world-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  margin: 0 0 10px;
+  letter-spacing: 0.5px;
+}
+
+.mini-world-label .label-a { color: #9e3d6e; }
+.mini-world-label .label-b { color: #2d7a52; }
+.mini-world-label .label-c { color: #3a6f9a; }
+
+.signal-game-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+}
+
+.signal-game-stats span {
+  color: #2a2a2a;
+}
+
+.signal-game-stats strong {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  font-weight: normal;
+}
+
+#gameScore { color: #9e3d6e; }
+#gameTime { color: #8a6518; }
+
+.signal-game-arena {
+  position: relative;
+  height: 145px;
+  margin-bottom: 10px;
+  border: 2px solid rgba(35, 32, 20, 0.5);
+  background: rgba(40, 38, 22, 0.18);
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.signal-game-arena.is-playing {
+  background:
+    linear-gradient(160deg, rgba(232, 160, 200, 0.14), rgba(142, 212, 168, 0.1), rgba(158, 197, 232, 0.12));
+}
+
+.signal-target {
+  position: absolute;
+  margin: -14px 0 0 -14px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+  user-select: none;
+  line-height: 0;
+}
+
+.signal-target-pixel {
+  display: block;
+  width: 26px;
+  height: 26px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  line-height: 26px;
+  text-align: center;
+  color: #141414;
+  background: var(--chip, #e8a0c8);
+  border: 2px solid #1a1a1a;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+  animation: signalWiggle 0.55s steps(2) infinite;
+  transition: transform 0.1s ease;
+}
+
+.signal-target:hover .signal-target-pixel {
+  transform: scale(1.12);
+}
+
+.signal-target.is-caught {
+  pointer-events: none;
+}
+
+.signal-target.is-caught .signal-target-pixel {
+  animation: signalPop 0.35s ease forwards;
+}
+
+@keyframes signalWiggle {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-2px) rotate(-6deg); }
+}
+
+@keyframes signalPop {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5) rotate(12deg); opacity: 0; }
+}
+
+.signal-game-hint {
+  font-size: 12px;
+  margin: 0 0 10px;
+  line-height: 1.4;
+  color: #1a1a1a;
+  opacity: 0.92;
+}
+
+.signal-game-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 8px 12px;
+  border: 2px solid #1a1a1a;
+  background: rgba(142, 212, 168, 0.45);
+  color: #1a1a1a;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.signal-game-btn:hover {
+  background: rgba(232, 160, 200, 0.55);
+  transform: translateY(-1px);
+}
+
+.signal-game-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
 }
 
 </style>
@@ -271,6 +429,17 @@ body {
 
     <h2 class="core-title">my site</h2>
 
+    <div class="mini-world signal-game" id="signalGame">
+      <p class="mini-world-label"><span class="label-a">SIGNAL</span> <span class="label-b">CATCH</span> · <span class="label-c">mini-zone</span></p>
+      <div class="signal-game-stats">
+        <span>SCORE: <strong id="gameScore">0</strong></span>
+        <span>TIME: <strong id="gameTime">30</strong>s</span>
+      </div>
+      <div class="signal-game-arena" id="gameArena" aria-label="game arena"></div>
+      <p class="signal-game-hint" id="gameHint">лови мигающие сигналы — они не ждут</p>
+      <button type="button" class="signal-game-btn" id="gameStart">START</button>
+    </div>
+
   </div>
 </div>
 
@@ -287,13 +456,142 @@ body {
   <p class="right-line"><strong>FIELD:</strong> unstable but fine</p>
 
   <p class="right-line"><strong>EVENTS:</strong></p>
-  <ul>
+  <ul id="eventsList">
     <li>hotdog broadcast active</li>
     <li>unknown signal detected</li>
   </ul>
 </div>
 
 </div>
+
+<script>
+(function () {
+  const arena = document.getElementById('gameArena');
+  const startBtn = document.getElementById('gameStart');
+  const scoreEl = document.getElementById('gameScore');
+  const timeEl = document.getElementById('gameTime');
+  const hintEl = document.getElementById('gameHint');
+  const eventsList = document.getElementById('eventsList');
+
+  if (!arena || !startBtn) return;
+
+  const glyphs = ['■', '▲', '●', '◆', '★'];
+  const colors = ['#e8a0c8', '#8fd4a8', '#9ec5e8', '#e8c86a', '#d4a0e8'];
+  const milestones = {
+    5: 'signal reflex detected',
+    10: 'field responds to your clicks',
+    15: 'mini-zone mastery unlocked (maybe)'
+  };
+  const loggedMilestones = new Set();
+
+  let score = 0;
+  let timeLeft = 30;
+  let playing = false;
+  let spawnTimer = null;
+  let countdownTimer = null;
+
+  function addEvent(text) {
+    if (!eventsList) return;
+    const li = document.createElement('li');
+    li.textContent = text;
+    eventsList.appendChild(li);
+  }
+
+  function checkMilestones() {
+    const msg = milestones[score];
+    if (msg && !loggedMilestones.has(score)) {
+      loggedMilestones.add(score);
+      addEvent(msg);
+    }
+  }
+
+  function clearArena() {
+    arena.querySelectorAll('.signal-target').forEach((node) => node.remove());
+  }
+
+  function spawnTarget() {
+    if (!playing) return;
+
+    const pad = 18;
+    const rect = arena.getBoundingClientRect();
+    const maxX = rect.width - pad;
+    const maxY = rect.height - pad;
+    if (maxX <= pad || maxY <= pad) return;
+
+    const target = document.createElement('button');
+    target.type = 'button';
+    target.className = 'signal-target';
+    const idx = Math.floor(Math.random() * glyphs.length);
+    const chip = document.createElement('span');
+    chip.className = 'signal-target-pixel';
+    chip.textContent = glyphs[idx];
+    target.style.setProperty('--chip', colors[idx]);
+    target.appendChild(chip);
+    target.style.left = pad + Math.random() * (maxX - pad) + 'px';
+    target.style.top = pad + Math.random() * (maxY - pad) + 'px';
+
+    const lifetime = window.setTimeout(() => {
+      if (target.isConnected) target.remove();
+    }, 1800);
+
+    target.addEventListener('click', () => {
+      if (!playing || target.classList.contains('is-caught')) return;
+      window.clearTimeout(lifetime);
+      target.classList.add('is-caught');
+      score += 1;
+      scoreEl.textContent = String(score);
+      checkMilestones();
+      window.setTimeout(() => target.remove(), 320);
+    });
+
+    arena.appendChild(target);
+  }
+
+  function endGame() {
+    playing = false;
+    arena.classList.remove('is-playing');
+    startBtn.disabled = false;
+    startBtn.textContent = 'START';
+    window.clearInterval(spawnTimer);
+    window.clearInterval(countdownTimer);
+    clearArena();
+
+    if (score >= 10) {
+      hintEl.textContent = 'сигнал стабилизирован. система впечатлена (нет).';
+      addEvent('signal catch: high activity');
+    } else if (score >= 5) {
+      hintEl.textContent = 'неплохо. поле чуть менее нестабильно.';
+    } else {
+      hintEl.textContent = 'сигналы ушли. попробуй ещё раз?';
+    }
+  }
+
+  function startGame() {
+    score = 0;
+    timeLeft = 30;
+    scoreEl.textContent = '0';
+    timeEl.textContent = '30';
+    hintEl.textContent = 'лови! они быстро исчезают';
+    playing = true;
+    startBtn.disabled = true;
+    startBtn.textContent = 'RUNNING...';
+    arena.classList.add('is-playing');
+    clearArena();
+
+    spawnTarget();
+    spawnTimer = window.setInterval(spawnTarget, 900);
+    countdownTimer = window.setInterval(() => {
+      timeLeft -= 1;
+      timeEl.textContent = String(timeLeft);
+      if (timeLeft <= 0) endGame();
+    }, 1000);
+  }
+
+  startBtn.addEventListener('click', () => {
+    if (!playing) startGame();
+  });
+})();
+</script>
 
 </body>
 </html>
