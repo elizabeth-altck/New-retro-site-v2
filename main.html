@@ -10,6 +10,7 @@
 :root {
   --page-padding: 25px;
   --column-gap: 20px;
+  --header-content-gap: 26px;
 }
 
 body {
@@ -26,22 +27,23 @@ body {
 
 /* HEADER */
 .site-header {
-  margin-bottom: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  margin-bottom: var(--header-content-gap);
 }
 
 .ticker {
   width: 100%;
   overflow: hidden;
-  background: #0a0a0a;
-  border-bottom: 1px solid #222;
+  background: transparent;
+  border-bottom: 1px solid #1a1a1a;
 }
 
 .ticker-text {
   white-space: nowrap;
   font-family: 'Press Start 2P', monospace;
   font-size: 11px;
-  color: #ffffff;
-  padding: 9px 0;
+  color: #fffadb;
+  padding: 5px 0;
   animation: tickerScroll 28s linear infinite;
 }
 
@@ -54,28 +56,57 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 14px var(--page-padding) 10px;
+  gap: 10px;
+  padding: 6px var(--page-padding) 8px;
+  background: transparent;
 }
 
 .site-title {
   font-family: 'Press Start 2P', monospace;
-  font-size: 46px;
+  font-size: 48px;
   line-height: 1.15;
-  color: #9b1c1c;
+  color: #000000;
   margin: 0;
   letter-spacing: 1px;
+  text-transform: lowercase;
   text-shadow:
-    -1px -1px 0 rgba(255, 250, 219, 0.6),
-    3px 3px 0 #58131D,
-    5px 5px 0 #000000,
-    7px 7px 0 #000000;
+    -1px -1px 4px rgba(255, 250, 219, 0.6),
+    -2px -2px 6px rgba(255, 250, 219, 0.4),
+    2px 2px 0 #58141c,
+    4px 4px 0 #58141c,
+    6px 6px 0 #58141c,
+    8px 8px 0 #58141c,
+    10px 10px 0 #58141c;
 }
 
-.title-accent {
+.title-hearts {
+  position: relative;
   flex-shrink: 0;
-  width: 72px;
-  height: 72px;
+  width: 228px;
+  height: 118px;
+  margin-left: 4px;
+}
+
+.title-heart {
+  position: absolute;
+  width: 124px;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.title-heart--dark {
+  left: 28px;
+  top: 13px;
+  z-index: 1;
+  filter: brightness(0.42) saturate(0.9);
+  opacity: 0.95;
+}
+
+.title-heart--light {
+  left: 0;
+  top: 0;
+  z-index: 2;
 }
 
 /* LAYOUT */
@@ -84,6 +115,13 @@ body {
   grid-template-columns: 15fr 70fr 15fr;
   gap: var(--column-gap);
   padding: 8px var(--page-padding) var(--page-padding);
+  overflow: visible;
+}
+
+.center {
+  overflow: visible;
+  padding-right: 8px;
+  padding-bottom: 8px;
 }
 
 /* SIDEBARS */
@@ -207,14 +245,20 @@ body {
 }
 
 .core {
+  position: relative;
   min-height: 80vh;
   background: rgba(155, 143, 67, 0.9);
   padding: 25px;
-  border: 2px solid rgba(232, 228, 196, 0.85);
+  border-top: 2px solid rgba(240, 235, 210, 0.8);
+  border-left: 2px solid rgba(240, 235, 210, 0.8);
+  border-right: none;
+  border-bottom: none;
   box-shadow:
-    5px 6px 14px rgba(0, 0, 0, 0.42),
-    inset 2px 2px 0 rgba(255, 248, 210, 0.55),
-    inset -2px -2px 0 rgba(60, 55, 30, 0.22);
+    inset 0 1px 0 rgba(255, 248, 210, 0.7),
+    inset 1px 0 0 rgba(255, 248, 210, 0.7),
+    inset -2px -2px 0 rgba(35, 32, 20, 0.55),
+    3px 3px 0 rgba(0, 0, 0, 0.55),
+    4px 4px 0 rgba(0, 0, 0, 0.88);
 }
 
 .core-title {
@@ -233,6 +277,400 @@ body {
     13px 13px 0 #141414;
 }
 
+/* MINI-GAME */
+.mini-world {
+  margin-top: 22px;
+  padding: 12px 12px 14px;
+  border: 2px dashed rgba(35, 32, 20, 0.6);
+  color: #141414;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 248, 210, 0.5),
+      rgba(252, 245, 225, 0.44) 42%,
+      rgba(255, 252, 235, 0.48)
+    );
+  box-shadow: inset 0 0 0 1px rgba(255, 248, 210, 0.45);
+}
+
+.mini-world-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  margin: 0 0 10px;
+  letter-spacing: 0.5px;
+}
+
+.mini-world-label .label-a { color: #9e3d6e; }
+.mini-world-label .label-b { color: #2d7a52; }
+.mini-world-label .label-c { color: #3a6f9a; }
+
+.signal-game-stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+}
+
+.signal-game-stats span {
+  color: #2a2a2a;
+}
+
+.signal-game-stats strong {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  font-weight: normal;
+}
+
+#gameScore { color: #9e3d6e; }
+#gameTime { color: #8a6518; }
+
+.signal-game-arena {
+  position: relative;
+  height: 145px;
+  margin-bottom: 10px;
+  border: 2px solid rgba(35, 32, 20, 0.5);
+  background: rgba(40, 38, 22, 0.18);
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.signal-game-arena.is-playing {
+  background:
+    linear-gradient(160deg, rgba(232, 160, 200, 0.14), rgba(142, 212, 168, 0.1), rgba(158, 197, 232, 0.12));
+}
+
+.signal-target {
+  position: absolute;
+  margin: -14px 0 0 -14px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+  user-select: none;
+  line-height: 0;
+}
+
+.signal-target-pixel {
+  display: block;
+  width: 26px;
+  height: 26px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  line-height: 26px;
+  text-align: center;
+  color: #141414;
+  background: var(--chip, #e8a0c8);
+  border: 2px solid #1a1a1a;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+  animation: signalWiggle 0.55s steps(2) infinite;
+  transition: transform 0.1s ease;
+}
+
+.signal-target:hover .signal-target-pixel {
+  transform: scale(1.12);
+}
+
+.signal-target.is-caught {
+  pointer-events: none;
+}
+
+.signal-target.is-caught .signal-target-pixel {
+  animation: signalPop 0.35s ease forwards;
+}
+
+@keyframes signalWiggle {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-2px) rotate(-6deg); }
+}
+
+@keyframes signalPop {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5) rotate(12deg); opacity: 0; }
+}
+
+.signal-game-hint {
+  font-size: 12px;
+  margin: 0 0 10px;
+  line-height: 1.4;
+  color: #1a1a1a;
+  opacity: 0.92;
+}
+
+.signal-game-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 8px 12px;
+  border: 2px solid #1a1a1a;
+  background: rgba(142, 212, 168, 0.45);
+  color: #1a1a1a;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.signal-game-btn:hover {
+  background: rgba(232, 160, 200, 0.55);
+  transform: translateY(-1px);
+}
+
+.signal-game-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* MEMORY BOX — object-world */
+.object-world { margin-top: 28px; }
+
+.object-world-caption {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  letter-spacing: 0.4px;
+  margin: 0 0 14px;
+  color: #1a1a1a;
+  opacity: 0.85;
+}
+
+.memory-box-shell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.memory-box-trigger {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transform: rotate(-1.5deg);
+  transition: transform 0.35s ease;
+  z-index: 2;
+}
+
+.memory-box-trigger:hover { transform: rotate(0deg) scale(1.02); }
+
+.memory-box-trigger:focus-visible {
+  outline: 2px dashed #9e3d6e;
+  outline-offset: 6px;
+}
+
+.memory-box-trigger-glow {
+  position: absolute;
+  inset: 8% 5%;
+  background: radial-gradient(circle, rgba(232, 160, 200, 0.35), transparent 68%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.memory-box-trigger:hover .memory-box-trigger-glow,
+.memory-box-shell.is-opening .memory-box-trigger-glow { opacity: 1; }
+
+.memory-box-art {
+  display: block;
+  width: min(100%, 340px);
+  height: auto;
+  filter: drop-shadow(4px 6px 0 rgba(0, 0, 0, 0.45));
+  transition: transform 0.55s cubic-bezier(0.34, 1.2, 0.48, 1), opacity 0.45s ease;
+  transform-origin: center 88%;
+}
+
+.memory-box-shell.is-opening .memory-box-art,
+.memory-box-shell.is-open .memory-box-art {
+  transform: perspective(720px) rotateX(-58deg) translateY(-8px) scale(0.94);
+  opacity: 0.42;
+}
+
+.memory-box-shell.is-closing .memory-box-art {
+  animation: memoryBoxCloseArt 0.5s ease forwards;
+}
+
+@keyframes memoryBoxCloseArt {
+  from {
+    transform: perspective(720px) rotateX(-58deg) translateY(-8px) scale(0.94);
+    opacity: 0.42;
+  }
+  to {
+    transform: rotate(-1.5deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.memory-box-fallback {
+  display: none;
+  width: min(100%, 300px);
+  aspect-ratio: 1.05;
+  position: relative;
+  border: 2px dashed rgba(35, 32, 20, 0.65);
+  background:
+    linear-gradient(135deg, rgba(232, 160, 200, 0.55) 0 32%, transparent 32%),
+    linear-gradient(225deg, rgba(142, 212, 168, 0.45) 0 28%, transparent 28%),
+    linear-gradient(45deg, rgba(232, 200, 106, 0.5) 0 22%, transparent 22%),
+    rgba(255, 248, 210, 0.72);
+  box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.memory-box-shell.no-art .memory-box-art { display: none; }
+.memory-box-shell.no-art .memory-box-fallback { display: block; }
+
+.memory-box-fallback-tape {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  width: 72px;
+  height: 22px;
+  margin-left: -36px;
+  background: rgba(255, 248, 210, 0.75);
+  border: 1px solid rgba(35, 32, 20, 0.35);
+  transform: rotate(-8deg);
+}
+
+.memory-box-fallback-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  line-height: 1.6;
+  text-align: center;
+  color: #1a1a1a;
+  padding: 16px;
+}
+
+.memory-box-open-hint {
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #9e3d6e;
+  opacity: 0;
+  transition: opacity 0.25s ease, bottom 0.25s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.memory-box-trigger:hover .memory-box-open-hint { opacity: 1; bottom: -12px; }
+.memory-box-shell.is-open .memory-box-open-hint,
+.memory-box-shell.is-opening .memory-box-open-hint { opacity: 0; }
+.memory-box-shell.is-open .memory-box-trigger,
+.memory-box-shell.is-opening .memory-box-trigger { pointer-events: none; }
+
+.memory-box-inner {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-18px) scale(0.96);
+  transition:
+    max-height 0.55s cubic-bezier(0.34, 1.1, 0.48, 1),
+    opacity 0.4s ease,
+    transform 0.5s cubic-bezier(0.34, 1.1, 0.48, 1);
+}
+
+.memory-box-shell.is-open .memory-box-inner {
+  max-height: 520px;
+  opacity: 1;
+  transform: translateY(-36px) scale(1);
+}
+
+.memory-box-shell.is-closing .memory-box-inner {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-18px) scale(0.96);
+}
+
+.memory-box-room {
+  padding: 16px 14px 14px;
+  border: 2px dashed rgba(35, 32, 20, 0.55);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(232, 160, 200, 0.22), transparent 42%),
+    radial-gradient(circle at 88% 72%, rgba(158, 197, 232, 0.2), transparent 38%),
+    linear-gradient(160deg, rgba(28, 24, 18, 0.88), rgba(42, 36, 28, 0.92));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 248, 210, 0.12),
+    0 8px 0 rgba(0, 0, 0, 0.35);
+  color: #f5ecd4;
+}
+
+.memory-box-room-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  margin: 0 0 12px;
+  letter-spacing: 0.5px;
+  color: #e8c86a;
+}
+
+.memory-box-room-label span { color: #e8a0c8; }
+
+.memory-box-collage {
+  position: relative;
+  min-height: 140px;
+  margin-bottom: 12px;
+  padding: 14px;
+  border: 2px solid rgba(245, 236, 212, 0.18);
+  background: rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+.memory-box-sticker {
+  position: absolute;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 6px 8px;
+  border: 2px solid #1a1a1a;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+  animation: stickerDrift 4s ease-in-out infinite;
+}
+
+.memory-box-sticker--a { top: 12px; left: 10px; background: rgba(232, 160, 200, 0.85); --r: -6deg; }
+.memory-box-sticker--b { top: 28px; right: 14px; background: rgba(142, 212, 168, 0.8); --r: 8deg; animation-delay: -1.2s; }
+.memory-box-sticker--c { bottom: 18px; left: 22%; background: rgba(232, 200, 106, 0.82); --r: -3deg; animation-delay: -2.4s; }
+
+@keyframes stickerDrift {
+  0%, 100% { transform: translateY(0) rotate(var(--r)); }
+  50% { transform: translateY(-3px) rotate(calc(var(--r) + 4deg)); }
+}
+
+.memory-box-room-note {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0 0 14px;
+  color: rgba(245, 236, 212, 0.88);
+}
+
+.memory-box-close {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 8px 12px;
+  border: 2px solid rgba(245, 236, 212, 0.45);
+  background: rgba(158, 61, 110, 0.35);
+  color: #fffadb;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.memory-box-close:hover {
+  background: rgba(232, 160, 200, 0.45);
+  transform: translateY(-1px);
+}
+
+.memory-box-close:focus-visible {
+  outline: 2px dashed #8fd4a8;
+  outline-offset: 3px;
+}
+
 </style>
 </head>
 
@@ -245,8 +683,11 @@ body {
     </div>
   </div>
   <div class="title-row">
-    <h1 class="site-title">MAIN WORLD</h1>
-    <div class="title-accent" aria-hidden="true"></div>
+    <h1 class="site-title">old net vibe</h1>
+    <div class="title-hearts" aria-hidden="true">
+      <img class="title-heart title-heart--dark" src="images/винтаж сердце.png" alt="">
+      <img class="title-heart title-heart--light" src="images/винтаж сердце.png" alt="">
+    </div>
   </div>
 </header>
 
@@ -271,6 +712,48 @@ body {
 
     <h2 class="core-title">my site</h2>
 
+    <div class="mini-world signal-game" id="signalGame">
+      <p class="mini-world-label"><span class="label-a">SIGNAL</span> <span class="label-b">CATCH</span> · <span class="label-c">mini-zone</span></p>
+      <div class="signal-game-stats">
+        <span>SCORE: <strong id="gameScore">0</strong></span>
+        <span>TIME: <strong id="gameTime">30</strong>s</span>
+      </div>
+      <div class="signal-game-arena" id="gameArena" aria-label="game arena"></div>
+      <p class="signal-game-hint" id="gameHint">лови мигающие сигналы — они не ждут</p>
+      <button type="button" class="signal-game-btn" id="gameStart">START</button>
+    </div>
+
+    <!-- Экспорт из Figma → images/memory-box.png -->
+    <section class="object-world memory-box-world" id="memoryBoxWorld" aria-label="коробка-коллаж">
+      <p class="object-world-caption">object · коробка · кликни, чтобы заглянуть внутрь</p>
+      <div class="memory-box-shell" id="memoryBoxShell">
+        <button type="button" class="memory-box-trigger" id="memoryBoxTrigger" aria-expanded="false" aria-controls="memoryBoxInner">
+          <span class="memory-box-trigger-glow" aria-hidden="true"></span>
+          <img class="memory-box-art" src="images/memory-box.png" alt="коробка-коллаж" width="340" height="auto">
+          <span class="memory-box-fallback" aria-hidden="true">
+            <span class="memory-box-fallback-tape"></span>
+            <span class="memory-box-fallback-label">memory-box.png<br>из figma</span>
+          </span>
+          <span class="memory-box-open-hint">открыть ↓</span>
+        </button>
+        <div class="memory-box-inner" id="memoryBoxInner" hidden>
+          <div class="memory-box-room">
+            <p class="memory-box-room-label"><span>inside</span> · маленький мир</p>
+            <div class="memory-box-collage" aria-hidden="true">
+              <span class="memory-box-sticker memory-box-sticker--a">???</span>
+              <span class="memory-box-sticker memory-box-sticker--b">gif?</span>
+              <span class="memory-box-sticker memory-box-sticker--c">2009</span>
+            </div>
+            <p class="memory-box-room-note">
+              здесь будет содержимое коробки — gif, заметки, находки.
+              сейчас это черновик пространства, чтобы оценить открытие и закрытие.
+            </p>
+            <button type="button" class="memory-box-close" id="memoryBoxClose">↓ закрыть крышку</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 </div>
 
@@ -287,13 +770,203 @@ body {
   <p class="right-line"><strong>FIELD:</strong> unstable but fine</p>
 
   <p class="right-line"><strong>EVENTS:</strong></p>
-  <ul>
+  <ul id="eventsList">
     <li>hotdog broadcast active</li>
     <li>unknown signal detected</li>
   </ul>
 </div>
 
 </div>
+
+<script>
+(function () {
+  const arena = document.getElementById('gameArena');
+  const startBtn = document.getElementById('gameStart');
+  const scoreEl = document.getElementById('gameScore');
+  const timeEl = document.getElementById('gameTime');
+  const hintEl = document.getElementById('gameHint');
+  const eventsList = document.getElementById('eventsList');
+
+  if (!arena || !startBtn) return;
+
+  const glyphs = ['■', '▲', '●', '◆', '★'];
+  const colors = ['#e8a0c8', '#8fd4a8', '#9ec5e8', '#e8c86a', '#d4a0e8'];
+  const milestones = {
+    5: 'signal reflex detected',
+    10: 'field responds to your clicks',
+    15: 'mini-zone mastery unlocked (maybe)'
+  };
+  const loggedMilestones = new Set();
+
+  let score = 0;
+  let timeLeft = 30;
+  let playing = false;
+  let spawnTimer = null;
+  let countdownTimer = null;
+
+  function addEvent(text) {
+    if (!eventsList) return;
+    const li = document.createElement('li');
+    li.textContent = text;
+    eventsList.appendChild(li);
+  }
+
+  function checkMilestones() {
+    const msg = milestones[score];
+    if (msg && !loggedMilestones.has(score)) {
+      loggedMilestones.add(score);
+      addEvent(msg);
+    }
+  }
+
+  function clearArena() {
+    arena.querySelectorAll('.signal-target').forEach((node) => node.remove());
+  }
+
+  function spawnTarget() {
+    if (!playing) return;
+
+    const pad = 18;
+    const rect = arena.getBoundingClientRect();
+    const maxX = rect.width - pad;
+    const maxY = rect.height - pad;
+    if (maxX <= pad || maxY <= pad) return;
+
+    const target = document.createElement('button');
+    target.type = 'button';
+    target.className = 'signal-target';
+    const idx = Math.floor(Math.random() * glyphs.length);
+    const chip = document.createElement('span');
+    chip.className = 'signal-target-pixel';
+    chip.textContent = glyphs[idx];
+    target.style.setProperty('--chip', colors[idx]);
+    target.appendChild(chip);
+    target.style.left = pad + Math.random() * (maxX - pad) + 'px';
+    target.style.top = pad + Math.random() * (maxY - pad) + 'px';
+
+    const lifetime = window.setTimeout(() => {
+      if (target.isConnected) target.remove();
+    }, 1800);
+
+    target.addEventListener('click', () => {
+      if (!playing || target.classList.contains('is-caught')) return;
+      window.clearTimeout(lifetime);
+      target.classList.add('is-caught');
+      score += 1;
+      scoreEl.textContent = String(score);
+      checkMilestones();
+      window.setTimeout(() => target.remove(), 320);
+    });
+
+    arena.appendChild(target);
+  }
+
+  function endGame() {
+    playing = false;
+    arena.classList.remove('is-playing');
+    startBtn.disabled = false;
+    startBtn.textContent = 'START';
+    window.clearInterval(spawnTimer);
+    window.clearInterval(countdownTimer);
+    clearArena();
+
+    if (score >= 10) {
+      hintEl.textContent = 'сигнал стабилизирован. система впечатлена (нет).';
+      addEvent('signal catch: high activity');
+    } else if (score >= 5) {
+      hintEl.textContent = 'неплохо. поле чуть менее нестабильно.';
+    } else {
+      hintEl.textContent = 'сигналы ушли. попробуй ещё раз?';
+    }
+  }
+
+  function startGame() {
+    score = 0;
+    timeLeft = 30;
+    scoreEl.textContent = '0';
+    timeEl.textContent = '30';
+    hintEl.textContent = 'лови! они быстро исчезают';
+    playing = true;
+    startBtn.disabled = true;
+    startBtn.textContent = 'RUNNING...';
+    arena.classList.add('is-playing');
+    clearArena();
+
+    spawnTarget();
+    spawnTimer = window.setInterval(spawnTarget, 900);
+    countdownTimer = window.setInterval(() => {
+      timeLeft -= 1;
+      timeEl.textContent = String(timeLeft);
+      if (timeLeft <= 0) endGame();
+    }, 1000);
+  }
+
+  startBtn.addEventListener('click', () => {
+    if (!playing) startGame();
+  });
+})();
+
+(function () {
+  const shell = document.getElementById('memoryBoxShell');
+  const trigger = document.getElementById('memoryBoxTrigger');
+  const inner = document.getElementById('memoryBoxInner');
+  const closeBtn = document.getElementById('memoryBoxClose');
+  const art = shell && shell.querySelector('.memory-box-art');
+  const eventsList = document.getElementById('eventsList');
+
+  if (!shell || !trigger || !inner || !closeBtn) return;
+
+  let openedOnce = false;
+  let closingTimer = null;
+
+  function addEvent(text) {
+    if (!eventsList) return;
+    const li = document.createElement('li');
+    li.textContent = text;
+    eventsList.appendChild(li);
+  }
+
+  if (art) {
+    art.addEventListener('error', () => shell.classList.add('no-art'));
+    if (art.complete && art.naturalWidth === 0) shell.classList.add('no-art');
+  }
+
+  function setOpenState(isOpen) {
+    trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    inner.hidden = !isOpen;
+  }
+
+  function openBox() {
+    if (shell.classList.contains('is-open') || shell.classList.contains('is-opening')) return;
+    window.clearTimeout(closingTimer);
+    shell.classList.remove('is-closing');
+    shell.classList.add('is-opening');
+    window.setTimeout(() => {
+      shell.classList.remove('is-opening');
+      shell.classList.add('is-open');
+      setOpenState(true);
+      if (!openedOnce) {
+        openedOnce = true;
+        addEvent('memory box opened');
+      }
+    }, 420);
+  }
+
+  function closeBox() {
+    if (!shell.classList.contains('is-open')) return;
+    shell.classList.remove('is-open');
+    shell.classList.add('is-closing');
+    setOpenState(false);
+    closingTimer = window.setTimeout(() => shell.classList.remove('is-closing'), 520);
+  }
+
+  trigger.addEventListener('click', openBox);
+  closeBtn.addEventListener('click', closeBox);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && shell.classList.contains('is-open')) closeBox();
+  });
+})();
+</script>
 
 </body>
 </html>
