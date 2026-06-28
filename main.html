@@ -249,6 +249,7 @@ body {
   min-height: 80vh;
   background: rgba(155, 143, 67, 0.9);
   padding: 25px;
+  overflow: visible;
   border-top: 2px solid rgba(240, 235, 210, 0.8);
   border-left: 2px solid rgba(240, 235, 210, 0.8);
   border-right: none;
@@ -423,7 +424,11 @@ body {
 }
 
 /* MEMORY BOX — hover open (closed / open PNG) */
-.object-world { margin-top: 28px; }
+.object-world.memory-box-world {
+  margin-top: 28px;
+  margin-left: -25px;
+  padding-left: 0;
+}
 
 .object-world-caption {
   font-family: 'Press Start 2P', monospace;
