@@ -10,6 +10,7 @@
 :root {
   --page-padding: 25px;
   --column-gap: 20px;
+  --header-content-gap: 26px;
 }
 
 body {
@@ -26,22 +27,23 @@ body {
 
 /* HEADER */
 .site-header {
-  margin-bottom: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  margin-bottom: var(--header-content-gap);
 }
 
 .ticker {
   width: 100%;
   overflow: hidden;
-  background: #0a0a0a;
-  border-bottom: 1px solid #222;
+  background: transparent;
+  border-bottom: 1px solid #1a1a1a;
 }
 
 .ticker-text {
   white-space: nowrap;
   font-family: 'Press Start 2P', monospace;
   font-size: 11px;
-  color: #ffffff;
-  padding: 9px 0;
+  color: #fffadb;
+  padding: 5px 0;
   animation: tickerScroll 28s linear infinite;
 }
 
@@ -54,28 +56,57 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 14px var(--page-padding) 10px;
+  gap: 10px;
+  padding: 6px var(--page-padding) 8px;
+  background: transparent;
 }
 
 .site-title {
   font-family: 'Press Start 2P', monospace;
-  font-size: 46px;
+  font-size: 48px;
   line-height: 1.15;
-  color: #9b1c1c;
+  color: #000000;
   margin: 0;
   letter-spacing: 1px;
+  text-transform: lowercase;
   text-shadow:
-    -1px -1px 0 rgba(255, 250, 219, 0.6),
-    3px 3px 0 #58131D,
-    5px 5px 0 #000000,
-    7px 7px 0 #000000;
+    -1px -1px 4px rgba(255, 250, 219, 0.6),
+    -2px -2px 6px rgba(255, 250, 219, 0.4),
+    2px 2px 0 #58141c,
+    4px 4px 0 #58141c,
+    6px 6px 0 #58141c,
+    8px 8px 0 #58141c,
+    10px 10px 0 #58141c;
 }
 
-.title-accent {
+.title-hearts {
+  position: relative;
   flex-shrink: 0;
-  width: 72px;
-  height: 72px;
+  width: 228px;
+  height: 118px;
+  margin-left: 4px;
+}
+
+.title-heart {
+  position: absolute;
+  width: 124px;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.title-heart--dark {
+  left: 28px;
+  top: 13px;
+  z-index: 1;
+  filter: brightness(0.42) saturate(0.9);
+  opacity: 0.95;
+}
+
+.title-heart--light {
+  left: 0;
+  top: 0;
+  z-index: 2;
 }
 
 /* LAYOUT */
@@ -403,8 +434,11 @@ body {
     </div>
   </div>
   <div class="title-row">
-    <h1 class="site-title">MAIN WORLD</h1>
-    <div class="title-accent" aria-hidden="true"></div>
+    <h1 class="site-title">old net vibe</h1>
+    <div class="title-hearts" aria-hidden="true">
+      <img class="title-heart title-heart--dark" src="images/винтаж сердце.png" alt="">
+      <img class="title-heart title-heart--light" src="images/винтаж сердце.png" alt="">
+    </div>
   </div>
 </header>
 
