@@ -830,7 +830,15 @@ body {
   function updateFallback() {
     const closedOk = closedImg && closedImg.complete && closedImg.naturalWidth > 0;
     const openOk = openImg && openImg.complete && openImg.naturalWidth > 0;
-    if (!closedOk && !openOk) shell.classList.add('no-art');
+
+    if (closedOk || openOk) {
+      shell.classList.remove('no-art');
+    } else if (
+      (closedImg && closedImg.complete) ||
+      (openImg && openImg.complete)
+    ) {
+      shell.classList.add('no-art');
+    }
   }
 
   [closedImg, openImg].forEach((img) => {
@@ -839,7 +847,7 @@ body {
     img.addEventListener('load', updateFallback);
   });
 
-  updateFallback();
+  window.setTimeout(updateFallback, 0);
 
   if (canHover) {
     shell.addEventListener('mouseenter', markOpened);
