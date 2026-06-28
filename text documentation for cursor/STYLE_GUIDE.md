@@ -111,6 +111,15 @@
 - Цветные акценты в палитре мини-игры: розовый `#e8a0c8`, зелёный `#8fd4a8`, голубой `#9ec5e8`, жёлтый `#e8c86a`.
 - 30 сек, клик по мигающим символам; milestones пишутся в `#eventsList` справа.
 
+## Коробка-коллаж (object-world)
+
+- Ассеты: `images/memory-box/closed.png`, `images/memory-box/opened.png` (два состояния из Figma).
+- Раскладка: слева в `.core` (~480px), справа `#coreObjectsSlot` для других объектов.
+- **Открытие:** наведение (desktop) — crossfade closed → opened; тап / Enter — toggle на touch.
+- Статичная зернистость поверх фото (`overlay`, без анимации).
+- Первое открытие → событие `memory box opened` в `#eventsList`.
+- Внутренний контент коробки (gif, заметки) — ещё не свёрстан, только смена PNG.
+
 ---
 
 # Блоки

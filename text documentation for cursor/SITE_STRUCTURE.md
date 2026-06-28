@@ -39,13 +39,14 @@
 ### Центр
 
 - Заголовок **my site**
-- **SIGNAL CATCH** — мини-игра «мир внутри объекта» (принцип из `DECISIONS.md`)
-- Ниже — место под intro, пунктирную GIF-зону и другие object-worlds (ещё не свёрстано)
+- **SIGNAL CATCH** — мини-игра под заголовком
+- **Коробка-коллаж** — object-world слева: hover/tap `closed.png` ↔ `opened.png`; справа `#coreObjectsSlot` для других объектов
+- Ниже — intro, GIF-зона и другие object-worlds (ещё не свёрстано)
 
 ### Правая колонка
 
 - **LIVE SYSTEM** — статус ONLINE (мигающая точка), поле, список **EVENTS**
-- `#eventsList` пополняется из мини-игры при milestones
+- `#eventsList` пополняется из мини-игры и при первом открытии коробки
 
 ---
 
@@ -68,4 +69,5 @@
 |------|----------------|
 | `images/поле.jpeg` | Фон страницы |
 | `images/винтаж сердце.png` | Сердечки в шапке |
+| `images/memory-box/closed.png`, `opened.png` | Коробка-коллаж на главной |
 | `images/snail.png`, `BIG SMACHNY snail.png` | Запланированы, в HTML пока нет |

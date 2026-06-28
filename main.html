@@ -422,7 +422,7 @@ body {
   transform: none;
 }
 
-/* MEMORY BOX — object-world */
+/* MEMORY BOX — hover open (closed / open PNG) */
 .object-world { margin-top: 28px; }
 
 .object-world-caption {
@@ -434,103 +434,122 @@ body {
   opacity: 0.85;
 }
 
+.core-objects-row {
+  display: grid;
+  grid-template-columns: min(58%, 480px) 1fr;
+  gap: 12px 24px;
+  align-items: start;
+}
+
+.core-objects-slot {
+  min-height: 40px;
+}
+
 .memory-box-shell {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 480px;
+  outline: none;
 }
 
-.memory-box-trigger {
-  position: relative;
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  transform: rotate(-1.5deg);
-  transition: transform 0.35s ease;
-  z-index: 2;
-}
-
-.memory-box-trigger:hover { transform: rotate(0deg) scale(1.02); }
-
-.memory-box-trigger:focus-visible {
+.memory-box-shell:focus-visible {
   outline: 2px dashed #9e3d6e;
-  outline-offset: 6px;
+  outline-offset: 8px;
 }
 
-.memory-box-trigger-glow {
-  position: absolute;
-  inset: 8% 5%;
-  background: radial-gradient(circle, rgba(232, 160, 200, 0.35), transparent 68%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
+.memory-box-visual {
+  position: relative;
+  display: grid;
+  width: 100%;
+  transform: rotate(-1.5deg);
+  transition: transform 0.35s ease, filter 0.4s ease;
+  filter: drop-shadow(5px 7px 0 rgba(0, 0, 0, 0.48));
+}
+
+.memory-box-visual > * {
+  grid-area: 1 / 1;
+}
+
+/* статичная зернистость поверх фото */
+.memory-box-visual::after {
+  content: '';
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.17;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: cover;
+  mix-blend-mode: overlay;
+}
+
+.memory-box-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.32s ease, filter 0.4s ease, transform 0.32s ease;
+  user-select: none;
   pointer-events: none;
 }
 
-.memory-box-trigger:hover .memory-box-trigger-glow,
-.memory-box-shell.is-opening .memory-box-trigger-glow { opacity: 1; }
-
-.memory-box-art {
-  display: block;
-  width: min(100%, 340px);
-  height: auto;
-  filter: drop-shadow(4px 6px 0 rgba(0, 0, 0, 0.45));
-  transition: transform 0.55s cubic-bezier(0.34, 1.2, 0.48, 1), opacity 0.45s ease;
-  transform-origin: center 88%;
+.memory-box-img--closed {
+  position: relative;
+  z-index: 1;
+  filter: saturate(0.96) contrast(1.02);
 }
 
-.memory-box-shell.is-opening .memory-box-art,
-.memory-box-shell.is-open .memory-box-art {
-  transform: perspective(720px) rotateX(-58deg) translateY(-8px) scale(0.94);
-  opacity: 0.42;
+.memory-box-img--open {
+  width: 97%;
+  justify-self: center;
+  align-self: center;
+  transform: translateY(-7%);
+  opacity: 0;
+  z-index: 2;
+  filter: brightness(0.94) saturate(0.92);
 }
 
-.memory-box-shell.is-closing .memory-box-art {
-  animation: memoryBoxCloseArt 0.5s ease forwards;
+.memory-box-shell.is-open .memory-box-img--closed,
+.memory-box-shell.is-open .memory-box-img--open {
+  opacity: 0;
 }
 
-@keyframes memoryBoxCloseArt {
-  from {
-    transform: perspective(720px) rotateX(-58deg) translateY(-8px) scale(0.94);
-    opacity: 0.42;
-  }
-  to {
-    transform: rotate(-1.5deg) scale(1);
+.memory-box-shell.is-open .memory-box-img--open {
+  opacity: 1;
+  filter: brightness(1.04) saturate(1.06) contrast(1.02);
+  transform: translateY(-7%);
+}
+
+.memory-box-shell.is-open .memory-box-visual,
+.memory-box-shell:hover .memory-box-visual {
+  transform: rotate(0deg) scale(1.02);
+  filter: drop-shadow(5px 7px 0 rgba(0, 0, 0, 0.48));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .memory-box-shell:hover .memory-box-img--closed { opacity: 0; }
+  .memory-box-shell:hover .memory-box-img--open {
     opacity: 1;
+    filter: brightness(1.04) saturate(1.06) contrast(1.02);
+    transform: translateY(-7%);
   }
 }
 
 .memory-box-fallback {
   display: none;
-  width: min(100%, 300px);
+  width: 100%;
   aspect-ratio: 1.05;
   position: relative;
   border: 2px dashed rgba(35, 32, 20, 0.65);
   background:
     linear-gradient(135deg, rgba(232, 160, 200, 0.55) 0 32%, transparent 32%),
     linear-gradient(225deg, rgba(142, 212, 168, 0.45) 0 28%, transparent 28%),
-    linear-gradient(45deg, rgba(232, 200, 106, 0.5) 0 22%, transparent 22%),
     rgba(255, 248, 210, 0.72);
   box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
-.memory-box-shell.no-art .memory-box-art { display: none; }
+.memory-box-shell.no-art .memory-box-img { display: none; }
 .memory-box-shell.no-art .memory-box-fallback { display: block; }
-
-.memory-box-fallback-tape {
-  position: absolute;
-  top: 18%;
-  left: 50%;
-  width: 72px;
-  height: 22px;
-  margin-left: -36px;
-  background: rgba(255, 248, 210, 0.75);
-  border: 1px solid rgba(35, 32, 20, 0.35);
-  transform: rotate(-8deg);
-}
 
 .memory-box-fallback-label {
   position: absolute;
@@ -539,136 +558,11 @@ body {
   align-items: center;
   justify-content: center;
   font-family: 'Press Start 2P', monospace;
-  font-size: 8px;
-  line-height: 1.6;
+  font-size: 7px;
+  line-height: 1.8;
   text-align: center;
   color: #1a1a1a;
   padding: 16px;
-}
-
-.memory-box-open-hint {
-  position: absolute;
-  left: 50%;
-  bottom: -6px;
-  transform: translateX(-50%);
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  color: #9e3d6e;
-  opacity: 0;
-  transition: opacity 0.25s ease, bottom 0.25s ease;
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-.memory-box-trigger:hover .memory-box-open-hint { opacity: 1; bottom: -12px; }
-.memory-box-shell.is-open .memory-box-open-hint,
-.memory-box-shell.is-opening .memory-box-open-hint { opacity: 0; }
-.memory-box-shell.is-open .memory-box-trigger,
-.memory-box-shell.is-opening .memory-box-trigger { pointer-events: none; }
-
-.memory-box-inner {
-  width: 100%;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(-18px) scale(0.96);
-  transition:
-    max-height 0.55s cubic-bezier(0.34, 1.1, 0.48, 1),
-    opacity 0.4s ease,
-    transform 0.5s cubic-bezier(0.34, 1.1, 0.48, 1);
-}
-
-.memory-box-shell.is-open .memory-box-inner {
-  max-height: 520px;
-  opacity: 1;
-  transform: translateY(-36px) scale(1);
-}
-
-.memory-box-shell.is-closing .memory-box-inner {
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(-18px) scale(0.96);
-}
-
-.memory-box-room {
-  padding: 16px 14px 14px;
-  border: 2px dashed rgba(35, 32, 20, 0.55);
-  background:
-    radial-gradient(circle at 12% 18%, rgba(232, 160, 200, 0.22), transparent 42%),
-    radial-gradient(circle at 88% 72%, rgba(158, 197, 232, 0.2), transparent 38%),
-    linear-gradient(160deg, rgba(28, 24, 18, 0.88), rgba(42, 36, 28, 0.92));
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 248, 210, 0.12),
-    0 8px 0 rgba(0, 0, 0, 0.35);
-  color: #f5ecd4;
-}
-
-.memory-box-room-label {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 9px;
-  margin: 0 0 12px;
-  letter-spacing: 0.5px;
-  color: #e8c86a;
-}
-
-.memory-box-room-label span { color: #e8a0c8; }
-
-.memory-box-collage {
-  position: relative;
-  min-height: 140px;
-  margin-bottom: 12px;
-  padding: 14px;
-  border: 2px solid rgba(245, 236, 212, 0.18);
-  background: rgba(0, 0, 0, 0.22);
-  overflow: hidden;
-}
-
-.memory-box-sticker {
-  position: absolute;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 8px;
-  padding: 6px 8px;
-  border: 2px solid #1a1a1a;
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
-  animation: stickerDrift 4s ease-in-out infinite;
-}
-
-.memory-box-sticker--a { top: 12px; left: 10px; background: rgba(232, 160, 200, 0.85); --r: -6deg; }
-.memory-box-sticker--b { top: 28px; right: 14px; background: rgba(142, 212, 168, 0.8); --r: 8deg; animation-delay: -1.2s; }
-.memory-box-sticker--c { bottom: 18px; left: 22%; background: rgba(232, 200, 106, 0.82); --r: -3deg; animation-delay: -2.4s; }
-
-@keyframes stickerDrift {
-  0%, 100% { transform: translateY(0) rotate(var(--r)); }
-  50% { transform: translateY(-3px) rotate(calc(var(--r) + 4deg)); }
-}
-
-.memory-box-room-note {
-  font-size: 12px;
-  line-height: 1.5;
-  margin: 0 0 14px;
-  color: rgba(245, 236, 212, 0.88);
-}
-
-.memory-box-close {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 8px;
-  padding: 8px 12px;
-  border: 2px solid rgba(245, 236, 212, 0.45);
-  background: rgba(158, 61, 110, 0.35);
-  color: #fffadb;
-  cursor: pointer;
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
-  transition: background 0.15s ease, transform 0.1s ease;
-}
-
-.memory-box-close:hover {
-  background: rgba(232, 160, 200, 0.45);
-  transform: translateY(-1px);
-}
-
-.memory-box-close:focus-visible {
-  outline: 2px dashed #8fd4a8;
-  outline-offset: 3px;
 }
 
 </style>
@@ -723,34 +617,38 @@ body {
       <button type="button" class="signal-game-btn" id="gameStart">START</button>
     </div>
 
-    <!-- Экспорт из Figma → images/memory-box.png -->
-    <section class="object-world memory-box-world" id="memoryBoxWorld" aria-label="коробка-коллаж">
-      <p class="object-world-caption">object · коробка · кликни, чтобы заглянуть внутрь</p>
-      <div class="memory-box-shell" id="memoryBoxShell">
-        <button type="button" class="memory-box-trigger" id="memoryBoxTrigger" aria-expanded="false" aria-controls="memoryBoxInner">
-          <span class="memory-box-trigger-glow" aria-hidden="true"></span>
-          <img class="memory-box-art" src="images/memory-box.png" alt="коробка-коллаж" width="340" height="auto">
-          <span class="memory-box-fallback" aria-hidden="true">
-            <span class="memory-box-fallback-tape"></span>
-            <span class="memory-box-fallback-label">memory-box.png<br>из figma</span>
-          </span>
-          <span class="memory-box-open-hint">открыть ↓</span>
-        </button>
-        <div class="memory-box-inner" id="memoryBoxInner" hidden>
-          <div class="memory-box-room">
-            <p class="memory-box-room-label"><span>inside</span> · маленький мир</p>
-            <div class="memory-box-collage" aria-hidden="true">
-              <span class="memory-box-sticker memory-box-sticker--a">???</span>
-              <span class="memory-box-sticker memory-box-sticker--b">gif?</span>
-              <span class="memory-box-sticker memory-box-sticker--c">2009</span>
-            </div>
-            <p class="memory-box-room-note">
-              здесь будет содержимое коробки — gif, заметки, находки.
-              сейчас это черновик пространства, чтобы оценить открытие и закрытие.
-            </p>
-            <button type="button" class="memory-box-close" id="memoryBoxClose">↓ закрыть крышку</button>
+    <!-- PNG из Figma → images/memory-box/closed.png и opened.png -->
+    <section class="object-world memory-box-world" aria-label="коробка-коллаж">
+      <p class="object-world-caption">object · коробка · наведи, чтобы открыть</p>
+
+      <div class="core-objects-row">
+        <div class="memory-box-shell" id="memoryBoxShell" tabindex="0" role="button" aria-label="коробка-коллаж, наведи или нажми">
+          <div class="memory-box-visual">
+            <img
+              class="memory-box-img memory-box-img--closed"
+              src="images/memory-box/closed.png"
+              alt=""
+              width="480"
+              height="auto"
+            >
+            <img
+              class="memory-box-img memory-box-img--open"
+              src="images/memory-box/opened.png"
+              alt=""
+              width="480"
+              height="auto"
+            >
+            <span class="memory-box-fallback" aria-hidden="true">
+              <span class="memory-box-fallback-label">
+                images/memory-box/<br>
+                closed.png<br>
+                opened.png
+              </span>
+            </span>
           </div>
         </div>
+
+        <div class="core-objects-slot" id="coreObjectsSlot" aria-label="зона для других объектов"></div>
       </div>
     </section>
 
@@ -908,16 +806,13 @@ body {
 
 (function () {
   const shell = document.getElementById('memoryBoxShell');
-  const trigger = document.getElementById('memoryBoxTrigger');
-  const inner = document.getElementById('memoryBoxInner');
-  const closeBtn = document.getElementById('memoryBoxClose');
-  const art = shell && shell.querySelector('.memory-box-art');
   const eventsList = document.getElementById('eventsList');
+  if (!shell) return;
 
-  if (!shell || !trigger || !inner || !closeBtn) return;
-
+  const closedImg = shell.querySelector('.memory-box-img--closed');
+  const openImg = shell.querySelector('.memory-box-img--open');
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   let openedOnce = false;
-  let closingTimer = null;
 
   function addEvent(text) {
     if (!eventsList) return;
@@ -926,44 +821,40 @@ body {
     eventsList.appendChild(li);
   }
 
-  if (art) {
-    art.addEventListener('error', () => shell.classList.add('no-art'));
-    if (art.complete && art.naturalWidth === 0) shell.classList.add('no-art');
+  function markOpened() {
+    if (openedOnce) return;
+    openedOnce = true;
+    addEvent('memory box opened');
   }
 
-  function setOpenState(isOpen) {
-    trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    inner.hidden = !isOpen;
+  function updateFallback() {
+    const closedOk = closedImg && closedImg.complete && closedImg.naturalWidth > 0;
+    const openOk = openImg && openImg.complete && openImg.naturalWidth > 0;
+    if (!closedOk && !openOk) shell.classList.add('no-art');
   }
 
-  function openBox() {
-    if (shell.classList.contains('is-open') || shell.classList.contains('is-opening')) return;
-    window.clearTimeout(closingTimer);
-    shell.classList.remove('is-closing');
-    shell.classList.add('is-opening');
-    window.setTimeout(() => {
-      shell.classList.remove('is-opening');
-      shell.classList.add('is-open');
-      setOpenState(true);
-      if (!openedOnce) {
-        openedOnce = true;
-        addEvent('memory box opened');
-      }
-    }, 420);
+  [closedImg, openImg].forEach((img) => {
+    if (!img) return;
+    img.addEventListener('error', updateFallback);
+    img.addEventListener('load', updateFallback);
+  });
+
+  updateFallback();
+
+  if (canHover) {
+    shell.addEventListener('mouseenter', markOpened);
+  } else {
+    shell.addEventListener('click', () => {
+      shell.classList.toggle('is-open');
+      if (shell.classList.contains('is-open')) markOpened();
+    });
   }
 
-  function closeBox() {
-    if (!shell.classList.contains('is-open')) return;
-    shell.classList.remove('is-open');
-    shell.classList.add('is-closing');
-    setOpenState(false);
-    closingTimer = window.setTimeout(() => shell.classList.remove('is-closing'), 520);
-  }
-
-  trigger.addEventListener('click', openBox);
-  closeBtn.addEventListener('click', closeBox);
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && shell.classList.contains('is-open')) closeBox();
+  shell.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    shell.classList.toggle('is-open');
+    if (shell.classList.contains('is-open')) markOpened();
   });
 })();
 </script>
