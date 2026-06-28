@@ -478,7 +478,7 @@ body {
   content: '';
   pointer-events: none;
   z-index: 5;
-  opacity: 0.17;
+  opacity: 0.11;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: cover;
   mix-blend-mode: overlay;
@@ -488,7 +488,7 @@ body {
   display: block;
   width: 100%;
   height: auto;
-  transition: opacity 0.32s ease, filter 0.4s ease, transform 0.32s ease;
+  transition: opacity 0.32s ease, transform 0.32s ease;
   user-select: none;
   pointer-events: none;
 }
@@ -496,7 +496,6 @@ body {
 .memory-box-img--closed {
   position: relative;
   z-index: 1;
-  filter: saturate(0.96) contrast(1.02);
 }
 
 .memory-box-img--open {
@@ -506,7 +505,6 @@ body {
   transform: translateY(-7%);
   opacity: 0;
   z-index: 2;
-  filter: brightness(0.94) saturate(0.92);
 }
 
 .memory-box-shell.is-open .memory-box-img--closed,
@@ -516,7 +514,6 @@ body {
 
 .memory-box-shell.is-open .memory-box-img--open {
   opacity: 1;
-  filter: brightness(1.04) saturate(1.06) contrast(1.02);
   transform: translateY(-7%);
 }
 
@@ -530,7 +527,6 @@ body {
   .memory-box-shell:hover .memory-box-img--closed { opacity: 0; }
   .memory-box-shell:hover .memory-box-img--open {
     opacity: 1;
-    filter: brightness(1.04) saturate(1.06) contrast(1.02);
     transform: translateY(-7%);
   }
 }
@@ -628,14 +624,14 @@ body {
               class="memory-box-img memory-box-img--closed"
               src="images/memory-box/closed.png"
               alt=""
-              width="480"
+              width="1280"
               height="auto"
             >
             <img
               class="memory-box-img memory-box-img--open"
               src="images/memory-box/opened.png"
               alt=""
-              width="480"
+              width="1280"
               height="auto"
             >
             <span class="memory-box-fallback" aria-hidden="true">
