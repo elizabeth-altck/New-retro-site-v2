@@ -709,6 +709,7 @@ body {
   max-width: 360px;
   margin-left: -18px;
   outline: none;
+  overflow: visible;
 }
 
 .memory-box-shell:focus-visible {
@@ -718,15 +719,16 @@ body {
 
 .memory-box-visual {
   position: relative;
-  display: grid;
+  display: block;
   width: 100%;
+  overflow: visible;
+  transition: transform 0.35s ease;
   transform: rotate(-1.5deg);
-  transition: transform 0.35s ease, filter 0.4s ease;
   filter: drop-shadow(5px 7px 0 rgba(0, 0, 0, 0.48));
 }
 
 .memory-box-visual > * {
-  grid-area: 1 / 1;
+  grid-area: unset;
 }
 
 /* статичная зернистость поверх фото */
@@ -744,7 +746,7 @@ body {
   display: block;
   width: 100%;
   height: auto;
-  transition: opacity 0.32s ease, transform 0.32s ease;
+  transition: opacity 0.32s ease;
   user-select: none;
   pointer-events: none;
 }
@@ -755,35 +757,35 @@ body {
 }
 
 .memory-box-img--open {
+  position: absolute;
+  left: 50%;
+  top: 0;
   width: 97%;
-  justify-self: center;
-  align-self: center;
-  transform: translateY(-7%);
+  transform: translateX(-50%) translateY(-7%);
   opacity: 0;
   z-index: 2;
+  pointer-events: none;
 }
 
-.memory-box-shell.is-open .memory-box-img--closed,
-.memory-box-shell.is-open .memory-box-img--open {
+.memory-box-shell.is-open .memory-box-img--closed {
   opacity: 0;
 }
 
 .memory-box-shell.is-open .memory-box-img--open {
   opacity: 1;
-  transform: translateY(-7%);
+  transform: translateX(-50%) translateY(-7%);
 }
 
 .memory-box-shell.is-open .memory-box-visual,
 .memory-box-shell:hover .memory-box-visual {
-  transform: rotate(0deg) scale(1.02);
-  filter: drop-shadow(5px 7px 0 rgba(0, 0, 0, 0.48));
+  transform: rotate(0deg);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .memory-box-shell:hover .memory-box-img--closed { opacity: 0; }
   .memory-box-shell:hover .memory-box-img--open {
     opacity: 1;
-    transform: translateY(-7%);
+    transform: translateX(-50%) translateY(-7%);
   }
 }
 
@@ -791,7 +793,8 @@ body {
   display: none;
   width: 100%;
   aspect-ratio: 1.05;
-  position: relative;
+  position: absolute;
+  inset: 0;
   border: 2px dashed rgba(35, 32, 20, 0.65);
   background:
     linear-gradient(135deg, rgba(232, 160, 200, 0.55) 0 32%, transparent 32%),
@@ -827,67 +830,53 @@ body {
 .forecast-app {
   position: relative;
   z-index: 1;
-  min-height: 200px;
 }
 
 .slot-secondary-row {
   display: grid;
-  grid-template-columns: min(220px, 46%) 1fr;
-  gap: 12px;
-  margin-top: 12px;
+  grid-template-columns: min(200px, 42%) 1fr;
+  gap: 28px;
+  margin-top: 18px;
   align-items: start;
 }
 
 .win98-window--stickers {
   width: 100%;
-  max-width: 220px;
+  max-width: 200px;
   padding: 0;
 }
 
-.scrollport--horizontal {
+.stickers-soon {
+  padding: 16px 12px 18px;
+  background: rgba(255, 248, 210, 0.1);
+  min-height: 76px;
   display: flex;
-  gap: 10px;
-  padding: 10px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  max-height: 112px;
-  align-items: center;
-  background: rgba(255, 248, 210, 0.16);
-  scrollbar-width: thin;
-  scrollbar-color: #e8c86a rgba(0, 0, 0, 0.35);
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
 }
 
-.scrollport--horizontal::-webkit-scrollbar {
-  height: 7px;
+.stickers-soon-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  line-height: 1.65;
+  color: #f2f2f2;
+  margin: 0;
+  letter-spacing: 0.2px;
 }
 
-.scrollport--horizontal::-webkit-scrollbar-thumb {
-  background: #e8c86a;
-  border: 1px solid #1a1a1a;
-}
-
-.scrollport-thumb {
-  flex: 0 0 auto;
-  width: 68px;
-  height: 68px;
-  object-fit: cover;
-  border: 2px solid #1a1a1a;
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.42);
-  transition: transform 0.2s ease;
-  background: #f5ecd4;
-}
-
-.scrollport-thumb:hover {
-  transform: rotate(-4deg) scale(1.06);
-}
-
-.scrollport-thumb--gif {
-  object-fit: contain;
-  background: rgba(255, 248, 210, 0.85);
+.stickers-soon-ghost {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  line-height: 1.4;
+  color: rgba(232, 200, 106, 0.62);
+  margin: 0;
+  letter-spacing: 1.5px;
 }
 
 .site-note {
   min-width: 0;
+  margin-top: 24px;
 }
 
 .site-note-label {
@@ -1006,6 +995,10 @@ body {
 
 .win98-window--forecast {
   padding: 0;
+}
+
+.win98-window--forecast .win98-body {
+  padding: 10px 12px 11px;
 }
 
 .win98-titlebar {
@@ -1494,14 +1487,11 @@ body {
           </div>
 
           <div class="slot-secondary-row">
-            <div class="win98-window win98-window--stickers" aria-label="мини scrollport stickers">
+            <div class="win98-window win98-window--stickers" aria-label="stickers — скоро">
               <div class="win98-titlebar">stickers.exe</div>
-              <div class="scrollport scrollport--horizontal" id="cuteScrollport">
-                <img class="scrollport-thumb" src="images/луг_и_солнышко.jpeg" alt="" width="68" height="68">
-                <img class="scrollport-thumb" src="images/forest_and_lake.jpeg" alt="" width="68" height="68">
-                <img class="scrollport-thumb scrollport-thumb--gif" src="images/snail-slug.gif" alt="" width="68" height="68">
-                <img class="scrollport-thumb scrollport-thumb--gif" src="images/винтаж сердце.png" alt="" width="68" height="68">
-                <img class="scrollport-thumb" src="images/snail.png" alt="" width="68" height="68">
+              <div class="stickers-soon" id="cuteScrollport">
+                <p class="stickers-soon-text">скоро тут<br>чёт-то будет</p>
+                <p class="stickers-soon-ghost">··· ? ···</p>
               </div>
             </div>
 
