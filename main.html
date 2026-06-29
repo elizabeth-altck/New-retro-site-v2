@@ -444,10 +444,6 @@ body {
   align-items: start;
 }
 
-.core-objects-slot {
-  min-height: 40px;
-}
-
 .memory-box-shell {
   position: relative;
   display: flex;
@@ -565,6 +561,360 @@ body {
   padding: 16px;
 }
 
+/* CORE OBJECTS — slot (улитка + win98) */
+.core-objects-slot {
+  position: relative;
+  min-height: 320px;
+  padding-top: 6px;
+}
+
+.forecast-app {
+  position: relative;
+  z-index: 1;
+  min-height: 280px;
+}
+
+.win98-window {
+  background: #4a5238;
+  border-top: 2px solid #d8d4c8;
+  border-left: 2px solid #d8d4c8;
+  border-right: 2px solid #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.45);
+  color: #f2f2f2;
+}
+
+.win98-window--forecast {
+  padding: 0;
+}
+
+.win98-titlebar {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 8px 10px;
+  background: #2f3828;
+  border-bottom: 2px solid #1a1a1a;
+  letter-spacing: 0.5px;
+}
+
+.win98-body {
+  padding: 12px 14px 14px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.forecast-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.forecast-list li {
+  margin: 6px 0;
+}
+
+.forecast-list li::before {
+  content: '> ';
+  color: #e8c86a;
+}
+
+.win98-window--collection {
+  position: absolute;
+  right: 0;
+  top: 52px;
+  width: min(100%, 220px);
+  z-index: 3;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.win98-window--collection.is-closed {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px) scale(0.96);
+}
+
+.win98-menubar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 6px 8px;
+  background: #3a422f;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.win98-menu-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-top: 1px solid #d8d4c8;
+  border-left: 1px solid #d8d4c8;
+  border-right: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  background: #4a5238;
+  color: #f2f2f2;
+  cursor: pointer;
+}
+
+.win98-menu-btn:hover {
+  background: #5a6348;
+}
+
+.win98-menu-btn--close {
+  color: #e8c86a;
+}
+
+.win98-body--collection {
+  text-align: center;
+  padding: 14px 10px 12px;
+}
+
+.collection-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  line-height: 1.5;
+  margin: 0 0 8px;
+  letter-spacing: 0.3px;
+}
+
+.collection-date {
+  font-size: 11px;
+  margin: 0 0 12px;
+  opacity: 0.85;
+}
+
+.win98-action-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  padding: 6px 14px;
+  border-top: 2px solid #e8e4d8;
+  border-left: 2px solid #e8e4d8;
+  border-right: 2px solid #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+  background: #c8c4b8;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.win98-action-btn:active {
+  border-top: 2px solid #1a1a1a;
+  border-left: 2px solid #1a1a1a;
+  border-right: 2px solid #e8e4d8;
+  border-bottom: 2px solid #e8e4d8;
+}
+
+.snail-drag-wrap {
+  position: absolute;
+  z-index: 12;
+  touch-action: none;
+  transform-origin: 50% 85%;
+  animation: snailBob 3.2s ease-in-out infinite;
+  user-select: none;
+}
+
+.snail-drag-wrap:hover {
+  animation-play-state: paused;
+}
+
+.snail-drag-wrap.is-dragging {
+  animation: none;
+  cursor: grabbing;
+}
+
+.snail-drag-wrap:has(.snail-object.is-shy),
+.snail-drag-wrap:has(.snail-object.is-fly),
+.snail-drag-wrap:has(.snail-object.is-hop) {
+  animation: none;
+}
+
+.snail-drag-wrap.is-crawling {
+  animation: snailCrawlWiggle 1.1s ease-in-out;
+}
+
+.snail-drag-wrap:hover .snail-object {
+  filter: drop-shadow(0 0 14px rgba(232, 200, 106, 0.4));
+}
+
+.snail-object {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: grab;
+  transform-origin: 50% 85%;
+}
+
+.snail-drag-wrap.is-dragging .snail-object {
+  cursor: grabbing;
+}
+
+.snail-object.is-shy {
+  animation: snailShy 0.45s ease;
+}
+
+.snail-object.is-fly {
+  animation: snailFly 1.1s ease forwards;
+}
+
+.snail-object.is-hop {
+  animation: snailHop 0.55s ease;
+}
+
+.snail-img {
+  display: block;
+  width: min(62vw, 320px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.snail-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.snail-sparkles .sparkle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.snail-sparkles .sparkle::before,
+.snail-sparkles .sparkle::after {
+  content: '';
+  position: absolute;
+  background: #fff6d8;
+  box-shadow: 0 0 5px rgba(255, 236, 160, 0.85);
+  border-radius: 1px;
+}
+
+.snail-sparkles .sparkle::before {
+  width: 5px;
+  height: 1px;
+  top: 2px;
+  left: 0;
+}
+
+.snail-sparkles .sparkle::after {
+  width: 1px;
+  height: 5px;
+  top: 0;
+  left: 2px;
+}
+
+.snail-sparkles .s1 { left: 24%; top: 20%; }
+.snail-sparkles .s2 { left: 48%; top: 14%; }
+.snail-sparkles .s3 { left: 62%; top: 28%; }
+.snail-sparkles .s4 { left: 36%; top: 38%; }
+.snail-sparkles .s5 { left: 54%; top: 42%; }
+
+.snail-drag-wrap:hover .snail-sparkles .sparkle {
+  animation: snailSparkle 2.2s ease-in-out infinite;
+}
+
+.snail-sparkles .s2 { animation-delay: 0.35s; }
+.snail-sparkles .s3 { animation-delay: 0.7s; }
+.snail-sparkles .s4 { animation-delay: 1.05s; }
+.snail-sparkles .s5 { animation-delay: 1.4s; }
+
+@keyframes snailBob {
+  0%, 100% { transform: rotate(-2deg) translateY(0); }
+  50% { transform: rotate(1deg) translateY(-4px); }
+}
+
+@keyframes snailSparkle {
+  0%, 100% { opacity: 0; transform: scale(0.35) rotate(0deg); }
+  45% { opacity: 0.85; transform: scale(1) rotate(20deg); }
+  55% { opacity: 0.5; transform: scale(0.8) rotate(35deg); }
+}
+
+@keyframes snailShy {
+  0%, 100% { transform: scale(1); }
+  40% { transform: scale(0.94) rotate(-4deg); }
+}
+
+@keyframes snailFly {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  45% { transform: translateY(-48px) rotate(-8deg) scale(1.05); }
+  100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+}
+
+@keyframes snailHop {
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  35% { transform: translateY(-24px) scale(1.04) rotate(-4deg); }
+  68% { transform: translateY(3px) scale(0.97) rotate(2deg); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+@keyframes snailCrawlWiggle {
+  0%, 100% { transform: rotate(-3deg) translateY(0); }
+  20% { transform: rotate(5deg) translateY(-3px); }
+  40% { transform: rotate(-2deg) translateY(0); }
+  60% { transform: rotate(4deg) translateY(-2px); }
+  80% { transform: rotate(-1deg) translateY(-1px); }
+}
+
+.mini-popup {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  width: min(100%, 240px);
+  padding: 12px 12px 10px;
+  border: 2px solid #1a1a1a;
+  background: rgba(28, 24, 18, 0.94);
+  color: #f5ecd4;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.55);
+}
+
+.mini-popup[hidden] {
+  display: none;
+}
+
+.mini-popup-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  margin: 0 0 10px;
+  color: #e8a0c8;
+}
+
+.mini-popup-text {
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 0 0 10px;
+}
+
+.mini-popup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mini-popup-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  padding: 5px 8px;
+  border: 2px solid rgba(245, 236, 212, 0.35);
+  background: rgba(255, 248, 210, 0.12);
+  color: #f5ecd4;
+  cursor: pointer;
+}
+
+.mini-popup-btn:hover {
+  background: rgba(232, 160, 200, 0.25);
+}
+
+.mini-popup-close {
+  margin-top: 8px;
+  font-size: 10px;
+  opacity: 0.75;
+}
+
 </style>
 </head>
 
@@ -602,7 +952,7 @@ body {
 
 <!-- CENTER -->
 <div class="center">
-  <div class="core">
+  <div class="core" id="coreArena">
 
     <h2 class="core-title">my site</h2>
 
@@ -648,9 +998,70 @@ body {
           </div>
         </div>
 
-        <div class="core-objects-slot" id="coreObjectsSlot" aria-label="зона для других объектов"></div>
+        <div class="core-objects-slot" id="coreObjectsSlot" aria-label="зона для других объектов">
+
+          <div class="forecast-app" id="forecastApp">
+            <div class="win98-window win98-window--forecast">
+              <div class="win98-titlebar">today's Forecast</div>
+              <div class="win98-body">
+                <ul class="forecast-list">
+                  <li>Sunny</li>
+                  <li>Cloudy</li>
+                  <li>Vibe</li>
+                  <li>???</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="win98-window win98-window--collection" id="collectionWindow">
+              <div class="win98-menubar">
+                <button type="button" class="win98-menu-btn" data-win98="file">File</button>
+                <button type="button" class="win98-menu-btn" data-win98="edit">Edit</button>
+                <button type="button" class="win98-menu-btn" data-win98="search">Search</button>
+                <button type="button" class="win98-menu-btn win98-menu-btn--close" data-win98="close">Close</button>
+              </div>
+              <div class="win98-body win98-body--collection">
+                <p class="collection-title">НОВАЯ КОЛЛЕКЦИЯ</p>
+                <p class="collection-date">23/06/26</p>
+                <button type="button" class="win98-action-btn" id="lookupBtn">Look up</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="mini-popup snail-care" id="snailCare" hidden>
+            <p class="mini-popup-title">snail.exe</p>
+            <p class="mini-popup-text" id="snailCareText">она смотрит на тебя оценивающе.</p>
+            <div class="mini-popup-actions">
+              <button type="button" class="mini-popup-btn" data-snail="pet">погладить</button>
+              <button type="button" class="mini-popup-btn" data-snail="feed">покормить</button>
+              <button type="button" class="mini-popup-btn" data-snail="kick">пнуть</button>
+              <button type="button" class="mini-popup-btn" data-snail="squish">раздавить</button>
+            </div>
+            <button type="button" class="mini-popup-btn mini-popup-close" id="snailCareClose">закрыть</button>
+          </div>
+
+          <div class="mini-popup win98-popup" id="win98Popup" hidden>
+            <p class="mini-popup-title" id="win98PopupTitle">system</p>
+            <p class="mini-popup-text" id="win98PopupText">...</p>
+            <button type="button" class="mini-popup-btn mini-popup-close" id="win98PopupClose">ok</button>
+          </div>
+
+        </div>
       </div>
     </section>
+
+    <div class="snail-drag-wrap" id="snailDragWrap">
+      <button type="button" class="snail-object" id="snailObject" aria-label="улитка ползает сама — перетащи, если нужно">
+        <img class="snail-img" id="snailImg" src="images/snail.png" alt="">
+        <span class="snail-sparkles" aria-hidden="true">
+          <i class="sparkle s1"></i>
+          <i class="sparkle s2"></i>
+          <i class="sparkle s3"></i>
+          <i class="sparkle s4"></i>
+          <i class="sparkle s5"></i>
+        </span>
+      </button>
+    </div>
 
   </div>
 </div>
@@ -863,6 +1274,358 @@ body {
     event.preventDefault();
     shell.classList.toggle('is-open');
     if (shell.classList.contains('is-open')) markOpened();
+  });
+})();
+(function () {
+  const eventsList = document.getElementById('eventsList');
+  const coreArena = document.getElementById('coreArena');
+  const objectsSlot = document.getElementById('coreObjectsSlot');
+  const snailWrap = document.getElementById('snailDragWrap');
+  const snail = document.getElementById('snailObject');
+  const snailCare = document.getElementById('snailCare');
+  const snailCareText = document.getElementById('snailCareText');
+  const snailCareClose = document.getElementById('snailCareClose');
+  const collectionWindow = document.getElementById('collectionWindow');
+  const lookupBtn = document.getElementById('lookupBtn');
+  const win98Popup = document.getElementById('win98Popup');
+  const win98PopupTitle = document.getElementById('win98PopupTitle');
+  const win98PopupText = document.getElementById('win98PopupText');
+  const win98PopupClose = document.getElementById('win98PopupClose');
+
+  if (!snail || !snailWrap || !coreArena) return;
+
+  let snailClicks = 0;
+  let dragging = false;
+  let dragMoved = false;
+  let snailAnimating = false;
+  let wanderTimer = null;
+  let dragPointerId = null;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let dragStartLeft = 0;
+  let dragStartTop = 0;
+
+  function snailWrapPos() {
+    const arenaRect = coreArena.getBoundingClientRect();
+    const wrapRect = snailWrap.getBoundingClientRect();
+    return {
+      left: wrapRect.left - arenaRect.left,
+      top: wrapRect.top - arenaRect.top,
+    };
+  }
+
+  function clampSnailPos(left, top) {
+    const maxLeft = coreArena.clientWidth - snailWrap.offsetWidth;
+    const maxTop = coreArena.clientHeight - snailWrap.offsetHeight;
+    return {
+      left: Math.max(0, Math.min(maxLeft, left)),
+      top: Math.max(0, Math.min(maxTop, top)),
+    };
+  }
+
+  function initSnailPosition() {
+    if (snailWrap.dataset.positioned === '1') return;
+    const anchorSlot = objectsSlot;
+    if (!anchorSlot) return;
+
+    const place = () => {
+      const slotRect = anchorSlot.getBoundingClientRect();
+      const arenaRect = coreArena.getBoundingClientRect();
+      const left = slotRect.left - arenaRect.left + slotRect.width * 0.14;
+      const top = slotRect.bottom - arenaRect.top - snailWrap.offsetHeight - 10;
+      const next = clampSnailPos(left, top);
+      snailWrap.style.left = next.left + 'px';
+      snailWrap.style.top = next.top + 'px';
+      snailWrap.style.bottom = 'auto';
+      snailWrap.dataset.positioned = '1';
+      scheduleWander(2800);
+    };
+
+    const snailImg = document.getElementById('snailImg');
+    if (snailImg && !snailImg.complete) {
+      snailImg.addEventListener('load', () => window.requestAnimationFrame(place), { once: true });
+    } else {
+      window.requestAnimationFrame(place);
+    }
+  }
+
+  function getSnailLayoutPos() {
+    const left = parseFloat(snailWrap.style.left);
+    const top = parseFloat(snailWrap.style.top);
+    if (!Number.isNaN(left) && !Number.isNaN(top)) {
+      return { left, top };
+    }
+    return snailWrapPos();
+  }
+
+  function setSnailLeftTop(left, top) {
+    const next = clampSnailPos(left, top);
+    snailWrap.style.left = next.left + 'px';
+    snailWrap.style.top = next.top + 'px';
+    snailWrap.style.bottom = 'auto';
+    snailWrap.dataset.positioned = '1';
+    return next;
+  }
+
+  function flySnail() {
+    if (dragging) return;
+    snail.classList.add('is-fly');
+    addEvent('snail achieved brief flight');
+    window.setTimeout(() => snail.classList.remove('is-fly'), 1100);
+  }
+
+  function clearWanderTimer() {
+    if (wanderTimer) {
+      window.clearTimeout(wanderTimer);
+      wanderTimer = null;
+    }
+  }
+
+  function scheduleWander(delay) {
+    clearWanderTimer();
+    const wait = typeof delay === 'number' ? delay : 2400 + Math.random() * 4200;
+    wanderTimer = window.setTimeout(() => {
+      wanderTimer = null;
+      if (dragging || snailAnimating) {
+        scheduleWander(900);
+        return;
+      }
+      crawlSnail(() => scheduleWander());
+    }, wait);
+  }
+
+  function crawlSnail(onComplete) {
+    if (snailAnimating || dragging) {
+      if (onComplete) scheduleWander(1200);
+      return;
+    }
+    snailAnimating = true;
+    snailWrap.classList.add('is-crawling');
+
+    const start = getSnailLayoutPos();
+    const distance = 65 + Math.random() * 85;
+    let target = null;
+
+    for (let i = 0; i < 10; i += 1) {
+      const angle = Math.random() * Math.PI * 2;
+      const driftLeft = Math.cos(angle) * distance;
+      const driftTop = Math.sin(angle) * distance * 0.55;
+      const candidate = clampSnailPos(start.left + driftLeft, start.top + driftTop);
+      const moved = Math.hypot(candidate.left - start.left, candidate.top - start.top);
+      if (moved > 28) {
+        target = candidate;
+        break;
+      }
+    }
+
+    if (!target) {
+      const maxLeft = coreArena.clientWidth - snailWrap.offsetWidth;
+      const slide = start.left < maxLeft / 2 ? distance : -distance;
+      target = clampSnailPos(start.left + slide, start.top + 14);
+    }
+
+    const snailImg = document.getElementById('snailImg');
+    if (snailImg) {
+      if (target.left < start.left - 4) {
+        snailImg.style.transform = 'scaleX(-1)';
+      } else if (target.left > start.left + 4) {
+        snailImg.style.transform = '';
+      }
+    }
+
+    const duration = 1300 + Math.random() * 400;
+    const startTime = performance.now();
+
+    function tick(now) {
+      if (dragging) {
+        snailWrap.classList.remove('is-crawling');
+        snailAnimating = false;
+        return;
+      }
+      const progress = Math.min(1, (now - startTime) / duration);
+      const ease = progress < 0.5
+        ? 2 * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+      setSnailLeftTop(
+        start.left + (target.left - start.left) * ease,
+        start.top + (target.top - start.top) * ease
+      );
+      if (progress < 1) {
+        window.requestAnimationFrame(tick);
+      } else {
+        snailWrap.classList.remove('is-crawling');
+        snailAnimating = false;
+        if (onComplete) onComplete();
+      }
+    }
+
+    window.requestAnimationFrame(tick);
+  }
+
+  function handleSnailTap() {
+    if (dragging) return;
+
+    snailClicks += 1;
+
+    if (snailClicks === 1) {
+      snail.classList.add('is-shy');
+      window.setTimeout(() => snail.classList.remove('is-shy'), 450);
+      return;
+    }
+
+    if (snailClicks % 5 === 0) {
+      flySnail();
+      return;
+    }
+
+    if (snailCare && Math.random() < 0.42) {
+      snailCare.hidden = false;
+    }
+  }
+
+  initSnailPosition();
+
+  snailWrap.addEventListener('pointerdown', (event) => {
+    if (event.button !== 0) return;
+    clearWanderTimer();
+    if (snailAnimating) {
+      snailWrap.classList.remove('is-crawling');
+      snailAnimating = false;
+    }
+    dragging = true;
+    dragMoved = false;
+    dragPointerId = event.pointerId;
+    snailWrap.classList.add('is-dragging');
+    snailWrap.setPointerCapture(event.pointerId);
+
+    const pos = snailWrapPos();
+    dragStartLeft = pos.left;
+    dragStartTop = pos.top;
+    dragStartX = event.clientX;
+    dragStartY = event.clientY;
+
+    snailWrap.style.left = dragStartLeft + 'px';
+    snailWrap.style.top = dragStartTop + 'px';
+    snailWrap.style.bottom = 'auto';
+  });
+
+  snailWrap.addEventListener('pointermove', (event) => {
+    if (!dragging || event.pointerId !== dragPointerId) return;
+    const dx = event.clientX - dragStartX;
+    const dy = event.clientY - dragStartY;
+    if (!dragMoved && (Math.abs(dx) > 5 || Math.abs(dy) > 5)) {
+      dragMoved = true;
+      event.preventDefault();
+    }
+    if (!dragMoved) return;
+    const next = clampSnailPos(dragStartLeft + dx, dragStartTop + dy);
+    snailWrap.style.left = next.left + 'px';
+    snailWrap.style.top = next.top + 'px';
+  });
+
+  function endSnailDrag(event) {
+    if (!dragging || event.pointerId !== dragPointerId) return;
+    dragging = false;
+    snailWrap.classList.remove('is-dragging');
+    snailWrap.releasePointerCapture(event.pointerId);
+    dragPointerId = null;
+    scheduleWander(1600 + Math.random() * 2200);
+  }
+
+  snailWrap.addEventListener('pointerup', endSnailDrag);
+  snailWrap.addEventListener('pointercancel', endSnailDrag);
+
+  function addEvent(text) {
+    if (!eventsList) return;
+    const li = document.createElement('li');
+    li.textContent = text;
+    eventsList.appendChild(li);
+  }
+
+  function showWin98Popup(title, text) {
+    if (!win98Popup || !win98PopupTitle || !win98PopupText) return;
+    win98PopupTitle.textContent = title;
+    win98PopupText.textContent = text;
+    win98Popup.hidden = false;
+  }
+
+  function hideWin98Popup() {
+    if (win98Popup) win98Popup.hidden = true;
+  }
+
+  if (win98PopupClose) {
+    win98PopupClose.addEventListener('click', hideWin98Popup);
+  }
+
+  document.querySelectorAll('[data-win98]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const action = btn.getAttribute('data-win98');
+      if (action === 'close' && collectionWindow) {
+        collectionWindow.classList.add('is-closed');
+        addEvent('collection window closed (not really)');
+        return;
+      }
+      if (action === 'file') {
+        showWin98Popup('File', 'новый файл не создан. вселенная занята.');
+      } else if (action === 'edit') {
+        showWin98Popup('Edit', 'редактирование отменено полем.');
+      } else if (action === 'search') {
+        showWin98Popup('Search', 'найдено: 0 смысла · 1 улитка · ∞ vibe');
+      }
+    });
+  });
+
+  if (lookupBtn) {
+    lookupBtn.addEventListener('click', () => {
+      const lines = [
+        'портал в коллекцию не готов. но vibe стабилен.',
+        'вы смотрите вверх. там тоже поле.',
+        'новая вселенная загружается... 404 forever.',
+      ];
+      showWin98Popup('Look up', lines[Math.floor(Math.random() * lines.length)]);
+      addEvent('forecast: look up pressed');
+    });
+  }
+
+  snail.addEventListener('click', () => {
+    if (dragMoved) {
+      dragMoved = false;
+      return;
+    }
+    handleSnailTap();
+  });
+
+  if (snailCareClose && snailCare) {
+    snailCareClose.addEventListener('click', () => {
+      snailCare.hidden = true;
+    });
+  }
+
+  const snailLines = {
+    pet: ['мягко. она довольна (вероятно).', 'раковина блестит сильнее.', 'улитка одобряет тактильность.'],
+    feed: ['съела. просит ещё.', 'крошки поля приняты.', 'сытость +1. пердение - pending.'],
+    kick: ['не надо было. она запомнила.', 'улитка обиделась на 3 секунды.', 'поле осудило это действие.'],
+    squish: ['она... снова целая. странно.', 'squish rejected by physics.', 'улитка возвращается. всегда.'],
+  };
+
+  document.querySelectorAll('[data-snail]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const action = btn.getAttribute('data-snail');
+      const lines = snailLines[action];
+      if (snailCareText && lines) {
+        snailCareText.textContent = lines[Math.floor(Math.random() * lines.length)];
+      }
+      if (action === 'kick' || action === 'squish') {
+        snail.classList.add('is-shy');
+        window.setTimeout(() => snail.classList.remove('is-shy'), 450);
+      }
+      if (action === 'pet') {
+        addEvent('snail: petted');
+      }
+      if (action === 'kick') {
+        addEvent('snail: kicked (rude)');
+      }
+    });
   });
 })();
 </script>
