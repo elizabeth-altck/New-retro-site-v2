@@ -18,6 +18,36 @@
 
 ---
 
+---
+
+## 2026-06-28 — улитка + Win98-окна
+
+**Что сделано:**
+
+- В `#coreObjectsSlot`: forecast.exe — «today's Forecast» + окно «НОВАЯ КОЛЛЕКЦИЯ» (Win98 UI, меню, Look up, `#win98Popup`).
+- Улитка в `.core`: автономное ползание по `#coreArena`, перетаскивание, блёстки при hover, `snail.exe` (погладить / покормить / пнуть / раздавить).
+- Размер улитки ~320px; ассет `images/snail.png`.
+- Коммит `b7ef785`, push на `main` → Vercel.
+
+**Что изменилось:**
+
+- `main.html` — Win98 CSS/HTML, snail drag/wander JS, `#coreArena`.
+- Документация: `DECISIONS`, `DEVELOPMENT_LOG`, `SITE_STRUCTURE`, `STYLE_GUIDE`, `TODO`, `IDEAS`.
+
+**Какие появились идеи:**
+
+- Look up → реальная страница/scrollport коллекции.
+- Звуки улитки, fart easter egg, tamagotchi-глубина.
+- Ползание на всю страницу (если нужно) — отдельное решение.
+
+**Что делать дальше:**
+
+- Контент внутри открытой коробки.
+- Look up / коллекция как полноценный object-world.
+- Intro-текст и GIF-зона ниже object-worlds.
+
+---
+
 ## 2026-06-28 — коробка-коллаж
 
 **Что сделано:**

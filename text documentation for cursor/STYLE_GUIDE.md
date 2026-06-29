@@ -120,6 +120,24 @@
 - Первое открытие → событие `memory box opened` в `#eventsList`.
 - Внутренний контент коробки (gif, заметки) — ещё не свёрстан, только смена PNG.
 
+## forecast.exe (Win98 object-world)
+
+- В `#coreObjectsSlot`: `#forecastApp` — окно «today's Forecast» (список Sunny / Cloudy / Vibe / ???).
+- Наложенное окно `#collectionWindow` — «НОВАЯ КОЛЛЕКЦИЯ», дата, Look up.
+- Меню: File, Edit, Search, Close → `#win98Popup` с атмосферным текстом.
+- Close → `is-closed` на окне коллекции (визуально скрыто).
+- Палитра: `#4a5238` фон окна, `#2f3828` titlebar, кремовые/чёрные Win98-границы, Press Start 2P в заголовках коллекции.
+
+## Улитка (object в `.core`)
+
+- Ассет `images/snail.png`, ширина `min(62vw, 320px)`.
+- `#snailDragWrap` в `.core` (`#coreArena`), z-index выше Win98.
+- **Движение:** автономное ползание (пауза ~2–6 с, шаг ~65–150 px); при движении влево — `scaleX(-1)`.
+- **Drag:** пользователь перетаскивает; после отпускания ползание продолжается от новой точки.
+- **Idle:** лёгкий `snailBob`; при hover — пауза bob + drop-shadow + блёстки (без резкого блика).
+- **Тап:** 1-й shy; 5-й «полёт»; иногда `#snailCare` (`snail.exe`).
+- Попап: погладить / покормить / пнуть / раздавить → текст + события в `#eventsList`.
+
 ---
 
 # Блоки

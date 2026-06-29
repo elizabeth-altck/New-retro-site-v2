@@ -40,13 +40,29 @@
 
 - Заголовок **my site**
 - **SIGNAL CATCH** — мини-игра под заголовком
-- **Коробка-коллаж** — object-world слева: hover/tap `closed.png` ↔ `opened.png`; справа `#coreObjectsSlot` для других объектов
+- **Коробка-коллаж** — object-world слева: hover/tap `closed.png` ↔ `opened.png`
+- **forecast.exe (Win98)** — в `#coreObjectsSlot`: Forecast + «НОВАЯ КОЛЛЕКЦИЯ», меню, Look up, `#win98Popup`
+- **Улитка** — в `.core` (`#snailDragWrap`): сама ползает по `#coreArena`, drag, `snail.exe`, события в LIVE SYSTEM
 - Ниже — intro, GIF-зона и другие object-worlds (ещё не свёрстано)
 
 ### Правая колонка
 
 - **LIVE SYSTEM** — статус ONLINE (мигающая точка), поле, список **EVENTS**
-- `#eventsList` пополняется из мини-игры и при первом открытии коробки
+- `#eventsList` пополняется из мини-игры, коробки, улитки, forecast.exe
+
+### Ключевые ID (главная)
+
+| ID | Назначение |
+|----|------------|
+| `#coreArena` | Оливковый блок `.core` — арена ползания улитки |
+| `#coreObjectsSlot` | Слот справа от коробки (Win98, попапы) |
+| `#forecastApp` | Контейнер forecast.exe |
+| `#collectionWindow` | Окно «НОВАЯ КОЛЛЕКЦИЯ» |
+| `#win98Popup` | Системный попап Win98 |
+| `#snailDragWrap` | Обёртка улитки (позиция + drag) |
+| `#snailObject` | Кнопка улитки |
+| `#snailCare` | Попап `snail.exe` |
+| `#eventsList` | Список событий LIVE SYSTEM |
 
 ---
 
@@ -70,4 +86,5 @@
 | `images/поле.jpeg` | Фон страницы |
 | `images/винтаж сердце.png` | Сердечки в шапке |
 | `images/memory-box/closed.png`, `opened.png` | Коробка-коллаж на главной |
-| `images/snail.png`, `BIG SMACHNY snail.png` | Запланированы, в HTML пока нет |
+| `images/snail.png` | Улитка на главной (~320px) |
+| `images/BIG SMACHNY snail.png` | Альтернативный ассет улитки (не в HTML) |
