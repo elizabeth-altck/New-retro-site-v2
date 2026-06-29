@@ -1460,14 +1460,13 @@ body {
 .diary-page-art {
   width: 72px;
   height: 72px;
-  object-fit: cover;
   border: 2px solid #1a1a1a;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
-  background: #fff6d8;
 }
 
-.diary-page-art--gif {
-  object-fit: contain;
+.diary-page-art.media-placeholder {
+  font-size: 8px;
+  padding: 0;
 }
 
 .diary-page-meta {
@@ -1794,37 +1793,76 @@ body {
 .polaroid figcaption {
   font-family: 'Jura', sans-serif;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.45;
   margin-top: 10px;
   color: #1a1a1a;
 }
 
-.image-of-day-note {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
+.polaroid-date {
+  display: block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  line-height: 1.5;
+  color: #58141c;
+  margin-bottom: 6px;
+}
+
+.polaroid-desc {
+  display: block;
+  font-size: 15px;
   line-height: 1.4;
-  color: rgba(26, 26, 26, 0.55);
-  margin: 10px 0 0;
-  max-width: 300px;
+}
+
+/* Заглушки — стимул найти свои картинки */
+.media-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(232, 200, 106, 0.22) 0 8px,
+      rgba(255, 248, 210, 0.35) 8px 16px
+    );
+  border: 2px dashed rgba(26, 26, 26, 0.48);
+  color: rgba(26, 26, 26, 0.58);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.media-placeholder-label {
+  padding: 6px;
+}
+
+.media-placeholder--polaroid {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  min-height: 168px;
 }
 
 .snail-teaser {
   display: grid;
-  grid-template-columns: 96px 1fr;
-  gap: 12px;
-  align-items: start;
-  padding: 12px;
+  grid-template-columns: minmax(130px, 44%) 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 14px 16px;
   background: rgba(35, 48, 28, 0.88);
   border: 2px solid #1a1a1a;
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.38);
 }
 
 .snail-teaser-img {
-  width: 96px;
+  width: 100%;
+  max-width: 200px;
   height: auto;
-  border: 2px solid #1a1a1a;
+  border: none;
   display: block;
-  background: rgba(255, 248, 210, 0.15);
+  object-fit: contain;
+  background: transparent;
+  filter: drop-shadow(4px 5px 0 rgba(0, 0, 0, 0.38));
 }
 
 .snail-teaser-title {
@@ -1938,6 +1976,44 @@ body {
 
 .core-footer-links a:hover {
   text-decoration: underline;
+}
+
+.field-character-peeks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px 28px;
+  justify-content: center;
+  margin-top: 22px;
+  padding: 14px 10px;
+  border: 2px dashed rgba(35, 32, 20, 0.4);
+  background: rgba(255, 248, 210, 0.12);
+}
+
+.field-character-slot {
+  text-align: center;
+  width: 92px;
+}
+
+.field-character-slot .media-placeholder {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto;
+}
+
+.field-character-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  line-height: 1.45;
+  color: #1a1a1a;
+  margin: 8px 0 0;
+}
+
+.field-character-hint {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: rgba(26, 26, 26, 0.5);
+  text-align: center;
+  margin: 10px 0 0;
 }
 
 @media (max-width: 720px) {
@@ -2162,7 +2238,7 @@ body {
         <p class="mini-world-label"><span class="label-a">scrollport</span> · <span class="label-b">field diary</span> · <span class="label-c">черновики с иллюстрациями</span></p>
         <div class="diary-scrollport" id="diaryScrollport">
           <article class="diary-page diary-page--rose">
-            <img class="diary-page-art" src="images/луг_и_солнышко.jpeg" alt="" width="72" height="72">
+            <div class="diary-page-art media-placeholder" aria-hidden="true"><span class="media-placeholder-label">art<br>soon</span></div>
             <div>
               <p class="diary-page-meta">24 · 06 · поле</p>
               <p class="diary-page-text">сегодня интернет пахнет травой и старым монитором. норм.</p>
@@ -2170,7 +2246,7 @@ body {
             <p class="diary-page-doodle">~ * ~ ~ * ~</p>
           </article>
           <article class="diary-page diary-page--mint">
-            <img class="diary-page-art" src="images/forest_and_lake.jpeg" alt="" width="72" height="72">
+            <div class="diary-page-art media-placeholder" aria-hidden="true"><span class="media-placeholder-label">лес<br>png</span></div>
             <div>
               <p class="diary-page-meta">23 · 06 · лес</p>
               <p class="diary-page-text">улитка смотрела на меня три часа. я проиграла.</p>
@@ -2178,7 +2254,7 @@ body {
             <p class="diary-page-doodle">( ◡ ‿ ◡ )</p>
           </article>
           <article class="diary-page diary-page--sky">
-            <img class="diary-page-art diary-page-art--gif" src="images/snail-slug.gif" alt="" width="72" height="72">
+            <div class="diary-page-art media-placeholder" aria-hidden="true"><span class="media-placeholder-label">gif?<br>soon</span></div>
             <div>
               <p class="diary-page-meta">22 · 06 · draft</p>
               <p class="diary-page-text">жанна опять уползла в код. оставила след из sparkles.</p>
@@ -2186,7 +2262,7 @@ body {
             <p class="diary-page-doodle">&gt;&gt;&gt; _</p>
           </article>
           <article class="diary-page diary-page--sun">
-            <img class="diary-page-art diary-page-art--gif" src="images/винтаж сердце.png" alt="" width="72" height="72">
+            <div class="diary-page-art media-placeholder" aria-hidden="true"><span class="media-placeholder-label">mood<br>pic</span></div>
             <div>
               <p class="diary-page-meta">?? · ?? · vibe</p>
               <p class="diary-page-text">не помню что писала но настроение — жёлтое и немного опасное.</p>
@@ -2194,7 +2270,7 @@ body {
             <p class="diary-page-doodle">♥ ? ♥</p>
           </article>
           <article class="diary-page diary-page--lav">
-            <img class="diary-page-art" src="images/snail.png" alt="" width="72" height="72">
+            <div class="diary-page-art media-placeholder" aria-hidden="true"><span class="media-placeholder-label">wip<br>art</span></div>
             <div>
               <p class="diary-page-meta">soon · wip</p>
               <p class="diary-page-text">завтра добавлю ещё окна. или послезавтра. или никогда — тоже ок.</p>
@@ -2215,16 +2291,20 @@ body {
         <section class="mini-world image-of-day-world" id="imageOfDay" aria-label="image of the day">
           <p class="mini-world-label"><span class="label-a">image</span> · <span class="label-b">of the day</span> · <span class="label-c">фото дня</span></p>
           <figure class="polaroid">
-            <img id="imageOfDayImg" src="images/forest_and_lake.jpeg" alt="" width="280" height="210">
-            <figcaption>24 · 06 · тихий лес у поля</figcaption>
+            <div class="media-placeholder media-placeholder--polaroid" id="imageOfDaySlot" aria-label="фото дня — заглушка">
+              <span class="media-placeholder-label">фото дня<br>скоро</span>
+            </div>
+            <figcaption>
+              <span class="polaroid-date">24 · 06</span>
+              <span class="polaroid-desc">тихий лес у поля — утро, вода в траве, пахнет мокрой землёй. сюда — твой снимок.</span>
+            </figcaption>
           </figure>
-          <p class="image-of-day-note">своё фото: замени src у #imageOfDayImg · в дневнике то же — <code>diary-page-art</code></p>
         </section>
 
         <section class="mini-world snail-teaser-world" id="snailTeaser" aria-label="the snail">
           <p class="mini-world-label"><span class="label-a">character</span> · <span class="label-b">the snail</span> · <span class="label-c">жанна</span></p>
           <div class="snail-teaser">
-            <img class="snail-teaser-img" src="images/snail.png" alt="" width="96" height="96">
+            <img class="snail-teaser-img" src="images/BIG SMACHNY snail.png" alt="Жанна — улитка ахатина" width="200" height="200">
             <div>
               <p class="snail-teaser-title">the snail</p>
               <p class="snail-teaser-text">персонаж сайта — улитка ахатина <strong>Жанна</strong>. подруга <strong>Анна</strong>. на <a href="#">этой странице</a> потом погладить / покормить · или <a href="#">виджетом</a> на сайте.</p>
@@ -2247,6 +2327,22 @@ body {
           <li><span class="guest-book-name">???</span><span class="guest-book-msg">скоро сюда можно оставить записку.</span></li>
         </ul>
       </section>
+
+      <div class="field-character-peeks" aria-label="слоты для персонажей png">
+        <div class="field-character-slot">
+          <div class="media-placeholder" aria-hidden="true"><span class="media-placeholder-label">png<br>soon</span></div>
+          <p class="field-character-label">friend #1</p>
+        </div>
+        <div class="field-character-slot">
+          <div class="media-placeholder" aria-hidden="true"><span class="media-placeholder-label">png<br>soon</span></div>
+          <p class="field-character-label">friend #2</p>
+        </div>
+        <div class="field-character-slot">
+          <div class="media-placeholder" aria-hidden="true"><span class="media-placeholder-label">png?<br>soon</span></div>
+          <p class="field-character-label">mystery</p>
+        </div>
+        <p class="field-character-hint">слоты для png-персонажей · потом как улитка или статично</p>
+      </div>
 
       <footer class="core-footer">
         <p class="core-footer-counter">visitors: <span id="fakeCounter">00427</span></p>

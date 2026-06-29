@@ -273,6 +273,7 @@
 
 - Fullscreen spam убран; генерация окон только в spam-поле.
 - Картинки дневника и image of the day — замена `src` в `main.html` + файлы в `images/`.
+- **Заглушки `.media-placeholder`** для фото дня, дневника и character slots — пока нет финальных артов; Жанна в блоке — `BIG SMACHNY snail.png`.
 - Layout: симметричные боковые колонки `--sidebar-width`, `field_stats.txt` справа для баланса с FIELD RADIO.
 
 ---

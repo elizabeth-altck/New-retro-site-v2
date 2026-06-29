@@ -20,6 +20,17 @@
 
 ---
 
+## 2026-06-24 — заглушки картинок, BIG SMACHNY snail, character slots
+
+**Что сделано:**
+
+- Image of the day и diary — `.media-placeholder` вместо готовых jpeg; описание в figcaption.
+- the snail — `BIG SMACHNY snail.png`, крупнее в блоке.
+- Слоты png-персонажей `.field-character-peeks`.
+- TODO: страница помимо главной (404 / ошибка) — дизайн Figma Sanchar.
+
+---
+
 ## 2026-06-24 — welcome popup, нижний контент, симметрия колонок
 
 **Что сделано:**

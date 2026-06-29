@@ -9,14 +9,18 @@
   - [x] Мини-игра SIGNAL CATCH
   - [x] Коробка-коллаж (hover open, зернистость; контент внутри — позже)
   - [x] forecast.exe (Win98 окна в `#coreObjectsSlot`)
-  - [x] Улитка (виджет: fixed, drag по всему экрану, автоползание, ~320px)
+  - [x] Улитка (виджет: absolute, drag, автоползание, ~320px)
   - [x] **FIELD RADIO** — кастомный плеер (`music/rainy-lofi-city-lofi-music-332746.mp3`)
   - [ ] FIELD RADIO — 3–5 треков, переключение (текущий — legacy с прошлого сайта)
   - [x] Первый **scrollport** (site TODO)
-  - [x] **stickers.exe** — мини horizontal scrollport с рисунками
+  - [x] **stickers.exe** — placeholder «скоро тут чето будет»
   - [~] **WRITE YOUR NOTE** — блокнот (локально; почта через `data-endpoint`)
-  - [ ] Intro-текст + **Image of the day**
-  - [ ] Блок **the snail** (персона; ссылки → временные попапы)
+  - [~] **field diary** — horizontal scrollport (позже вертикальный); иллюстрации — заглушки
+  - [~] **image of the day** — полароид + описание; фото — заглушка `.media-placeholder`
+  - [~] **the snail** — блок с `BIG SMACHNY snail.png`; tamagotchi-ссылки — позже
+  - [x] Нижний контент: hotline.txt, guest book preview, core-footer, character png-слоты
+  - [x] spam.exe — бесконечные mini-окна только внутри блока
+  - [x] welcome popup по центру при загрузке (не fullscreen)
   - [ ] V1 scroll главной — все основные секции есть (не строго 1:1 макет)
   - [ ] Другие object-worlds и интерактивные предметы по той же логике
 - [ ] **Музыка** — расширить: больше треков, полноценная music room / scrollport-плейлист
@@ -39,6 +43,7 @@
 
 ### Страницы и ошибки
 
+- [ ] **Страница помимо главной** — кастомная 404 / «страница не готова» / другая комната · **дизайн в Figma (аккаунт Sanchar)** — не забыть сверстать
 - [ ] Попробовать **кастомную страницу ошибки** (404 / «страница не готова») в стиле сайта
 - [ ] Плейсхолдер-страницы для ссылок персонажей → потом заменить на реальный контент
 

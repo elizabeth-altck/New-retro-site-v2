@@ -51,8 +51,8 @@
 - **WRITE YOUR NOTE** (`#siteNote`) — форма заметок (localStorage / FormSubmit)
 - **field diary scrollport** (`#diaryScrollport`) — горизонтальный дневник (позже — вертикальный)
 - **spam.exe** (`#adSpamField`) — бесконечная генерация mini win98 только внутри блока
-- **image of the day** (`#imageOfDayImg`) — полароид, src заменяется вручную
-- **the snail** (`#snailTeaser`) — тизер Жанны
+- **image of the day** (`#imageOfDaySlot`) — полароид с заглушкой + описание в figcaption
+- **the snail** (`#snailTeaser`) — `BIG SMACHNY snail.png`, крупно в блоке
 - **hotline.txt** (`#fieldHotline`) — случайные мысли поля
 - **guest book preview** — фейковые записи
 - **core-footer** — neocities-счётчик, ссылки
@@ -77,7 +77,7 @@
 | `#diaryScrollport` | field diary — horizontal scrollport |
 | `#adSpamField` | spam.exe — бесконечные mini ads внутри блока |
 | `#sitePopupLayer` | Welcome popup по центру при загрузке |
-| `#imageOfDayImg` | Image of the day — полароид |
+| `#imageOfDaySlot` | Image of the day — заглушка (потом `<img>`) |
 | `#fieldHotline` | hotline.txt |
 | `#guestBookPreview` | Guest book preview |
 | `#fieldStats` | field_stats.txt (правая колонка) |
