@@ -42,8 +42,8 @@
 - **SIGNAL CATCH** — мини-игра под заголовком
 - **Коробка-коллаж** — object-world слева: hover/tap `closed.png` ↔ `opened.png`
 - **forecast.exe (Win98)** — в `#coreObjectsSlot`: Forecast + «НОВАЯ КОЛЛЕКЦИЯ», меню, Look up, `#win98Popup`
-- **Улитка** — в `.core` (`#snailDragWrap`): сама ползает по `#coreArena`, drag, `snail.exe`, события в LIVE SYSTEM
-- Ниже — intro, GIF-зона и другие object-worlds (ещё не свёрстано)
+- **Улитка** — в `.core` (`#snailDragWrap`): виджет, сама ползает по `#coreArena`, drag, `snail.exe`, события в LIVE SYSTEM
+- **Ниже `.core` (по макету scroll, ещё не свёрстано):** WRITE YOUR NOTE, intro-текст, Image of the day, блок **the snail** (tamagotchi / персона Жанна)
 
 ### Правая колонка
 

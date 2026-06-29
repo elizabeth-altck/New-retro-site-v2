@@ -9,8 +9,11 @@
   - [x] Мини-игра SIGNAL CATCH
   - [x] Коробка-коллаж (hover open, зернистость; контент внутри — позже)
   - [x] forecast.exe (Win98 окна в `#coreObjectsSlot`)
-  - [x] Улитка (автоползание, drag, `snail.exe`, ~320px)
-  - [ ] Intro-текст и контент ниже object-worlds
+  - [x] Улитка (виджет: автоползание, drag, `snail.exe`, ~320px)
+  - [ ] Intro-текст + **Image of the day**
+  - [ ] **WRITE YOUR NOTE**
+  - [ ] Блок **the snail** (персона; tamagotchi — позже)
+  - [ ] V1 scroll главной закрыт по макету (все секции сверху вниз)
   - [ ] Другие object-worlds (конверт, монитор и т.д.)
 - [ ] Оформить галерею
 - [ ] Продумать структуру остальных страниц
