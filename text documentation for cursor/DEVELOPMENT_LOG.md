@@ -20,12 +20,26 @@
 
 ---
 
+## 2026-06-24 — welcome popup, нижний контент, симметрия колонок
+
+**Что сделано:**
+
+- Убраны fullscreen spam; welcome popup по центру (~400px).
+- Нижний контент: image of the day, snail teaser, hotline, guest book, footer.
+- Симметрия layout: `--sidebar-width`, `field_stats.txt` справа, unified `.sidebar-title`.
+
+**Что делать дальше:**
+
+- Вертикальный diary scrollport; intro; email popup для заметок.
+
+---
+
 ## 2026-06-24 — spam бесконечный + fullscreen popups
 
 **Что сделано:**
 
-- **spam.exe** — JS генерирует mini win98-окна каждые ~4s, клик может вызвать fullscreen.
-- **#screenSpamLayer** — реальные полноэкранные win98-попапы (~14s авто + chain при кликах).
+- **spam.exe** — бесконечная генерация mini-окон только внутри `#adSpamField`.
+- **#sitePopupLayer** — центральный welcome popup при загрузке (не fullscreen).
 - Фикс ширины страницы (scrollport не раздвигает layout).
 
 **Что делать дальше:**

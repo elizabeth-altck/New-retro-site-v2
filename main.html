@@ -11,6 +11,7 @@
   --page-padding: 25px;
   --column-gap: 20px;
   --header-content-gap: 26px;
+  --sidebar-width: min(228px, 19vw);
 }
 
 body {
@@ -114,20 +115,19 @@ body {
 /* LAYOUT */
 .layout {
   display: grid;
-  grid-template-columns: 15fr 70fr 15fr;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr) var(--sidebar-width);
   gap: var(--column-gap);
   padding: 8px var(--page-padding) var(--page-padding);
   overflow: visible;
   min-width: 0;
   max-width: 100%;
+  align-items: stretch;
 }
 
 .center {
   min-width: 0;
   max-width: 100%;
   overflow: visible;
-  padding-right: 8px;
-  padding-bottom: 8px;
 }
 
 /* SIDEBARS */
@@ -136,8 +136,12 @@ body {
   font-family: 'Jura', sans-serif;
   background: rgba(0, 0, 0, 0.55);
   color: #f2f2f2;
-  padding: 16px 14px;
+  padding: 16px 14px 18px;
   border: 1px solid rgba(255, 255, 255, 0.12);
+  min-width: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .left {
@@ -152,6 +156,7 @@ body {
     inset 0 5px 12px -7px rgba(22, 58, 35, 0.5);
 }
 
+.sidebar-title,
 .left-nav-title {
   font-size: 22px;
   font-weight: normal;
@@ -389,6 +394,47 @@ body {
   box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 }
 
+/* FIELD STATS — правая колонка, визуальный баланс с FIELD RADIO */
+.field-stats {
+  margin-top: 18px;
+  padding: 10px 10px 12px;
+  border: 2px dashed rgba(232, 200, 106, 0.42);
+  background: rgba(18, 16, 12, 0.78);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 248, 210, 0.06),
+    3px 3px 0 rgba(0, 0, 0, 0.45);
+}
+
+.field-stats-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  line-height: 1.5;
+  color: #e8c86a;
+  margin: 0 0 10px;
+  letter-spacing: 0.3px;
+}
+
+.field-stats-line {
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 0 0 8px;
+  color: rgba(242, 242, 242, 0.88);
+}
+
+.field-stats-line:last-child {
+  margin-bottom: 0;
+}
+
+.field-stats-line strong {
+  font-weight: 600;
+  color: #fffadb;
+}
+
+.right-body {
+  flex: 1;
+  min-height: 0;
+}
+
 /* SCROLLPORT — внутренний скролл внутри блока */
 .field-scrollport-world {
   margin-top: 20px;
@@ -453,13 +499,6 @@ body {
 
 .scrollport-item--wip .scrollport-mark {
   color: #9b8f43;
-}
-
-.right h3 {
-  font-size: 22px;
-  font-weight: 600;
-  margin: 0 0 16px;
-  line-height: 1.3;
 }
 
 .right-line {
@@ -1630,52 +1669,40 @@ body {
   pointer-events: none;
 }
 
-/* FULLSCREEN spam popups */
-#screenSpamLayer {
+/* Center popup on load — не fullscreen */
+.site-popup-layer {
   position: fixed;
   inset: 0;
-  z-index: 8000;
-  pointer-events: none;
-}
-
-#screenSpamLayer.has-popups {
-  pointer-events: auto;
-}
-
-.screen-popup {
-  position: fixed;
-  inset: 0;
-  z-index: 8001;
+  z-index: 7000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 20px;
   box-sizing: border-box;
 }
 
-.screen-popup__backdrop {
+.site-popup-layer[hidden] {
+  display: none;
+}
+
+.site-popup__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(14, 12, 10, 0.78);
+  background: rgba(14, 12, 10, 0.52);
 }
 
-.screen-popup__window {
+.site-popup__window {
   position: relative;
   z-index: 1;
-  width: calc(100vw - 20px);
-  height: calc(100vh - 20px);
-  max-width: none;
-  max-height: none;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  animation: screenPopupIn 0.38s ease;
+  width: min(400px, 92vw);
+  max-width: 400px;
+  animation: sitePopupIn 0.34s ease;
 }
 
-@keyframes screenPopupIn {
+@keyframes sitePopupIn {
   from {
     opacity: 0;
-    transform: scale(0.94) rotate(-1.5deg);
+    transform: scale(0.9) rotate(-2deg);
   }
   to {
     opacity: 1;
@@ -1683,70 +1710,239 @@ body {
   }
 }
 
-.screen-popup__body {
-  flex: 1;
-  padding: 18px 20px 16px;
-  overflow-y: auto;
-  font-size: 15px;
-  line-height: 1.55;
+.site-popup__body {
+  padding: 14px 16px 12px;
 }
 
-.screen-popup__headline {
+.site-popup__headline {
   font-family: 'Press Start 2P', monospace;
-  font-size: 11px;
-  line-height: 1.65;
-  margin: 0 0 16px;
+  font-size: 9px;
+  line-height: 1.6;
+  margin: 0 0 12px;
   color: #fffadb;
 }
 
-.screen-popup__text {
+.site-popup__text {
   font-family: 'Jura', sans-serif;
-  font-size: 20px;
+  font-size: 17px;
   line-height: 1.45;
-  margin: 0 0 18px;
+  margin: 0;
   color: #f2f2f2;
 }
 
-.screen-popup__footer {
+.site-popup__footer {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 10px 14px 14px;
+  padding: 10px 14px 12px;
   border-top: 1px solid rgba(0, 0, 0, 0.35);
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.1);
 }
 
-.screen-popup__btn {
+.site-popup__btn {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 12px;
-  padding: 8px 14px;
+  font-size: 11px;
+  padding: 7px 12px;
   border: 2px solid #1a1a1a;
   cursor: pointer;
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.45);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
 }
 
-.screen-popup__btn--yes {
+.site-popup__btn--yes {
   background: #ff2d8a;
   color: #fff;
 }
 
-.screen-popup__btn--no {
+.site-popup__btn--no {
   background: #d8d4c8;
   color: #1a1a1a;
 }
 
-.screen-popup.is-closing {
-  pointer-events: none;
+/* BOTTOM CONTENT — не scrollports */
+.field-bottom-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+  margin-top: 22px;
+  min-width: 0;
 }
 
-.screen-popup.is-closing .screen-popup__window {
-  animation: screenPopupOut 0.28s ease forwards;
+.field-bottom-row .mini-world {
+  margin-top: 0;
 }
 
-@keyframes screenPopupOut {
-  to {
-    opacity: 0;
-    transform: scale(0.92);
+.polaroid {
+  margin: 0;
+  padding: 10px 10px 14px;
+  background: #fff6d8;
+  border: 2px solid #1a1a1a;
+  box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.42);
+  transform: rotate(-1.2deg);
+  max-width: 300px;
+}
+
+.polaroid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #e8e0c8;
+}
+
+.polaroid figcaption {
+  font-family: 'Jura', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-top: 10px;
+  color: #1a1a1a;
+}
+
+.image-of-day-note {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  line-height: 1.4;
+  color: rgba(26, 26, 26, 0.55);
+  margin: 10px 0 0;
+  max-width: 300px;
+}
+
+.snail-teaser {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 12px;
+  background: rgba(35, 48, 28, 0.88);
+  border: 2px solid #1a1a1a;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.38);
+}
+
+.snail-teaser-img {
+  width: 96px;
+  height: auto;
+  border: 2px solid #1a1a1a;
+  display: block;
+  background: rgba(255, 248, 210, 0.15);
+}
+
+.snail-teaser-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #fffadb;
+  margin: 0 0 10px;
+  text-shadow: 2px 2px 0 #58141c;
+}
+
+.snail-teaser-text {
+  font-family: 'Jura', sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #f2f2f2;
+  margin: 0;
+}
+
+.snail-teaser-text a {
+  color: #e8c86a;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.field-hotline {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  line-height: 1.55;
+  margin: 0 0 10px;
+  padding: 12px 14px;
+  background: rgba(40, 38, 22, 0.16);
+  border-left: 3px solid #e8a0c8;
+  color: #1a1a1a;
+}
+
+.field-hotline-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  padding: 6px 10px;
+  border: 2px solid #1a1a1a;
+  background: rgba(255, 248, 210, 0.55);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+.field-hotline-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.guest-book-preview {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.guest-book-preview li {
+  padding: 8px 0;
+  border-bottom: 1px dotted rgba(26, 26, 26, 0.28);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.guest-book-preview li:last-child {
+  border-bottom: none;
+}
+
+.guest-book-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #58141c;
+  margin-right: 8px;
+}
+
+.guest-book-msg {
+  font-family: 'Jura', sans-serif;
+  color: #1a1a1a;
+}
+
+.core-footer {
+  margin-top: 26px;
+  padding-top: 16px;
+  border-top: 2px dashed rgba(35, 32, 20, 0.45);
+  text-align: center;
+}
+
+.core-footer-counter {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.core-footer-note {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: rgba(26, 26, 26, 0.62);
+  margin: 0 0 10px;
+}
+
+.core-footer-links {
+  font-family: 'Jura', sans-serif;
+  font-size: 16px;
+}
+
+.core-footer-links a {
+  color: #58141c;
+  text-decoration: none;
+}
+
+.core-footer-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .field-bottom-row {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1775,7 +1971,7 @@ body {
 <!-- LEFT -->
 <div class="left">
   <nav class="left-nav" aria-label="Navigation">
-    <h3 class="left-nav-title">Navigation</h3>
+    <h3 class="sidebar-title left-nav-title">Navigation</h3>
     <ul class="left-nav-list">
       <li><a href="#">gallery</a></li>
       <li><a href="#">diary</a></li>
@@ -1836,7 +2032,7 @@ body {
         <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>the snail</strong> — блок персонажа Жанна + ссылки</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>gallery</strong> — GIF-галерея, атмосфера 2000s–2010s</p>
         <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>WRITE YOUR NOTE</strong> — блокнот на главной</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>image of the day</strong> — фото дня</p>
+        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>image of the day</strong> — полароид на главной</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>intro</strong> — текст «привет, это мой сайт…»</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>music room</strong> — полноценная страница, больше треков</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>tamagotchi</strong> — комната улитки, погладить / покормить</p>
@@ -2009,11 +2205,56 @@ body {
       </section>
 
       <section class="mini-world ad-spam-world" id="adSpamWorld" aria-label="навязчивая реклама поля">
-        <p class="mini-world-label"><span class="label-a">spam.exe</span> · <span class="label-b">popup ads</span> · <span class="label-c">бесконечно + fullscreen</span></p>
+        <p class="mini-world-label"><span class="label-a">spam.exe</span> · <span class="label-b">popup ads</span> · <span class="label-c">генерация внутри блока</span></p>
         <div class="ad-spam-field" id="adSpamField">
-          <p class="ad-spam-hint" id="adSpamHint">окна генерируются бесконечно · esc не работает</p>
+          <p class="ad-spam-hint" id="adSpamHint">окна появляются только здесь · esc не работает</p>
         </div>
       </section>
+
+      <div class="field-bottom-row">
+        <section class="mini-world image-of-day-world" id="imageOfDay" aria-label="image of the day">
+          <p class="mini-world-label"><span class="label-a">image</span> · <span class="label-b">of the day</span> · <span class="label-c">фото дня</span></p>
+          <figure class="polaroid">
+            <img id="imageOfDayImg" src="images/forest_and_lake.jpeg" alt="" width="280" height="210">
+            <figcaption>24 · 06 · тихий лес у поля</figcaption>
+          </figure>
+          <p class="image-of-day-note">своё фото: замени src у #imageOfDayImg · в дневнике то же — <code>diary-page-art</code></p>
+        </section>
+
+        <section class="mini-world snail-teaser-world" id="snailTeaser" aria-label="the snail">
+          <p class="mini-world-label"><span class="label-a">character</span> · <span class="label-b">the snail</span> · <span class="label-c">жанна</span></p>
+          <div class="snail-teaser">
+            <img class="snail-teaser-img" src="images/snail.png" alt="" width="96" height="96">
+            <div>
+              <p class="snail-teaser-title">the snail</p>
+              <p class="snail-teaser-text">персонаж сайта — улитка ахатина <strong>Жанна</strong>. подруга <strong>Анна</strong>. на <a href="#">этой странице</a> потом погладить / покормить · или <a href="#">виджетом</a> на сайте.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="mini-world field-hotline-world" aria-label="hotline">
+        <p class="mini-world-label"><span class="label-a">hotline.txt</span> · <span class="label-b">поле говорит</span> · <span class="label-c">случайная мысль</span></p>
+        <blockquote class="field-hotline" id="fieldHotline">если интернет пахнет травой — ты не ошиблась адресом.</blockquote>
+        <button type="button" class="field-hotline-btn" id="fieldHotlineNext">ещё одну →</button>
+      </section>
+
+      <section class="mini-world guest-book-world" id="guestBookPreview" aria-label="guest book preview">
+        <p class="mini-world-label"><span class="label-a">guest book</span> · <span class="label-b">preview</span> · <span class="label-c">фейк пока</span></p>
+        <ul class="guest-book-preview">
+          <li><span class="guest-book-name">moth_03</span><span class="guest-book-msg">зашла посмотреть улитку. осталась.</span></li>
+          <li><span class="guest-book-name">field_rat</span><span class="guest-book-msg">vibe честный. как 2007.</span></li>
+          <li><span class="guest-book-name">???</span><span class="guest-book-msg">скоро сюда можно оставить записку.</span></li>
+        </ul>
+      </section>
+
+      <footer class="core-footer">
+        <p class="core-footer-counter">visitors: <span id="fakeCounter">00427</span></p>
+        <p class="core-footer-note">best viewed if you're nostalgic · made in the field</p>
+        <p class="core-footer-links">
+          <a href="#">gallery</a> · <a href="#">diary</a> · <a href="#fieldRadio">music</a> · <a href="#">secret door</a>
+        </p>
+      </footer>
 
     </div>
 
@@ -2022,26 +2263,36 @@ body {
 
 <!-- RIGHT -->
 <div class="right">
-  <h3>LIVE SYSTEM</h3>
+  <h3 class="sidebar-title">LIVE SYSTEM</h3>
 
-  <p class="right-line">
-    <strong>STATUS:</strong>
-    <span class="status-online">
-      <span class="status-dot" aria-hidden="true"></span>ONLINE
-    </span>
-  </p>
-  <p class="right-line"><strong>FIELD:</strong> unstable but fine</p>
+  <div class="right-body">
+    <p class="right-line">
+      <strong>STATUS:</strong>
+      <span class="status-online">
+        <span class="status-dot" aria-hidden="true"></span>ONLINE
+      </span>
+    </p>
+    <p class="right-line"><strong>FIELD:</strong> unstable but fine</p>
 
-  <p class="right-line"><strong>EVENTS:</strong></p>
-  <ul id="eventsList">
-    <li>hotdog broadcast active</li>
-    <li>unknown signal detected</li>
-  </ul>
+    <p class="right-line"><strong>EVENTS:</strong></p>
+    <ul id="eventsList">
+      <li>hotdog broadcast active</li>
+      <li>unknown signal detected</li>
+    </ul>
+  </div>
+
+  <div class="field-stats" id="fieldStats" aria-label="field stats">
+    <p class="field-stats-label">field_stats.txt</p>
+    <p class="field-stats-line"><strong>vibe:</strong> 73%</p>
+    <p class="field-stats-line"><strong>snail mood:</strong> judging</p>
+    <p class="field-stats-line"><strong>ads in box:</strong> ∞</p>
+    <p class="field-stats-line"><strong>weather:</strong> sunny / ???</p>
+  </div>
 </div>
 
 </div>
 
-<div id="screenSpamLayer" aria-hidden="true"></div>
+<div class="site-popup-layer" id="sitePopupLayer" hidden aria-hidden="true"></div>
 
 <div class="snail-drag-wrap" id="snailDragWrap">
   <button type="button" class="snail-object" id="snailObject" aria-label="улитка ползает сама — перетащи куда хочешь">
@@ -2758,12 +3009,9 @@ body {
 (function () {
   const adField = document.getElementById('adSpamField');
   const adHint = document.getElementById('adSpamHint');
-  const screenLayer = document.getElementById('screenSpamLayer');
   const eventsList = document.getElementById('eventsList');
 
-  if (!adField || !screenLayer) return;
-
-  const AD_STYLES = ['hot', 'cyan', 'lime', 'gold', 'purple'];
+  if (!adField) return;
 
   const FIELD_TEMPLATES = [
     { titlebar: '!!! WINNER !!!', headline: 'ТЫ ВЫИГРАЛА<br>БЕСПЛАТНУЮ УЛИТКУ', text: 'кликни сейчас. улитка уже в пути.', yes: 'ЗАБРАТЬ', style: 'hot' },
@@ -2778,23 +3026,8 @@ body {
     { titlebar: 'guest list.exe', headline: 'ФЕЙКОВЫЕ<br>ГОСТИ ЖДУТ', text: 'address book 2000s скоро здесь.', yes: 'OPEN', style: 'purple' },
   ];
 
-  const SCREEN_TEMPLATES = [
-    { titlebar: 'URGENT · SYSTEM ALERT', headline: 'ПОЛЕ ТРЕБУЕТ<br>ВНИМАНИЯ', text: 'неизвестный сигнал в центре экрана. это может быть ты. или улитка. или оба.', yes: 'ПОНЯЛА', style: 'hot' },
-    { titlebar: 'fullscreen ad · sponsored by field', headline: 'ТЫ ДОШЛА<br>ДО НИЗА САЙТА', text: 'поздравляем. теперь поле знает, что ты любопытная. это не страшно.', yes: 'УРА', style: 'cyan' },
-    { titlebar: 'critical update.exe', headline: 'УСТАНОВИТЬ<br>НОСТАЛЬГИЮ?', text: 'патч добавляет запах старого монитора и лёгкий шум вентилятора.', yes: 'INSTALL', style: 'lime' },
-    { titlebar: '!!! LIMITED TIME !!!', headline: 'БЕСКОНЕЧНЫЕ<br>ОКНА — БЕСПЛАТНО', text: 'ты не можешь остановить генерацию. только закрывать. welcome to 2003.', yes: 'LMAO', style: 'gold' },
-    { titlebar: 'mystery popup', headline: 'СКОРО ЗДЕСЬ<br>ЧЕТО БУДЕТ', text: 'а пока — это окно. закрой и появится следующее. логика поля.', yes: 'OK OK', style: 'purple' },
-    { titlebar: 'snail.exe · fullscreen', headline: 'ЖАННА<br>НА ВЕСЬ ЭКРАН', text: 'она не виновата что такая большая. погладь или закрой — она всё равно смотрит.', yes: 'ПОГЛАДИТЬ', style: 'hot' },
-    { titlebar: 'visitor detected', headline: 'ГОСТ НА САЙТЕ', text: 'заметка скоро может улететь тебе на почту. регистрация не нужна. только вайб.', yes: 'NICE', style: 'cyan' },
-  ];
-
-  const FIELD_SPAWN_MS = 4200;
-  const SCREEN_SPAWN_MS = 14000;
+  const FIELD_SPAWN_MS = 4500;
   const MAX_FIELD_ADS = 9;
-  const MAX_SCREEN_POPUPS = 4;
-
-  let fieldTimer = null;
-  let screenTimer = null;
 
   function rand(min, max) {
     return min + Math.random() * (max - min);
@@ -2815,16 +3048,6 @@ body {
     const ads = adField.querySelectorAll('.ad-window:not(.is-dismissed)');
     if (ads.length <= MAX_FIELD_ADS) return;
     ads[0].remove();
-  }
-
-  function trimScreenPopups() {
-    const popups = screenLayer.querySelectorAll('.screen-popup');
-    if (popups.length <= MAX_SCREEN_POPUPS) return;
-    popups[0].remove();
-    if (!screenLayer.querySelector('.screen-popup')) {
-      screenLayer.classList.remove('has-popups');
-      screenLayer.setAttribute('aria-hidden', 'true');
-    }
   }
 
   function createFieldAd() {
@@ -2858,56 +3081,11 @@ body {
     trimFieldAds();
   }
 
-  function closeScreenPopup(popup) {
-    if (!popup || popup.classList.contains('is-closing')) return;
-    popup.classList.add('is-closing');
-    setTimeout(() => {
-      popup.remove();
-      if (!screenLayer.querySelector('.screen-popup')) {
-        screenLayer.classList.remove('has-popups');
-        screenLayer.setAttribute('aria-hidden', 'true');
-      }
-    }, 280);
-  }
-
-  function createScreenPopup(trigger) {
-    const tpl = pick(SCREEN_TEMPLATES);
-    const popup = document.createElement('div');
-    popup.className = 'screen-popup';
-    popup.innerHTML = `
-      <div class="screen-popup__backdrop" data-screen-dismiss></div>
-      <div class="win98-window screen-popup__window win98-window--ad-${tpl.style}">
-        <div class="win98-titlebar">${tpl.titlebar}</div>
-        <div class="screen-popup__body">
-          <p class="screen-popup__headline">${tpl.headline}</p>
-          <p class="screen-popup__text">${tpl.text}</p>
-        </div>
-        <div class="screen-popup__footer">
-          <button type="button" class="screen-popup__btn screen-popup__btn--yes" data-screen-action>${tpl.yes}</button>
-          <button type="button" class="screen-popup__btn screen-popup__btn--no" data-screen-dismiss>закрыть · ×</button>
-        </div>
-      </div>
-    `;
-
-    screenLayer.appendChild(popup);
-    screenLayer.classList.add('has-popups');
-    screenLayer.setAttribute('aria-hidden', 'false');
-    trimScreenPopups();
-    addEvent(trigger ? `fullscreen spam: ${trigger}` : 'fullscreen spam spawned');
-  }
-
   function scheduleFieldSpawn() {
-    fieldTimer = setTimeout(() => {
+    setTimeout(() => {
       createFieldAd();
       scheduleFieldSpawn();
-    }, FIELD_SPAWN_MS + rand(-800, 1200));
-  }
-
-  function scheduleScreenSpawn() {
-    screenTimer = setTimeout(() => {
-      createScreenPopup('auto');
-      scheduleScreenSpawn();
-    }, SCREEN_SPAWN_MS + rand(-3000, 4000));
+    }, FIELD_SPAWN_MS + rand(-900, 1100));
   }
 
   adField.addEventListener('click', (event) => {
@@ -2925,33 +3103,128 @@ body {
     if (!actionBtn) return;
 
     addEvent('mini ad clicked');
-    if (Math.random() < 0.42) createScreenPopup('mini ad');
-    else createFieldAd();
-  });
-
-  screenLayer.addEventListener('click', (event) => {
-    const dismissTarget = event.target.closest('[data-screen-dismiss]');
-    if (dismissTarget) {
-      closeScreenPopup(dismissTarget.closest('.screen-popup'));
-      return;
-    }
-
-    const actionBtn = event.target.closest('[data-screen-action]');
-    if (!actionBtn) return;
-
-    const popup = actionBtn.closest('.screen-popup');
-    addEvent('fullscreen ad accepted');
-    closeScreenPopup(popup);
-    if (Math.random() < 0.55) createFieldAd();
-    if (Math.random() < 0.28) setTimeout(() => createScreenPopup('chain'), 600);
+    if (Math.random() < 0.35) createFieldAd();
   });
 
   for (let i = 0; i < 3; i++) createFieldAd();
   scheduleFieldSpawn();
-  setTimeout(() => {
-    createScreenPopup('intro');
-    scheduleScreenSpawn();
-  }, 8000);
+})();
+(function () {
+  const layer = document.getElementById('sitePopupLayer');
+  const eventsList = document.getElementById('eventsList');
+
+  if (!layer) return;
+
+  const WELCOME_TEMPLATES = [
+    {
+      titlebar: 'welcome.exe',
+      headline: 'ДОБРО ПОЖАЛОВАТЬ<br>В ПОЛЕ',
+      text: 'это сайт. тут улитки, окна и немного ностальгии. листай вниз — там ещё чето будет.',
+      yes: 'ОК',
+      style: 'cyan',
+    },
+    {
+      titlebar: 'visitor detected',
+      headline: 'ГОСТ<br>ОБНАРУЖЕН',
+      text: 'поле записало визит. без паники. закрой окно и исследуй.',
+      yes: 'НИШТЯК',
+      style: 'hot',
+    },
+    {
+      titlebar: 'field online',
+      headline: 'СИГНАЛ<br>ПОЧТИ СТАБИЛЬНЫЙ',
+      text: 'ну почти. внизу spam.exe — окна только внутри своего блока.',
+      yes: 'ПОГНАЛИ',
+      style: 'lime',
+    },
+    {
+      titlebar: 'mystery popup',
+      headline: 'СКОРО ТУТ<br>ЧЕТО БУДЕТ',
+      text: 'а пока — это окно по центру. не на весь экран. как ты и хотела.',
+      yes: 'ЛОЛ',
+      style: 'purple',
+    },
+  ];
+
+  function pick(list) {
+    return list[Math.floor(Math.random() * list.length)];
+  }
+
+  function hidePopup() {
+    layer.hidden = true;
+    layer.setAttribute('aria-hidden', 'true');
+    layer.innerHTML = '';
+  }
+
+  function showWelcomePopup() {
+    const tpl = pick(WELCOME_TEMPLATES);
+    layer.innerHTML = `
+      <div class="site-popup__backdrop" data-site-popup-dismiss></div>
+      <div class="win98-window site-popup__window win98-window--ad-${tpl.style}">
+        <div class="win98-titlebar">${tpl.titlebar}</div>
+        <div class="site-popup__body">
+          <p class="site-popup__headline">${tpl.headline}</p>
+          <p class="site-popup__text">${tpl.text}</p>
+        </div>
+        <div class="site-popup__footer">
+          <button type="button" class="site-popup__btn site-popup__btn--yes" data-site-popup-dismiss>${tpl.yes}</button>
+          <button type="button" class="site-popup__btn site-popup__btn--no" data-site-popup-dismiss>закрыть</button>
+        </div>
+      </div>
+    `;
+    layer.hidden = false;
+    layer.setAttribute('aria-hidden', 'false');
+    if (eventsList) {
+      const li = document.createElement('li');
+      li.textContent = 'welcome popup shown';
+      eventsList.appendChild(li);
+    }
+  }
+
+  layer.addEventListener('click', (event) => {
+    if (event.target.closest('[data-site-popup-dismiss]')) hidePopup();
+  });
+
+  setTimeout(showWelcomePopup, 1400);
+})();
+(function () {
+  const hotlineEl = document.getElementById('fieldHotline');
+  const hotlineBtn = document.getElementById('fieldHotlineNext');
+  const counterEl = document.getElementById('fakeCounter');
+
+  const HOTLINE_LINES = [
+    'если интернет пахнет травой — ты не ошиблась адресом.',
+    'улитка не судит. она только смотрит.',
+    'поле unstable but fine — это не баг, это настроение.',
+    'закрой spam.exe окна. появятся новые. логика 2003.',
+    'твой вайб записан. в EVENTS. и в сердце поля.',
+    'не торопись скроллить. тут некуда опаздывать.',
+    'скоро заметка может улететь тебе на почту. без регистрации.',
+    'лучший пиксельный день — тот, который ты не планировала.',
+  ];
+
+  function pick(list) {
+    return list[Math.floor(Math.random() * list.length)];
+  }
+
+  if (hotlineBtn && hotlineEl) {
+    hotlineBtn.addEventListener('click', () => {
+      let next = pick(HOTLINE_LINES);
+      if (next === hotlineEl.textContent) {
+        next = pick(HOTLINE_LINES);
+      }
+      hotlineEl.textContent = next;
+    });
+  }
+
+  if (counterEl) {
+    const base = 400 + Math.floor(Math.random() * 80);
+    counterEl.textContent = String(base).padStart(5, '0');
+    setInterval(() => {
+      const n = parseInt(counterEl.textContent, 10) + 1;
+      counterEl.textContent = String(n).padStart(5, '0');
+    }, 9000);
+  }
 })();
 </script>
 

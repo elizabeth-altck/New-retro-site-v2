@@ -27,10 +27,13 @@
 ```
 ┌──────────┬────────────────────────────┬──────────┐
 │  LEFT    │         CENTER (.core)       │  RIGHT   │
-│  15fr    │           70fr             │  15fr    │
+│  ~228px  │           flex 1fr           │  ~228px  │
 │  nav     │  my site + мини-зоны       │  system  │
+│  radio   │                            │  stats   │
 └──────────┴────────────────────────────┴──────────┘
 ```
+
+Симметричная ширина боковых колонок: CSS `--sidebar-width: min(228px, 19vw)`.
 
 ### Левая колонка
 
@@ -46,15 +49,22 @@
 - **forecast.exe (Win98)** — Forecast + «НОВАЯ КОЛЛЕКЦИЯ»
 - **stickers.exe** — placeholder «скоро тут чето будет»
 - **WRITE YOUR NOTE** (`#siteNote`) — форма заметок (localStorage / FormSubmit)
-- **field diary scrollport** (`#diaryScrollport`) — горизонтальный дневник с иллюстрациями
-- **spam.exe** (`#adSpamField`) — бесконечная генерация mini win98-рекламы; `#screenSpamLayer` — fullscreen popups
+- **field diary scrollport** (`#diaryScrollport`) — горизонтальный дневник (позже — вертикальный)
+- **spam.exe** (`#adSpamField`) — бесконечная генерация mini win98 только внутри блока
+- **image of the day** (`#imageOfDayImg`) — полароид, src заменяется вручную
+- **the snail** (`#snailTeaser`) — тизер Жанны
+- **hotline.txt** (`#fieldHotline`) — случайные мысли поля
+- **guest book preview** — фейковые записи
+- **core-footer** — neocities-счётчик, ссылки
+- **welcome popup** (`#sitePopupLayer`) — центральный win98 при загрузке (~400px, не fullscreen)
 - **Улитка** (`#snailDragWrap`) — `position: absolute` на body, автоползание + drag, `snail.exe`
-- **Ещё не свёрстано:** intro, Image of the day, блок **the snail** (персона)
+- **Ещё не свёрстано:** intro-текст
 
 ### Правая колонка
 
 - **LIVE SYSTEM** — статус ONLINE (мигающая точка), поле, список **EVENTS**
-- `#eventsList` пополняется из мини-игры, коробки, улитки, forecast.exe
+- **field_stats.txt** (`#fieldStats`) — блок статов поля (баланс с FIELD RADIO)
+- `#eventsList` пополняется из мини-игры, коробки, улитки, forecast, spam, welcome popup
 
 ### Ключевые ID (главная)
 
@@ -65,8 +75,12 @@
 | `#fieldScrollport` | Site TODO scrollport |
 | `#cuteScrollport` | stickers.exe — placeholder |
 | `#diaryScrollport` | field diary — horizontal scrollport |
-| `#adSpamField` | spam.exe — бесконечные mini ads |
-| `#screenSpamLayer` | Fullscreen win98 spam popups |
+| `#adSpamField` | spam.exe — бесконечные mini ads внутри блока |
+| `#sitePopupLayer` | Welcome popup по центру при загрузке |
+| `#imageOfDayImg` | Image of the day — полароид |
+| `#fieldHotline` | hotline.txt |
+| `#guestBookPreview` | Guest book preview |
+| `#fieldStats` | field_stats.txt (правая колонка) |
 | `#siteNote` / `#siteNoteForm` | WRITE YOUR NOTE |
 | `#coreObjectsSlot` | Слот справа от коробки (Win98, попапы) |
 | `#forecastApp` | Контейнер forecast.exe |
