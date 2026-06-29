@@ -44,9 +44,11 @@
 - **site TODO scrollport** — прокручиваемый список планов развития сайта
 - **Коробка-коллаж** — ~360px, слева: hover/tap `closed.png` ↔ `opened.png`
 - **forecast.exe (Win98)** — Forecast + «НОВАЯ КОЛЛЕКЦИЯ»
-- **stickers.exe** — мини horizontal scrollport с картинками
+- **stickers.exe** — placeholder «скоро тут чето будет»
 - **WRITE YOUR NOTE** (`#siteNote`) — форма заметок (localStorage / FormSubmit)
-- **Улитка** (`#snailDragWrap`) — `position: fixed`, автоползание + drag по всему экрану, `snail.exe`
+- **field diary scrollport** (`#diaryScrollport`) — горизонтальный дневник с иллюстрациями
+- **spam.exe** (`#adSpamField`) — бесконечная генерация mini win98-рекламы; `#screenSpamLayer` — fullscreen popups
+- **Улитка** (`#snailDragWrap`) — `position: absolute` на body, автоползание + drag, `snail.exe`
 - **Ещё не свёрстано:** intro, Image of the day, блок **the snail** (персона)
 
 ### Правая колонка
@@ -61,7 +63,10 @@
 | `#coreArena` | Оливковый блок `.core` |
 | `#fieldRadio` | Кастомный музыкальный плеер (левая колонка) |
 | `#fieldScrollport` | Site TODO scrollport |
-| `#cuteScrollport` | stickers.exe — horizontal scrollport |
+| `#cuteScrollport` | stickers.exe — placeholder |
+| `#diaryScrollport` | field diary — horizontal scrollport |
+| `#adSpamField` | spam.exe — бесконечные mini ads |
+| `#screenSpamLayer` | Fullscreen win98 spam popups |
 | `#siteNote` / `#siteNoteForm` | WRITE YOUR NOTE |
 | `#coreObjectsSlot` | Слот справа от коробки (Win98, попапы) |
 | `#forecastApp` | Контейнер forecast.exe |

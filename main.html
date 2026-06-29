@@ -18,6 +18,7 @@ body {
   position: relative;
   font-family: 'Share Tech Mono', monospace;
   color: #1b1b1b;
+  overflow-x: clip;
 
   background-image: url("images/поле.jpeg");
   background-size: cover;
@@ -117,9 +118,13 @@ body {
   gap: var(--column-gap);
   padding: 8px var(--page-padding) var(--page-padding);
   overflow: visible;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .center {
+  min-width: 0;
+  max-width: 100%;
   overflow: visible;
   padding-right: 8px;
   padding-bottom: 8px;
@@ -502,10 +507,11 @@ body {
 
 .core {
   position: relative;
-  min-height: 80vh;
+  min-width: 0;
+  max-width: 100%;
   background: rgba(155, 143, 67, 0.9);
-  padding: 25px;
-  overflow: visible;
+  padding: 25px 25px 36px;
+  overflow-x: clip;
   border-top: 2px solid rgba(240, 235, 210, 0.8);
   border-left: 2px solid rgba(240, 235, 210, 0.8);
   border-right: none;
@@ -540,6 +546,9 @@ body {
   padding: 12px 12px 14px;
   border: 2px dashed rgba(35, 32, 20, 0.6);
   color: #141414;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
   background:
     linear-gradient(
       145deg,
@@ -1328,6 +1337,419 @@ body {
   opacity: 0.75;
 }
 
+/* LOWER FIELD — diary scrollport + ad spam */
+.field-lower-world {
+  margin-top: 28px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.diary-scrollport-world {
+  margin-top: 0;
+}
+
+.diary-scrollport {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 14px 12px 16px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: #e8a0c8 rgba(0, 0, 0, 0.35);
+  background:
+    repeating-linear-gradient(
+      -4deg,
+      rgba(232, 160, 200, 0.12) 0 14px,
+      rgba(142, 212, 168, 0.1) 14px 28px,
+      rgba(158, 197, 232, 0.1) 28px 42px
+    );
+  border: 2px solid rgba(35, 32, 20, 0.55);
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.diary-scrollport::-webkit-scrollbar {
+  height: 9px;
+}
+
+.diary-scrollport::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #e8a0c8, #9ec5e8);
+  border: 1px solid #1a1a1a;
+}
+
+.diary-page {
+  flex: 0 0 220px;
+  width: 220px;
+  max-width: 220px;
+  scroll-snap-align: start;
+  padding: 12px 12px 14px;
+  border: 2px solid #1a1a1a;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.42);
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.diary-page:nth-child(odd) { transform: rotate(-1.4deg); }
+.diary-page:nth-child(even) { transform: rotate(1.1deg); }
+
+.diary-page--rose {
+  background: linear-gradient(145deg, #ffe8f4 0%, #ffc8e8 55%, #f5b0d8 100%);
+}
+
+.diary-page--mint {
+  background: linear-gradient(145deg, #e8fff0 0%, #c8f5d8 55%, #a8e8c0 100%);
+}
+
+.diary-page--sky {
+  background: linear-gradient(145deg, #e8f4ff 0%, #c8e0ff 55%, #a8d0f5 100%);
+}
+
+.diary-page--sun {
+  background: linear-gradient(145deg, #fff8d8 0%, #ffe8a8 55%, #f5d878 100%);
+}
+
+.diary-page--lav {
+  background: linear-gradient(145deg, #f0e8ff 0%, #dcc8ff 55%, #c8a8f5 100%);
+}
+
+.diary-page-art {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border: 2px solid #1a1a1a;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+  background: #fff6d8;
+}
+
+.diary-page-art--gif {
+  object-fit: contain;
+}
+
+.diary-page-meta {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  line-height: 1.5;
+  color: #58141c;
+  margin: 0 0 6px;
+  letter-spacing: 0.2px;
+}
+
+.diary-page-text {
+  font-family: 'Jura', sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.diary-page-doodle {
+  grid-column: 1 / -1;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: rgba(26, 26, 26, 0.55);
+  margin: 4px 0 0;
+  letter-spacing: 1px;
+}
+
+.ad-spam-world {
+  margin-top: 22px;
+}
+
+.ad-spam-field {
+  position: relative;
+  min-height: 340px;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 45, 138, 0.14), transparent 42%),
+    radial-gradient(circle at 82% 68%, rgba(0, 200, 255, 0.12), transparent 40%),
+    rgba(40, 38, 22, 0.12);
+  border: 2px dashed rgba(35, 32, 20, 0.55);
+}
+
+.ad-window {
+  position: absolute;
+  width: min(212px, 46%);
+  z-index: 2;
+  animation: adSpawnIn 0.32s ease;
+}
+
+@keyframes adSpawnIn {
+  from {
+    opacity: 0;
+    transform: scale(0.86) rotate(-6deg);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ad-window.is-bobbing {
+  animation: adBob 2.8s ease-in-out infinite;
+}
+
+@keyframes adBob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -5px; }
+}
+
+@keyframes adWiggle {
+  0%, 100% { rotate: 4deg; }
+  50% { rotate: -2deg; }
+}
+
+.win98-window--ad-hot {
+  background: #5a1838;
+}
+
+.win98-window--ad-hot .win98-titlebar {
+  background: linear-gradient(90deg, #ff2d8a 0%, #ff6b35 100%);
+  color: #fff;
+  animation: adBarBlink 1.1s step-end infinite;
+}
+
+.win98-window--ad-cyan {
+  background: #123a58;
+}
+
+.win98-window--ad-cyan .win98-titlebar {
+  background: #00c8ff;
+  color: #1a1a1a;
+}
+
+.win98-window--ad-lime {
+  background: #2a4810;
+}
+
+.win98-window--ad-lime .win98-titlebar {
+  background: #c8ff00;
+  color: #1a1a1a;
+}
+
+.win98-window--ad-gold {
+  background: #4a3808;
+}
+
+.win98-window--ad-gold .win98-titlebar {
+  background: linear-gradient(90deg, #ffd700, #ffaa00);
+  color: #1a1a1a;
+}
+
+.win98-window--ad-purple {
+  background: #381858;
+}
+
+.win98-window--ad-purple .win98-titlebar {
+  background: #b040ff;
+  color: #fff;
+}
+
+@keyframes adBarBlink {
+  0%, 100% { filter: none; }
+  50% { filter: brightness(1.35); }
+}
+
+.ad-body {
+  padding: 10px 10px 12px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.ad-headline {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  line-height: 1.55;
+  margin: 0 0 8px;
+  color: #fffadb;
+}
+
+.ad-text {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  margin: 0 0 10px;
+  color: rgba(242, 242, 242, 0.88);
+}
+
+.ad-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.ad-cta-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  padding: 4px 7px;
+  border: 2px solid #1a1a1a;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
+}
+
+.ad-cta-btn--yes {
+  background: #ff2d8a;
+  color: #fff;
+}
+
+.ad-cta-btn--no {
+  background: #d8d4c8;
+  color: #1a1a1a;
+}
+
+.ad-cta-btn--ghost {
+  background: transparent;
+  color: rgba(242, 242, 242, 0.7);
+  border-color: rgba(242, 242, 242, 0.35);
+  box-shadow: none;
+  font-size: 9px;
+}
+
+.ad-window.is-dismissed {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.88) translateY(10px) !important;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.ad-spam-hint {
+  position: absolute;
+  left: 10px;
+  bottom: 8px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: rgba(26, 26, 26, 0.5);
+  margin: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* FULLSCREEN spam popups */
+#screenSpamLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 8000;
+  pointer-events: none;
+}
+
+#screenSpamLayer.has-popups {
+  pointer-events: auto;
+}
+
+.screen-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 8001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.screen-popup__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 12, 10, 0.78);
+}
+
+.screen-popup__window {
+  position: relative;
+  z-index: 1;
+  width: calc(100vw - 20px);
+  height: calc(100vh - 20px);
+  max-width: none;
+  max-height: none;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  animation: screenPopupIn 0.38s ease;
+}
+
+@keyframes screenPopupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) rotate(-1.5deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.screen-popup__body {
+  flex: 1;
+  padding: 18px 20px 16px;
+  overflow-y: auto;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.screen-popup__headline {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  line-height: 1.65;
+  margin: 0 0 16px;
+  color: #fffadb;
+}
+
+.screen-popup__text {
+  font-family: 'Jura', sans-serif;
+  font-size: 20px;
+  line-height: 1.45;
+  margin: 0 0 18px;
+  color: #f2f2f2;
+}
+
+.screen-popup__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 14px 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.screen-popup__btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  padding: 8px 14px;
+  border: 2px solid #1a1a1a;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.45);
+}
+
+.screen-popup__btn--yes {
+  background: #ff2d8a;
+  color: #fff;
+}
+
+.screen-popup__btn--no {
+  background: #d8d4c8;
+  color: #1a1a1a;
+}
+
+.screen-popup.is-closing {
+  pointer-events: none;
+}
+
+.screen-popup.is-closing .screen-popup__window {
+  animation: screenPopupOut 0.28s ease forwards;
+}
+
+@keyframes screenPopupOut {
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
 </style>
 </head>
 
@@ -1420,7 +1842,7 @@ body {
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>tamagotchi</strong> — комната улитки, погладить / покормить</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>кастомная 404</strong> — ошибка в стиле сайта</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>secret door</strong> — секретная страница из nav</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>diary</strong> — заметки / дневник</p>
+        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>diary</strong> — field diary scrollport на главной</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>ещё scrollports</strong> — в коробке, в галерее, в music room</p>
       </div>
     </section>
@@ -1490,7 +1912,7 @@ body {
             <div class="win98-window win98-window--stickers" aria-label="stickers — скоро">
               <div class="win98-titlebar">stickers.exe</div>
               <div class="stickers-soon" id="cuteScrollport">
-                <p class="stickers-soon-text">скоро тут<br>чёт-то будет</p>
+                <p class="stickers-soon-text">скоро тут<br>чето будет</p>
                 <p class="stickers-soon-ghost">··· ? ···</p>
               </div>
             </div>
@@ -1538,6 +1960,63 @@ body {
       </div>
     </section>
 
+    <div class="field-lower-world">
+
+      <section class="mini-world diary-scrollport-world" id="diaryWorld" aria-label="field diary scrollport">
+        <p class="mini-world-label"><span class="label-a">scrollport</span> · <span class="label-b">field diary</span> · <span class="label-c">черновики с иллюстрациями</span></p>
+        <div class="diary-scrollport" id="diaryScrollport">
+          <article class="diary-page diary-page--rose">
+            <img class="diary-page-art" src="images/луг_и_солнышко.jpeg" alt="" width="72" height="72">
+            <div>
+              <p class="diary-page-meta">24 · 06 · поле</p>
+              <p class="diary-page-text">сегодня интернет пахнет травой и старым монитором. норм.</p>
+            </div>
+            <p class="diary-page-doodle">~ * ~ ~ * ~</p>
+          </article>
+          <article class="diary-page diary-page--mint">
+            <img class="diary-page-art" src="images/forest_and_lake.jpeg" alt="" width="72" height="72">
+            <div>
+              <p class="diary-page-meta">23 · 06 · лес</p>
+              <p class="diary-page-text">улитка смотрела на меня три часа. я проиграла.</p>
+            </div>
+            <p class="diary-page-doodle">( ◡ ‿ ◡ )</p>
+          </article>
+          <article class="diary-page diary-page--sky">
+            <img class="diary-page-art diary-page-art--gif" src="images/snail-slug.gif" alt="" width="72" height="72">
+            <div>
+              <p class="diary-page-meta">22 · 06 · draft</p>
+              <p class="diary-page-text">жанна опять уползла в код. оставила след из sparkles.</p>
+            </div>
+            <p class="diary-page-doodle">&gt;&gt;&gt; _</p>
+          </article>
+          <article class="diary-page diary-page--sun">
+            <img class="diary-page-art diary-page-art--gif" src="images/винтаж сердце.png" alt="" width="72" height="72">
+            <div>
+              <p class="diary-page-meta">?? · ?? · vibe</p>
+              <p class="diary-page-text">не помню что писала но настроение — жёлтое и немного опасное.</p>
+            </div>
+            <p class="diary-page-doodle">♥ ? ♥</p>
+          </article>
+          <article class="diary-page diary-page--lav">
+            <img class="diary-page-art" src="images/snail.png" alt="" width="72" height="72">
+            <div>
+              <p class="diary-page-meta">soon · wip</p>
+              <p class="diary-page-text">завтра добавлю ещё окна. или послезавтра. или никогда — тоже ок.</p>
+            </div>
+            <p class="diary-page-doodle">··· loading feelings ···</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="mini-world ad-spam-world" id="adSpamWorld" aria-label="навязчивая реклама поля">
+        <p class="mini-world-label"><span class="label-a">spam.exe</span> · <span class="label-b">popup ads</span> · <span class="label-c">бесконечно + fullscreen</span></p>
+        <div class="ad-spam-field" id="adSpamField">
+          <p class="ad-spam-hint" id="adSpamHint">окна генерируются бесконечно · esc не работает</p>
+        </div>
+      </section>
+
+    </div>
+
   </div>
 </div>
 
@@ -1561,6 +2040,8 @@ body {
 </div>
 
 </div>
+
+<div id="screenSpamLayer" aria-hidden="true"></div>
 
 <div class="snail-drag-wrap" id="snailDragWrap">
   <button type="button" class="snail-object" id="snailObject" aria-label="улитка ползает сама — перетащи куда хочешь">
@@ -2273,6 +2754,204 @@ body {
       eventsList.appendChild(li);
     }
   });
+})();
+(function () {
+  const adField = document.getElementById('adSpamField');
+  const adHint = document.getElementById('adSpamHint');
+  const screenLayer = document.getElementById('screenSpamLayer');
+  const eventsList = document.getElementById('eventsList');
+
+  if (!adField || !screenLayer) return;
+
+  const AD_STYLES = ['hot', 'cyan', 'lime', 'gold', 'purple'];
+
+  const FIELD_TEMPLATES = [
+    { titlebar: '!!! WINNER !!!', headline: 'ТЫ ВЫИГРАЛА<br>БЕСПЛАТНУЮ УЛИТКУ', text: 'кликни сейчас. улитка уже в пути.', yes: 'ЗАБРАТЬ', style: 'hot' },
+    { titlebar: 'hot singles.exe', headline: '3 SNAILS NEAR YOU', text: 'ахатины в 2 км хотят познакомиться.', yes: 'MEET', style: 'cyan' },
+    { titlebar: 'virus??? (not really)', headline: 'YOUR PC IS<br>TOO CUTE', text: 'скачать патч настроения? 100% safe.', yes: 'DOWNLOAD', style: 'lime' },
+    { titlebar: 'limited offer', headline: '+999 VIBE<br>ONLY TODAY', text: 'акция до конца терпения.', yes: 'GET', style: 'gold' },
+    { titlebar: 'subscribe.exe', headline: 'ENTER EMAIL<br>FOR MYSTERY', text: 'скоро заметки улетят гостям.', yes: 'OK', style: 'purple' },
+    { titlebar: 'free RAM.exe', headline: 'ОСВОБОДИ<br>32 МБ', text: 'поле готово забрать твою тревогу.', yes: 'YES', style: 'cyan' },
+    { titlebar: 'congrats!!!', headline: 'ТЫ ПРОШЛА<br>НЕ СУЩЕСТВУЮЩИЙ ТЕСТ', text: 'сертификат вайба уже в твоей голове.', yes: 'CLAIM', style: 'hot' },
+    { titlebar: 'snail VPN', headline: 'СКРОЙ СЛЕДЫ<br>УЛИТКИ', text: 'анонимность: низкая. улитка всё видит.', yes: 'CONNECT', style: 'lime' },
+    { titlebar: 'mood update', headline: 'НАСТРОЕНИЕ<br>ОБНОВЛЕНО', text: 'версия 0.4. перезагрузка не нужна.', yes: 'RELOAD', style: 'gold' },
+    { titlebar: 'guest list.exe', headline: 'ФЕЙКОВЫЕ<br>ГОСТИ ЖДУТ', text: 'address book 2000s скоро здесь.', yes: 'OPEN', style: 'purple' },
+  ];
+
+  const SCREEN_TEMPLATES = [
+    { titlebar: 'URGENT · SYSTEM ALERT', headline: 'ПОЛЕ ТРЕБУЕТ<br>ВНИМАНИЯ', text: 'неизвестный сигнал в центре экрана. это может быть ты. или улитка. или оба.', yes: 'ПОНЯЛА', style: 'hot' },
+    { titlebar: 'fullscreen ad · sponsored by field', headline: 'ТЫ ДОШЛА<br>ДО НИЗА САЙТА', text: 'поздравляем. теперь поле знает, что ты любопытная. это не страшно.', yes: 'УРА', style: 'cyan' },
+    { titlebar: 'critical update.exe', headline: 'УСТАНОВИТЬ<br>НОСТАЛЬГИЮ?', text: 'патч добавляет запах старого монитора и лёгкий шум вентилятора.', yes: 'INSTALL', style: 'lime' },
+    { titlebar: '!!! LIMITED TIME !!!', headline: 'БЕСКОНЕЧНЫЕ<br>ОКНА — БЕСПЛАТНО', text: 'ты не можешь остановить генерацию. только закрывать. welcome to 2003.', yes: 'LMAO', style: 'gold' },
+    { titlebar: 'mystery popup', headline: 'СКОРО ЗДЕСЬ<br>ЧЕТО БУДЕТ', text: 'а пока — это окно. закрой и появится следующее. логика поля.', yes: 'OK OK', style: 'purple' },
+    { titlebar: 'snail.exe · fullscreen', headline: 'ЖАННА<br>НА ВЕСЬ ЭКРАН', text: 'она не виновата что такая большая. погладь или закрой — она всё равно смотрит.', yes: 'ПОГЛАДИТЬ', style: 'hot' },
+    { titlebar: 'visitor detected', headline: 'ГОСТ НА САЙТЕ', text: 'заметка скоро может улететь тебе на почту. регистрация не нужна. только вайб.', yes: 'NICE', style: 'cyan' },
+  ];
+
+  const FIELD_SPAWN_MS = 4200;
+  const SCREEN_SPAWN_MS = 14000;
+  const MAX_FIELD_ADS = 9;
+  const MAX_SCREEN_POPUPS = 4;
+
+  let fieldTimer = null;
+  let screenTimer = null;
+
+  function rand(min, max) {
+    return min + Math.random() * (max - min);
+  }
+
+  function pick(list) {
+    return list[Math.floor(Math.random() * list.length)];
+  }
+
+  function addEvent(text) {
+    if (!eventsList) return;
+    const li = document.createElement('li');
+    li.textContent = text;
+    eventsList.appendChild(li);
+  }
+
+  function trimFieldAds() {
+    const ads = adField.querySelectorAll('.ad-window:not(.is-dismissed)');
+    if (ads.length <= MAX_FIELD_ADS) return;
+    ads[0].remove();
+  }
+
+  function trimScreenPopups() {
+    const popups = screenLayer.querySelectorAll('.screen-popup');
+    if (popups.length <= MAX_SCREEN_POPUPS) return;
+    popups[0].remove();
+    if (!screenLayer.querySelector('.screen-popup')) {
+      screenLayer.classList.remove('has-popups');
+      screenLayer.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  function createFieldAd() {
+    const tpl = pick(FIELD_TEMPLATES);
+    const rot = rand(-5, 5);
+    const el = document.createElement('div');
+    el.className = `ad-window win98-window win98-window--ad-${tpl.style}`;
+    if (Math.random() > 0.45) el.classList.add('is-bobbing');
+
+    const widthPct = rand(38, 48);
+    el.style.width = `min(212px, ${widthPct.toFixed(0)}%)`;
+    el.style.left = `${rand(0, 52).toFixed(1)}%`;
+    el.style.top = `${rand(0, 42).toFixed(1)}%`;
+    el.style.transform = `rotate(${rot.toFixed(1)}deg)`;
+    el.style.zIndex = String(Math.floor(rand(2, 9)));
+
+    el.innerHTML = `
+      <div class="win98-titlebar">${tpl.titlebar}</div>
+      <div class="ad-body">
+        <p class="ad-headline">${tpl.headline}</p>
+        <p class="ad-text">${tpl.text}</p>
+        <div class="ad-cta-row">
+          <button type="button" class="ad-cta-btn ad-cta-btn--yes" data-ad-action="yes">${tpl.yes}</button>
+          <button type="button" class="ad-cta-btn ad-cta-btn--no" data-ad-dismiss>×</button>
+        </div>
+      </div>
+    `;
+
+    if (adHint) adField.insertBefore(el, adHint);
+    else adField.appendChild(el);
+    trimFieldAds();
+  }
+
+  function closeScreenPopup(popup) {
+    if (!popup || popup.classList.contains('is-closing')) return;
+    popup.classList.add('is-closing');
+    setTimeout(() => {
+      popup.remove();
+      if (!screenLayer.querySelector('.screen-popup')) {
+        screenLayer.classList.remove('has-popups');
+        screenLayer.setAttribute('aria-hidden', 'true');
+      }
+    }, 280);
+  }
+
+  function createScreenPopup(trigger) {
+    const tpl = pick(SCREEN_TEMPLATES);
+    const popup = document.createElement('div');
+    popup.className = 'screen-popup';
+    popup.innerHTML = `
+      <div class="screen-popup__backdrop" data-screen-dismiss></div>
+      <div class="win98-window screen-popup__window win98-window--ad-${tpl.style}">
+        <div class="win98-titlebar">${tpl.titlebar}</div>
+        <div class="screen-popup__body">
+          <p class="screen-popup__headline">${tpl.headline}</p>
+          <p class="screen-popup__text">${tpl.text}</p>
+        </div>
+        <div class="screen-popup__footer">
+          <button type="button" class="screen-popup__btn screen-popup__btn--yes" data-screen-action>${tpl.yes}</button>
+          <button type="button" class="screen-popup__btn screen-popup__btn--no" data-screen-dismiss>закрыть · ×</button>
+        </div>
+      </div>
+    `;
+
+    screenLayer.appendChild(popup);
+    screenLayer.classList.add('has-popups');
+    screenLayer.setAttribute('aria-hidden', 'false');
+    trimScreenPopups();
+    addEvent(trigger ? `fullscreen spam: ${trigger}` : 'fullscreen spam spawned');
+  }
+
+  function scheduleFieldSpawn() {
+    fieldTimer = setTimeout(() => {
+      createFieldAd();
+      scheduleFieldSpawn();
+    }, FIELD_SPAWN_MS + rand(-800, 1200));
+  }
+
+  function scheduleScreenSpawn() {
+    screenTimer = setTimeout(() => {
+      createScreenPopup('auto');
+      scheduleScreenSpawn();
+    }, SCREEN_SPAWN_MS + rand(-3000, 4000));
+  }
+
+  adField.addEventListener('click', (event) => {
+    const dismissBtn = event.target.closest('[data-ad-dismiss]');
+    if (dismissBtn) {
+      const windowEl = dismissBtn.closest('.ad-window');
+      if (windowEl) {
+        windowEl.classList.add('is-dismissed');
+        setTimeout(() => windowEl.remove(), 280);
+      }
+      return;
+    }
+
+    const actionBtn = event.target.closest('[data-ad-action]');
+    if (!actionBtn) return;
+
+    addEvent('mini ad clicked');
+    if (Math.random() < 0.42) createScreenPopup('mini ad');
+    else createFieldAd();
+  });
+
+  screenLayer.addEventListener('click', (event) => {
+    const dismissTarget = event.target.closest('[data-screen-dismiss]');
+    if (dismissTarget) {
+      closeScreenPopup(dismissTarget.closest('.screen-popup'));
+      return;
+    }
+
+    const actionBtn = event.target.closest('[data-screen-action]');
+    if (!actionBtn) return;
+
+    const popup = actionBtn.closest('.screen-popup');
+    addEvent('fullscreen ad accepted');
+    closeScreenPopup(popup);
+    if (Math.random() < 0.55) createFieldAd();
+    if (Math.random() < 0.28) setTimeout(() => createScreenPopup('chain'), 600);
+  });
+
+  for (let i = 0; i < 3; i++) createFieldAd();
+  scheduleFieldSpawn();
+  setTimeout(() => {
+    createScreenPopup('intro');
+    scheduleScreenSpawn();
+  }, 8000);
 })();
 </script>
 
