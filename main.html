@@ -194,6 +194,261 @@ body {
   border-left-color: rgba(245, 236, 212, 0.45);
 }
 
+/* FIELD RADIO — кастомный плеер */
+.field-radio {
+  margin-top: 18px;
+  padding: 10px 10px 12px;
+  border: 2px dashed rgba(232, 200, 106, 0.42);
+  background: rgba(18, 16, 12, 0.78);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 248, 210, 0.06),
+    3px 3px 0 rgba(0, 0, 0, 0.45);
+}
+
+.field-radio-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  line-height: 1.5;
+  color: #9ec5e8;
+  margin: 0 0 8px;
+  letter-spacing: 0.3px;
+}
+
+.field-radio-status {
+  font-size: 11px;
+  color: rgba(242, 242, 242, 0.55);
+  margin: 0 0 6px;
+}
+
+.field-radio-track {
+  font-size: 13px;
+  line-height: 1.35;
+  color: #fffadb;
+  margin: 0 0 10px;
+}
+
+.field-radio-eq {
+  display: flex;
+  gap: 3px;
+  height: 24px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.field-radio-eq span {
+  display: block;
+  width: 4px;
+  height: 5px;
+  background: #8fd4a8;
+  box-shadow: 0 0 4px rgba(143, 212, 168, 0.45);
+}
+
+.field-radio.is-playing .field-radio-eq span:nth-child(1) { animation: eqPulse 0.38s ease-in-out infinite alternate; }
+.field-radio.is-playing .field-radio-eq span:nth-child(2) { animation: eqPulse 0.42s ease-in-out infinite alternate 0.05s; }
+.field-radio.is-playing .field-radio-eq span:nth-child(3) { animation: eqPulse 0.36s ease-in-out infinite alternate 0.1s; }
+.field-radio.is-playing .field-radio-eq span:nth-child(4) { animation: eqPulse 0.44s ease-in-out infinite alternate 0.15s; }
+.field-radio.is-playing .field-radio-eq span:nth-child(5) { animation: eqPulse 0.4s ease-in-out infinite alternate 0.2s; }
+.field-radio.is-playing .field-radio-eq span:nth-child(6) { animation: eqPulse 0.35s ease-in-out infinite alternate 0.25s; }
+.field-radio.is-playing .field-radio-eq span:nth-child(7) { animation: eqPulse 0.43s ease-in-out infinite alternate 0.3s; }
+
+@keyframes eqPulse {
+  from { height: 4px; opacity: 0.55; }
+  to { height: 22px; opacity: 1; }
+}
+
+.field-radio-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.field-radio-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 7px 10px;
+  border-top: 2px solid #d8d4c8;
+  border-left: 2px solid #d8d4c8;
+  border-right: 2px solid #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+  background: #4a5238;
+  color: #f2f2f2;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.field-radio-tip {
+  position: relative;
+}
+
+.field-radio-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 7px);
+  z-index: 30;
+  padding: 5px 8px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  line-height: 1.35;
+  color: #fffadb;
+  background: rgba(12, 10, 8, 0.94);
+  border: 1px solid rgba(232, 200, 106, 0.45);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.field-radio-tip:hover::after,
+.field-radio-tip:focus-within::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.field-radio-volume.field-radio-tip::after {
+  left: auto;
+  right: 0;
+}
+
+.field-radio-btn:active {
+  border-top: 2px solid #1a1a1a;
+  border-left: 2px solid #1a1a1a;
+  border-right: 2px solid #e8e4d8;
+  border-bottom: 2px solid #e8e4d8;
+}
+
+.field-radio-progress {
+  flex: 1;
+  height: 10px;
+  background: #1a1814;
+  border: 2px solid #1a1a1a;
+  cursor: pointer;
+  position: relative;
+  min-width: 0;
+}
+
+.field-radio-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #e8a0c8 0%, #9ec5e8 100%);
+  pointer-events: none;
+}
+
+.field-radio-time {
+  font-size: 10px;
+  color: rgba(242, 242, 242, 0.7);
+  margin-top: 8px;
+}
+
+.field-radio-volume {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.field-radio-volume-label {
+  font-size: 10px;
+  color: rgba(242, 242, 242, 0.65);
+  flex-shrink: 0;
+}
+
+.field-radio-volume input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 8px;
+  background: #1a1814;
+  border: 1px solid #1a1a1a;
+  cursor: pointer;
+}
+
+.field-radio-volume input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 14px;
+  background: #e8c86a;
+  border: 2px solid #1a1a1a;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.field-radio-volume input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 14px;
+  background: #e8c86a;
+  border: 2px solid #1a1a1a;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* SCROLLPORT — внутренний скролл внутри блока */
+.field-scrollport-world {
+  margin-top: 20px;
+  max-width: 100%;
+}
+
+.scrollport {
+  max-height: 118px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px 12px;
+  background: rgba(255, 248, 210, 0.14);
+  border: 2px dashed rgba(26, 26, 26, 0.5);
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.12);
+  scrollbar-width: thin;
+  scrollbar-color: #e8c86a rgba(0, 0, 0, 0.35);
+}
+
+.scrollport::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollport::-webkit-scrollbar-thumb {
+  background: #e8c86a;
+  border: 1px solid #1a1a1a;
+}
+
+.scrollport-item {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #1a1a1a;
+  padding: 5px 0;
+  border-bottom: 1px dotted rgba(26, 26, 26, 0.28);
+}
+
+.scrollport-item:last-child {
+  border-bottom: none;
+}
+
+.scrollport-item strong {
+  color: #58141c;
+}
+
+.scrollport-item--done {
+  color: rgba(26, 26, 26, 0.72);
+}
+
+.scrollport-item--done strong {
+  color: #3d6b4a;
+}
+
+.scrollport-mark {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  margin-right: 6px;
+  color: #58141c;
+}
+
+.scrollport-item--done .scrollport-mark {
+  color: #3d6b4a;
+}
+
+.scrollport-item--wip .scrollport-mark {
+  color: #9b8f43;
+}
+
 .right h3 {
   font-size: 22px;
   font-weight: 600;
@@ -439,8 +694,8 @@ body {
 
 .core-objects-row {
   display: grid;
-  grid-template-columns: min(58%, 480px) 1fr;
-  gap: 12px 24px;
+  grid-template-columns: min(42%, 360px) 1fr;
+  gap: 12px 20px;
   align-items: start;
 }
 
@@ -450,8 +705,8 @@ body {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  max-width: 480px;
-  margin-left: -25px;
+  max-width: 360px;
+  margin-left: -18px;
   outline: none;
 }
 
@@ -564,14 +819,178 @@ body {
 /* CORE OBJECTS — slot (улитка + win98) */
 .core-objects-slot {
   position: relative;
-  min-height: 320px;
+  min-height: 0;
   padding-top: 6px;
 }
 
 .forecast-app {
   position: relative;
   z-index: 1;
-  min-height: 280px;
+  min-height: 200px;
+}
+
+.slot-secondary-row {
+  display: grid;
+  grid-template-columns: min(220px, 46%) 1fr;
+  gap: 12px;
+  margin-top: 12px;
+  align-items: start;
+}
+
+.win98-window--stickers {
+  width: 100%;
+  max-width: 220px;
+  padding: 0;
+}
+
+.scrollport--horizontal {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: 112px;
+  align-items: center;
+  background: rgba(255, 248, 210, 0.16);
+  scrollbar-width: thin;
+  scrollbar-color: #e8c86a rgba(0, 0, 0, 0.35);
+}
+
+.scrollport--horizontal::-webkit-scrollbar {
+  height: 7px;
+}
+
+.scrollport--horizontal::-webkit-scrollbar-thumb {
+  background: #e8c86a;
+  border: 1px solid #1a1a1a;
+}
+
+.scrollport-thumb {
+  flex: 0 0 auto;
+  width: 68px;
+  height: 68px;
+  object-fit: cover;
+  border: 2px solid #1a1a1a;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.42);
+  transition: transform 0.2s ease;
+  background: #f5ecd4;
+}
+
+.scrollport-thumb:hover {
+  transform: rotate(-4deg) scale(1.06);
+}
+
+.scrollport-thumb--gif {
+  object-fit: contain;
+  background: rgba(255, 248, 210, 0.85);
+}
+
+.site-note {
+  min-width: 0;
+}
+
+.site-note-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  line-height: 1.5;
+  color: #1a1a1a;
+  margin: 0 0 8px;
+  letter-spacing: 0.3px;
+}
+
+.site-note-paper {
+  position: relative;
+  padding: 12px 12px 14px;
+  background: #fff6d8;
+  border: 2px solid #1a1a1a;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.48);
+  transform: rotate(0.6deg);
+}
+
+.site-note-paper::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 22px;
+  width: 12px;
+  height: 26px;
+  border: 2px solid #7a7a7a;
+  border-radius: 10px 10px 2px 2px;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.site-note-input {
+  display: block;
+  width: 100%;
+  min-height: 70px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #1a1a1a;
+  resize: vertical;
+}
+
+.site-note-input:focus {
+  outline: none;
+}
+
+.site-note-input::placeholder {
+  color: rgba(26, 26, 26, 0.42);
+}
+
+.site-note-actions {
+  margin-top: 8px;
+}
+
+.site-note-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 7px 10px;
+  border-top: 2px solid #e8e4d8;
+  border-left: 2px solid #e8e4d8;
+  border-right: 2px solid #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+  background: #e8a0c8;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.site-note-btn:active {
+  border-top: 2px solid #1a1a1a;
+  border-left: 2px solid #1a1a1a;
+  border-right: 2px solid #e8e4d8;
+  border-bottom: 2px solid #e8e4d8;
+}
+
+.site-note-status {
+  font-size: 10px;
+  line-height: 1.4;
+  margin: 8px 0 0;
+  color: #58141c;
+}
+
+.site-note-status.is-ok {
+  color: #2d7a52;
+}
+
+.site-note-hint {
+  font-size: 9px;
+  line-height: 1.35;
+  margin: 6px 0 0;
+  opacity: 0.65;
+  color: #1a1a1a;
+}
+
+.field-radio-track-note {
+  font-size: 10px;
+  line-height: 1.35;
+  color: rgba(242, 242, 242, 0.48);
+  margin: -4px 0 10px;
 }
 
 .win98-window {
@@ -621,7 +1040,7 @@ body {
 .win98-window--collection {
   position: absolute;
   right: 0;
-  top: 52px;
+  top: 40px;
   width: min(100%, 220px);
   z-index: 3;
   transition: opacity 0.25s ease, transform 0.25s ease;
@@ -703,8 +1122,8 @@ body {
 }
 
 .snail-drag-wrap {
-  position: absolute;
-  z-index: 12;
+  position: fixed;
+  z-index: 1200;
   touch-action: none;
   transform-origin: 50% 85%;
   animation: snailBob 3.2s ease-in-out infinite;
@@ -944,10 +1363,34 @@ body {
     <ul class="left-nav-list">
       <li><a href="#">gallery</a></li>
       <li><a href="#">diary</a></li>
-      <li><a href="#">music</a></li>
+      <li><a href="#fieldRadio">music</a></li>
       <li><a href="#">secret door</a></li>
     </ul>
   </nav>
+
+  <div class="field-radio" id="fieldRadio" aria-label="music player">
+    <p class="field-radio-label">music.exe · FIELD RADIO</p>
+    <p class="field-radio-status" id="fieldRadioStatus">signal: idle</p>
+    <p class="field-radio-track" id="fieldRadioTrack">rainy lofi city</p>
+    <p class="field-radio-track-note">legacy track · скоро 3–5 треков на выбор</p>
+    <div class="field-radio-eq" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <audio id="fieldAudio" preload="metadata" loop>
+      <source src="music/rainy-lofi-city-lofi-music-332746.mp3" type="audio/mpeg">
+    </audio>
+    <div class="field-radio-controls">
+      <button type="button" class="field-radio-btn field-radio-tip" id="fieldRadioToggle" data-tip="воспроизвести / остановить" aria-label="воспроизвести или остановить">PLAY</button>
+      <div class="field-radio-progress field-radio-tip" id="fieldRadioProgress" data-tip="перемотка — кликни в полоску" role="slider" aria-label="перемотка трека">
+        <span class="field-radio-progress-fill" id="fieldRadioProgressFill"></span>
+      </div>
+    </div>
+    <p class="field-radio-time" id="fieldRadioTime">0:00 / 0:00</p>
+    <div class="field-radio-volume field-radio-tip" data-tip="громкость">
+      <span class="field-radio-volume-label">vol</span>
+      <input type="range" id="fieldRadioVolume" min="0" max="100" value="72" aria-label="громкость">
+    </div>
+  </div>
 </div>
 
 <!-- CENTER -->
@@ -966,6 +1409,27 @@ body {
       <p class="signal-game-hint" id="gameHint">лови мигающие сигналы — они не ждут</p>
       <button type="button" class="signal-game-btn" id="gameStart">START</button>
     </div>
+
+    <section class="mini-world field-scrollport-world" aria-label="site todo scrollport">
+      <p class="mini-world-label"><span class="label-a">scrollport</span> · <span class="label-b">site TODO</span> · <span class="label-c">что добавлю на сайт</span></p>
+      <div class="scrollport" id="fieldScrollport">
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>FIELD RADIO</strong> — rainy lofi city в левой колонке</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>улитка</strong> — виджет, ползание, drag, snail.exe</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>коробка</strong> — hover open, потом контент внутри</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>forecast.exe</strong> — win98 окна, look up позже → коллекция</p>
+        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>the snail</strong> — блок персонажа Жанна + ссылки</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>gallery</strong> — GIF-галерея, атмосфера 2000s–2010s</p>
+        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>WRITE YOUR NOTE</strong> — блокнот на главной</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>image of the day</strong> — фото дня</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>intro</strong> — текст «привет, это мой сайт…»</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>music room</strong> — полноценная страница, больше треков</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>tamagotchi</strong> — комната улитки, погладить / покормить</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>кастомная 404</strong> — ошибка в стиле сайта</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>secret door</strong> — секретная страница из nav</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>diary</strong> — заметки / дневник</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>ещё scrollports</strong> — в коробке, в галерее, в music room</p>
+      </div>
+    </section>
 
     <!-- PNG из Figma → images/memory-box/closed.png и opened.png -->
     <section class="object-world memory-box-world" aria-label="коробка-коллаж">
@@ -1028,6 +1492,39 @@ body {
             </div>
           </div>
 
+          <div class="slot-secondary-row">
+            <div class="win98-window win98-window--stickers" aria-label="мини scrollport stickers">
+              <div class="win98-titlebar">stickers.exe</div>
+              <div class="scrollport scrollport--horizontal" id="cuteScrollport">
+                <img class="scrollport-thumb" src="images/луг_и_солнышко.jpeg" alt="" width="68" height="68">
+                <img class="scrollport-thumb" src="images/forest_and_lake.jpeg" alt="" width="68" height="68">
+                <img class="scrollport-thumb scrollport-thumb--gif" src="images/snail-slug.gif" alt="" width="68" height="68">
+                <img class="scrollport-thumb scrollport-thumb--gif" src="images/винтаж сердце.png" alt="" width="68" height="68">
+                <img class="scrollport-thumb" src="images/snail.png" alt="" width="68" height="68">
+              </div>
+            </div>
+
+            <section class="site-note" id="siteNote" aria-label="write your note">
+              <p class="site-note-label">WRITE YOUR NOTE</p>
+              <form class="site-note-paper" id="siteNoteForm" data-endpoint="">
+                <textarea
+                  class="site-note-input"
+                  id="siteNoteInput"
+                  name="message"
+                  placeholder="Waiting..."
+                  maxlength="500"
+                  rows="3"
+                  required
+                ></textarea>
+                <div class="site-note-actions">
+                  <button type="submit" class="site-note-btn" id="siteNoteSend">send to field</button>
+                </div>
+                <p class="site-note-status" id="siteNoteStatus" hidden></p>
+                <p class="site-note-hint">заметка улетит на почту, когда подключим endpoint · пока — в поле локально</p>
+              </form>
+            </section>
+          </div>
+
           <div class="mini-popup snail-care" id="snailCare" hidden>
             <p class="mini-popup-title">snail.exe</p>
             <p class="mini-popup-text" id="snailCareText">она смотрит на тебя оценивающе.</p>
@@ -1049,19 +1546,6 @@ body {
         </div>
       </div>
     </section>
-
-    <div class="snail-drag-wrap" id="snailDragWrap">
-      <button type="button" class="snail-object" id="snailObject" aria-label="улитка ползает сама — перетащи, если нужно">
-        <img class="snail-img" id="snailImg" src="images/snail.png" alt="">
-        <span class="snail-sparkles" aria-hidden="true">
-          <i class="sparkle s1"></i>
-          <i class="sparkle s2"></i>
-          <i class="sparkle s3"></i>
-          <i class="sparkle s4"></i>
-          <i class="sparkle s5"></i>
-        </span>
-      </button>
-    </div>
 
   </div>
 </div>
@@ -1085,6 +1569,19 @@ body {
   </ul>
 </div>
 
+</div>
+
+<div class="snail-drag-wrap" id="snailDragWrap">
+  <button type="button" class="snail-object" id="snailObject" aria-label="улитка ползает сама — перетащи куда хочешь">
+    <img class="snail-img" id="snailImg" src="images/snail.png" alt="">
+    <span class="snail-sparkles" aria-hidden="true">
+      <i class="sparkle s1"></i>
+      <i class="sparkle s2"></i>
+      <i class="sparkle s3"></i>
+      <i class="sparkle s4"></i>
+      <i class="sparkle s5"></i>
+    </span>
+  </button>
 </div>
 
 <script>
@@ -1278,8 +1775,6 @@ body {
 })();
 (function () {
   const eventsList = document.getElementById('eventsList');
-  const coreArena = document.getElementById('coreArena');
-  const objectsSlot = document.getElementById('coreObjectsSlot');
   const snailWrap = document.getElementById('snailDragWrap');
   const snail = document.getElementById('snailObject');
   const snailCare = document.getElementById('snailCare');
@@ -1292,7 +1787,7 @@ body {
   const win98PopupText = document.getElementById('win98PopupText');
   const win98PopupClose = document.getElementById('win98PopupClose');
 
-  if (!snail || !snailWrap || !coreArena) return;
+  if (!snail || !snailWrap) return;
 
   let snailClicks = 0;
   let dragging = false;
@@ -1305,38 +1800,53 @@ body {
   let dragStartLeft = 0;
   let dragStartTop = 0;
 
-  function snailWrapPos() {
-    const arenaRect = coreArena.getBoundingClientRect();
+  function snailViewportPos() {
     const wrapRect = snailWrap.getBoundingClientRect();
     return {
-      left: wrapRect.left - arenaRect.left,
-      top: wrapRect.top - arenaRect.top,
+      left: wrapRect.left,
+      top: wrapRect.top,
     };
   }
 
   function clampSnailPos(left, top) {
-    const maxLeft = coreArena.clientWidth - snailWrap.offsetWidth;
-    const maxTop = coreArena.clientHeight - snailWrap.offsetHeight;
+    const pad = 6;
+    const maxLeft = window.innerWidth - snailWrap.offsetWidth - pad;
+    const maxTop = window.innerHeight - snailWrap.offsetHeight - pad;
     return {
-      left: Math.max(0, Math.min(maxLeft, left)),
-      top: Math.max(0, Math.min(maxTop, top)),
+      left: Math.max(pad, Math.min(maxLeft, left)),
+      top: Math.max(pad, Math.min(maxTop, top)),
     };
   }
 
   function initSnailPosition() {
     if (snailWrap.dataset.positioned === '1') return;
-    const anchorSlot = objectsSlot;
-    if (!anchorSlot) return;
+    const scrollportWorld = document.querySelector('.field-scrollport-world');
+    const forecastApp = document.getElementById('forecastApp');
+    if (!scrollportWorld && !forecastApp) return;
 
     const place = () => {
-      const slotRect = anchorSlot.getBoundingClientRect();
-      const arenaRect = coreArena.getBoundingClientRect();
-      const left = slotRect.left - arenaRect.left + slotRect.width * 0.14;
-      const top = slotRect.bottom - arenaRect.top - snailWrap.offsetHeight - 10;
+      const spRect = scrollportWorld ? scrollportWorld.getBoundingClientRect() : null;
+      const fcRect = forecastApp ? forecastApp.getBoundingClientRect() : null;
+      let left;
+      let top;
+
+      if (spRect && fcRect) {
+        left = fcRect.left + fcRect.width * 0.22;
+        top = spRect.bottom - snailWrap.offsetHeight * 0.72;
+        if (top < spRect.top + 8) {
+          top = spRect.top + 8;
+        }
+      } else if (spRect) {
+        left = spRect.right - snailWrap.offsetWidth * 0.55;
+        top = spRect.top + 6;
+      } else {
+        left = fcRect.left + fcRect.width * 0.15;
+        top = fcRect.top - snailWrap.offsetHeight * 0.12;
+      }
+
       const next = clampSnailPos(left, top);
       snailWrap.style.left = next.left + 'px';
       snailWrap.style.top = next.top + 'px';
-      snailWrap.style.bottom = 'auto';
       snailWrap.dataset.positioned = '1';
       scheduleWander(2800);
     };
@@ -1355,14 +1865,13 @@ body {
     if (!Number.isNaN(left) && !Number.isNaN(top)) {
       return { left, top };
     }
-    return snailWrapPos();
+    return snailViewportPos();
   }
 
   function setSnailLeftTop(left, top) {
     const next = clampSnailPos(left, top);
     snailWrap.style.left = next.left + 'px';
     snailWrap.style.top = next.top + 'px';
-    snailWrap.style.bottom = 'auto';
     snailWrap.dataset.positioned = '1';
     return next;
   }
@@ -1419,9 +1928,9 @@ body {
     }
 
     if (!target) {
-      const maxLeft = coreArena.clientWidth - snailWrap.offsetWidth;
-      const slide = start.left < maxLeft / 2 ? distance : -distance;
-      target = clampSnailPos(start.left + slide, start.top + 14);
+      const pos = getSnailLayoutPos();
+      const slide = pos.left < window.innerWidth / 2 ? distance : -distance;
+      target = clampSnailPos(pos.left + slide, pos.top + 14);
     }
 
     const snailImg = document.getElementById('snailImg');
@@ -1498,7 +2007,7 @@ body {
     snailWrap.classList.add('is-dragging');
     snailWrap.setPointerCapture(event.pointerId);
 
-    const pos = snailWrapPos();
+    const pos = snailViewportPos();
     dragStartLeft = pos.left;
     dragStartTop = pos.top;
     dragStartX = event.clientX;
@@ -1506,7 +2015,6 @@ body {
 
     snailWrap.style.left = dragStartLeft + 'px';
     snailWrap.style.top = dragStartTop + 'px';
-    snailWrap.style.bottom = 'auto';
   });
 
   snailWrap.addEventListener('pointermove', (event) => {
@@ -1626,6 +2134,148 @@ body {
         addEvent('snail: kicked (rude)');
       }
     });
+  });
+})();
+(function () {
+  const radio = document.getElementById('fieldRadio');
+  const audio = document.getElementById('fieldAudio');
+  const toggleBtn = document.getElementById('fieldRadioToggle');
+  const progressBar = document.getElementById('fieldRadioProgress');
+  const progressFill = document.getElementById('fieldRadioProgressFill');
+  const timeEl = document.getElementById('fieldRadioTime');
+  const volumeInput = document.getElementById('fieldRadioVolume');
+  const statusEl = document.getElementById('fieldRadioStatus');
+  const eventsList = document.getElementById('eventsList');
+
+  if (!radio || !audio || !toggleBtn) return;
+
+  function formatTime(sec) {
+    if (!Number.isFinite(sec)) return '0:00';
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return m + ':' + String(s).padStart(2, '0');
+  }
+
+  function updateProgress() {
+    const duration = audio.duration || 0;
+    const current = audio.currentTime || 0;
+    const pct = duration ? (current / duration) * 100 : 0;
+    if (progressFill) progressFill.style.width = pct + '%';
+    if (timeEl) timeEl.textContent = formatTime(current) + ' / ' + formatTime(duration);
+  }
+
+  function setPlayingState(playing) {
+    radio.classList.toggle('is-playing', playing);
+    toggleBtn.textContent = playing ? 'STOP' : 'PLAY';
+    toggleBtn.setAttribute('data-tip', playing ? 'остановить трек' : 'воспроизвести трек');
+    if (statusEl) statusEl.textContent = playing ? 'signal: broadcasting' : 'signal: idle';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play().then(() => {
+        setPlayingState(true);
+        if (eventsList) {
+          const li = document.createElement('li');
+          li.textContent = 'field radio: rainy lofi city on';
+          eventsList.appendChild(li);
+        }
+      }).catch(() => {
+        if (statusEl) statusEl.textContent = 'signal: blocked';
+      });
+    } else {
+      audio.pause();
+      setPlayingState(false);
+    }
+  });
+
+  audio.addEventListener('timeupdate', updateProgress);
+  audio.addEventListener('loadedmetadata', updateProgress);
+  audio.addEventListener('ended', () => setPlayingState(false));
+
+  if (progressBar) {
+    progressBar.addEventListener('click', (event) => {
+      const rect = progressBar.getBoundingClientRect();
+      const ratio = (event.clientX - rect.left) / rect.width;
+      if (audio.duration) audio.currentTime = ratio * audio.duration;
+      updateProgress();
+    });
+  }
+
+  if (volumeInput) {
+    audio.volume = Number(volumeInput.value) / 100;
+    volumeInput.addEventListener('input', () => {
+      audio.volume = Number(volumeInput.value) / 100;
+    });
+  }
+
+  updateProgress();
+})();
+(function () {
+  const form = document.getElementById('siteNoteForm');
+  const input = document.getElementById('siteNoteInput');
+  const statusEl = document.getElementById('siteNoteStatus');
+  const eventsList = document.getElementById('eventsList');
+  const STORAGE_KEY = 'gifworld_notes';
+
+  if (!form || !input) return;
+
+  function showStatus(text, isOk) {
+    if (!statusEl) return;
+    statusEl.hidden = false;
+    statusEl.textContent = text;
+    statusEl.classList.toggle('is-ok', isOk);
+  }
+
+  function saveLocal(text) {
+    const notes = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    notes.push({ text, at: new Date().toISOString() });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+  }
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+
+    const endpoint = form.dataset.endpoint;
+    if (endpoint) {
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            message: text,
+            _subject: 'GIF WORLD · note from site',
+          }),
+        });
+        if (response.ok) {
+          showStatus('отправлено ✦ поле получило заметку', true);
+          input.value = '';
+          if (eventsList) {
+            const li = document.createElement('li');
+            li.textContent = 'visitor note received';
+            eventsList.appendChild(li);
+          }
+          return;
+        }
+      } catch (error) {
+        showStatus('поле не ответило. попробуй позже.', false);
+        return;
+      }
+    }
+
+    saveLocal(text);
+    showStatus('записано в поле (локально, пока без почты)', true);
+    input.value = '';
+    if (eventsList) {
+      const li = document.createElement('li');
+      li.textContent = 'note saved locally';
+      eventsList.appendChild(li);
+    }
   });
 })();
 </script>

@@ -34,16 +34,20 @@
 
 ### Левая колонка
 
-- **Navigation** — ссылки: gallery, diary, music, secret door (пока `#`, без целевых страниц).
+- **Navigation** — ссылки: gallery, diary, music → `#fieldRadio`, secret door
+- **FIELD RADIO** (`#fieldRadio`) — кастомный плеер, legacy-трек rainy lofi city
 
 ### Центр
 
 - Заголовок **my site**
 - **SIGNAL CATCH** — мини-игра под заголовком
-- **Коробка-коллаж** — object-world слева: hover/tap `closed.png` ↔ `opened.png`
-- **forecast.exe (Win98)** — в `#coreObjectsSlot`: Forecast + «НОВАЯ КОЛЛЕКЦИЯ», меню, Look up, `#win98Popup`
-- **Улитка** — в `.core` (`#snailDragWrap`): виджет, сама ползает по `#coreArena`, drag, `snail.exe`, события в LIVE SYSTEM
-- **Ниже `.core` (по макету scroll, ещё не свёрстано):** WRITE YOUR NOTE, intro-текст, Image of the day, блок **the snail** (tamagotchi / персона Жанна)
+- **site TODO scrollport** — прокручиваемый список планов развития сайта
+- **Коробка-коллаж** — ~360px, слева: hover/tap `closed.png` ↔ `opened.png`
+- **forecast.exe (Win98)** — Forecast + «НОВАЯ КОЛЛЕКЦИЯ»
+- **stickers.exe** — мини horizontal scrollport с картинками
+- **WRITE YOUR NOTE** (`#siteNote`) — форма заметок (localStorage / FormSubmit)
+- **Улитка** (`#snailDragWrap`) — `position: fixed`, автоползание + drag по всему экрану, `snail.exe`
+- **Ещё не свёрстано:** intro, Image of the day, блок **the snail** (персона)
 
 ### Правая колонка
 
@@ -54,7 +58,11 @@
 
 | ID | Назначение |
 |----|------------|
-| `#coreArena` | Оливковый блок `.core` — арена ползания улитки |
+| `#coreArena` | Оливковый блок `.core` |
+| `#fieldRadio` | Кастомный музыкальный плеер (левая колонка) |
+| `#fieldScrollport` | Site TODO scrollport |
+| `#cuteScrollport` | stickers.exe — horizontal scrollport |
+| `#siteNote` / `#siteNoteForm` | WRITE YOUR NOTE |
 | `#coreObjectsSlot` | Слот справа от коробки (Win98, попапы) |
 | `#forecastApp` | Контейнер forecast.exe |
 | `#collectionWindow` | Окно «НОВАЯ КОЛЛЕКЦИЯ» |
@@ -87,4 +95,4 @@
 | `images/винтаж сердце.png` | Сердечки в шапке |
 | `images/memory-box/closed.png`, `opened.png` | Коробка-коллаж на главной |
 | `images/snail.png` | Улитка на главной (~320px) |
-| `images/BIG SMACHNY snail.png` | Альтернативный ассет улитки (не в HTML) |
+| `music/rainy-lofi-city-lofi-music-332746.mp3` | FIELD RADIO (legacy-трек) |

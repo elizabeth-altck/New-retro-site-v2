@@ -114,7 +114,7 @@
 ## Коробка-коллаж (object-world)
 
 - Ассеты: `images/memory-box/closed.png`, `images/memory-box/opened.png` (два состояния из Figma).
-- Раскладка: слева в `.core` (~480px), справа `#coreObjectsSlot` для других объектов.
+- Раскладка: слева в `.core` (~**360px**), справа `#coreObjectsSlot` для других объектов.
 - **Открытие:** наведение (desktop) — crossfade closed → opened; тап / Enter — toggle на touch.
 - Статичная зернистость поверх фото (`overlay`, без анимации).
 - Первое открытие → событие `memory box opened` в `#eventsList`.
@@ -128,15 +128,30 @@
 - Close → `is-closed` на окне коллекции (визуально скрыто).
 - Палитра: `#4a5238` фон окна, `#2f3828` titlebar, кремовые/чёрные Win98-границы, Press Start 2P в заголовках коллекции.
 
-## Улитка (object в `.core`)
+## FIELD RADIO (левая колонка)
+
+- `#fieldRadio` — кастомный плеер, не системный UI браузера.
+- Трек: `music/rainy-lofi-city-lofi-music-332746.mp3` (legacy с прошлого сайта).
+- PLAY/STOP, кастомная перемотка, vol; подсказки при hover (`data-tip`).
+- Эквалайзер-полоски при воспроизведении.
+
+## Scrollport
+
+- **site TODO** — вертикальный scrollport со списком `[x] / [~] / [ ]` планов.
+- **stickers.exe** — горизонтальный мини-scrollport (~220px), Win98-рамка, thumbnails 68×68.
+
+## WRITE YOUR NOTE
+
+- `#siteNote` — стикер с «скрепкой», placeholder `Waiting...`.
+- Отправка: `localStorage` по умолчанию; реальная почта — `data-endpoint="https://formsubmit.co/ajax/..."` на `#siteNoteForm`.
+
+## Улитка (виджет на странице)
 
 - Ассет `images/snail.png`, ширина `min(62vw, 320px)`.
-- `#snailDragWrap` в `.core` (`#coreArena`), z-index выше Win98.
-- **Движение:** автономное ползание (пауза ~2–6 с, шаг ~65–150 px); при движении влево — `scaleX(-1)`.
-- **Drag:** пользователь перетаскивает; после отпускания ползание продолжается от новой точки.
-- **Idle:** лёгкий `snailBob`; при hover — пауза bob + drop-shadow + блёстки (без резкого блика).
-- **Тап:** 1-й shy; 5-й «полёт»; иногда `#snailCare` (`snail.exe`).
-- Попап: погладить / покормить / пнуть / раздавить → текст + события в `#eventsList`.
+- `#snailDragWrap` — **`position: fixed`**, z-index 1200; вне `.core`.
+- **Движение:** автоползание + drag **по всему viewport**; старт — между site TODO и forecast.exe (не на заметках).
+- **Idle:** `snailBob`; hover — блёстки + glow.
+- **Тап:** shy / `snail.exe` / полёт на 5-й клик.
 
 ---
 

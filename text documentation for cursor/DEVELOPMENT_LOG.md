@@ -20,6 +20,28 @@
 
 ---
 
+## 2026-06-28 — музыка, scrollports, заметки, улитка на весь экран
+
+**Что сделано:**
+
+- **FIELD RADIO** — кастомный плеер в левой колонке, `music/rainy-lofi-city-lofi-music-332746.mp3`, подсказки при hover.
+- **site TODO scrollport** — список планов сайта внутри прокручиваемого блока.
+- **stickers.exe** — мини horizontal scrollport с милыми картинками в `#coreObjectsSlot`.
+- **WRITE YOUR NOTE** — стикер-форма; локальное сохранение + задел под FormSubmit.
+- Коробка уменьшена (~360px) — больше места для контента справа.
+- Улитка: `position: fixed`, drag и ползание **по всему viewport**; старт между scrollport и forecast, не на заметках.
+
+**Что изменилось:**
+
+- `main.html` — radio, scrollports, notes, snail viewport logic.
+- Документация: `DECISIONS`, `DEVELOPMENT_LOG`, `SITE_STRUCTURE`, `STYLE_GUIDE`, `IDEAS`, `TODO`.
+
+**Что делать дальше:**
+
+- 3–5 треков в плеере; intro + image of the day; блок **the snail**; подключить почту для заметок.
+
+---
+
 ## 2026-06-28 — улитка + Win98-окна
 
 **Что сделано:**
