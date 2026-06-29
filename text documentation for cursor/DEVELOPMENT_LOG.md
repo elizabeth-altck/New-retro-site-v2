@@ -27,7 +27,7 @@
 - Image of the day и diary — `.media-placeholder` вместо готовых jpeg; описание в figcaption.
 - the snail — `BIG SMACHNY snail.png`, крупнее в блоке.
 - Слоты png-персонажей `.field-character-peeks`.
-- TODO: страница помимо главной (404 / ошибка) — дизайн Figma Sanchar.
+- TODO: страница помимо главной (404 / ошибка) — дизайн в Figma.
 
 ---
 
