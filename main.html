@@ -15,6 +15,7 @@
 
 body {
   margin: 0;
+  position: relative;
   font-family: 'Share Tech Mono', monospace;
   color: #1b1b1b;
 
@@ -1122,8 +1123,8 @@ body {
 }
 
 .snail-drag-wrap {
-  position: fixed;
-  z-index: 1200;
+  position: absolute;
+  z-index: 50;
   touch-action: none;
   transform-origin: 50% 85%;
   animation: snailBob 3.2s ease-in-out infinite;
@@ -1800,18 +1801,23 @@ body {
   let dragStartLeft = 0;
   let dragStartTop = 0;
 
-  function snailViewportPos() {
+  function snailDocPos() {
     const wrapRect = snailWrap.getBoundingClientRect();
     return {
-      left: wrapRect.left,
-      top: wrapRect.top,
+      left: wrapRect.left + window.scrollX,
+      top: wrapRect.top + window.scrollY,
     };
   }
 
   function clampSnailPos(left, top) {
     const pad = 6;
-    const maxLeft = window.innerWidth - snailWrap.offsetWidth - pad;
-    const maxTop = window.innerHeight - snailWrap.offsetHeight - pad;
+    const docWidth = document.documentElement.clientWidth;
+    const docHeight = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight
+    );
+    const maxLeft = docWidth - snailWrap.offsetWidth - pad;
+    const maxTop = docHeight - snailWrap.offsetHeight - pad;
     return {
       left: Math.max(pad, Math.min(maxLeft, left)),
       top: Math.max(pad, Math.min(maxTop, top)),
@@ -1831,17 +1837,17 @@ body {
       let top;
 
       if (spRect && fcRect) {
-        left = fcRect.left + fcRect.width * 0.22;
-        top = spRect.bottom - snailWrap.offsetHeight * 0.72;
-        if (top < spRect.top + 8) {
-          top = spRect.top + 8;
+        left = fcRect.left + window.scrollX + fcRect.width * 0.22;
+        top = spRect.bottom + window.scrollY - snailWrap.offsetHeight * 0.72;
+        if (top < spRect.top + window.scrollY + 8) {
+          top = spRect.top + window.scrollY + 8;
         }
       } else if (spRect) {
-        left = spRect.right - snailWrap.offsetWidth * 0.55;
-        top = spRect.top + 6;
+        left = spRect.right + window.scrollX - snailWrap.offsetWidth * 0.55;
+        top = spRect.top + window.scrollY + 6;
       } else {
-        left = fcRect.left + fcRect.width * 0.15;
-        top = fcRect.top - snailWrap.offsetHeight * 0.12;
+        left = fcRect.left + window.scrollX + fcRect.width * 0.15;
+        top = fcRect.top + window.scrollY - snailWrap.offsetHeight * 0.12;
       }
 
       const next = clampSnailPos(left, top);
@@ -1865,7 +1871,7 @@ body {
     if (!Number.isNaN(left) && !Number.isNaN(top)) {
       return { left, top };
     }
-    return snailViewportPos();
+    return snailDocPos();
   }
 
   function setSnailLeftTop(left, top) {
@@ -1929,7 +1935,7 @@ body {
 
     if (!target) {
       const pos = getSnailLayoutPos();
-      const slide = pos.left < window.innerWidth / 2 ? distance : -distance;
+      const slide = pos.left < document.documentElement.clientWidth / 2 ? distance : -distance;
       target = clampSnailPos(pos.left + slide, pos.top + 14);
     }
 
@@ -2007,7 +2013,7 @@ body {
     snailWrap.classList.add('is-dragging');
     snailWrap.setPointerCapture(event.pointerId);
 
-    const pos = snailViewportPos();
+    const pos = snailDocPos();
     dragStartLeft = pos.left;
     dragStartTop = pos.top;
     dragStartX = event.clientX;
