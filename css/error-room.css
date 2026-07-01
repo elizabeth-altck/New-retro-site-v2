@@ -23,7 +23,7 @@ body.error-room {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: url("../images/забор цветы и спокойствие.jpeg") center center / cover no-repeat;
+  background: url("/images/error-field-fence.jpeg") center center / cover no-repeat;
 }
 
 .error-room-bg::after {
