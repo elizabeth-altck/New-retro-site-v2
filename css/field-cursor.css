@@ -1,0 +1,75 @@
+/* TEST: анимированный курсор — img следует за мышью (CSS gif-cursor на macOS ≈ 1 кадр) */
+:root {
+  --cursor-fallback: url("../images/rose.gif") 16 4, auto;
+  --cursor-hotspot-x: 16;
+  --cursor-hotspot-y: 4;
+  --cursor-press-src: "";
+}
+
+body {
+  cursor: var(--cursor-fallback);
+}
+
+.field-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2147483646;
+  pointer-events: none;
+  transform: translate3d(-999px, -999px, 0);
+  will-change: transform;
+}
+
+.field-cursor[hidden] {
+  display: none;
+}
+
+.field-cursor.is-suppressed {
+  opacity: 0;
+}
+
+.field-cursor img {
+  display: block;
+  width: 33px;
+  height: 27px;
+  image-rendering: pixelated;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform 0.06s ease, filter 0.06s ease;
+}
+
+.field-cursor.is-pointer img {
+  transform: scale(1.06);
+  filter: brightness(1.08);
+}
+
+.field-cursor.is-pressed img {
+  transform: scale(0.84) translateY(2px);
+  filter: brightness(0.88) saturate(1.12);
+}
+
+.field-cursor.is-pointer.is-pressed img {
+  transform: scale(0.9) translateY(2px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.field-cursor-active,
+  html.field-cursor-active body,
+  html.field-cursor-active a,
+  html.field-cursor-active button,
+  html.field-cursor-active label,
+  html.field-cursor-active input,
+  html.field-cursor-active select,
+  html.field-cursor-active textarea,
+  html.field-cursor-active summary,
+  html.field-cursor-active .signal-target,
+  html.field-cursor-active .signal-game-btn,
+  html.field-cursor-active .snail-object {
+    cursor: none !important;
+  }
+
+  html.field-cursor-active .signal-game-arena,
+  html.field-cursor-active .signal-game-arena * {
+    cursor: crosshair !important;
+  }
+}

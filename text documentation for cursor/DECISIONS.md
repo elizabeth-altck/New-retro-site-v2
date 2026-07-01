@@ -293,6 +293,7 @@ Nav и персонаж должны открывать «место в мире
 - Замена заглушки = переписать один html-файл или добавить новую страницу по шаблону `css/error-room.css`.
 - `widget.html` — заглушка про виджет; живая улитка остаётся на `main.html`.
 - Image of the day / diary — `.media-placeholder` до своих артов.
+- **Пути error-room (2026-07):** относительные `css/`, `images/` + inline `<base href="/">` на https (не file://) — работает и локально, и на Vercel 404.
 
 ---
 
