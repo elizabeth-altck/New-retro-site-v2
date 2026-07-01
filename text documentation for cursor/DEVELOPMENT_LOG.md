@@ -189,6 +189,19 @@
 
 ---
 
+## 2026-07-01 — neocities: live crawl четырёх сайтов
+
+**Что сделано:**
+
+- Обход по ссылкам автора: fish2fish (splash → main → me/todo), garfriend (door → shop room → neighbors/shrines), ginder (dashboard-окна), korenara (launcher + Ramen Explorer tabs).
+- Обновлён раздел референсов в `STYLE_GUIDE.md`.
+
+**Вывод:**
+
+GIF WORLD = **korenara** по механике + **garfriend** как модель будущих комнат. fish2fish и ginder — для плотности/полировки, не для палитры.
+
+---
+
 ## Предыдущие сессии (кратко)
 
 **2026-06-24 (ранее):**

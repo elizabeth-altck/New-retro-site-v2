@@ -6,7 +6,68 @@
 
 ---
 
-## Страницы
+## Референсы и вайб (neocities)
+
+- Автор собирает **screen recording** с neocities-сайтов, которые задают вайб (3–4 штуки и больше).
+- Агент смотрит референсы сам; если видео не читается — просим **URL сайтов** или **скриншоты ключевых моментов**.
+- Цель: не копировать pixel-perfect, а уловить **хаос, scrollport, object-worlds, old web** для GIF WORLD.
+
+**Просмотрено 2026-07-01:** [korenara](https://korenara.neocities.org/), [fish2fish](https://fish2fish.neocities.org/), [garfriend.me](https://garfriend.me/), [ginder](https://ginder.neocities.org/) — live crawl + запись; см. `STYLE_GUIDE.md`.
+
+- **Blinkies / stamps column** — колонка 88×31 баннеров в footer или боковой полосе (fish2fish)
+- **Sticky todo на главной** — видимый гостям список дел как у korenara (у нас частично site TODO scrollport)
+- **Chatterbox-style** — живая лента сообщений (глубже, чем guest book preview)
+- **Dock навигации** — ряд иконок/emoji внизу экранa (korenara food dock)
+- **Narrative gateway** — «ты нашла X в космосе, зайти?» на входе (garfriend)
+- **Tiled pattern zones** — плитка hearts/strawberry *внутри* mini-world, не на всю страницу
+- **Disclaimer-блок** — «not optimized for mobile, ctrl+f5» — meta, self-aware old web
+
+---
+
+## Где искать GIF и графику под neocities-вайб
+
+Автор хочет гифки «как у korenara / fish / garfriend», не знает актуальные источники. Web Archive **всё ещё работает**, плюс есть neocities-архивы.
+
+### С чего начать (лучшие точки входа)
+
+| Ресурс | Что там | Зачем |
+|--------|---------|-------|
+| **[GifCities](https://gifcities.org/)** (Internet Archive) | GIF из GeoCities, **semantic search** («sparkling border», «dancing hamster»), фильтр по **размеру** | Старый web 1:0 — **да, архив жив и обновлён (2025)** |
+| **[The Pixel Party](https://rentryresource.neocities.org/)** | rentryresource — blinkies, stamps, 88×31, backgrounds, dividers | Огромный каталог ссылок, как «библиотека библиотек» |
+| **[Betty's Graphics](https://bettysgraphics.neocities.org/)** | ~16k+ картинок, можно скачать архивом | Массовый поиск по категориям |
+| **[88x31 на rentryresource](https://rentryresource.neocities.org/88x31)** | кнопки, Helnet archive, Capstasher, Neonaut | Footer / webrings как у fish & garfriend |
+| **[Ladybugs resources](https://ladybugsfrickingblog.neocities.org/resources)** | 100+ ссылок с пометками что где | Если потерялась в Pixel Party |
+| **[2133 Blinkie Forge](https://numbpill3d.github.io/2133-blinkie-button-forge/)** | генератор blinkies/88×31 без Photoshop | Свои кнопки под поле/GIF WORLD |
+
+### По «типу» вайба
+
+- **korenara** (уют, food icons, мягкое): `css-design-resources.neocities.org`, tiny pixels / food PNG на Pixel Party → Backgrounds, Transparents
+- **fish2fish** (pink Y2K, stamps): blinkies.cafe, sydsblinkies, raining-starss, 99gifshop — через Pixel Party или ladybugs list
+- **garfriend** (dithered, cozy): GifCities + **свои** иллюстрации; для декора — pixel safari, geocities dig
+- **поле / lofi / GIF WORLD**: GifCities queries: `nature`, `flower`, `sky`, `sparkle`, `under construction`; не только pink neocities
+
+### Как искать (рабочий процесс)
+
+1. **GifCities** — semantic tab, слова на английском: `cozy`, `pixel`, `nature`, `retro`, `divider`
+2. **Special Search** — по старому имени файла (как раньше в архиве)
+3. **Фильтр размера** — blinkies часто 150×20, кнопки 88×31, декор — любой
+4. **Neocities tag/browse** — чужие sites → View Source / сохранить gif локально
+5. **Скачивать в `images/`**, не hotlink (garfriend прямо предупреждает)
+6. **Pinterest/Tumblr** — искать `webcore gif`, `neocities graphics`, `old web divider` → проверять можно ли сохранить
+
+### Web Archive напрямую
+
+- [web.archive.org](https://web.archive.org) → старые gif-сайты (omgicons, gif-sites из 2000s) — **работает**, но медленнее чем GifCities
+- GifCities уже вытащил лучшее из GeoCities — **начинать с него**, не с ручного копания
+
+### Для нашего сайта
+
+- Gallery / scrollport / polaroid — GifCities + Betty's по темам
+- Footer blinkies — 88x31 archives
+- Image of the day — **свои** фото + иногда retro gif как «находка дня»
+- Не смешивать всё pink Y2K на главную — палитра поля важнее
+
+---
 
 - Рабочий стол компьютера
 - Дом

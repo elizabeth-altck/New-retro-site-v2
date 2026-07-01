@@ -48,6 +48,55 @@
 
 ---
 
+## Референсы neocities (2026-07-01, screen recording + live crawl)
+
+Просмотрены кадры из записи и **живой обход** сайтов по ссылкам автора. Сайты **не копируем** — берём принципы.
+
+### Карта референсов (4 сайта)
+
+| Сайт | Суть | Как устроен глубже |
+|------|------|-------------------|
+| **[korenara.neocities.org](https://korenara.neocities.org/)** | уютный «рабочий стол ПК» | Фон-природа **всегда виден**. Launcher-dock (ramen, chatterbox, spoopify…). **Ramen Explorer** = fake IE с вкладками Home / About / Blog / Art / Diary / Guestbook. Поверх: sticky **To Do**, **chatterbox**, персонаж на цепочке. Окна minimize/maximize/close. |
+| **[fish2fish.neocities.org](https://fish2fish.neocities.org/)** | рыба · Y2K maximalist | **Вход:** `/` = aquarium + bubbles → `mainpage/main.html` = хаб HELP!!. Cbox, stamps, last updated. Страницы: **me** (strawberry tile + about + blinkies), **todo** (публичный список WIP — десятки страниц!), music, 2ds, amusements. Disclaimer «not mobile». |
+| **[garfriend.me](https://garfriend.me/)** | рыбный дом-комната | **Вход:** narrative + hover-дверь → **inside shop** = иллюстрация-комната, кликабельные зоны. Много «мест»: neighbors (тетрадь + webrings 88×31), shrines + **anti-shrines**, garden, photos, guestbook, blog… Каждая страница = **локация**, не шаблон. |
+| **[ginder.neocities.org](https://ginder.neocities.org/)** | «розовый инстаграм» | Dashboard из **OS-окон** на мягком голубом фоне: INDEX, PROFILE.EXE, iPod-плеер, COMMENT SECTION (с reply), UPDATES.LOG, buttons + embed-код. Nav: Projects / Blog / Commissions… Meta: версия, laptop, last updated. Более **отполированный** neocities, NewJeans-палитра. |
+
+### Общий вайб (словами)
+
+- **Живое место**, не лендинг: видно, что сайт *кто-то* делает прямо сейчас.
+- **Слои:** фон (фото или паттерн) + окна/блоки/стикеры *поверх*.
+- **Личность в тексте:** разговорный тон, caps, списки дел, shoutouts.
+- **Социальность:** чат, гостевая, stamps, комментарии с ответами.
+- **WIP как фича:** todo на сайте, last updated, «coming soon», незаконченные страницы — норма.
+
+### Кому из них ближе GIF WORLD
+
+| Референс | Роль для нас |
+|----------|----------------|
+| **korenara** | **главный дух** — поле + win98-виджеты + radio + popup + улитка |
+| **garfriend** | **будущие комнаты** — gallery, diary, secret door как кликабельные места |
+| **fish2fish** | **плотность и характер** — stamps, публичный todo, cbox-энергия |
+| **ginder** | **полировка окон** и meta-блоки (updates.log, profile) — палитру не копируем |
+
+### Уже есть у нас
+
+- Фон-поле, win98-окна, welcome popup, spam, улитка, FIELD RADIO.
+- site TODO scrollport, guest book preview, WRITE YOUR NOTE, hotline.
+- error-room warm/cold, заглушки 202.
+
+### Можно усилить позже
+
+- Blinkies / 88×31 в `core-footer` (fish, garfriend neighbors).
+- Sticky todo как у korenara (сейчас scrollport — близко, но не sticky).
+- **Комнаты-картинки** с hotspots для gallery/diary (garfriend).
+- UPDATES.LOG / last updated на главной (ginder, fish).
+- Narrative gateway (garfriend) на `gateway.html`.
+- Плитка **внутри** mini-world, не на всю страницу (fish strawberry).
+
+Кадры из записи: `reference/neocities-vibe/` (локально).
+
+---
+
 # Типографика
 
 Допускается использование нескольких различных шрифтов.
