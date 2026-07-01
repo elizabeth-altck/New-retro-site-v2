@@ -37,7 +37,7 @@
 
 ### Левая колонка
 
-- **Navigation** — ссылки: gallery, diary, music → `#fieldRadio`, secret door
+- **Navigation** — `gallery.html`, `diary.html`, `main.html#fieldRadio`, `secret-door.html`
 - **FIELD RADIO** (`#fieldRadio`) — кастомный плеер, legacy-трек rainy lofi city
 
 ### Центр
@@ -52,7 +52,7 @@
 - **field diary scrollport** (`#diaryScrollport`) — горизонтальный дневник (позже — вертикальный)
 - **spam.exe** (`#adSpamField`) — бесконечная генерация mini win98 только внутри блока
 - **image of the day** (`#imageOfDaySlot`) — полароид с заглушкой + описание в figcaption
-- **the snail** (`#snailTeaser`) — `BIG SMACHNY snail.png`, крупно в блоке
+- **the snail** (`#snailTeaser`) — `BIG SMACHNY snail.png`; текст из макета; ссылки → 202-заглушки + `widget.html`
 - **hotline.txt** (`#fieldHotline`) — случайные мысли поля
 - **guest book preview** — фейковые записи
 - **core-footer** — neocities-счётчик, ссылки
@@ -93,7 +93,26 @@
 
 ---
 
-## Страницы (запланировано)
+## Страницы ошибок и заглушки (2026-06)
+
+Общий стиль: `css/error-room.css`, фон **`images/забор цветы и спокойствие.jpeg`**, стекло-карточка по центру, Press Start 2P для кода.
+
+| Файл | Код | Тон | Назначение |
+|------|-----|-----|------------|
+| `404.html` | 404 | **cold** | URL не существует (Vercel отдаёт автоматически) |
+| `gallery.html` | 202 | **warm** | nav → gallery (ещё не свёрстано) |
+| `diary.html` | 202 | warm | nav → diary |
+| `secret-door.html` | 202 | warm | nav → secret door |
+| `zhanna.html` | 202 | warm | ссылка **Жанна** из блока the snail |
+| `anna.html` | 202 | warm | ссылка **Анна** |
+| `tamagotchi.html` | 202 | warm | «этой странице» — погладить / покормить |
+| `widget.html` | 202 | warm | «виджетом» — страница про ползающую улитку |
+
+**Принцип цветокора (Figma):** 404 = холоднее; «страница не создана» = теплее. Число **202** — дизайн-номер, не HTTP-статус.
+
+---
+
+## Страницы (запланировано — реальный контент)
 
 - Галерея
 - Музыкальная комната
@@ -113,5 +132,7 @@
 | `images/поле.jpeg` | Фон страницы |
 | `images/винтаж сердце.png` | Сердечки в шапке |
 | `images/memory-box/closed.png`, `opened.png` | Коробка-коллаж на главной |
-| `images/snail.png` | Улитка на главной (~320px) |
+| `images/snail.png` | Виджет улитки на главной (~320px) |
+| `images/BIG SMACHNY snail.png` | Блок the snail |
+| `images/забор цветы и спокойствие.jpeg` | Фон error-room страниц |
 | `music/rainy-lofi-city-lofi-music-332746.mp3` | FIELD RADIO (legacy-трек) |

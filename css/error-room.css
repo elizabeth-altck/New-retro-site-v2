@@ -1,0 +1,123 @@
+:root {
+  --error-font-mono: 'Share Tech Mono', monospace;
+  --error-font-pixel: 'Press Start 2P', monospace;
+  --error-font-body: 'Jura', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body.error-room {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--error-font-body);
+  color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.error-room-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: url("../images/забор цветы и спокойствие.jpeg") center center / cover no-repeat;
+}
+
+.error-room-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.error-room--warm .error-room-bg::after {
+  background:
+    linear-gradient(rgba(255, 210, 120, 0.22), rgba(120, 80, 40, 0.18)),
+    rgba(20, 16, 10, 0.28);
+}
+
+.error-room--cold .error-room-bg::after {
+  background:
+    linear-gradient(rgba(120, 160, 210, 0.24), rgba(30, 40, 60, 0.28)),
+    rgba(12, 18, 28, 0.32);
+}
+
+.error-room-card {
+  position: relative;
+  z-index: 1;
+  width: min(520px, 94vw);
+  padding: 28px 26px 24px;
+  text-align: center;
+  background: rgba(255, 252, 235, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.error-room-code {
+  font-family: var(--error-font-pixel);
+  font-size: clamp(42px, 12vw, 64px);
+  line-height: 1.1;
+  margin: 0 0 18px;
+  color: #fff;
+  text-shadow:
+    2px 2px 0 rgba(0, 0, 0, 0.45),
+    0 0 24px rgba(255, 255, 255, 0.15);
+  letter-spacing: 2px;
+}
+
+.error-room-title {
+  font-family: var(--error-font-body);
+  font-size: clamp(18px, 4.5vw, 22px);
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0 0 16px;
+  color: #fff;
+}
+
+.error-room-body {
+  font-family: var(--error-font-body);
+  font-size: clamp(15px, 3.8vw, 18px);
+  line-height: 1.5;
+  margin: 0 0 12px;
+  color: rgba(242, 242, 242, 0.92);
+}
+
+.error-room-body--slot {
+  min-height: 1.2em;
+  margin-bottom: 20px;
+  color: rgba(242, 242, 242, 0.72);
+  font-style: italic;
+}
+
+.error-room-body--slot:empty::before {
+  content: '···';
+  opacity: 0.45;
+}
+
+.error-room-home {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--error-font-mono);
+  font-size: 13px;
+  color: #fffadb;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.error-room-home:hover {
+  color: #fff;
+}
+
+.error-room-meta {
+  margin-top: 18px;
+  font-family: var(--error-font-mono);
+  font-size: 10px;
+  color: rgba(242, 242, 242, 0.45);
+  letter-spacing: 0.5px;
+}

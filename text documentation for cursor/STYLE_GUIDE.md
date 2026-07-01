@@ -150,10 +150,23 @@
 ## Улитка (виджет на странице)
 
 - Ассет `images/snail.png`, ширина `min(62vw, 320px)`.
-- `#snailDragWrap` — **`position: fixed`**, z-index 1200; вне `.core`.
-- **Движение:** автоползание + drag **по всему viewport**; старт — между site TODO и forecast.exe (не на заметках).
-- **Idle:** `snailBob`; hover — блёстки + glow.
+- `#snailDragWrap` — **`position: absolute`** на body, z-index 50; прокручивается со страницей.
+- **Движение:** автоползание + drag; старт — между site TODO и forecast.exe.
 - **Тап:** shy / `snail.exe` / полёт на 5-й клик.
+- Заглушка страницы виджета: **`widget.html`** (202 warm).
+
+## Error-room (404 / 202)
+
+- CSS: `css/error-room.css`.
+- Фон: `images/забор цветы и спокойствие.jpeg`.
+- **404** — класс `error-room--cold` (страница не найдена).
+- **202** — класс `error-room--warm` (страница ещё не создана); код на экране — дизайн, не HTTP.
+- Карточка: blur, полупрозрачный фон, Press Start 2P для числа, Jura для текста.
+
+## the snail (блок персонажа)
+
+- `images/BIG SMACHNY snail.png`, тёмно-оливковый блок.
+- Текст макета; ссылки: `zhanna.html`, `anna.html`, `tamagotchi.html`, `widget.html`.
 
 ---
 

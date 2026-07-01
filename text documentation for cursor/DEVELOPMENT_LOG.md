@@ -20,14 +20,27 @@
 
 ---
 
+## 2026-06-24 — error-room, the snail, заглушки артов
+
+**Что сделано:**
+
+- **404.html** (cold) + **202 warm**: gallery, diary, secret-door, zhanna, anna, tamagotchi, widget.
+- `css/error-room.css`, фон `забор цветы и спокойствие.jpeg`.
+- the snail — текст макета, `BIG SMACHNY snail.png`, ссылки на заглушки.
+- `.media-placeholder` для image of the day и diary; character png-слоты.
+- Цветокор: 404 cold / 202 warm (как Figma).
+
+**Что делать дальше:**
+
+- Реальная gallery, diary, tamagotchi; вертикальный diary; intro; email для заметок.
+
+---
+
 ## 2026-06-24 — заглушки картинок, BIG SMACHNY snail, character slots
 
 **Что сделано:**
 
-- Image of the day и diary — `.media-placeholder` вместо готовых jpeg; описание в figcaption.
-- the snail — `BIG SMACHNY snail.png`, крупнее в блоке.
-- Слоты png-персонажей `.field-character-peeks`.
-- TODO: страница помимо главной (404 / ошибка) — дизайн в Figma.
+- Image of the day и diary — `.media-placeholder`; the snail крупнее; character peeks.
 
 ---
 

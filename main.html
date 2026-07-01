@@ -1867,17 +1867,19 @@ body {
 
 .snail-teaser-title {
   font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.5;
   color: #fffadb;
-  margin: 0 0 10px;
-  text-shadow: 2px 2px 0 #58141c;
+  margin: 0 0 12px;
+  text-shadow:
+    2px 2px 0 #58141c,
+    3px 3px 0 rgba(0, 0, 0, 0.35);
 }
 
 .snail-teaser-text {
   font-family: 'Jura', sans-serif;
-  font-size: 15px;
-  line-height: 1.45;
+  font-size: 16px;
+  line-height: 1.55;
   color: #f2f2f2;
   margin: 0;
 }
@@ -1885,7 +1887,12 @@ body {
 .snail-teaser-text a {
   color: #e8c86a;
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+.snail-teaser-text a:hover {
+  color: #fff6d8;
 }
 
 .field-hotline {
@@ -2049,10 +2056,10 @@ body {
   <nav class="left-nav" aria-label="Navigation">
     <h3 class="sidebar-title left-nav-title">Navigation</h3>
     <ul class="left-nav-list">
-      <li><a href="#">gallery</a></li>
-      <li><a href="#">diary</a></li>
-      <li><a href="#fieldRadio">music</a></li>
-      <li><a href="#">secret door</a></li>
+      <li><a href="gallery.html">gallery</a></li>
+      <li><a href="diary.html">diary</a></li>
+      <li><a href="main.html#fieldRadio">music</a></li>
+      <li><a href="secret-door.html">secret door</a></li>
     </ul>
   </nav>
 
@@ -2105,15 +2112,15 @@ body {
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>улитка</strong> — виджет, ползание, drag, snail.exe</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>коробка</strong> — hover open, потом контент внутри</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>forecast.exe</strong> — win98 окна, look up позже → коллекция</p>
-        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>the snail</strong> — блок персонажа Жанна + ссылки</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>gallery</strong> — GIF-галерея, атмосфера 2000s–2010s</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>the snail</strong> — блок Жанна + ссылки на заглушки</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery</strong> — gallery.html (202 warm)</p>
         <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>WRITE YOUR NOTE</strong> — блокнот на главной</p>
         <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>image of the day</strong> — полароид на главной</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>intro</strong> — текст «привет, это мой сайт…»</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>music room</strong> — полноценная страница, больше треков</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>tamagotchi</strong> — комната улитки, погладить / покормить</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>кастомная 404</strong> — ошибка в стиле сайта</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>secret door</strong> — секретная страница из nav</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>кастомная 404</strong> — 404.html, cold</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>202 заглушки</strong> — gallery, diary, secret, zhanna, anna, tamagotchi, widget</p>
         <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>diary</strong> — field diary scrollport на главной</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>ещё scrollports</strong> — в коробке, в галерее, в music room</p>
       </div>
@@ -2307,7 +2314,7 @@ body {
             <img class="snail-teaser-img" src="images/BIG SMACHNY snail.png" alt="Жанна — улитка ахатина" width="200" height="200">
             <div>
               <p class="snail-teaser-title">the snail</p>
-              <p class="snail-teaser-text">персонаж сайта — улитка ахатина <strong>Жанна</strong>. подруга <strong>Анна</strong>. на <a href="#">этой странице</a> потом погладить / покормить · или <a href="#">виджетом</a> на сайте.</p>
+              <p class="snail-teaser-text">Персонаж этого сайта — улитка ахатина <a href="zhanna.html">Жанна</a>. У нее есть подруга <a href="anna.html">Анна</a>. На <a href="tamagotchi.html">этой странице</a> ты можешь ее погладить или покормить. Сейчас ты можешь воспользоваться <a href="widget.html">виджетом</a>.</p>
             </div>
           </div>
         </section>
@@ -2348,7 +2355,7 @@ body {
         <p class="core-footer-counter">visitors: <span id="fakeCounter">00427</span></p>
         <p class="core-footer-note">best viewed if you're nostalgic · made in the field</p>
         <p class="core-footer-links">
-          <a href="#">gallery</a> · <a href="#">diary</a> · <a href="#fieldRadio">music</a> · <a href="#">secret door</a>
+          <a href="gallery.html">gallery</a> · <a href="diary.html">diary</a> · <a href="main.html#fieldRadio">music</a> · <a href="secret-door.html">secret door</a>
         </p>
       </footer>
 
@@ -2959,6 +2966,12 @@ body {
       }
     });
   });
+
+  if (window.location.hash === '#snailDragWrap') {
+    window.setTimeout(() => {
+      snailWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 400);
+  }
 })();
 (function () {
   const radio = document.getElementById('fieldRadio');
