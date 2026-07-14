@@ -5,6 +5,7 @@
 <title>Homepage</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/field-cursor.css">
 
 <style>
 :root {
@@ -20,6 +21,7 @@ body {
   font-family: 'Share Tech Mono', monospace;
   color: #1b1b1b;
   overflow-x: clip;
+  cursor: var(--cursor-fallback);
 
   background-image: url("images/поле.jpeg");
   background-size: cover;
@@ -283,7 +285,7 @@ body {
   border-bottom: 2px solid #1a1a1a;
   background: #4a5238;
   color: #f2f2f2;
-  cursor: pointer;
+  cursor: var(--cursor-fallback);
   flex-shrink: 0;
 }
 
@@ -335,7 +337,7 @@ body {
   height: 10px;
   background: #1a1814;
   border: 2px solid #1a1a1a;
-  cursor: pointer;
+  cursor: var(--cursor-fallback);
   position: relative;
   min-width: 0;
 }
@@ -374,7 +376,7 @@ body {
   height: 8px;
   background: #1a1814;
   border: 1px solid #1a1a1a;
-  cursor: pointer;
+  cursor: var(--cursor-fallback);
 }
 
 .field-radio-volume input[type="range"]::-webkit-slider-thumb {
@@ -653,7 +655,7 @@ body {
   border: none;
   background: transparent;
   appearance: none;
-  cursor: pointer;
+  cursor: var(--cursor-fallback);
   user-select: none;
   line-height: 0;
 }
@@ -711,7 +713,7 @@ body {
   border: 2px solid #1a1a1a;
   background: rgba(142, 212, 168, 0.45);
   color: #1a1a1a;
-  cursor: pointer;
+  cursor: var(--cursor-fallback);
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
   transition: background 0.15s ease, transform 0.1s ease;
 }
@@ -987,7 +989,7 @@ body {
   border-bottom: 2px solid #1a1a1a;
   background: #e8a0c8;
   color: #1a1a1a;
-  cursor: pointer;
+  cursor: var(--cursor-fallback);
 }
 
 .site-note-btn:active {
@@ -1105,7 +1107,7 @@ body {
   border-bottom: 1px solid #1a1a1a;
   background: #4a5238;
   color: #f2f2f2;
-  cursor: pointer;
+  cursor: var(--cursor-fallback);
 }
 
 .win98-menu-btn:hover {
@@ -1145,7 +1147,7 @@ body {
   border-bottom: 2px solid #1a1a1a;
   background: #c8c4b8;
   color: #1a1a1a;
-  cursor: pointer;
+  cursor: var(--cursor-fallback);
 }
 
 .win98-action-btn:active {
@@ -1355,7 +1357,7 @@ body {
   border: 2px solid rgba(245, 236, 212, 0.35);
   background: rgba(255, 248, 210, 0.12);
   color: #f5ecd4;
-  cursor: pointer;
+  cursor: var(--cursor-fallback);
 }
 
 .mini-popup-btn:hover {
@@ -1629,7 +1631,7 @@ body {
   font-size: 10px;
   padding: 4px 7px;
   border: 2px solid #1a1a1a;
-  cursor: pointer;
+  cursor: var(--cursor-fallback);
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
 }
 
@@ -1745,7 +1747,7 @@ body {
   font-size: 11px;
   padding: 7px 12px;
   border: 2px solid #1a1a1a;
-  cursor: pointer;
+  cursor: var(--cursor-fallback);
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
 }
 
@@ -1914,7 +1916,7 @@ body {
   padding: 6px 10px;
   border: 2px solid #1a1a1a;
   background: rgba(255, 248, 210, 0.55);
-  cursor: pointer;
+  cursor: var(--cursor-fallback);
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -2080,6 +2082,10 @@ body {
 </head>
 
 <body>
+
+<div id="fieldCursor" class="field-cursor" hidden aria-hidden="true">
+  <img src="images/rose.gif" alt="" width="33" height="27" draggable="false">
+</div>
 
 <header class="site-header">
   <div class="ticker">
@@ -2478,6 +2484,7 @@ body {
   </button>
 </div>
 
+<script src="js/field-cursor.js"></script>
 <script>
 (function () {
   const arena = document.getElementById('gameArena');

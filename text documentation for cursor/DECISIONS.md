@@ -364,3 +364,20 @@ Roadmap Фаза 1: главная должна выглядеть живой д
 
 - Сброс welcome: в DevTools → Application → Local Storage → удалить `gifworld-welcome-seen`.
 - Вернуть курсор: подключить CSS+JS+`#fieldCursor` как раньше (или ветка).
+
+---
+
+## 2026-07-14 — ветка experiment/rose-cursor
+
+### Решение
+
+Кастомный курсор с розой живёт в ветке **`experiment/rose-cursor`**. На `main` курсор отключён.
+
+### Причина
+
+Идея классная, но на основной линии пока не нужна; эксперимент отдельно.
+
+### Последствия
+
+- Смотреть/мержить курсор: checkout `experiment/rose-cursor`.
+- `main` = без курсора + Phase 1 медиа + welcome один раз.

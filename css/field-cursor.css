@@ -1,4 +1,3 @@
-/* PARKED 2026-07-14 — rose cursor off main; keep for later restore. */
 /* TEST: анимированный курсор — img следует за мышью (CSS gif-cursor на macOS ≈ 1 кадр) */
 :root {
   --cursor-fallback: url("../images/rose.gif") 16 4, auto;

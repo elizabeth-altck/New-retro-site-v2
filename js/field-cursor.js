@@ -1,4 +1,3 @@
-/* PARKED 2026-07-14 — rose cursor off main; keep for experiment/rose-cursor branch. Re-link CSS+JS+#fieldCursor to restore. */
 (function () {
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (!finePointer) return;
