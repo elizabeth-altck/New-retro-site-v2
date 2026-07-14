@@ -237,3 +237,9 @@ GIF WORLD = **korenara** по механике + **garfriend** как модел
 
 - Принцип «миры внутри объектов» → `PROJECT_VISION.md`, `DECISIONS.md`, `IDEAS.md`.
 - Сетка 15/70/15, sidebars, `.core`, SIGNAL CATCH на `main.html`.
+
+## 2026-07-14 — gallery.html v1
+
+**Что сделано:** комната-галерея (GIF wall, marquee, scrollport); фон временный — поле, сменный через CSS.
+
+**Что делать дальше:** свой gallery-bg; diary.html v1; коммит chaos GIFs + gallery когда попросишь.

@@ -45,6 +45,7 @@
 - Заголовок **my site**
 - **SIGNAL CATCH** — мини-игра под заголовком
 - **site TODO scrollport** — прокручиваемый список планов развития сайта
+- **GIF CHAOS** — хаотичная лента GIF + marquee blinkies (под SIGNAL CATCH)
 - **Коробка-коллаж** — ~360px, слева: hover/tap `closed.png` ↔ `opened.png`
 - **forecast.exe (Win98)** — Forecast + «НОВАЯ КОЛЛЕКЦИЯ»
 - **stickers.exe** — mini GIF-лента (`#cuteScrollport`)
@@ -101,7 +102,7 @@
 | Файл | Код | Тон | Назначение |
 |------|-----|-----|------------|
 | `404.html` | 404 | **cold** | URL не существует (Vercel отдаёт автоматически) |
-| `gallery.html` | 202 | **warm** | nav → gallery (ещё не свёрстано) |
+| `gallery.html` | — | **room** | GIF-стена v1 (`css/gallery.css`); фон `--gallery-bg` ← пока `поле.jpeg` |
 | `diary.html` | 202 | warm | nav → diary |
 | `secret-door.html` | 202 | warm | nav → secret door |
 | `zhanna.html` | 202 | warm | ссылка **Жанна** из блока the snail |
@@ -112,6 +113,16 @@
 **Принцип цветокора (Figma):** 404 = холоднее; «страница не создана» = теплее. Число **202** — дизайн-номер, не HTTP-статус.
 
 ---
+
+
+
+## gallery.html — комната гифок (2026-07)
+
+Настоящая страница (не 202). `css/gallery.css`.
+
+- Фон: CSS `--gallery-bg` → сейчас `images/поле.jpeg` (временный; свой кадр → `images/gallery-bg.jpeg` + смена var)
+- GIF wall + blinkie marquee + horizontal scrollport
+- ← главная
 
 ## Страницы (запланировано — реальный контент)
 

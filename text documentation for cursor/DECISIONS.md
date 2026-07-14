@@ -364,3 +364,20 @@ Roadmap Фаза 1: главная должна выглядеть живой д
 
 - Сброс welcome: в DevTools → Application → Local Storage → удалить `gifworld-welcome-seen`.
 - Вернуть курсор: подключить CSS+JS+`#fieldCursor` как раньше (или ветка).
+
+---
+
+## 2026-07-14 — gallery.html v1
+
+### Решение
+
+`gallery.html` — отдельная **комната** (`css/gallery.css`), не error-room 202. GIF-стена + marquee + scrollport. Фон через `--gallery-bg` (пока `поле.jpeg`), легко сменить без перестройки страницы.
+
+### Причина
+
+Фаза 2: первая настоящая страница после главной; фон автор ещё выбирает.
+
+### Последствия
+
+- Свой фон: файл → `images/gallery-bg.jpeg`, в CSS: `--gallery-bg: url("../images/gallery-bg.jpeg");`
+- Дальше Фаза 2: `diary.html` v1.

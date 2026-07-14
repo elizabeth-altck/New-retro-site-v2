@@ -84,6 +84,7 @@
 - site TODO scrollport, guest book preview, WRITE YOUR NOTE, hotline.
 - error-room warm/cold, заглушки 202.
 - **Фаза 1 медиа:** diary GIFs, polaroid (своё фото), character peeks, footer blinkies, stickers.exe strip.
+- **gallery.html v1** — комната GIF-стены; фон сменный (`--gallery-bg`).
 
 ### Можно усилить позже
 

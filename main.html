@@ -62,6 +62,7 @@ body {
   gap: 10px;
   padding: 6px var(--page-padding) 8px;
   background: transparent;
+  position: relative;
 }
 
 .site-title {
@@ -114,6 +115,7 @@ body {
 
 /* LAYOUT */
 .layout {
+  position: relative;
   display: grid;
   grid-template-columns: var(--sidebar-width) minmax(0, 1fr) var(--sidebar-width);
   gap: var(--column-gap);
@@ -125,6 +127,7 @@ body {
 }
 
 .center {
+  position: relative;
   min-width: 0;
   max-width: 100%;
   overflow: visible;
@@ -579,6 +582,353 @@ body {
     13px 13px 0 #141414;
 }
 
+/* GIF как на neocities — наклеены, не блоком; часть ведёт куда-то, часть нет */
+.left,
+.right,
+.site-header,
+.field-lower-world {
+  position: relative;
+}
+
+.field-glyph {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  line-height: 0;
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  transform: rotate(var(--glyph-r, 0deg));
+  animation: glyphFloat 3s ease-in-out infinite;
+  animation-delay: var(--glyph-delay, 0s);
+  image-rendering: pixelated;
+  cursor: default;
+  text-decoration: none;
+  color: inherit;
+  vertical-align: middle;
+}
+
+a.field-glyph,
+a.field-glyph:visited,
+a.field-glyph:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.field-glyph img {
+  display: block;
+  height: var(--glyph-h, 44px);
+  width: auto;
+}
+
+.field-glyph:hover {
+  filter: brightness(1.1) saturate(1.08);
+}
+
+.field-glyph.is-bump {
+  animation: none;
+  transform: rotate(calc(var(--glyph-r, 0deg) + 8deg)) scale(0.94);
+}
+
+@keyframes glyphFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -5px; }
+}
+
+/* шапка */
+.glyph--head-l {
+  position: absolute;
+  left: 18px;
+  bottom: 6px;
+  --glyph-h: 34px;
+  --glyph-r: -11deg;
+}
+
+.glyph--head-r {
+  position: absolute;
+  right: 132px;
+  bottom: 10px;
+  --glyph-h: 38px;
+  --glyph-r: 7deg;
+  --glyph-delay: 0.5s;
+}
+
+/* между колонками — стикеры на .layout */
+.glyph--scatter-l {
+  position: absolute;
+  left: calc(var(--sidebar-width) + 2px);
+  top: 228px;
+  z-index: 6;
+  --glyph-h: 50px;
+  --glyph-r: -11deg;
+}
+
+.glyph--scatter-l2 {
+  position: absolute;
+  left: calc(var(--sidebar-width) + var(--column-gap) + 8px);
+  top: 520px;
+  z-index: 6;
+  --glyph-h: 44px;
+  --glyph-r: 9deg;
+  --glyph-delay: 0.55s;
+}
+
+.glyph--scatter-r {
+  position: absolute;
+  right: calc(var(--sidebar-width) + 4px);
+  top: 360px;
+  z-index: 6;
+  --glyph-h: 48px;
+  --glyph-r: 14deg;
+  --glyph-delay: 0.3s;
+}
+
+.glyph--scatter-r2 {
+  position: absolute;
+  right: calc(var(--sidebar-width) + var(--column-gap) + 12px);
+  top: 640px;
+  z-index: 6;
+  --glyph-h: 40px;
+  --glyph-r: -8deg;
+  --glyph-delay: 0.85s;
+}
+
+.glyph--scatter-mid {
+  position: absolute;
+  left: 48%;
+  top: 168px;
+  z-index: 6;
+  --glyph-h: 52px;
+  --glyph-r: 7deg;
+  --glyph-delay: 0.4s;
+}
+
+/* боковые — прилипли к колонке */
+.glyph--right-a {
+  position: absolute;
+  left: 10px;
+  top: 200px;
+  --glyph-h: 48px;
+  --glyph-r: -9deg;
+}
+
+.glyph--right-b {
+  position: absolute;
+  right: 4px;
+  bottom: 120px;
+  --glyph-h: 42px;
+  --glyph-r: 5deg;
+  --glyph-delay: 0.35s;
+}
+
+/* центр — криво по .core */
+.glyph--core-a {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  z-index: 2;
+  --glyph-h: 56px;
+  --glyph-r: 8deg;
+}
+
+.glyph--core-b {
+  position: absolute;
+  top: 42%;
+  left: -8px;
+  z-index: 2;
+  --glyph-h: 44px;
+  --glyph-r: -14deg;
+  --glyph-delay: 0.6s;
+}
+
+.glyph--core-c {
+  position: absolute;
+  top: 58%;
+  right: 6px;
+  z-index: 2;
+  --glyph-h: 50px;
+  --glyph-r: 6deg;
+  --glyph-delay: 1s;
+}
+
+.glyph--core-d {
+  position: absolute;
+  bottom: 140px;
+  left: 18px;
+  z-index: 2;
+  --glyph-h: 38px;
+  --glyph-r: -5deg;
+}
+
+.glyph--core-e {
+  position: absolute;
+  bottom: 48px;
+  right: 24px;
+  z-index: 2;
+  --glyph-h: 36px;
+  --glyph-r: 11deg;
+  --glyph-delay: 0.4s;
+}
+
+.glyph--core-f {
+  position: absolute;
+  top: 252px;
+  right: -6px;
+  z-index: 2;
+  --glyph-h: 46px;
+  --glyph-r: 13deg;
+  --glyph-delay: 0.25s;
+}
+
+.glyph--core-g {
+  position: absolute;
+  top: 38%;
+  right: 28%;
+  z-index: 2;
+  --glyph-h: 42px;
+  --glyph-r: -6deg;
+  --glyph-delay: 0.65s;
+}
+
+.glyph--core-h {
+  position: absolute;
+  bottom: 200px;
+  left: 32px;
+  z-index: 2;
+  --glyph-h: 44px;
+  --glyph-r: 4deg;
+}
+
+.glyph--core-i {
+  position: absolute;
+  bottom: 96px;
+  left: 48%;
+  z-index: 2;
+  --glyph-h: 38px;
+  --glyph-r: -12deg;
+  --glyph-delay: 0.9s;
+}
+
+/* между core и lower */
+.glyph--center-a {
+  position: absolute;
+  left: -6px;
+  top: 52%;
+  z-index: 4;
+  --glyph-h: 36px;
+  --glyph-r: -7deg;
+  --glyph-delay: 0.5s;
+}
+
+.glyph--center-b {
+  position: absolute;
+  right: 12%;
+  top: 58%;
+  z-index: 4;
+  --glyph-h: 42px;
+  --glyph-r: 10deg;
+}
+
+.glyph--center-c {
+  position: absolute;
+  left: 38%;
+  bottom: 18px;
+  z-index: 4;
+  --glyph-h: 34px;
+  --glyph-r: -4deg;
+  --glyph-delay: 0.75s;
+}
+
+/* низ страницы */
+.glyph--lower-a {
+  position: absolute;
+  top: 12px;
+  right: 8%;
+  --glyph-h: 54px;
+  --glyph-r: -7deg;
+}
+
+.glyph--lower-b {
+  position: absolute;
+  top: 38%;
+  left: 4%;
+  --glyph-h: 42px;
+  --glyph-r: 9deg;
+  --glyph-delay: 0.7s;
+}
+
+.glyph--lower-c {
+  position: absolute;
+  bottom: 80px;
+  right: 6%;
+  --glyph-h: 48px;
+  --glyph-r: -12deg;
+}
+
+.glyph--lower-d {
+  position: absolute;
+  top: 18%;
+  left: 28%;
+  --glyph-h: 40px;
+  --glyph-r: 6deg;
+  --glyph-delay: 0.45s;
+}
+
+.glyph--lower-e {
+  position: absolute;
+  top: 52%;
+  left: 8%;
+  --glyph-h: 44px;
+  --glyph-r: -9deg;
+  --glyph-delay: 0.6s;
+}
+
+.glyph--lower-f {
+  position: absolute;
+  bottom: 28px;
+  left: 14%;
+  --glyph-h: 46px;
+  --glyph-r: 11deg;
+}
+
+.glyph--lower-g {
+  position: absolute;
+  top: 68%;
+  right: 22%;
+  --glyph-h: 38px;
+  --glyph-r: -5deg;
+  --glyph-delay: 0.35s;
+}
+
+.glyph--lower-h {
+  position: absolute;
+  bottom: 140px;
+  left: 42%;
+  --glyph-h: 32px;
+  --glyph-r: 8deg;
+  --glyph-delay: 1.1s;
+}
+
+@media (max-width: 900px) {
+  .glyph--head-l,
+  .glyph--head-r,
+  .glyph--core-b,
+  .glyph--core-c,
+  .glyph--core-f,
+  .glyph--scatter-l,
+  .glyph--scatter-l2,
+  .glyph--scatter-r,
+  .glyph--scatter-r2,
+  .glyph--scatter-mid,
+  .glyph--center-a,
+  .glyph--center-b,
+  .glyph--right-a {
+    display: none;
+  }
+}
+
 /* MINI-GAME */
 .mini-world {
   margin-top: 22px;
@@ -882,7 +1232,7 @@ body {
 
 .slot-secondary-row {
   display: grid;
-  grid-template-columns: min(200px, 42%) 1fr;
+  grid-template-columns: min(280px, 48%) 1fr;
   gap: 28px;
   margin-top: 18px;
   align-items: start;
@@ -890,7 +1240,7 @@ body {
 
 .win98-window--stickers {
   width: 100%;
-  max-width: 200px;
+  max-width: 280px;
   padding: 0;
 }
 
@@ -2088,6 +2438,8 @@ body {
     </div>
   </div>
   <div class="title-row">
+    <button type="button" class="field-glyph glyph--head-l field-glyph--dead" data-glyph-event="звезда в шапке · никуда"><img src="images/chaos/star.gif" alt=""></button>
+    <a class="field-glyph glyph--head-r" href="gallery.html"><img src="images/chaos/tiny-dance.gif" alt=""></a>
     <h1 class="site-title">old net vibe</h1>
     <div class="title-hearts" aria-hidden="true">
       <img class="title-heart title-heart--dark" src="images/винтаж сердце.png" alt="">
@@ -2097,6 +2449,12 @@ body {
 </header>
 
 <div class="layout">
+
+  <a class="field-glyph glyph--scatter-l" href="diary.html"><img src="images/diary/04-mushroom.gif" alt=""></a>
+  <button type="button" class="field-glyph glyph--scatter-l2 field-glyph--dead" data-glyph-event="огонь · просто горит"><img src="images/chaos/fire.gif" alt=""></button>
+  <a class="field-glyph glyph--scatter-r" href="secret-door.html"><img src="images/chaos/construction.gif" alt=""></a>
+  <button type="button" class="field-glyph glyph--scatter-r2 field-glyph--dead" data-glyph-event="sparkle · пустышка"><img src="images/chaos/sparkle.gif" alt=""></button>
+  <a class="field-glyph glyph--scatter-mid" href="gallery.html"><img src="images/chaos/dance-01.gif" alt=""></a>
 
 <!-- LEFT -->
 <div class="left">
@@ -2137,7 +2495,22 @@ body {
 
 <!-- CENTER -->
 <div class="center">
+
+  <button type="button" class="field-glyph glyph--center-a field-glyph--dead" data-glyph-event="ромашка · просто цветёт"><img src="images/diary/01-daisy.gif" alt=""></button>
+  <a class="field-glyph glyph--center-b" href="zhanna.html"><img src="images/characters/mystery-cat.gif" alt=""></a>
+  <button type="button" class="field-glyph glyph--center-c field-glyph--dead" data-glyph-event="хомяк · ???"><img src="images/chaos/dance-02.gif" alt=""></button>
+
   <div class="core" id="coreArena">
+
+    <a class="field-glyph glyph--core-a" href="gallery.html"><img src="images/chaos/fish.gif" alt=""></a>
+    <a class="field-glyph glyph--core-b" href="zhanna.html"><img src="images/chaos/spin-cat.gif" alt=""></a>
+    <button type="button" class="field-glyph glyph--core-c field-glyph--dead" data-glyph-event="сердце · не дверь"><img src="images/chaos/heart.gif" alt=""></button>
+    <button type="button" class="field-glyph glyph--core-d field-glyph--dead" data-glyph-event="glitter · шум"><img src="images/chaos/glitter.gif" alt=""></button>
+    <a class="field-glyph glyph--core-e" href="widget.html"><img src="images/rose.gif" alt=""></a>
+    <a class="field-glyph glyph--core-f" href="gallery.html"><img src="images/characters/friend-butterfly.gif" alt=""></a>
+    <button type="button" class="field-glyph glyph--core-g field-glyph--dead" data-glyph-event="лес · шумит"><img src="images/diary/02-forest.gif" alt=""></button>
+    <a class="field-glyph glyph--core-h" href="diary.html"><img src="images/diary/03-sparkle.gif" alt=""></a>
+    <button type="button" class="field-glyph glyph--core-i field-glyph--dead" data-glyph-event="цветок · не кнопка"><img src="images/diary/05-flower.gif" alt=""></button>
 
     <h2 class="core-title">my site</h2>
 
@@ -2160,15 +2533,16 @@ body {
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>коробка</strong> — hover open, потом контент внутри</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>forecast.exe</strong> — win98 окна, look up позже → коллекция</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>the snail</strong> — блок Жанна + ссылки на заглушки</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery</strong> — gallery.html (202 warm)</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery</strong> — gallery.html v1 (GIF-комната)</p>
         <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>WRITE YOUR NOTE</strong> — блокнот на главной</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>image of the day</strong> — полароид + фото из поля</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>field diary art</strong> — GIF в scrollport (GifCities)</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>character peeks</strong> — frog · butterfly · cat</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>footer blinkies</strong> — 88×31 + UC banner</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>stickers.exe</strong> — mini GIF-лента</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>field-glyphs</strong> — GIF по странице · часть ведёт куда-то</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>intro</strong> — текст «привет, это мой сайт…»</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>gallery.html v1</strong> — настоящая GIF-стена</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery.html v1</strong> — GIF-стена · комната</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>music room</strong> — полноценная страница, больше треков</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>tamagotchi</strong> — комната улитки, погладить / покормить</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>кастомная 404</strong> — 404.html, cold</p>
@@ -2243,11 +2617,20 @@ body {
             <div class="win98-window win98-window--stickers" aria-label="stickers.exe">
               <div class="win98-titlebar">stickers.exe</div>
               <div class="stickers-strip" id="cuteScrollport">
+                <img src="images/chaos/dance-01.gif" alt="" width="52" height="52">
+                <img src="images/chaos/fire.gif" alt="" width="52" height="52">
+                <img src="images/chaos/spin-cat.gif" alt="" width="52" height="52">
+                <img src="images/chaos/star.gif" alt="" width="52" height="52">
+                <img src="images/chaos/heart.gif" alt="" width="52" height="52">
+                <img src="images/chaos/fish.gif" alt="" width="52" height="52">
+                <img src="images/chaos/glitter.gif" alt="" width="52" height="52">
+                <img src="images/chaos/construction.gif" alt="" width="52" height="52">
+                <img src="images/chaos/email-spin.gif" alt="" width="52" height="52">
                 <img src="images/diary/01-daisy.gif" alt="" width="52" height="52">
-                <img src="images/diary/03-sparkle.gif" alt="" width="52" height="52">
                 <img src="images/diary/04-mushroom.gif" alt="" width="52" height="52">
                 <img src="images/characters/friend-frog.gif" alt="" width="52" height="52">
                 <img src="images/characters/mystery-cat.gif" alt="" width="52" height="52">
+                <img src="images/chaos/tiny-dance.gif" alt="" width="52" height="52">
                 <img src="images/rose.gif" alt="" width="52" height="52">
               </div>
             </div>
@@ -2297,8 +2680,17 @@ body {
 
     <div class="field-lower-world">
 
+      <a class="field-glyph glyph--lower-a" href="diary.html"><img src="images/chaos/email-spin.gif" alt=""></a>
+      <button type="button" class="field-glyph glyph--lower-b field-glyph--dead" data-glyph-event="dance-03 · тишина"><img src="images/chaos/dance-03.gif" alt=""></button>
+      <button type="button" class="field-glyph glyph--lower-c field-glyph--dead" data-glyph-event="star-2 · ничего"><img src="images/chaos/star-2.gif" alt=""></button>
+      <button type="button" class="field-glyph glyph--lower-d field-glyph--dead" data-glyph-event="лягушка · ква"><img src="images/characters/friend-frog.gif" alt=""></button>
+      <a class="field-glyph glyph--lower-e" href="tamagotchi.html"><img src="images/chaos/dance-02.gif" alt=""></a>
+      <button type="button" class="field-glyph glyph--lower-f field-glyph--dead" data-glyph-event="кот · спит"><img src="images/characters/mystery-cat.gif" alt=""></button>
+      <button type="button" class="field-glyph glyph--lower-g field-glyph--dead" data-glyph-event="бабочка · улетела"><img src="images/characters/friend-butterfly.gif" alt=""></button>
+      <button type="button" class="field-glyph glyph--lower-h field-glyph--dead" data-glyph-event="sparkle · шум"><img src="images/diary/03-sparkle.gif" alt=""></button>
+
       <section class="mini-world diary-scrollport-world" id="diaryWorld" aria-label="field diary scrollport">
-        <p class="mini-world-label"><span class="label-a">scrollport</span> · <span class="label-b">field diary</span> · <span class="label-c">черновики с иллюстрациями</span></p>
+        <p class="mini-world-label"><span class="label-a">scrollport</span> · <span class="label-b">field diary</span> · <span class="label-c">черновики</span></p>
         <div class="diary-scrollport" id="diaryScrollport">
           <article class="diary-page diary-page--rose">
             <div class="diary-page-art"><img src="images/diary/01-daisy.gif" alt="" width="72" height="72"></div>
@@ -2409,7 +2801,19 @@ body {
           <img class="field-character-img" src="images/characters/mystery-cat.gif" alt="кот" width="88" height="88">
           <p class="field-character-label">??? cat</p>
         </div>
-        <p class="field-character-hint">соседи по полю · GifCities finds · потом могут стать кликабельными</p>
+        <div class="field-character-slot">
+          <img class="field-character-img" src="images/chaos/dance-01.gif" alt="hamster" width="88" height="88">
+          <p class="field-character-label">hamst3r</p>
+        </div>
+        <div class="field-character-slot">
+          <img class="field-character-img" src="images/chaos/spin-cat.gif" alt="yarn cat" width="88" height="88">
+          <p class="field-character-label">yarn.exe</p>
+        </div>
+        <div class="field-character-slot">
+          <img class="field-character-img" src="images/chaos/fish.gif" alt="fish" width="88" height="88">
+          <p class="field-character-label">bloop</p>
+        </div>
+        <p class="field-character-hint">соседи по полю · слишком много GIF — так и задумано</p>
       </div>
 
       <footer class="core-footer">
@@ -2418,10 +2822,19 @@ body {
           <img src="images/blinkies/geocities.gif" alt="Geocities" width="88" height="31">
           <img src="images/blinkies/email.gif" alt="JUNO free e-mail" width="88" height="31">
           <img src="images/blinkies/best-viewed.gif" alt="best viewed with" width="88" height="31">
+          <img src="images/blinkies/extra-02.gif" alt="Netscape NEVER" width="88" height="31">
+          <img src="images/blinkies/extra-03.gif" alt="" width="88" height="31">
+          <img src="images/blinkies/extra-04.gif" alt="" width="88" height="31">
+          <img src="images/blinkies/extra-05.gif" alt="" width="88" height="31">
+          <img src="images/blinkies/extra-06.gif" alt="" width="88" height="31">
+          <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-01.gif" alt="I love cookies" width="150" height="20">
+          <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-02.gif" alt="" width="150" height="20">
+          <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-03.gif" alt="" width="150" height="20">
+          <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-04.gif" alt="" width="150" height="20">
         </div>
-        <p class="core-footer-meta">last updated · 14 Jul 2026 · phase 1.5 content drop</p>
+        <p class="core-footer-meta">last updated · 14 Jul 2026 · more GIFs · less chill</p>
         <p class="core-footer-counter">visitors: <span id="fakeCounter">00427</span></p>
-        <p class="core-footer-note">best viewed if you're nostalgic · made in the field</p>
+        <p class="core-footer-note">best viewed if you're nostalgic · made in the field · too many gifs on purpose</p>
         <p class="core-footer-links">
           <a href="gallery.html">gallery</a> · <a href="diary.html">diary</a> · <a href="main.html#fieldRadio">music</a> · <a href="secret-door.html">secret door</a>
         </p>
@@ -2451,6 +2864,9 @@ body {
       <li>unknown signal detected</li>
     </ul>
   </div>
+
+  <a class="field-glyph glyph--right-a" href="tamagotchi.html"><img src="images/chaos/dance-02.gif" alt=""></a>
+  <button type="button" class="field-glyph glyph--right-b field-glyph--dead" data-glyph-event="heart-sm · пусто"><img src="images/chaos/heart-sm.gif" alt=""></button>
 
   <div class="field-stats" id="fieldStats" aria-label="field stats">
     <p class="field-stats-label">field_stats.txt</p>
@@ -3418,6 +3834,19 @@ body {
       counterEl.textContent = String(n).padStart(5, '0');
     }, 9000);
   }
+})();
+(function () {
+  const eventsList = document.getElementById('eventsList');
+  document.querySelectorAll('.field-glyph--dead').forEach((glyph) => {
+    glyph.addEventListener('click', () => {
+      glyph.classList.add('is-bump');
+      window.setTimeout(() => glyph.classList.remove('is-bump'), 280);
+      if (!eventsList) return;
+      const li = document.createElement('li');
+      li.textContent = glyph.dataset.glyphEvent || 'glyph · никуда';
+      eventsList.appendChild(li);
+    });
+  });
 })();
 </script>
 

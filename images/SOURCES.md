@@ -10,3 +10,10 @@
 | `field/image-of-day.jpg` | кроп из `забор цветы и спокойствие.jpeg` | **своё** фото поля |
 
 Можно свободно заменять файлы с теми же именами — разметка в `main.html` подхватит.
+
+## Chaos pack (2026-07-14)
+
+`images/chaos/` — dancing hamster, fire, spin-cat, stars, construction, fish, hearts, glitter…
+`images/blinkies/extra-*` + `blinkie-*` — больше 88×31 и 150×20.
+
+На главной: блок **GIF CHAOS** + расширенные stickers / peeks / footer.
