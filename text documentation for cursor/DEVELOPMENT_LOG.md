@@ -242,4 +242,10 @@ GIF WORLD = **korenara** по механике + **garfriend** как модел
 
 **Что сделано:** комната-галерея (GIF wall, marquee, scrollport); фон временный — поле, сменный через CSS.
 
-**Что делать дальше:** свой gallery-bg; diary.html v1; коммит chaos GIFs + gallery когда попросишь.
+**Что делать дальше:** свой gallery-bg; zhanna.html v1; endpoint guest book.
+
+## 2026-07-14 — diary.html v1
+
+**Что сделано:** тетрадь (5 записей) + guest book (форма, seed в `data/guestbook.json`); preview на main → `#guestbook`.
+
+**Что делать дальше:** FormSubmit endpoint; live-лента (Supabase, опционально).

@@ -103,7 +103,7 @@
 |------|-----|-----|------------|
 | `404.html` | 404 | **cold** | URL не существует (Vercel отдаёт автоматически) |
 | `gallery.html` | — | **room** | GIF-стена v1 (`css/gallery.css`); фон `--gallery-bg` ← пока `поле.jpeg` |
-| `diary.html` | 202 | warm | nav → diary |
+| `diary.html` | — | **room** | тетрадь + guest book v1 (`css/diary.css`); записи в `data/guestbook.json` |
 | `secret-door.html` | 202 | warm | nav → secret door |
 | `zhanna.html` | 202 | warm | ссылка **Жанна** из блока the snail |
 | `anna.html` | 202 | warm | ссылка **Анна** |
@@ -123,6 +123,14 @@
 - Фон: CSS `--gallery-bg` → сейчас `images/поле.jpeg` (временный; свой кадр → `images/gallery-bg.jpeg` + смена var)
 - GIF wall + blinkie marquee + horizontal scrollport
 - ← главная
+
+## diary.html — тетрадь + guest book (2026-07)
+
+Настоящая страница (не 202). `css/diary.css`.
+
+- **field diary** — 5 записей автора вертикально (те же, что preview на main, крупнее)
+- **guest book** (`#guestbook`) — форма слева; **лента** одобренных записей — боковая колонка (`#guestFeed`, `data/guestbook.json`)
+- Preview на main ведёт сюда · ← главная
 
 ## Страницы (запланировано — реальный контент)
 

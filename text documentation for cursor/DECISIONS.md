@@ -381,3 +381,21 @@ Roadmap Фаза 1: главная должна выглядеть живой д
 
 - Свой фон: файл → `images/gallery-bg.jpeg`, в CSS: `--gallery-bg: url("../images/gallery-bg.jpeg");`
 - Дальше Фаза 2: `diary.html` v1.
+
+---
+
+## 2026-07-14 — diary.html v1
+
+### Решение
+
+`diary.html` — комната-тетрадь (`css/diary.css`): **field diary** (5 записей автора, вертикально) + **guest book** (имя необяз., сообщение, без регистрации). Одобренные записи в `data/guestbook.json`; форма — `data-endpoint` на `#guestbookForm` (FormSubmit / Web3Forms). До endpoint — «поле получило · после проверки».
+
+### Причина
+
+Фаза 2, пункт 2; guest book preview на main вёл в никуда; идея — впечатления о сайте без аккаунта.
+
+### Последствия
+
+- Новые одобренные записи: правка `data/guestbook.json` вручную (v1) или Supabase позже.
+- Preview на main → `diary.html#guestbook`.
+- WRITE YOUR NOTE на main — другая механика (личная записка), не смешивать.

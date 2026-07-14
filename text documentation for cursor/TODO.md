@@ -2,7 +2,7 @@
 
 ## Roadmap (зафиксирован 2026-07-01)
 
-**Статус:** главная v1.5 + **gallery.html v1**. Дальше — diary / zhanna по одной; фон галереи можно сменить.
+**Статус:** главная v1.5 + **gallery.html v1** + **diary.html v1**. Дальше — zhanna / widget; фон комнат можно сменить.
 
 ### Фаза 1 — главная v1.5 (контент, без новых страниц)
 
@@ -38,7 +38,7 @@
 | 6 | `anna.html` | после комнаты Жанны |
 
 - [x] **gallery.html** v1 — GIF-стена + scrollport (фон пока поле, сменный)
-- [ ] **diary.html** v1
+- [x] **diary.html** v1 — тетрадь автора + guest book (форма, `data/guestbook.json`)
 - [ ] **zhanna.html** v1
 - [ ] **widget.html** / **tamagotchi.html** v1
 - [ ] **secret-door.html** v1
@@ -62,7 +62,8 @@
 ### Ближайшие сессии (предложение)
 
 - **Сессия C:** свой фон для gallery (`--gallery-bg` / `images/gallery-bg.jpeg`)
-- **Сессия D:** `diary.html` v1
+- **Сессия D:** `zhanna.html` v1
+- **Сессия E:** endpoint guest book (FormSubmit) + live-лента (Supabase, опционально)
 
 ---
 

@@ -85,6 +85,7 @@
 - error-room warm/cold, заглушки 202.
 - **Фаза 1 медиа:** diary GIFs, polaroid (своё фото), character peeks, footer blinkies, stickers.exe strip.
 - **gallery.html v1** — комната GIF-стены; фон сменный (`--gallery-bg`).
+- **diary.html v1** — тетрадь + guest book; `data/guestbook.json`.
 
 ### Можно усилить позже
 

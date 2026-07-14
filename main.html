@@ -959,6 +959,16 @@ a.field-glyph:hover {
 .mini-world-label .label-b { color: #2d7a52; }
 .mini-world-label .label-c { color: #3a6f9a; }
 
+.mini-world-label a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.mini-world-label a:hover {
+  color: #e8a0c8;
+}
+
 .signal-game-stats {
   display: flex;
   justify-content: space-between;
@@ -1718,133 +1728,11 @@ a.field-glyph:hover {
   opacity: 0.75;
 }
 
-/* LOWER FIELD — diary scrollport + ad spam */
+/* LOWER FIELD — ad spam + нижний контент */
 .field-lower-world {
   margin-top: 28px;
   min-width: 0;
   max-width: 100%;
-}
-
-.diary-scrollport-world {
-  margin-top: 0;
-}
-
-.diary-scrollport {
-  display: flex;
-  gap: 16px;
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
-  box-sizing: border-box;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 14px 12px 16px;
-  scroll-snap-type: x proximity;
-  scrollbar-width: thin;
-  scrollbar-color: #e8a0c8 rgba(0, 0, 0, 0.35);
-  background:
-    repeating-linear-gradient(
-      -4deg,
-      rgba(232, 160, 200, 0.12) 0 14px,
-      rgba(142, 212, 168, 0.1) 14px 28px,
-      rgba(158, 197, 232, 0.1) 28px 42px
-    );
-  border: 2px solid rgba(35, 32, 20, 0.55);
-  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.1);
-}
-
-.diary-scrollport::-webkit-scrollbar {
-  height: 9px;
-}
-
-.diary-scrollport::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #e8a0c8, #9ec5e8);
-  border: 1px solid #1a1a1a;
-}
-
-.diary-page {
-  flex: 0 0 220px;
-  width: 220px;
-  max-width: 220px;
-  scroll-snap-align: start;
-  padding: 12px 12px 14px;
-  border: 2px solid #1a1a1a;
-  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.42);
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 10px;
-  align-items: start;
-}
-
-.diary-page:nth-child(odd) { transform: rotate(-1.4deg); }
-.diary-page:nth-child(even) { transform: rotate(1.1deg); }
-
-.diary-page--rose {
-  background: linear-gradient(145deg, #ffe8f4 0%, #ffc8e8 55%, #f5b0d8 100%);
-}
-
-.diary-page--mint {
-  background: linear-gradient(145deg, #e8fff0 0%, #c8f5d8 55%, #a8e8c0 100%);
-}
-
-.diary-page--sky {
-  background: linear-gradient(145deg, #e8f4ff 0%, #c8e0ff 55%, #a8d0f5 100%);
-}
-
-.diary-page--sun {
-  background: linear-gradient(145deg, #fff8d8 0%, #ffe8a8 55%, #f5d878 100%);
-}
-
-.diary-page--lav {
-  background: linear-gradient(145deg, #f0e8ff 0%, #dcc8ff 55%, #c8a8f5 100%);
-}
-
-.diary-page-art {
-  width: 72px;
-  height: 72px;
-  border: 2px solid #1a1a1a;
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.12);
-}
-
-.diary-page-art img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  image-rendering: auto;
-}
-
-.diary-page-art.media-placeholder {
-  font-size: 8px;
-  padding: 0;
-}
-
-.diary-page-meta {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  line-height: 1.5;
-  color: #58141c;
-  margin: 0 0 6px;
-  letter-spacing: 0.2px;
-}
-
-.diary-page-text {
-  font-family: 'Jura', sans-serif;
-  font-size: 15px;
-  line-height: 1.45;
-  color: #1a1a1a;
-  margin: 0;
-}
-
-.diary-page-doodle {
-  grid-column: 1 / -1;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
-  color: rgba(26, 26, 26, 0.55);
-  margin: 4px 0 0;
-  letter-spacing: 1px;
 }
 
 .ad-spam-world {
@@ -2536,7 +2424,7 @@ a.field-glyph:hover {
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery</strong> — gallery.html v1 (GIF-комната)</p>
         <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>WRITE YOUR NOTE</strong> — блокнот на главной</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>image of the day</strong> — полароид + фото из поля</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>field diary art</strong> — GIF в scrollport (GifCities)</p>
+        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>авторский diary</strong> — нормальные записи позже (guest book уже на diary.html)</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>character peeks</strong> — frog · butterfly · cat</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>footer blinkies</strong> — 88×31 + UC banner</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>stickers.exe</strong> — mini GIF-лента</p>
@@ -2547,7 +2435,7 @@ a.field-glyph:hover {
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>tamagotchi</strong> — комната улитки, погладить / покормить</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>кастомная 404</strong> — 404.html, cold</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>202 заглушки</strong> — gallery, diary, secret, zhanna, anna, tamagotchi, widget</p>
-        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>diary.html</strong> — отдельная страница (сейчас 202)</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>diary.html</strong> — тетрадь + guest book v1</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>ещё scrollports</strong> — в коробке, в галерее, в music room</p>
       </div>
     </section>
@@ -2689,52 +2577,6 @@ a.field-glyph:hover {
       <button type="button" class="field-glyph glyph--lower-g field-glyph--dead" data-glyph-event="бабочка · улетела"><img src="images/characters/friend-butterfly.gif" alt=""></button>
       <button type="button" class="field-glyph glyph--lower-h field-glyph--dead" data-glyph-event="sparkle · шум"><img src="images/diary/03-sparkle.gif" alt=""></button>
 
-      <section class="mini-world diary-scrollport-world" id="diaryWorld" aria-label="field diary scrollport">
-        <p class="mini-world-label"><span class="label-a">scrollport</span> · <span class="label-b">field diary</span> · <span class="label-c">черновики</span></p>
-        <div class="diary-scrollport" id="diaryScrollport">
-          <article class="diary-page diary-page--rose">
-            <div class="diary-page-art"><img src="images/diary/01-daisy.gif" alt="" width="72" height="72"></div>
-            <div>
-              <p class="diary-page-meta">24 · 06 · поле</p>
-              <p class="diary-page-text">сегодня интернет пахнет травой и старым монитором. норм.</p>
-            </div>
-            <p class="diary-page-doodle">~ * ~ ~ * ~</p>
-          </article>
-          <article class="diary-page diary-page--mint">
-            <div class="diary-page-art"><img src="images/diary/02-forest.gif" alt="" width="72" height="72"></div>
-            <div>
-              <p class="diary-page-meta">23 · 06 · лес</p>
-              <p class="diary-page-text">улитка смотрела на меня три часа. я проиграла.</p>
-            </div>
-            <p class="diary-page-doodle">( ◡ ‿ ◡ )</p>
-          </article>
-          <article class="diary-page diary-page--sky">
-            <div class="diary-page-art"><img src="images/diary/03-sparkle.gif" alt="" width="72" height="72"></div>
-            <div>
-              <p class="diary-page-meta">22 · 06 · draft</p>
-              <p class="diary-page-text">жанна опять уползла в код. оставила след из sparkles.</p>
-            </div>
-            <p class="diary-page-doodle">&gt;&gt;&gt; _</p>
-          </article>
-          <article class="diary-page diary-page--sun">
-            <div class="diary-page-art"><img src="images/diary/04-mushroom.gif" alt="" width="72" height="72"></div>
-            <div>
-              <p class="diary-page-meta">?? · ?? · vibe</p>
-              <p class="diary-page-text">не помню что писала но настроение — жёлтое и немного опасное.</p>
-            </div>
-            <p class="diary-page-doodle">♥ ? ♥</p>
-          </article>
-          <article class="diary-page diary-page--lav">
-            <div class="diary-page-art"><img src="images/diary/05-flower.gif" alt="" width="72" height="72"></div>
-            <div>
-              <p class="diary-page-meta">soon · wip</p>
-              <p class="diary-page-text">завтра добавлю ещё окна. или послезавтра. или никогда — тоже ок.</p>
-            </div>
-            <p class="diary-page-doodle">··· loading feelings ···</p>
-          </article>
-        </div>
-      </section>
-
       <section class="mini-world ad-spam-world" id="adSpamWorld" aria-label="навязчивая реклама поля">
         <p class="mini-world-label"><span class="label-a">spam.exe</span> · <span class="label-b">popup ads</span> · <span class="label-c">генерация внутри блока</span></p>
         <div class="ad-spam-field" id="adSpamField">
@@ -2780,11 +2622,11 @@ a.field-glyph:hover {
       </section>
 
       <section class="mini-world guest-book-world" id="guestBookPreview" aria-label="guest book preview">
-        <p class="mini-world-label"><span class="label-a">guest book</span> · <span class="label-b">preview</span> · <span class="label-c">фейк пока</span></p>
+        <p class="mini-world-label"><span class="label-a">guest book</span> · <span class="label-b">preview</span> · <span class="label-c"><a href="diary.html#guestbook">оставить записку →</a></span></p>
         <ul class="guest-book-preview">
           <li><span class="guest-book-name">moth_03</span><span class="guest-book-msg">зашла посмотреть улитку. осталась.</span></li>
           <li><span class="guest-book-name">field_rat</span><span class="guest-book-msg">vibe честный. как 2007.</span></li>
-          <li><span class="guest-book-name">???</span><span class="guest-book-msg">скоро сюда можно оставить записку.</span></li>
+          <li><span class="guest-book-name">полевой гость</span><span class="guest-book-msg">diary = guest book. можно оставить записку.</span></li>
         </ul>
       </section>
 
