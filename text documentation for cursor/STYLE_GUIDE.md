@@ -83,13 +83,14 @@
 - Фон-поле, win98-окна, welcome popup, spam, улитка, FIELD RADIO.
 - site TODO scrollport, guest book preview, WRITE YOUR NOTE, hotline.
 - error-room warm/cold, заглушки 202.
+- **Фаза 1 медиа:** diary GIFs, polaroid (своё фото), character peeks, footer blinkies, stickers.exe strip.
 
 ### Можно усилить позже
 
-- Blinkies / 88×31 в `core-footer` (fish, garfriend neighbors).
+- Больше / свои blinkies и stamps (вместо JUNO / Geocities archival finds).
 - Sticky todo как у korenara (сейчас scrollport — близко, но не sticky).
 - **Комнаты-картинки** с hotspots для gallery/diary (garfriend).
-- UPDATES.LOG / last updated на главной (ginder, fish).
+- UPDATES.LOG глубже last updated (ginder, fish).
 - Narrative gateway (garfriend) на `gateway.html`.
 - Плитка **внутри** mini-world, не на всю страницу (fish strawberry).
 

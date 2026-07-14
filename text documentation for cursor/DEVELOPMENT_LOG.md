@@ -20,6 +20,23 @@
 
 ---
 
+## 2026-07-14 — Фаза 1: картинки на главной
+
+**Что сделано:**
+
+- Starter-pack GIF с GifCities → `images/diary/`, `characters/`, `blinkies/` (локально, см. `SOURCES.md`).
+- Image of the day: кроп своего фото забора → `images/field/image-of-day.jpg`.
+- Убраны `.media-placeholder` в diary (×5), polaroid, character peeks (×3).
+- stickers.exe — mini GIF-лента; core-footer — UC + 88×31 + last updated.
+- Обновлены site TODO scrollport и доки.
+
+**Что делать дальше:**
+
+- **gallery.html v1** (Фаза 2).
+- Опционально: свои GIF вместо части GifCities; FIELD RADIO multi-track.
+
+---
+
 ## 2026-06-24 — error-room, the snail, заглушки артов
 
 **Что сделано:**

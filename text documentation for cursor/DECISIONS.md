@@ -328,3 +328,39 @@ Cursor-агент **сам** дополняет документацию (`DECIS
 - Решения → `DECISIONS.md`; идеи «может когда-нибудь» → `IDEAS.md`; статус задач → `TODO.md`; структура/ID → `SITE_STRUCTURE.md`; вайб/типографика → `STYLE_GUIDE.md`; хронология → `DEVELOPMENT_LOG.md`.
 - Если запись лишняя или неверная — автор говорит «откати»; агент убирает или правит.
 - Коммит доков — только когда автор просит (как и код).
+---
+
+## 2026-07-14 — Фаза 1: starter-pack медиа на главной
+
+### Решение
+
+Убрать `.media-placeholder` на `main.html`: локальный starter-pack GIF из **GifCities** (diary, characters, blinkies) + **своё** фото для image of the day (кроп `забор цветы и спокойствие.jpeg` → `images/field/image-of-day.jpg`). Не hotlink.
+
+### Причина
+
+Roadmap Фаза 1: главная должна выглядеть живой до отдельных страниц; свои арты можно подменить позже, сохранив имена файлов.
+
+### Последствия
+
+- Папки: `images/diary/`, `images/characters/`, `images/blinkies/`, `images/field/` + `images/SOURCES.md`.
+- stickers.exe = horizontal GIF-strip; footer = blinkies + last updated.
+- CSS `.media-placeholder` оставлен на случай будущих слотов.
+- Следующее по roadmap: **gallery.html v1**.
+
+---
+
+## 2026-07-14 — welcome один раз; rose-курсор parked
+
+### Решение
+
+1. Welcome popup на `main.html` — только при **первом** визите (`localStorage` ключ `gifworld-welcome-seen`). Возврат с gallery/diary и т.д. не показывает снова.
+2. Кастомный курсор с розой **отключён** на всех страницах; файлы `js/field-cursor.js` + `css/field-cursor.css` оставлены (PARKED). Идея не убита — можно вернуть или вынести в ветку `experiment/rose-cursor` при коммите.
+
+### Причина
+
+Повторный popup при каждом заходе на главную раздражает. Курсор — классная идея, но пока мешает / не уверена; лучше убрать с main, не удаляя код.
+
+### Последствия
+
+- Сброс welcome: в DevTools → Application → Local Storage → удалить `gifworld-welcome-seen`.
+- Вернуть курсор: подключить CSS+JS+`#fieldCursor` как раньше (или ветка).

@@ -2,25 +2,25 @@
 
 ## Roadmap (зафиксирован 2026-07-01)
 
-**Статус:** v1 **главной** по каркасу готов (layout, интерактив, 404/202, деплой). Дальше — **наполнение главной**, потом **страницы по одной**, не всё сразу.
+**Статус:** v1 **главной** по каркасу готов + **Фаза 1 контент** (GIF/фото вместо `.media-placeholder`). Дальше — **gallery.html v1**, потом остальные страницы по одной.
 
 ### Фаза 1 — главная v1.5 (контент, без новых страниц)
 
 **Цель:** главная выглядит живой; `.media-placeholder` убраны или почти убраны.
 
-- [ ] **Картинки / GIF** — GifCities, Betty's, Pixel Party, **свои** фото; скачивать в `images/`, не hotlink (см. `IDEAS.md` → «Где искать GIF»)
-- [ ] **image of the day** — заменить `#imageOfDaySlot` (1 полароид, быстрый win)
-- [ ] **field diary** — 2–3 art-слота из 5 в `#diaryScrollport` (не обязательно все сразу)
-- [ ] **character png-слоты** — 1–2 из 3 внизу главной
-- [ ] **core-footer** — 2–4 blinkies / 88×31 (fish, garfriend neighbors)
-- [ ] **last updated** на главной (meta, old web)
+- [x] **Картинки / GIF** — starter-pack из GifCities + своё фото; в `images/` (см. `images/SOURCES.md`)
+- [x] **image of the day** — `#imageOfDaySlot` → `images/field/image-of-day.jpg`
+- [x] **field diary** — все 5 art-слотов в `#diaryScrollport`
+- [x] **character png-слоты** — frog · butterfly · cat
+- [x] **core-footer** — UC banner + 3× 88×31 + last updated
+- [x] **last updated** на главной (meta в footer)
 - [ ] **FIELD RADIO** — 2–3 трека + переключение (опционально в этой фазе)
-- [ ] **stickers.exe** — контент вместо «скоро тут чето будет»
-- [ ] Обновить **site TODO scrollport** по мере закрытия пунктов
+- [x] **stickers.exe** — mini GIF-лента вместо «скоро тут чето будет»
+- [x] Обновить **site TODO scrollport** по мере закрытия пунктов
 
-**Заглушки на `main.html` (инвентарь):** diary art ×5 · polaroid ×1 · character slots ×3 · stickers text · коробка (GIF-лента внутри — позже)
+**Осталось / WIP на главной:** FIELD RADIO multi-track · WRITE YOUR NOTE endpoint · intro-текст · коробка GIF-лента внутри
 
-**Итог фазы:** главную можно показывать как «официальную»; WIP только там, где осознанно (scrollport TODO).
+**Итог фазы:** главную можно показывать как «официальную»; WIP только там, где осознанно (scrollport TODO + radio tracks).
 
 ---
 
@@ -37,7 +37,7 @@
 | 5 | `secret-door.html` | пасхалка, позже |
 | 6 | `anna.html` | после комнаты Жанны |
 
-- [ ] **gallery.html** v1 — GIF-стена или scrollport
+- [ ] **gallery.html** v1 — GIF-стена или scrollport ← **следующее**
 - [ ] **diary.html** v1
 - [ ] **zhanna.html** v1
 - [ ] **widget.html** / **tamagotchi.html** v1
@@ -61,14 +61,14 @@
 
 ### Ближайшие сессии (предложение)
 
-- **Сессия A:** автор кидает 5–10 картинок **или** агент собирает starter-pack под поле → diary + image of day + footer
-- **Сессия B:** `gallery.html` v1
+- **Сессия B:** `gallery.html` v1 — GIF-стена из `images/diary` + новые finds
+- **Сессия C:** свои фото/GIF вместо части GifCities (если захочется)
 
 ---
 
 ## Сейчас
 
-- [~] **Фаза 1** — главная v1.5 (см. Roadmap выше)
+- [x] **Фаза 1** — главная v1.5 контент (GIF/фото; см. Roadmap)
 - [ ] Закончить макет главной страницы и оформить её
   - [x] Шапка (тикер, заголовок, сердечки, зазор)
   - [x] Боковые колонки (nav + LIVE SYSTEM)
@@ -80,12 +80,12 @@
   - [x] **FIELD RADIO** — кастомный плеер (`music/rainy-lofi-city-lofi-music-332746.mp3`)
   - [ ] FIELD RADIO — 3–5 треков, переключение (текущий — legacy с прошлого сайта)
   - [x] Первый **scrollport** (site TODO)
-  - [x] **stickers.exe** — placeholder «скоро тут чето будет»
+  - [x] **stickers.exe** — mini GIF-лента (`#cuteScrollport`)
   - [~] **WRITE YOUR NOTE** — блокнот (локально; почта через `data-endpoint`)
-  - [~] **field diary** — horizontal scrollport (позже вертикальный); иллюстрации — заглушки
-  - [~] **image of the day** — полароид + описание; фото — заглушка `.media-placeholder`
+  - [x] **field diary** — horizontal scrollport + 5 GIF art
+  - [x] **image of the day** — полароид + фото из поля
   - [x] **the snail** — блок с `BIG SMACHNY snail.png`; ссылки → заглушки 202
-  - [x] Нижний контент: hotline.txt, guest book preview, core-footer, character png-слоты
+  - [x] Нижний контент: hotline.txt, guest book preview, core-footer (blinkies), character peeks
   - [x] spam.exe — бесконечные mini-окна только внутри блока
   - [x] welcome popup по центру при загрузке (не fullscreen)
   - [~] V1 scroll главной — все основные секции есть (не строго 1:1 макет)
@@ -117,7 +117,7 @@
 ### Scrollport (мини-зоны с внутренним скроллом)
 
 - [x] Первый пример на главной — site TODO
-- [x] stickers.exe — horizontal mini scrollport
+- [x] stickers.exe — horizontal mini scrollport (GIF thumbs)
 - [ ] Scrollport в коробке (открытая) — GIF-лента
 - [ ] Scrollport в forecast / music room — плейлист, лог, наклейки
 

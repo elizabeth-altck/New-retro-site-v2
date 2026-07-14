@@ -82,6 +82,8 @@
 
 ## Интерактив
 
+- **Rose cursor (parked 2026-07-14)** — кастомный курсор `images/rose.gif` через `js/field-cursor.js`; отключён с main, файлы живы. Вернуть / ветка `experiment/rose-cursor` когда захочется.
+
 - Попап с вводом кода
 - Фейковые ошибки
 - Пасхалки
@@ -124,8 +126,8 @@
 - Суши
 - Рамен
 - Цветы
-- **PNG-персонажи по сайту** — слоты `.field-character-peeks` (заглушки); потом как улитка-виджет или статично в блоках
-- **Заглушки `.media-placeholder`** — image of the day, diary art; заменить на `<img src="images/...">` когда арты готовы
+- **PNG-персонажи по сайту** — `.field-character-peeks` (frog / butterfly / cat с GifCities; можно заменить своими)
+- ~~**Заглушки `.media-placeholder`**~~ — сняты на главной (2026-07-14); CSS класс оставлен на будущее
 
 ---
 

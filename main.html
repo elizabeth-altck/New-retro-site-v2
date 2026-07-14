@@ -5,7 +5,6 @@
 <title>Homepage</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/field-cursor.css">
 
 <style>
 :root {
@@ -21,7 +20,6 @@ body {
   font-family: 'Share Tech Mono', monospace;
   color: #1b1b1b;
   overflow-x: clip;
-  cursor: var(--cursor-fallback);
 
   background-image: url("images/поле.jpeg");
   background-size: cover;
@@ -285,7 +283,7 @@ body {
   border-bottom: 2px solid #1a1a1a;
   background: #4a5238;
   color: #f2f2f2;
-  cursor: var(--cursor-fallback);
+  cursor: pointer;
   flex-shrink: 0;
 }
 
@@ -337,7 +335,7 @@ body {
   height: 10px;
   background: #1a1814;
   border: 2px solid #1a1a1a;
-  cursor: var(--cursor-fallback);
+  cursor: pointer;
   position: relative;
   min-width: 0;
 }
@@ -376,7 +374,7 @@ body {
   height: 8px;
   background: #1a1814;
   border: 1px solid #1a1a1a;
-  cursor: var(--cursor-fallback);
+  cursor: pointer;
 }
 
 .field-radio-volume input[type="range"]::-webkit-slider-thumb {
@@ -655,7 +653,7 @@ body {
   border: none;
   background: transparent;
   appearance: none;
-  cursor: var(--cursor-fallback);
+  cursor: pointer;
   user-select: none;
   line-height: 0;
 }
@@ -713,7 +711,7 @@ body {
   border: 2px solid #1a1a1a;
   background: rgba(142, 212, 168, 0.45);
   color: #1a1a1a;
-  cursor: var(--cursor-fallback);
+  cursor: pointer;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
   transition: background 0.15s ease, transform 0.1s ease;
 }
@@ -896,32 +894,24 @@ body {
   padding: 0;
 }
 
-.stickers-soon {
-  padding: 16px 12px 18px;
-  background: rgba(255, 248, 210, 0.1);
-  min-height: 76px;
+.stickers-strip {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   gap: 8px;
+  padding: 10px 8px 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: rgba(255, 248, 210, 0.1);
+  scrollbar-width: thin;
 }
 
-.stickers-soon-text {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  line-height: 1.65;
-  color: #f2f2f2;
-  margin: 0;
-  letter-spacing: 0.2px;
-}
-
-.stickers-soon-ghost {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 11px;
-  line-height: 1.4;
-  color: rgba(232, 200, 106, 0.62);
-  margin: 0;
-  letter-spacing: 1.5px;
+.stickers-strip img {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 248, 210, 0.35);
+  image-rendering: pixelated;
 }
 
 .site-note {
@@ -997,7 +987,7 @@ body {
   border-bottom: 2px solid #1a1a1a;
   background: #e8a0c8;
   color: #1a1a1a;
-  cursor: var(--cursor-fallback);
+  cursor: pointer;
 }
 
 .site-note-btn:active {
@@ -1115,7 +1105,7 @@ body {
   border-bottom: 1px solid #1a1a1a;
   background: #4a5238;
   color: #f2f2f2;
-  cursor: var(--cursor-fallback);
+  cursor: pointer;
 }
 
 .win98-menu-btn:hover {
@@ -1155,7 +1145,7 @@ body {
   border-bottom: 2px solid #1a1a1a;
   background: #c8c4b8;
   color: #1a1a1a;
-  cursor: var(--cursor-fallback);
+  cursor: pointer;
 }
 
 .win98-action-btn:active {
@@ -1365,7 +1355,7 @@ body {
   border: 2px solid rgba(245, 236, 212, 0.35);
   background: rgba(255, 248, 210, 0.12);
   color: #f5ecd4;
-  cursor: var(--cursor-fallback);
+  cursor: pointer;
 }
 
 .mini-popup-btn:hover {
@@ -1464,6 +1454,16 @@ body {
   height: 72px;
   border: 2px solid #1a1a1a;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.diary-page-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: auto;
 }
 
 .diary-page-art.media-placeholder {
@@ -1629,7 +1629,7 @@ body {
   font-size: 10px;
   padding: 4px 7px;
   border: 2px solid #1a1a1a;
-  cursor: var(--cursor-fallback);
+  cursor: pointer;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
 }
 
@@ -1745,7 +1745,7 @@ body {
   font-size: 11px;
   padding: 7px 12px;
   border: 2px solid #1a1a1a;
-  cursor: var(--cursor-fallback);
+  cursor: pointer;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.45);
 }
 
@@ -1914,7 +1914,7 @@ body {
   padding: 6px 10px;
   border: 2px solid #1a1a1a;
   background: rgba(255, 248, 210, 0.55);
-  cursor: var(--cursor-fallback);
+  cursor: pointer;
   box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -1959,6 +1959,34 @@ body {
   text-align: center;
 }
 
+.core-footer-blinkies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 14px;
+}
+
+.core-footer-blinkies img {
+  display: block;
+  height: 31px;
+  width: auto;
+  image-rendering: pixelated;
+}
+
+.core-footer-blinkies img.core-footer-blinkie--wide {
+  height: 28px;
+}
+
+.core-footer-meta {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: rgba(26, 26, 26, 0.62);
+  margin: 0 0 8px;
+  letter-spacing: 0.3px;
+}
+
 .core-footer-counter {
   font-family: 'Press Start 2P', monospace;
   font-size: 9px;
@@ -1987,6 +2015,14 @@ body {
   text-decoration: underline;
 }
 
+.polaroid-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid rgba(26, 26, 26, 0.35);
+}
+
 .field-character-peeks {
   display: flex;
   flex-wrap: wrap;
@@ -2003,10 +2039,19 @@ body {
   width: 92px;
 }
 
-.field-character-slot .media-placeholder {
+.field-character-slot .media-placeholder,
+.field-character-slot .field-character-img {
   width: 88px;
   height: 88px;
   margin: 0 auto;
+}
+
+.field-character-img {
+  display: block;
+  object-fit: contain;
+  background: rgba(255, 248, 210, 0.2);
+  border: 2px dashed rgba(26, 26, 26, 0.35);
+  image-rendering: pixelated;
 }
 
 .field-character-label {
@@ -2035,10 +2080,6 @@ body {
 </head>
 
 <body>
-
-<div id="fieldCursor" class="field-cursor" hidden aria-hidden="true">
-  <img src="images/rose.gif" alt="" width="33" height="27" draggable="false">
-</div>
 
 <header class="site-header">
   <div class="ticker">
@@ -2121,13 +2162,18 @@ body {
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>the snail</strong> — блок Жанна + ссылки на заглушки</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery</strong> — gallery.html (202 warm)</p>
         <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>WRITE YOUR NOTE</strong> — блокнот на главной</p>
-        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>image of the day</strong> — полароид на главной</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>image of the day</strong> — полароид + фото из поля</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>field diary art</strong> — GIF в scrollport (GifCities)</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>character peeks</strong> — frog · butterfly · cat</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>footer blinkies</strong> — 88×31 + UC banner</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>stickers.exe</strong> — mini GIF-лента</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>intro</strong> — текст «привет, это мой сайт…»</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>gallery.html v1</strong> — настоящая GIF-стена</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>music room</strong> — полноценная страница, больше треков</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>tamagotchi</strong> — комната улитки, погладить / покормить</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>кастомная 404</strong> — 404.html, cold</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>202 заглушки</strong> — gallery, diary, secret, zhanna, anna, tamagotchi, widget</p>
-        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>diary</strong> — field diary scrollport на главной</p>
+        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>diary.html</strong> — отдельная страница (сейчас 202)</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>ещё scrollports</strong> — в коробке, в галерее, в music room</p>
       </div>
     </section>
@@ -2194,11 +2240,15 @@ body {
           </div>
 
           <div class="slot-secondary-row">
-            <div class="win98-window win98-window--stickers" aria-label="stickers — скоро">
+            <div class="win98-window win98-window--stickers" aria-label="stickers.exe">
               <div class="win98-titlebar">stickers.exe</div>
-              <div class="stickers-soon" id="cuteScrollport">
-                <p class="stickers-soon-text">скоро тут<br>чето будет</p>
-                <p class="stickers-soon-ghost">··· ? ···</p>
+              <div class="stickers-strip" id="cuteScrollport">
+                <img src="images/diary/01-daisy.gif" alt="" width="52" height="52">
+                <img src="images/diary/03-sparkle.gif" alt="" width="52" height="52">
+                <img src="images/diary/04-mushroom.gif" alt="" width="52" height="52">
+                <img src="images/characters/friend-frog.gif" alt="" width="52" height="52">
+                <img src="images/characters/mystery-cat.gif" alt="" width="52" height="52">
+                <img src="images/rose.gif" alt="" width="52" height="52">
               </div>
             </div>
 
@@ -2251,7 +2301,7 @@ body {
         <p class="mini-world-label"><span class="label-a">scrollport</span> · <span class="label-b">field diary</span> · <span class="label-c">черновики с иллюстрациями</span></p>
         <div class="diary-scrollport" id="diaryScrollport">
           <article class="diary-page diary-page--rose">
-            <div class="diary-page-art media-placeholder" aria-hidden="true"><span class="media-placeholder-label">art<br>soon</span></div>
+            <div class="diary-page-art"><img src="images/diary/01-daisy.gif" alt="" width="72" height="72"></div>
             <div>
               <p class="diary-page-meta">24 · 06 · поле</p>
               <p class="diary-page-text">сегодня интернет пахнет травой и старым монитором. норм.</p>
@@ -2259,7 +2309,7 @@ body {
             <p class="diary-page-doodle">~ * ~ ~ * ~</p>
           </article>
           <article class="diary-page diary-page--mint">
-            <div class="diary-page-art media-placeholder" aria-hidden="true"><span class="media-placeholder-label">лес<br>png</span></div>
+            <div class="diary-page-art"><img src="images/diary/02-forest.gif" alt="" width="72" height="72"></div>
             <div>
               <p class="diary-page-meta">23 · 06 · лес</p>
               <p class="diary-page-text">улитка смотрела на меня три часа. я проиграла.</p>
@@ -2267,7 +2317,7 @@ body {
             <p class="diary-page-doodle">( ◡ ‿ ◡ )</p>
           </article>
           <article class="diary-page diary-page--sky">
-            <div class="diary-page-art media-placeholder" aria-hidden="true"><span class="media-placeholder-label">gif?<br>soon</span></div>
+            <div class="diary-page-art"><img src="images/diary/03-sparkle.gif" alt="" width="72" height="72"></div>
             <div>
               <p class="diary-page-meta">22 · 06 · draft</p>
               <p class="diary-page-text">жанна опять уползла в код. оставила след из sparkles.</p>
@@ -2275,7 +2325,7 @@ body {
             <p class="diary-page-doodle">&gt;&gt;&gt; _</p>
           </article>
           <article class="diary-page diary-page--sun">
-            <div class="diary-page-art media-placeholder" aria-hidden="true"><span class="media-placeholder-label">mood<br>pic</span></div>
+            <div class="diary-page-art"><img src="images/diary/04-mushroom.gif" alt="" width="72" height="72"></div>
             <div>
               <p class="diary-page-meta">?? · ?? · vibe</p>
               <p class="diary-page-text">не помню что писала но настроение — жёлтое и немного опасное.</p>
@@ -2283,7 +2333,7 @@ body {
             <p class="diary-page-doodle">♥ ? ♥</p>
           </article>
           <article class="diary-page diary-page--lav">
-            <div class="diary-page-art media-placeholder" aria-hidden="true"><span class="media-placeholder-label">wip<br>art</span></div>
+            <div class="diary-page-art"><img src="images/diary/05-flower.gif" alt="" width="72" height="72"></div>
             <div>
               <p class="diary-page-meta">soon · wip</p>
               <p class="diary-page-text">завтра добавлю ещё окна. или послезавтра. или никогда — тоже ок.</p>
@@ -2304,12 +2354,17 @@ body {
         <section class="mini-world image-of-day-world" id="imageOfDay" aria-label="image of the day">
           <p class="mini-world-label"><span class="label-a">image</span> · <span class="label-b">of the day</span> · <span class="label-c">фото дня</span></p>
           <figure class="polaroid">
-            <div class="media-placeholder media-placeholder--polaroid" id="imageOfDaySlot" aria-label="фото дня — заглушка">
-              <span class="media-placeholder-label">фото дня<br>скоро</span>
-            </div>
+            <img
+              class="polaroid-img"
+              id="imageOfDaySlot"
+              src="images/field/image-of-day.jpg"
+              alt="забор и поле на закате — фото дня"
+              width="640"
+              height="480"
+            >
             <figcaption>
-              <span class="polaroid-date">24 · 06</span>
-              <span class="polaroid-desc">тихий лес у поля — утро, вода в траве, пахнет мокрой землёй. сюда — твой снимок.</span>
+              <span class="polaroid-date">14 · 07</span>
+              <span class="polaroid-desc">забор, белые цветы, поле на закате. пахнет пылью и спокойствием.</span>
             </figcaption>
           </figure>
         </section>
@@ -2341,23 +2396,30 @@ body {
         </ul>
       </section>
 
-      <div class="field-character-peeks" aria-label="слоты для персонажей png">
+      <div class="field-character-peeks" aria-label="персонажи поля">
         <div class="field-character-slot">
-          <div class="media-placeholder" aria-hidden="true"><span class="media-placeholder-label">png<br>soon</span></div>
-          <p class="field-character-label">friend #1</p>
+          <img class="field-character-img" src="images/characters/friend-frog.gif" alt="лягушка" width="88" height="88">
+          <p class="field-character-label">frog.exe</p>
         </div>
         <div class="field-character-slot">
-          <div class="media-placeholder" aria-hidden="true"><span class="media-placeholder-label">png<br>soon</span></div>
-          <p class="field-character-label">friend #2</p>
+          <img class="field-character-img" src="images/characters/friend-butterfly.gif" alt="бабочка" width="88" height="88">
+          <p class="field-character-label">flutter</p>
         </div>
         <div class="field-character-slot">
-          <div class="media-placeholder" aria-hidden="true"><span class="media-placeholder-label">png?<br>soon</span></div>
-          <p class="field-character-label">mystery</p>
+          <img class="field-character-img" src="images/characters/mystery-cat.gif" alt="кот" width="88" height="88">
+          <p class="field-character-label">??? cat</p>
         </div>
-        <p class="field-character-hint">слоты для png-персонажей · потом как улитка или статично</p>
+        <p class="field-character-hint">соседи по полю · GifCities finds · потом могут стать кликабельными</p>
       </div>
 
       <footer class="core-footer">
+        <div class="core-footer-blinkies" aria-label="blinkies">
+          <img class="core-footer-blinkie--wide" src="images/blinkies/uc-banner.gif" alt="under construction" width="128" height="40">
+          <img src="images/blinkies/geocities.gif" alt="Geocities" width="88" height="31">
+          <img src="images/blinkies/email.gif" alt="JUNO free e-mail" width="88" height="31">
+          <img src="images/blinkies/best-viewed.gif" alt="best viewed with" width="88" height="31">
+        </div>
+        <p class="core-footer-meta">last updated · 14 Jul 2026 · phase 1.5 content drop</p>
         <p class="core-footer-counter">visitors: <span id="fakeCounter">00427</span></p>
         <p class="core-footer-note">best viewed if you're nostalgic · made in the field</p>
         <p class="core-footer-links">
@@ -2416,7 +2478,6 @@ body {
   </button>
 </div>
 
-<script src="js/field-cursor.js"></script>
 <script>
 (function () {
   const arena = document.getElementById('gameArena');
@@ -3228,8 +3289,16 @@ body {
 (function () {
   const layer = document.getElementById('sitePopupLayer');
   const eventsList = document.getElementById('eventsList');
+  const SEEN_KEY = 'gifworld-welcome-seen';
 
   if (!layer) return;
+
+  // Только при самом первом визите в браузере — не при каждом возврате на main
+  try {
+    if (localStorage.getItem(SEEN_KEY) === '1') return;
+  } catch (_) {
+    /* private mode — покажем один раз за загрузку страницы */
+  }
 
   const WELCOME_TEMPLATES = [
     {
@@ -3266,13 +3335,21 @@ body {
     return list[Math.floor(Math.random() * list.length)];
   }
 
+  function markSeen() {
+    try {
+      localStorage.setItem(SEEN_KEY, '1');
+    } catch (_) { /* ignore */ }
+  }
+
   function hidePopup() {
+    markSeen();
     layer.hidden = true;
     layer.setAttribute('aria-hidden', 'true');
     layer.innerHTML = '';
   }
 
   function showWelcomePopup() {
+    markSeen();
     const tpl = pick(WELCOME_TEMPLATES);
     layer.innerHTML = `
       <div class="site-popup__backdrop" data-site-popup-dismiss></div>

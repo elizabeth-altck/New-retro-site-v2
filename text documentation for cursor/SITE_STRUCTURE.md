@@ -47,16 +47,17 @@
 - **site TODO scrollport** — прокручиваемый список планов развития сайта
 - **Коробка-коллаж** — ~360px, слева: hover/tap `closed.png` ↔ `opened.png`
 - **forecast.exe (Win98)** — Forecast + «НОВАЯ КОЛЛЕКЦИЯ»
-- **stickers.exe** — placeholder «скоро тут чето будет»
+- **stickers.exe** — mini GIF-лента (`#cuteScrollport`)
 - **WRITE YOUR NOTE** (`#siteNote`) — форма заметок (localStorage / FormSubmit)
-- **field diary scrollport** (`#diaryScrollport`) — горизонтальный дневник (позже — вертикальный)
+- **field diary scrollport** (`#diaryScrollport`) — горизонтальный дневник + 5 GIF art
 - **spam.exe** (`#adSpamField`) — бесконечная генерация mini win98 только внутри блока
-- **image of the day** (`#imageOfDaySlot`) — полароид с заглушкой + описание в figcaption
+- **image of the day** (`#imageOfDaySlot`) — полароид + `images/field/image-of-day.jpg`
 - **the snail** (`#snailTeaser`) — `BIG SMACHNY snail.png`; текст из макета; ссылки → 202-заглушки + `widget.html`
 - **hotline.txt** (`#fieldHotline`) — случайные мысли поля
 - **guest book preview** — фейковые записи
-- **core-footer** — neocities-счётчик, ссылки
-- **welcome popup** (`#sitePopupLayer`) — центральный win98 при загрузке (~400px, не fullscreen)
+- **core-footer** — blinkies, last updated, neocities-счётчик, ссылки
+- **character peeks** — frog · butterfly · cat
+- **welcome popup** (`#sitePopupLayer`) — один раз при первом визите (`localStorage`); не при каждом возврате на main
 - **Улитка** (`#snailDragWrap`) — `position: absolute` на body, автоползание + drag, `snail.exe`
 - **Ещё не свёрстано:** intro-текст
 
@@ -73,11 +74,11 @@
 | `#coreArena` | Оливковый блок `.core` |
 | `#fieldRadio` | Кастомный музыкальный плеер (левая колонка) |
 | `#fieldScrollport` | Site TODO scrollport |
-| `#cuteScrollport` | stickers.exe — placeholder |
-| `#diaryScrollport` | field diary — horizontal scrollport |
+| `#cuteScrollport` | stickers.exe — horizontal GIF strip |
+| `#diaryScrollport` | field diary — horizontal scrollport + art |
 | `#adSpamField` | spam.exe — бесконечные mini ads внутри блока |
 | `#sitePopupLayer` | Welcome popup по центру при загрузке |
-| `#imageOfDaySlot` | Image of the day — заглушка (потом `<img>`) |
+| `#imageOfDaySlot` | Image of the day — `<img>` полароид |
 | `#fieldHotline` | hotline.txt |
 | `#guestBookPreview` | Guest book preview |
 | `#fieldStats` | field_stats.txt (правая колонка) |
@@ -135,4 +136,12 @@
 | `images/snail.png` | Виджет улитки на главной (~320px) |
 | `images/BIG SMACHNY snail.png` | Блок the snail |
 | `images/забор цветы и спокойствие.jpeg` | Фон error-room страниц |
+| `images/field/image-of-day.jpg` | Image of the day (кроп с забора) |
+| `images/diary/*.gif` | Field diary art ×5 |
+| `images/characters/*.gif` | Character peeks ×3 |
+| `images/blinkies/*.gif` | Footer blinkies / UC |
+| `images/rose.gif` | stickers.exe (курсор — parked, см. field-cursor.*) |
 | `music/rainy-lofi-city-lofi-music-332746.mp3` | FIELD RADIO (legacy-трек) |
+
+Источники GIF: `images/SOURCES.md`.
+
