@@ -1,0 +1,334 @@
+/* tamagotchi room — погладить / покормить Жанну */
+:root {
+  --tama-font-mono: 'Share Tech Mono', monospace;
+  --tama-font-pixel: 'Press Start 2P', monospace;
+  --tama-font-body: 'Jura', sans-serif;
+  --tama-bg: url("../images/луг_и_солнышко.jpeg");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body.tama-room {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--tama-font-body);
+  color: #fffadb;
+  background: #1a1810;
+}
+
+.tama-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--tama-bg) center center / cover no-repeat;
+  background-attachment: fixed;
+}
+
+.tama-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 18%, rgba(255, 210, 120, 0.32), transparent 50%),
+    radial-gradient(ellipse at 72% 80%, rgba(120, 200, 150, 0.2), transparent 45%),
+    linear-gradient(180deg, rgba(20, 18, 12, 0.5) 0%, rgba(32, 28, 18, 0.72) 100%);
+}
+
+.tama-shell {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 94vw);
+  margin: 0 auto;
+  padding: 22px 0 52px;
+}
+
+.tama-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin-bottom: 18px;
+}
+
+.tama-back {
+  font-family: var(--tama-font-mono);
+  font-size: 14px;
+  color: #fffadb;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255, 250, 219, 0.55);
+}
+
+.tama-back:hover {
+  color: #ffd48a;
+  border-bottom-color: #ffd48a;
+}
+
+.tama-meta {
+  font-family: var(--tama-font-mono);
+  font-size: 11px;
+  color: rgba(255, 250, 219, 0.65);
+  margin: 0;
+}
+
+.tama-hero {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.tama-kicker {
+  font-family: var(--tama-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: rgba(255, 250, 219, 0.72);
+  margin: 0 0 8px;
+}
+
+.tama-title {
+  font-family: var(--tama-font-pixel);
+  font-size: clamp(18px, 4vw, 28px);
+  line-height: 1.35;
+  margin: 0 0 10px;
+  color: #fff0b8;
+  text-shadow: 2px 2px 0 rgba(88, 20, 28, 0.55);
+}
+
+.tama-lede {
+  font-size: 15px;
+  line-height: 1.5;
+  max-width: 42em;
+  margin: 0 auto;
+  color: rgba(255, 250, 219, 0.88);
+}
+
+.tama-stage {
+  position: relative;
+  margin: 0 auto 20px;
+  padding: 22px 18px 18px;
+  max-width: 420px;
+  border: 2px solid rgba(255, 250, 219, 0.35);
+  background:
+    linear-gradient(180deg, rgba(255, 248, 210, 0.14) 0%, rgba(28, 24, 16, 0.55) 100%);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.45);
+}
+
+.tama-stage-label {
+  font-family: var(--tama-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.4px;
+  color: rgba(255, 250, 219, 0.62);
+  margin: 0 0 14px;
+  text-align: center;
+}
+
+.tama-snail-wrap {
+  position: relative;
+  width: min(200px, 56vw);
+  margin: 0 auto 16px;
+  animation: tamaBob 3.4s ease-in-out infinite;
+}
+
+.tama-snail-wrap.is-shy {
+  animation: tamaShy 0.45s ease;
+}
+
+.tama-snail-wrap.is-hop {
+  animation: tamaHop 0.55s ease;
+}
+
+.tama-snail {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.35));
+}
+
+.tama-snail-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tama-snail-sparkles span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fff6a8;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.tama-snail-wrap.is-pet .tama-snail-sparkles span {
+  animation: tamaSparkle 1.8s ease-in-out infinite;
+}
+
+.tama-snail-sparkles .s1 { left: 18%; top: 22%; }
+.tama-snail-sparkles .s2 { left: 72%; top: 18%; animation-delay: 0.3s; }
+.tama-snail-sparkles .s3 { left: 48%; top: 8%; animation-delay: 0.6s; }
+
+.tama-status {
+  font-family: var(--tama-font-mono);
+  font-size: 13px;
+  line-height: 1.45;
+  min-height: 2.9em;
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px dashed rgba(255, 250, 219, 0.28);
+  color: #fffadb;
+}
+
+.tama-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.tama-stat {
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(255, 250, 219, 0.22);
+}
+
+.tama-stat-label {
+  font-family: var(--tama-font-mono);
+  font-size: 10px;
+  color: rgba(255, 250, 219, 0.62);
+  margin: 0 0 6px;
+  text-transform: lowercase;
+}
+
+.tama-stat-value {
+  font-family: var(--tama-font-pixel);
+  font-size: 9px;
+  line-height: 1.5;
+  margin: 0 0 8px;
+  color: #ffd48a;
+}
+
+.tama-stat-bar {
+  height: 8px;
+  background: rgba(255, 250, 219, 0.12);
+  border: 1px solid rgba(255, 250, 219, 0.2);
+  overflow: hidden;
+}
+
+.tama-stat-fill {
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(90deg, #c8e6a0, #ffd48a);
+  transition: width 0.35s ease;
+}
+
+.tama-stat-fill.is-low {
+  background: linear-gradient(90deg, #e8a0c8, #ff8a8a);
+}
+
+.tama-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.tama-btn {
+  font-family: var(--tama-font-mono);
+  font-size: 12px;
+  padding: 8px 12px;
+  border: 2px solid rgba(255, 250, 219, 0.38);
+  background: rgba(255, 248, 210, 0.12);
+  color: #fffadb;
+  cursor: pointer;
+}
+
+.tama-btn:hover {
+  background: rgba(232, 160, 200, 0.28);
+  border-color: rgba(255, 250, 219, 0.55);
+}
+
+.tama-btn.is-muted {
+  opacity: 0.72;
+}
+
+.tama-links {
+  margin-top: 22px;
+  padding: 14px 16px;
+  border: 1px dashed rgba(255, 250, 219, 0.28);
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.tama-links-label {
+  font-family: var(--tama-font-mono);
+  font-size: 10px;
+  color: rgba(255, 250, 219, 0.62);
+  margin: 0 0 10px;
+}
+
+.tama-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.tama-links a {
+  font-family: var(--tama-font-mono);
+  font-size: 13px;
+  color: #fffadb;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255, 250, 219, 0.4);
+}
+
+.tama-links a:hover {
+  color: #ffd48a;
+}
+
+.tama-foot {
+  margin-top: 28px;
+  font-family: var(--tama-font-mono);
+  font-size: 11px;
+  color: rgba(255, 250, 219, 0.58);
+  text-align: center;
+}
+
+.tama-foot a {
+  color: #fffadb;
+}
+
+.tama-foot code {
+  font-size: 10px;
+}
+
+@keyframes tamaBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes tamaShy {
+  0%, 100% { transform: scale(1); }
+  40% { transform: scale(0.92) rotate(-4deg); }
+}
+
+@keyframes tamaHop {
+  0%, 100% { transform: translateY(0); }
+  35% { transform: translateY(-18px) rotate(-3deg); }
+  68% { transform: translateY(2px); }
+}
+
+@keyframes tamaSparkle {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@media (max-width: 520px) {
+  .tama-stats {
+    grid-template-columns: 1fr;
+  }
+}

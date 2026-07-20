@@ -4,23 +4,219 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>(function(){if(location.protocol!=='file:'){var b=document.createElement('base');b.href=location.origin+'/';document.head.appendChild(b);}})();</script>
-  <title>202 · tamagotchi</title>
+  <title>tamagotchi · zhanna</title>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/error-room.css">
+  <link rel="stylesheet" href="css/tamagotchi.css">
 </head>
-<body class="error-room error-room--warm">
-  <div class="error-room-bg" aria-hidden="true"></div>
-  <main class="error-room-card">
-    <p class="error-room-code">202</p>
-    <h1 class="error-room-title">Ошибка: страница еще не создана</h1>
-    <p class="error-room-body">Здесь будет tamagotchi-уголок: погладить, покормить, странные реакции. Пока — только виджет улитки на главной.</p>
-    <p class="error-room-body error-room-body--slot">погладить / покормить · wip</p>
-    <a class="error-room-home" href="main.html">← вернуться на главную</a>
-    <a class="error-room-home" href="widget.html" style="display:block;margin-top:10px;">страница виджета (202)</a>
-    <p class="error-room-meta">tamagotchi · not ready</p>
-  </main>
+<body class="tama-room">
+  <div class="tama-bg" aria-hidden="true"></div>
+
+  <div class="tama-shell">
+    <div class="tama-top">
+      <a class="tama-back" href="main.html">← главная</a>
+      <p class="tama-meta">room · tamagotchi.exe · v1</p>
+    </div>
+
+    <header class="tama-hero">
+      <p class="tama-kicker">CARE · zhanna · ахатина</p>
+      <h1 class="tama-title">tamagotchi</h1>
+      <p class="tama-lede">погладь или покорми <a href="zhanna.html">Жанну</a>. настроение и сытость сохраняются в браузере — позже свяжем с LIVE SYSTEM на главной.</p>
+    </header>
+
+    <section class="tama-stage" aria-label="улитка tamagotchi">
+      <p class="tama-stage-label">snail.exe · v1 · local save</p>
+
+      <div class="tama-snail-wrap" id="tamaSnailWrap">
+        <img
+          class="tama-snail"
+          id="tamaSnailImg"
+          src="images/BIG SMACHNY snail.png"
+          alt="Жанна — улитка ахатина"
+          width="200"
+          height="200"
+        >
+        <span class="tama-snail-sparkles" aria-hidden="true">
+          <span class="s1"></span>
+          <span class="s2"></span>
+          <span class="s3"></span>
+        </span>
+      </div>
+
+      <p class="tama-status" id="tamaStatus">она смотрит на тебя оценивающе.</p>
+
+      <div class="tama-stats">
+        <div class="tama-stat">
+          <p class="tama-stat-label">mood</p>
+          <p class="tama-stat-value" id="tamaMoodLabel">judging</p>
+          <div class="tama-stat-bar" aria-hidden="true">
+            <div class="tama-stat-fill" id="tamaMoodBar"></div>
+          </div>
+        </div>
+        <div class="tama-stat">
+          <p class="tama-stat-label">hunger</p>
+          <p class="tama-stat-value" id="tamaHungerLabel">peckish</p>
+          <div class="tama-stat-bar" aria-hidden="true">
+            <div class="tama-stat-fill" id="tamaHungerBar"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tama-actions">
+        <button type="button" class="tama-btn" data-tama="pet">погладить</button>
+        <button type="button" class="tama-btn" data-tama="feed">покормить</button>
+        <button type="button" class="tama-btn is-muted" data-tama="kick">пнуть</button>
+        <button type="button" class="tama-btn is-muted" data-tama="squish">раздавить</button>
+      </div>
+    </section>
+
+    <nav class="tama-links" aria-label="ссылки">
+      <p class="tama-links-label">from here</p>
+      <ul>
+        <li><a href="zhanna.html">комната zhanna</a></li>
+        <li><a href="main.html#snailDragWrap">улитка на главной</a></li>
+        <li><a href="widget.html">widget (202)</a></li>
+        <li><a href="diary.html">guest book</a></li>
+      </ul>
+    </nav>
+
+    <footer class="tama-foot">
+      <p>статы → <code>localStorage · gifworld-snail-tama</code></p>
+      <p><a href="main.html">← назад в поле</a></p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'gifworld-snail-tama';
+      const wrap = document.getElementById('tamaSnailWrap');
+      const statusEl = document.getElementById('tamaStatus');
+      const moodLabel = document.getElementById('tamaMoodLabel');
+      const hungerLabel = document.getElementById('tamaHungerLabel');
+      const moodBar = document.getElementById('tamaMoodBar');
+      const hungerBar = document.getElementById('tamaHungerBar');
+
+      const lines = {
+        pet: ['мягко. она довольна (вероятно).', 'раковина блестит сильнее.', 'улитка одобряет тактильность.'],
+        feed: ['съела. просит ещё.', 'крошки поля приняты.', 'сытость +1. пердение — pending.'],
+        kick: ['не надо было. она запомнила.', 'улитка обиделась на 3 секунды.', 'поле осудило это действие.'],
+        squish: ['она... снова целая. странно.', 'squish rejected by physics.', 'улитка возвращается. всегда.'],
+      };
+
+      function clamp(n, min, max) {
+        return Math.min(max, Math.max(min, n));
+      }
+
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return { mood: 68, hunger: 42, pets: 0, feeds: 0 };
+          const parsed = JSON.parse(raw);
+          return {
+            mood: clamp(Number(parsed.mood) || 68, 0, 100),
+            hunger: clamp(Number(parsed.hunger) || 42, 0, 100),
+            pets: Number(parsed.pets) || 0,
+            feeds: Number(parsed.feeds) || 0,
+          };
+        } catch {
+          return { mood: 68, hunger: 42, pets: 0, feeds: 0 };
+        }
+      }
+
+      function saveState(state) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function moodWord(value) {
+        if (value >= 85) return 'blissful';
+        if (value >= 65) return 'content';
+        if (value >= 45) return 'judging';
+        if (value >= 25) return 'miffed';
+        return 'tragic';
+      }
+
+      function hungerWord(value) {
+        if (value >= 75) return 'starving';
+        if (value >= 50) return 'peckish';
+        if (value >= 25) return 'snacking';
+        return 'full';
+      }
+
+      let state = loadState();
+
+      function renderStats() {
+        if (moodLabel) moodLabel.textContent = moodWord(state.mood);
+        if (hungerLabel) hungerLabel.textContent = hungerWord(state.hunger);
+        if (moodBar) {
+          moodBar.style.width = state.mood + '%';
+          moodBar.classList.toggle('is-low', state.mood < 35);
+        }
+        if (hungerBar) {
+          hungerBar.style.width = state.hunger + '%';
+          hungerBar.classList.toggle('is-low', state.hunger > 65);
+        }
+      }
+
+      function say(action) {
+        const pool = lines[action];
+        if (statusEl && pool) {
+          statusEl.textContent = pool[Math.floor(Math.random() * pool.length)];
+        }
+      }
+
+      function pulseClass(className, ms) {
+        if (!wrap) return;
+        wrap.classList.remove('is-shy', 'is-hop', 'is-pet');
+        wrap.classList.add(className);
+        window.setTimeout(() => wrap.classList.remove(className), ms);
+      }
+
+      function tickHunger() {
+        state.hunger = clamp(state.hunger + 1, 0, 100);
+        saveState(state);
+        renderStats();
+      }
+
+      renderStats();
+      window.setInterval(tickHunger, 45000);
+
+      document.querySelectorAll('[data-tama]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const action = btn.getAttribute('data-tama');
+          say(action);
+
+          if (action === 'pet') {
+            state.mood = clamp(state.mood + 10, 0, 100);
+            state.pets += 1;
+            pulseClass('is-pet', 1200);
+          }
+          if (action === 'feed') {
+            state.hunger = clamp(state.hunger - 28, 0, 100);
+            state.mood = clamp(state.mood + 4, 0, 100);
+            state.feeds += 1;
+            pulseClass('is-hop', 550);
+          }
+          if (action === 'kick') {
+            state.mood = clamp(state.mood - 18, 0, 100);
+            pulseClass('is-shy', 450);
+          }
+          if (action === 'squish') {
+            state.mood = clamp(state.mood - 8, 0, 100);
+            pulseClass('is-shy', 450);
+            window.setTimeout(() => {
+              state.mood = clamp(state.mood + 5, 0, 100);
+              saveState(state);
+              renderStats();
+            }, 600);
+          }
+
+          saveState(state);
+          renderStats();
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

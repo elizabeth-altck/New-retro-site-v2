@@ -83,6 +83,7 @@
     </footer>
   </div>
 
+  <script src="js/load-site-config.js"></script>
   <script>
     (function () {
       const form = document.getElementById('guestbookForm');
@@ -153,6 +154,8 @@
         .then((r) => (r.ok ? r.json() : { messages: [] }))
         .then((data) => renderList(data.messages || []))
         .catch(() => renderList([]));
+
+      loadSiteFormEndpoints();
 
       if (!form || !msgInput) return;
 

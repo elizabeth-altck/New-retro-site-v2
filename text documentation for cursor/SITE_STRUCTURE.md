@@ -108,7 +108,7 @@
 | `secret-door.html` | 202 | warm | nav → secret door |
 | `zhanna.html` | — | **room** | комната Жанны v1 (`css/zhanna.css`); фон `луг_и_солнышко.jpeg` |
 | `anna.html` | 202 | warm | ссылка **Анна** |
-| `tamagotchi.html` | 202 | warm | «этой странице» — погладить / покормить |
+| `tamagotchi.html` | — | **room** | tamagotchi v1 (`css/tamagotchi.css`); mood / hunger, localStorage |
 | `widget.html` | 202 | warm | «виджетом» — страница про ползающую улитку |
 
 **Принцип цветокора (Figma):** 404 = холоднее; «страница не создана» = теплее. Число **202** — дизайн-номер, не HTTP-статус.
@@ -138,8 +138,16 @@
 Настоящая страница (не 202). `css/zhanna.css`.
 
 - Фон: `--zhanna-bg` → `images/луг_и_солнышко.jpeg`
-- Портрет `BIG SMACHNY snail.png` + факты + ссылки (tamagotchi/widget/anna — пока 202)
+- Портрет `BIG SMACHNY snail.png` + факты + ссылки (widget/anna — пока 202; tamagotchi — v1)
 - ← главная
+
+## tamagotchi.html — уход за Жанной (2026-07)
+
+Настоящая страница (не 202). `css/tamagotchi.css`.
+
+- Фон: луг (как zhanna)
+- Погладить / покормить / mood + hunger · `localStorage` ключ `gifworld-snail-tama`
+- ← главная · ссылка на zhanna
 
 ## Страницы (запланировано — реальный контент)
 

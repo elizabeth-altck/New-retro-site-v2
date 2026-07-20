@@ -8,6 +8,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
+<script src="js/load-site-config.js"></script>
+
 <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 <style>
@@ -2211,7 +2213,7 @@ body {
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>intro</strong> — «привет, это мой сайт…»</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery.html v1</strong> — GIF-стена · комната</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>music room</strong> — полноценная страница, больше треков</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>tamagotchi</strong> — комната улитки, погладить / покормить</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>tamagotchi</strong> — tamagotchi.html v1 · mood / hunger</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>кастомная 404</strong> — 404.html, cold</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>202 заглушки</strong> — gallery, diary, secret, zhanna, anna, tamagotchi, widget</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>diary.html</strong> — тетрадь + guest book v1</p>
@@ -3209,6 +3211,8 @@ body {
   const STORAGE_KEY = 'gifworld_notes';
 
   if (!form || !input) return;
+
+  loadSiteFormEndpoints();
 
   function showStatus(text, isOk) {
     if (!statusEl) return;

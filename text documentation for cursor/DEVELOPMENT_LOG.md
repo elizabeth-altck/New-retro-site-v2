@@ -269,3 +269,11 @@ GIF WORLD = **korenara** по механике + **garfriend** как модел
 **field-glyphs:** убраны с main (перекрытия / щели); GIF остаются в gallery, blinkies, peeks.
 
 **Коммит:** фаза 1–2 polish как есть — intro, radio 3-track, footer odometer, zhanna, about, roadmap doc.
+
+## 2026-07-21 — tamagotchi v1 + FormSubmit config
+
+**tamagotchi.html v1** — погладить / покормить, mood + hunger в `localStorage`.
+
+**FormSubmit:** `data/site-config.json` + `js/load-site-config.js` → `#guestbookForm`, `#siteNoteForm`. Пока endpoint пустой — поведение как раньше.
+
+**Дальше:** подставить email в site-config · widget.html v1 · deploy smoke test.

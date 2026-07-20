@@ -2,7 +2,7 @@
 
 ## Roadmap (зафиксирован 2026-07-01)
 
-**Статус:** главная v1.5 **закрыта** + **gallery** + **diary** + **zhanna** v1. Дальше — widget / tamagotchi.
+**Статус:** главная v1.5 **закрыта** + **gallery** + **diary** + **zhanna** + **tamagotchi** v1. Дальше — widget / FormSubmit email.
 
 ### Фаза 1 — главная v1.5 (контент, без новых страниц)
 
@@ -40,7 +40,8 @@
 - [x] **gallery.html** v1 — GIF-стена + scrollport (фон пока поле, сменный)
 - [x] **diary.html** v1 — тетрадь автора + guest book (форма, `data/guestbook.json`)
 - [x] **zhanna.html** v1
-- [ ] **widget.html** / **tamagotchi.html** v1
+- [x] **tamagotchi.html** v1 — mood / hunger, localStorage
+- [ ] **widget.html** v1
 - [ ] **secret-door.html** v1
 - [ ] **anna.html** v1
 
@@ -63,7 +64,7 @@
 
 - **Сессия C:** свой фон для gallery (`--gallery-bg` / `images/gallery-bg.jpeg`)
 - **Сессия D:** `zhanna.html` v1
-- **Сессия E:** endpoint guest book (FormSubmit) + live-лента (Supabase, опционально)
+- **Сессия E:** endpoint guest book — `data/site-config.json` + FormSubmit email
 
 ---
 
