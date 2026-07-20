@@ -2,7 +2,7 @@
 
 ## Roadmap (зафиксирован 2026-07-01)
 
-**Статус:** главная v1.5 + **gallery.html v1** + **diary.html v1**. Дальше — zhanna / widget; фон комнат можно сменить.
+**Статус:** главная v1.5 **закрыта** + **gallery** + **diary** + **zhanna** v1. Дальше — widget / tamagotchi.
 
 ### Фаза 1 — главная v1.5 (контент, без новых страниц)
 
@@ -14,13 +14,13 @@
 - [x] **character png-слоты** — frog · butterfly · cat
 - [x] **core-footer** — UC banner + 3× 88×31 + last updated
 - [x] **last updated** на главной (meta в footer)
-- [ ] **FIELD RADIO** — 2–3 трека + переключение (опционально в этой фазе)
+- [x] **FIELD RADIO** — 3 трека + переключение ◀ ▶
 - [x] **stickers.exe** — mini GIF-лента вместо «скоро тут чето будет»
 - [x] Обновить **site TODO scrollport** по мере закрытия пунктов
 
-**Осталось / WIP на главной:** FIELD RADIO multi-track · WRITE YOUR NOTE endpoint · intro-текст · коробка GIF-лента внутри
+**Осталось / WIP на главной:** WRITE YOUR NOTE endpoint · коробка GIF-лента внутри
 
-**Итог фазы:** главную можно показывать как «официальную»; WIP только там, где осознанно (scrollport TODO + radio tracks).
+**Итог фазы:** главную можно показывать как «официальную»; WIP только там, где осознанно (scrollport TODO · note endpoint).
 
 ---
 
@@ -39,7 +39,7 @@
 
 - [x] **gallery.html** v1 — GIF-стена + scrollport (фон пока поле, сменный)
 - [x] **diary.html** v1 — тетрадь автора + guest book (форма, `data/guestbook.json`)
-- [ ] **zhanna.html** v1
+- [x] **zhanna.html** v1
 - [ ] **widget.html** / **tamagotchi.html** v1
 - [ ] **secret-door.html** v1
 - [ ] **anna.html** v1
@@ -78,8 +78,7 @@
   - [x] Коробка-коллаж (hover open, зернистость; контент внутри — позже)
   - [x] forecast.exe (Win98 окна в `#coreObjectsSlot`)
   - [x] Улитка (виджет: absolute, drag, автоползание, ~320px)
-  - [x] **FIELD RADIO** — кастомный плеер (`music/rainy-lofi-city-lofi-music-332746.mp3`)
-  - [ ] FIELD RADIO — 3–5 треков, переключение (текущий — legacy с прошлого сайта)
+  - [x] **FIELD RADIO** — 3 трека, переключение ◀ ▶ (`music/`)
   - [x] Первый **scrollport** (site TODO)
   - [x] **stickers.exe** — mini GIF-лента (`#cuteScrollport`)
   - [~] **WRITE YOUR NOTE** — блокнот (локально; почта через `data-endpoint`)

@@ -9,6 +9,14 @@
 | `blinkies/` | UC banner, Geocities, JUNO email, best-viewed | footer 88×31 / UC |
 | `field/image-of-day.jpg` | кроп из `забор цветы и спокойствие.jpeg` | **своё** фото поля |
 
+## Music (FIELD RADIO)
+
+| Файл | Источник | Лицензия |
+|------|----------|----------|
+| `music/rainy-lofi-city-lofi-music-332746.mp3` | legacy с прошлого сайта | — |
+| `music/carefree-field.mp3` | [Kevin MacLeod — Carefree](https://incompetech.com) | CC BY 4.0 |
+| `music/daily-beetle-field.mp3` | [Kevin MacLeod — Daily Beetle](https://incompetech.com) | CC BY 4.0 |
+
 Можно свободно заменять файлы с теми же именами — разметка в `main.html` подхватит.
 
 ## Chaos pack (2026-07-14)

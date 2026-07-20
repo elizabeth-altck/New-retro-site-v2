@@ -43,6 +43,7 @@
 ### Центр
 
 - Заголовок **my site**
+- **intro** — cream patch «привет, это GIF WORLD…»
 - **SIGNAL CATCH** — мини-игра под заголовком
 - **site TODO scrollport** — прокручиваемый список планов развития сайта
 - **GIF CHAOS** — хаотичная лента GIF + marquee blinkies (под SIGNAL CATCH)
@@ -60,7 +61,7 @@
 - **character peeks** — frog · butterfly · cat
 - **welcome popup** (`#sitePopupLayer`) — один раз при первом визите (`localStorage`); не при каждом возврате на main
 - **Улитка** (`#snailDragWrap`) — `position: absolute` на body, автоползание + drag, `snail.exe`
-- **Ещё не свёрстано:** intro-текст
+- **Ещё не свёрстано:** scrollport TODO · note endpoint · коробка внутри
 
 ### Правая колонка
 
@@ -105,7 +106,7 @@
 | `gallery.html` | — | **room** | GIF-стена v1 (`css/gallery.css`); фон `--gallery-bg` ← пока `поле.jpeg` |
 | `diary.html` | — | **room** | тетрадь + guest book v1 (`css/diary.css`); записи в `data/guestbook.json` |
 | `secret-door.html` | 202 | warm | nav → secret door |
-| `zhanna.html` | 202 | warm | ссылка **Жанна** из блока the snail |
+| `zhanna.html` | — | **room** | комната Жанны v1 (`css/zhanna.css`); фон `луг_и_солнышко.jpeg` |
 | `anna.html` | 202 | warm | ссылка **Анна** |
 | `tamagotchi.html` | 202 | warm | «этой странице» — погладить / покормить |
 | `widget.html` | 202 | warm | «виджетом» — страница про ползающую улитку |
@@ -131,6 +132,14 @@
 - **field diary** — 5 записей автора вертикально (те же, что preview на main, крупнее)
 - **guest book** (`#guestbook`) — форма слева; **лента** одобренных записей — боковая колонка (`#guestFeed`, `data/guestbook.json`)
 - Preview на main ведёт сюда · ← главная
+
+## zhanna.html — комната Жанны (2026-07)
+
+Настоящая страница (не 202). `css/zhanna.css`.
+
+- Фон: `--zhanna-bg` → `images/луг_и_солнышко.jpeg`
+- Портрет `BIG SMACHNY snail.png` + факты + ссылки (tamagotchi/widget/anna — пока 202)
+- ← главная
 
 ## Страницы (запланировано — реальный контент)
 
@@ -160,7 +169,10 @@
 | `images/characters/*.gif` | Character peeks ×3 |
 | `images/blinkies/*.gif` | Footer blinkies / UC |
 | `images/rose.gif` | stickers.exe (курсор — parked, см. field-cursor.*) |
-| `music/rainy-lofi-city-lofi-music-332746.mp3` | FIELD RADIO (legacy-трек) |
+| `music/rainy-lofi-city-lofi-music-332746.mp3` | FIELD RADIO трек 1 |
+| `music/carefree-field.mp3` | FIELD RADIO трек 2 (Kevin MacLeod) |
+| `music/daily-beetle-field.mp3` | FIELD RADIO трек 3 (Kevin MacLeod) |
+| `images/луг_и_солнышко.jpeg` | Фон zhanna.html |
 
 Источники GIF: `images/SOURCES.md`.
 

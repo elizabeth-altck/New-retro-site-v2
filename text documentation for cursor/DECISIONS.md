@@ -399,3 +399,52 @@ Roadmap Фаза 1: главная должна выглядеть живой д
 - Новые одобренные записи: правка `data/guestbook.json` вручную (v1) или Supabase позже.
 - Preview на main → `diary.html#guestbook`.
 - WRITE YOUR NOTE на main — другая механика (личная записка), не смешивать.
+
+---
+
+## 2026-07-14 — korenara scrapbook: акценты, не замена вайба
+
+### Решение
+
+Референс [korenara Home](https://korenara.neocities.org/) (cream-коллаж, блокнот, ленты) — **вписывать в текущий вайб поля** (тёмные комнаты, golden `.core`, GIF WORLD), а не заменять gallery/diary целиком на «песочный scrapbook». **Desktop / explorer** — отдельная страница позже.
+
+### Причина
+
+Полная смена на cream scrapbook ломает уже сложившийся look main + комнат.
+
+### Последствия
+
+- Откат `scrapbook.css` как оболочки комнат.
+- Брать от korenara: коллажные блоки, notebook-sidebar, webring, counter — **точечно**, в палитре страницы.
+- Отдельно: страница «рабочий стол» с OS-рамкой.
+
+**Roadmap вписывания (зафиксировано 2026-07-14):**
+
+| # | Что | Где |
+|---|-----|-----|
+| 1 | «Лист бумаги» внутри блока (cream widget, grain, offset shadow) | diary pads, guest book, mini-world |
+| 2 | Notebook-sidebar (spiral, rotated cards, report header) | diary справа |
+| 3 | Scrollport в рамке (inset, custom thumb) | site TODO, gallery, guest feed |
+| 4 | Counter odometer + webring label | main footer ← **тест v1** |
+| 5 | Стикеры absolute | комнаты, не nav |
+| 6 | Desktop / Ramen Explorer | **отдельная страница** |
+
+Принцип: поле + golden `.core` снаружи; korenara — **внутри виджетов**, не body целиком.
+
+---
+
+## 2026-07-21 — field-glyphs убраны с main
+
+### Решение
+
+Разбросанные **field-glyphs** (мелкие GIF между колонками и в шапке) **удалены с `main.html`**. Ассеты `images/chaos/`, `diary/`, `characters/` остаются — используются в gallery, blinkies, character peeks, stickers.exe.
+
+### Причина
+
+В узкой сетке 15/70/15 гифки неизбежно перекрывали контент или выглядели сжато в 20px-щелях. Лучше чистая главная, чем «наклеенные» GIF, которые мешают читать.
+
+### Последствия
+
+- GIF-декор на main: только **внутри виджетов** (peeks, blinkies, stickers, ad-spam, polaroid).
+- Вернуть «случайные» гифки позже — в **отдельных зонах** (gallery, комнаты, korenara item #5 «стикеры absolute»), не в nav и не между колонками.
+- Scrollport: field-glyphs → `[ ]` pending.

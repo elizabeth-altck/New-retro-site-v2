@@ -133,6 +133,24 @@ body {
   overflow: visible;
 }
 
+.core,
+.field-lower-world {
+  position: relative;
+  z-index: 2;
+}
+
+.core-title,
+.core-intro,
+.mini-world,
+.object-world,
+.field-character-peeks,
+.core-footer,
+.signal-game,
+.field-bottom-row {
+  position: relative;
+  z-index: 2;
+}
+
 /* SIDEBARS */
 .left,
 .right {
@@ -200,7 +218,9 @@ body {
 .left-nav-list li:nth-child(1) a::before { color: #e8a0c8; }
 .left-nav-list li:nth-child(2) a::before { color: #8fd4a8; }
 .left-nav-list li:nth-child(3) a::before { color: #9ec5e8; }
-.left-nav-list li:nth-child(4) a::before { color: #e8c86a; }
+.left-nav-list li:nth-child(4) a::before { color: #ffd48a; }
+.left-nav-list li:nth-child(5) a::before { color: #e8c86a; }
+.left-nav-list li:nth-child(6) a::before { color: #c8a0e8; }
 
 .left-nav-list a:hover {
   color: #ffffff;
@@ -238,7 +258,44 @@ body {
   font-size: 13px;
   line-height: 1.35;
   color: #fffadb;
+  margin: 0 0 6px;
+}
+
+.field-radio-track-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
   margin: 0 0 10px;
+}
+
+.field-radio-track-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 5px 8px;
+  border-top: 2px solid #d8d4c8;
+  border-left: 2px solid #d8d4c8;
+  border-right: 2px solid #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+  background: #2f3828;
+  color: #fffadb;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.field-radio-track-btn:active {
+  border-top: 2px solid #1a1a1a;
+  border-left: 2px solid #1a1a1a;
+  border-right: 2px solid #e8e4d8;
+  border-bottom: 2px solid #e8e4d8;
+}
+
+.field-radio-track-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  color: rgba(242, 242, 242, 0.62);
+  flex: 1;
+  text-align: center;
 }
 
 .field-radio-eq {
@@ -582,351 +639,41 @@ body {
     13px 13px 0 #141414;
 }
 
-/* GIF как на neocities — наклеены, не блоком; часть ведёт куда-то, часть нет */
-.left,
-.right,
-.site-header,
-.field-lower-world {
-  position: relative;
+.core-intro {
+  max-width: 540px;
+  margin: 0 auto 22px;
+  padding: 12px 16px 14px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(26, 26, 26, 0.88);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(74, 40, 32, 0.03) 3px,
+      rgba(74, 40, 32, 0.03) 4px
+    ),
+    linear-gradient(180deg, rgba(250, 246, 238, 0.92) 0%, rgba(232, 224, 212, 0.88) 100%);
+  border: 2px solid rgba(26, 26, 26, 0.55);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 rgba(74, 40, 32, 0.22);
 }
 
-.field-glyph {
-  display: inline-block;
-  padding: 0;
+.core-intro p {
   margin: 0;
-  border: none;
-  background: none;
-  line-height: 0;
-  font: inherit;
-  appearance: none;
-  -webkit-appearance: none;
-  transform: rotate(var(--glyph-r, 0deg));
-  animation: glyphFloat 3s ease-in-out infinite;
-  animation-delay: var(--glyph-delay, 0s);
-  image-rendering: pixelated;
-  cursor: default;
+}
+
+.core-intro a {
+  color: #58141c;
   text-decoration: none;
-  color: inherit;
-  vertical-align: middle;
+  border-bottom: 1px dashed rgba(88, 20, 28, 0.45);
 }
 
-a.field-glyph,
-a.field-glyph:visited,
-a.field-glyph:hover {
-  color: inherit;
-  text-decoration: none;
-}
-
-.field-glyph img {
-  display: block;
-  height: var(--glyph-h, 44px);
-  width: auto;
-}
-
-.field-glyph:hover {
-  filter: brightness(1.1) saturate(1.08);
-}
-
-.field-glyph.is-bump {
-  animation: none;
-  transform: rotate(calc(var(--glyph-r, 0deg) + 8deg)) scale(0.94);
-}
-
-@keyframes glyphFloat {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -5px; }
-}
-
-/* шапка */
-.glyph--head-l {
-  position: absolute;
-  left: 18px;
-  bottom: 6px;
-  --glyph-h: 34px;
-  --glyph-r: -11deg;
-}
-
-.glyph--head-r {
-  position: absolute;
-  right: 132px;
-  bottom: 10px;
-  --glyph-h: 38px;
-  --glyph-r: 7deg;
-  --glyph-delay: 0.5s;
-}
-
-/* между колонками — стикеры на .layout */
-.glyph--scatter-l {
-  position: absolute;
-  left: calc(var(--sidebar-width) + 2px);
-  top: 228px;
-  z-index: 6;
-  --glyph-h: 50px;
-  --glyph-r: -11deg;
-}
-
-.glyph--scatter-l2 {
-  position: absolute;
-  left: calc(var(--sidebar-width) + var(--column-gap) + 8px);
-  top: 520px;
-  z-index: 6;
-  --glyph-h: 44px;
-  --glyph-r: 9deg;
-  --glyph-delay: 0.55s;
-}
-
-.glyph--scatter-r {
-  position: absolute;
-  right: calc(var(--sidebar-width) + 4px);
-  top: 360px;
-  z-index: 6;
-  --glyph-h: 48px;
-  --glyph-r: 14deg;
-  --glyph-delay: 0.3s;
-}
-
-.glyph--scatter-r2 {
-  position: absolute;
-  right: calc(var(--sidebar-width) + var(--column-gap) + 12px);
-  top: 640px;
-  z-index: 6;
-  --glyph-h: 40px;
-  --glyph-r: -8deg;
-  --glyph-delay: 0.85s;
-}
-
-.glyph--scatter-mid {
-  position: absolute;
-  left: 48%;
-  top: 168px;
-  z-index: 6;
-  --glyph-h: 52px;
-  --glyph-r: 7deg;
-  --glyph-delay: 0.4s;
-}
-
-/* боковые — прилипли к колонке */
-.glyph--right-a {
-  position: absolute;
-  left: 10px;
-  top: 200px;
-  --glyph-h: 48px;
-  --glyph-r: -9deg;
-}
-
-.glyph--right-b {
-  position: absolute;
-  right: 4px;
-  bottom: 120px;
-  --glyph-h: 42px;
-  --glyph-r: 5deg;
-  --glyph-delay: 0.35s;
-}
-
-/* центр — криво по .core */
-.glyph--core-a {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  z-index: 2;
-  --glyph-h: 56px;
-  --glyph-r: 8deg;
-}
-
-.glyph--core-b {
-  position: absolute;
-  top: 42%;
-  left: -8px;
-  z-index: 2;
-  --glyph-h: 44px;
-  --glyph-r: -14deg;
-  --glyph-delay: 0.6s;
-}
-
-.glyph--core-c {
-  position: absolute;
-  top: 58%;
-  right: 6px;
-  z-index: 2;
-  --glyph-h: 50px;
-  --glyph-r: 6deg;
-  --glyph-delay: 1s;
-}
-
-.glyph--core-d {
-  position: absolute;
-  bottom: 140px;
-  left: 18px;
-  z-index: 2;
-  --glyph-h: 38px;
-  --glyph-r: -5deg;
-}
-
-.glyph--core-e {
-  position: absolute;
-  bottom: 48px;
-  right: 24px;
-  z-index: 2;
-  --glyph-h: 36px;
-  --glyph-r: 11deg;
-  --glyph-delay: 0.4s;
-}
-
-.glyph--core-f {
-  position: absolute;
-  top: 252px;
-  right: -6px;
-  z-index: 2;
-  --glyph-h: 46px;
-  --glyph-r: 13deg;
-  --glyph-delay: 0.25s;
-}
-
-.glyph--core-g {
-  position: absolute;
-  top: 38%;
-  right: 28%;
-  z-index: 2;
-  --glyph-h: 42px;
-  --glyph-r: -6deg;
-  --glyph-delay: 0.65s;
-}
-
-.glyph--core-h {
-  position: absolute;
-  bottom: 200px;
-  left: 32px;
-  z-index: 2;
-  --glyph-h: 44px;
-  --glyph-r: 4deg;
-}
-
-.glyph--core-i {
-  position: absolute;
-  bottom: 96px;
-  left: 48%;
-  z-index: 2;
-  --glyph-h: 38px;
-  --glyph-r: -12deg;
-  --glyph-delay: 0.9s;
-}
-
-/* между core и lower */
-.glyph--center-a {
-  position: absolute;
-  left: -6px;
-  top: 52%;
-  z-index: 4;
-  --glyph-h: 36px;
-  --glyph-r: -7deg;
-  --glyph-delay: 0.5s;
-}
-
-.glyph--center-b {
-  position: absolute;
-  right: 12%;
-  top: 58%;
-  z-index: 4;
-  --glyph-h: 42px;
-  --glyph-r: 10deg;
-}
-
-.glyph--center-c {
-  position: absolute;
-  left: 38%;
-  bottom: 18px;
-  z-index: 4;
-  --glyph-h: 34px;
-  --glyph-r: -4deg;
-  --glyph-delay: 0.75s;
-}
-
-/* низ страницы */
-.glyph--lower-a {
-  position: absolute;
-  top: 12px;
-  right: 8%;
-  --glyph-h: 54px;
-  --glyph-r: -7deg;
-}
-
-.glyph--lower-b {
-  position: absolute;
-  top: 38%;
-  left: 4%;
-  --glyph-h: 42px;
-  --glyph-r: 9deg;
-  --glyph-delay: 0.7s;
-}
-
-.glyph--lower-c {
-  position: absolute;
-  bottom: 80px;
-  right: 6%;
-  --glyph-h: 48px;
-  --glyph-r: -12deg;
-}
-
-.glyph--lower-d {
-  position: absolute;
-  top: 18%;
-  left: 28%;
-  --glyph-h: 40px;
-  --glyph-r: 6deg;
-  --glyph-delay: 0.45s;
-}
-
-.glyph--lower-e {
-  position: absolute;
-  top: 52%;
-  left: 8%;
-  --glyph-h: 44px;
-  --glyph-r: -9deg;
-  --glyph-delay: 0.6s;
-}
-
-.glyph--lower-f {
-  position: absolute;
-  bottom: 28px;
-  left: 14%;
-  --glyph-h: 46px;
-  --glyph-r: 11deg;
-}
-
-.glyph--lower-g {
-  position: absolute;
-  top: 68%;
-  right: 22%;
-  --glyph-h: 38px;
-  --glyph-r: -5deg;
-  --glyph-delay: 0.35s;
-}
-
-.glyph--lower-h {
-  position: absolute;
-  bottom: 140px;
-  left: 42%;
-  --glyph-h: 32px;
-  --glyph-r: 8deg;
-  --glyph-delay: 1.1s;
-}
-
-@media (max-width: 900px) {
-  .glyph--head-l,
-  .glyph--head-r,
-  .glyph--core-b,
-  .glyph--core-c,
-  .glyph--core-f,
-  .glyph--scatter-l,
-  .glyph--scatter-l2,
-  .glyph--scatter-r,
-  .glyph--scatter-r2,
-  .glyph--scatter-mid,
-  .glyph--center-a,
-  .glyph--center-b,
-  .glyph--right-a {
-    display: none;
-  }
+.core-intro a:hover {
+  color: #9e3d6e;
+  border-bottom-color: #9e3d6e;
 }
 
 /* MINI-GAME */
@@ -2195,6 +1942,8 @@ a.field-glyph:hover {
   padding-top: 16px;
   border-top: 2px dashed rgba(35, 32, 20, 0.45);
   text-align: center;
+  position: relative;
+  z-index: 3;
 }
 
 .core-footer-blinkies {
@@ -2225,11 +1974,51 @@ a.field-glyph:hover {
   letter-spacing: 0.3px;
 }
 
-.core-footer-counter {
+.core-footer-webring-label {
   font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  line-height: 1.6;
+  color: #9e3d6e;
+  margin: 0 0 8px;
+  letter-spacing: 0.04em;
+}
+
+/* korenara-accent: odometer counter (cream patch inside .core) */
+.core-footer-odometer {
+  display: inline-block;
+  margin: 0 auto 12px;
+  padding: 8px 18px 10px;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(74, 40, 32, 0.03) 3px,
+      rgba(74, 40, 32, 0.03) 4px
+    ),
+    linear-gradient(180deg, #faf6ee 0%, #e8e0d4 100%);
+  border: 2px solid #1a1a1a;
+  border-radius: 10px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    3px 3px 0 rgba(74, 40, 32, 0.28);
+}
+
+.core-footer-odometer-label {
+  font-family: 'Share Tech Mono', monospace;
   font-size: 9px;
-  color: #1a1a1a;
-  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(74, 40, 32, 0.62);
+  margin: 0 0 5px;
+}
+
+.core-footer-odometer-num {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: #4a2820;
+  margin: 0;
 }
 
 .core-footer-note {
@@ -2326,8 +2115,6 @@ a.field-glyph:hover {
     </div>
   </div>
   <div class="title-row">
-    <button type="button" class="field-glyph glyph--head-l field-glyph--dead" data-glyph-event="звезда в шапке · никуда"><img src="images/chaos/star.gif" alt=""></button>
-    <a class="field-glyph glyph--head-r" href="gallery.html"><img src="images/chaos/tiny-dance.gif" alt=""></a>
     <h1 class="site-title">old net vibe</h1>
     <div class="title-hearts" aria-hidden="true">
       <img class="title-heart title-heart--dark" src="images/винтаж сердце.png" alt="">
@@ -2338,19 +2125,15 @@ a.field-glyph:hover {
 
 <div class="layout">
 
-  <a class="field-glyph glyph--scatter-l" href="diary.html"><img src="images/diary/04-mushroom.gif" alt=""></a>
-  <button type="button" class="field-glyph glyph--scatter-l2 field-glyph--dead" data-glyph-event="огонь · просто горит"><img src="images/chaos/fire.gif" alt=""></button>
-  <a class="field-glyph glyph--scatter-r" href="secret-door.html"><img src="images/chaos/construction.gif" alt=""></a>
-  <button type="button" class="field-glyph glyph--scatter-r2 field-glyph--dead" data-glyph-event="sparkle · пустышка"><img src="images/chaos/sparkle.gif" alt=""></button>
-  <a class="field-glyph glyph--scatter-mid" href="gallery.html"><img src="images/chaos/dance-01.gif" alt=""></a>
-
 <!-- LEFT -->
 <div class="left">
   <nav class="left-nav" aria-label="Navigation">
     <h3 class="sidebar-title left-nav-title">Navigation</h3>
     <ul class="left-nav-list">
+      <li><a href="main.html">home</a></li>
       <li><a href="gallery.html">gallery</a></li>
       <li><a href="diary.html">diary</a></li>
+      <li><a href="about.html">about</a></li>
       <li><a href="main.html#fieldRadio">music</a></li>
       <li><a href="secret-door.html">secret door</a></li>
     </ul>
@@ -2360,13 +2143,15 @@ a.field-glyph:hover {
     <p class="field-radio-label">music.exe · FIELD RADIO</p>
     <p class="field-radio-status" id="fieldRadioStatus">signal: idle</p>
     <p class="field-radio-track" id="fieldRadioTrack">rainy lofi city</p>
-    <p class="field-radio-track-note">legacy track · скоро 3–5 треков на выбор</p>
+    <div class="field-radio-track-nav">
+      <button type="button" class="field-radio-track-btn field-radio-tip" id="fieldRadioPrev" data-tip="предыдущий трек" aria-label="предыдущий трек">◀</button>
+      <span class="field-radio-track-num" id="fieldRadioTrackNum">1 / 3</span>
+      <button type="button" class="field-radio-track-btn field-radio-tip" id="fieldRadioNext" data-tip="следующий трек" aria-label="следующий трек">▶</button>
+    </div>
     <div class="field-radio-eq" aria-hidden="true">
       <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
-    <audio id="fieldAudio" preload="metadata" loop>
-      <source src="music/rainy-lofi-city-lofi-music-332746.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="fieldAudio" preload="metadata"></audio>
     <div class="field-radio-controls">
       <button type="button" class="field-radio-btn field-radio-tip" id="fieldRadioToggle" data-tip="воспроизвести / остановить" aria-label="воспроизвести или остановить">PLAY</button>
       <div class="field-radio-progress field-radio-tip" id="fieldRadioProgress" data-tip="перемотка — кликни в полоску" role="slider" aria-label="перемотка трека">
@@ -2384,23 +2169,13 @@ a.field-glyph:hover {
 <!-- CENTER -->
 <div class="center">
 
-  <button type="button" class="field-glyph glyph--center-a field-glyph--dead" data-glyph-event="ромашка · просто цветёт"><img src="images/diary/01-daisy.gif" alt=""></button>
-  <a class="field-glyph glyph--center-b" href="zhanna.html"><img src="images/characters/mystery-cat.gif" alt=""></a>
-  <button type="button" class="field-glyph glyph--center-c field-glyph--dead" data-glyph-event="хомяк · ???"><img src="images/chaos/dance-02.gif" alt=""></button>
-
   <div class="core" id="coreArena">
 
-    <a class="field-glyph glyph--core-a" href="gallery.html"><img src="images/chaos/fish.gif" alt=""></a>
-    <a class="field-glyph glyph--core-b" href="zhanna.html"><img src="images/chaos/spin-cat.gif" alt=""></a>
-    <button type="button" class="field-glyph glyph--core-c field-glyph--dead" data-glyph-event="сердце · не дверь"><img src="images/chaos/heart.gif" alt=""></button>
-    <button type="button" class="field-glyph glyph--core-d field-glyph--dead" data-glyph-event="glitter · шум"><img src="images/chaos/glitter.gif" alt=""></button>
-    <a class="field-glyph glyph--core-e" href="widget.html"><img src="images/rose.gif" alt=""></a>
-    <a class="field-glyph glyph--core-f" href="gallery.html"><img src="images/characters/friend-butterfly.gif" alt=""></a>
-    <button type="button" class="field-glyph glyph--core-g field-glyph--dead" data-glyph-event="лес · шумит"><img src="images/diary/02-forest.gif" alt=""></button>
-    <a class="field-glyph glyph--core-h" href="diary.html"><img src="images/diary/03-sparkle.gif" alt=""></a>
-    <button type="button" class="field-glyph glyph--core-i field-glyph--dead" data-glyph-event="цветок · не кнопка"><img src="images/diary/05-flower.gif" alt=""></button>
-
     <h2 class="core-title">my site</h2>
+
+    <section class="core-intro" aria-label="intro">
+      <p>привет. это GIF WORLD — моё цифровое поле: гифки, музыка, улитка и странные кнопки. можно зайти в <a href="gallery.html">gallery</a>, оставить записку в <a href="diary.html#guestbook">guest book</a> или почитать <a href="about.html">about</a>.</p>
+    </section>
 
     <div class="mini-world signal-game" id="signalGame">
       <p class="mini-world-label"><span class="label-a">SIGNAL</span> <span class="label-b">CATCH</span> · <span class="label-c">mini-zone</span></p>
@@ -2416,7 +2191,7 @@ a.field-glyph:hover {
     <section class="mini-world field-scrollport-world" aria-label="site todo scrollport">
       <p class="mini-world-label"><span class="label-a">scrollport</span> · <span class="label-b">site TODO</span> · <span class="label-c">что добавлю на сайт</span></p>
       <div class="scrollport" id="fieldScrollport">
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>FIELD RADIO</strong> — rainy lofi city в левой колонке</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>FIELD RADIO</strong> — 3 трека · переключение ◀ ▶</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>улитка</strong> — виджет, ползание, drag, snail.exe</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>коробка</strong> — hover open, потом контент внутри</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>forecast.exe</strong> — win98 окна, look up позже → коллекция</p>
@@ -2428,14 +2203,15 @@ a.field-glyph:hover {
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>character peeks</strong> — frog · butterfly · cat</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>footer blinkies</strong> — 88×31 + UC banner</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>stickers.exe</strong> — mini GIF-лента</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>field-glyphs</strong> — GIF по странице · часть ведёт куда-то</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>intro</strong> — текст «привет, это мой сайт…»</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>field-glyphs</strong> — убрано с main; GIF остаются в gallery, blinkies, peeks</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>intro</strong> — «привет, это мой сайт…»</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery.html v1</strong> — GIF-стена · комната</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>music room</strong> — полноценная страница, больше треков</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>tamagotchi</strong> — комната улитки, погладить / покормить</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>кастомная 404</strong> — 404.html, cold</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>202 заглушки</strong> — gallery, diary, secret, zhanna, anna, tamagotchi, widget</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>diary.html</strong> — тетрадь + guest book v1</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>zhanna.html</strong> — комната Жанны v1</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>ещё scrollports</strong> — в коробке, в галерее, в music room</p>
       </div>
     </section>
@@ -2568,15 +2344,6 @@ a.field-glyph:hover {
 
     <div class="field-lower-world">
 
-      <a class="field-glyph glyph--lower-a" href="diary.html"><img src="images/chaos/email-spin.gif" alt=""></a>
-      <button type="button" class="field-glyph glyph--lower-b field-glyph--dead" data-glyph-event="dance-03 · тишина"><img src="images/chaos/dance-03.gif" alt=""></button>
-      <button type="button" class="field-glyph glyph--lower-c field-glyph--dead" data-glyph-event="star-2 · ничего"><img src="images/chaos/star-2.gif" alt=""></button>
-      <button type="button" class="field-glyph glyph--lower-d field-glyph--dead" data-glyph-event="лягушка · ква"><img src="images/characters/friend-frog.gif" alt=""></button>
-      <a class="field-glyph glyph--lower-e" href="tamagotchi.html"><img src="images/chaos/dance-02.gif" alt=""></a>
-      <button type="button" class="field-glyph glyph--lower-f field-glyph--dead" data-glyph-event="кот · спит"><img src="images/characters/mystery-cat.gif" alt=""></button>
-      <button type="button" class="field-glyph glyph--lower-g field-glyph--dead" data-glyph-event="бабочка · улетела"><img src="images/characters/friend-butterfly.gif" alt=""></button>
-      <button type="button" class="field-glyph glyph--lower-h field-glyph--dead" data-glyph-event="sparkle · шум"><img src="images/diary/03-sparkle.gif" alt=""></button>
-
       <section class="mini-world ad-spam-world" id="adSpamWorld" aria-label="навязчивая реклама поля">
         <p class="mini-world-label"><span class="label-a">spam.exe</span> · <span class="label-b">popup ads</span> · <span class="label-c">генерация внутри блока</span></p>
         <div class="ad-spam-field" id="adSpamField">
@@ -2659,6 +2426,7 @@ a.field-glyph:hover {
       </div>
 
       <footer class="core-footer">
+        <p class="core-footer-webring-label">my webring · buttons</p>
         <div class="core-footer-blinkies" aria-label="blinkies">
           <img class="core-footer-blinkie--wide" src="images/blinkies/uc-banner.gif" alt="under construction" width="128" height="40">
           <img src="images/blinkies/geocities.gif" alt="Geocities" width="88" height="31">
@@ -2674,11 +2442,14 @@ a.field-glyph:hover {
           <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-03.gif" alt="" width="150" height="20">
           <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-04.gif" alt="" width="150" height="20">
         </div>
-        <p class="core-footer-meta">last updated · 14 Jul 2026 · more GIFs · less chill</p>
-        <p class="core-footer-counter">visitors: <span id="fakeCounter">00427</span></p>
+        <p class="core-footer-meta">last updated · 21 Jul 2026 · more GIFs · less chill</p>
+        <div class="core-footer-odometer" aria-label="site visits">
+          <p class="core-footer-odometer-label">site visits</p>
+          <p class="core-footer-odometer-num"><span id="fakeCounter">00427</span></p>
+        </div>
         <p class="core-footer-note">best viewed if you're nostalgic · made in the field · too many gifs on purpose</p>
         <p class="core-footer-links">
-          <a href="gallery.html">gallery</a> · <a href="diary.html">diary</a> · <a href="main.html#fieldRadio">music</a> · <a href="secret-door.html">secret door</a>
+          <a href="gallery.html">gallery</a> · <a href="diary.html">diary</a> · <a href="about.html">about</a> · <a href="main.html#fieldRadio">music</a> · <a href="secret-door.html">secret door</a>
         </p>
       </footer>
 
@@ -2706,9 +2477,6 @@ a.field-glyph:hover {
       <li>unknown signal detected</li>
     </ul>
   </div>
-
-  <a class="field-glyph glyph--right-a" href="tamagotchi.html"><img src="images/chaos/dance-02.gif" alt=""></a>
-  <button type="button" class="field-glyph glyph--right-b field-glyph--dead" data-glyph-event="heart-sm · пусто"><img src="images/chaos/heart-sm.gif" alt=""></button>
 
   <div class="field-stats" id="fieldStats" aria-label="field stats">
     <p class="field-stats-label">field_stats.txt</p>
@@ -3303,6 +3071,10 @@ a.field-glyph:hover {
   const radio = document.getElementById('fieldRadio');
   const audio = document.getElementById('fieldAudio');
   const toggleBtn = document.getElementById('fieldRadioToggle');
+  const prevBtn = document.getElementById('fieldRadioPrev');
+  const nextBtn = document.getElementById('fieldRadioNext');
+  const trackEl = document.getElementById('fieldRadioTrack');
+  const trackNumEl = document.getElementById('fieldRadioTrackNum');
   const progressBar = document.getElementById('fieldRadioProgress');
   const progressFill = document.getElementById('fieldRadioProgressFill');
   const timeEl = document.getElementById('fieldRadioTime');
@@ -3310,7 +3082,16 @@ a.field-glyph:hover {
   const statusEl = document.getElementById('fieldRadioStatus');
   const eventsList = document.getElementById('eventsList');
 
+  const PLAYLIST = [
+    { title: 'rainy lofi city', src: 'music/rainy-lofi-city-lofi-music-332746.mp3' },
+    { title: 'carefree field', src: 'music/carefree-field.mp3' },
+    { title: 'daily beetle', src: 'music/daily-beetle-field.mp3' },
+  ];
+
   if (!radio || !audio || !toggleBtn) return;
+
+  let trackIndex = 0;
+  let wasPlaying = false;
 
   function formatTime(sec) {
     if (!Number.isFinite(sec)) return '0:00';
@@ -3334,27 +3115,69 @@ a.field-glyph:hover {
     if (statusEl) statusEl.textContent = playing ? 'signal: broadcasting' : 'signal: idle';
   }
 
-  toggleBtn.addEventListener('click', () => {
-    if (audio.paused) {
+  function updateTrackUi() {
+    const track = PLAYLIST[trackIndex];
+    if (trackEl) trackEl.textContent = track.title;
+    if (trackNumEl) trackNumEl.textContent = (trackIndex + 1) + ' / ' + PLAYLIST.length;
+  }
+
+  function loadTrack(index, autoplay) {
+    trackIndex = (index + PLAYLIST.length) % PLAYLIST.length;
+    wasPlaying = autoplay || !audio.paused;
+    audio.pause();
+    audio.src = PLAYLIST[trackIndex].src;
+    audio.load();
+    updateTrackUi();
+    if (wasPlaying) {
       audio.play().then(() => {
         setPlayingState(true);
         if (eventsList) {
           const li = document.createElement('li');
-          li.textContent = 'field radio: rainy lofi city on';
+          li.textContent = 'field radio: ' + PLAYLIST[trackIndex].title;
           eventsList.appendChild(li);
         }
       }).catch(() => {
         if (statusEl) statusEl.textContent = 'signal: blocked';
+        setPlayingState(false);
       });
+    } else {
+      setPlayingState(false);
+      updateProgress();
+    }
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      if (!audio.src) loadTrack(trackIndex, true);
+      else {
+        audio.play().then(() => {
+          setPlayingState(true);
+          if (eventsList) {
+            const li = document.createElement('li');
+            li.textContent = 'field radio: ' + PLAYLIST[trackIndex].title + ' on';
+            eventsList.appendChild(li);
+          }
+        }).catch(() => {
+          if (statusEl) statusEl.textContent = 'signal: blocked';
+        });
+      }
     } else {
       audio.pause();
       setPlayingState(false);
     }
   });
 
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => loadTrack(trackIndex - 1, true));
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => loadTrack(trackIndex + 1, true));
+  }
+
   audio.addEventListener('timeupdate', updateProgress);
   audio.addEventListener('loadedmetadata', updateProgress);
-  audio.addEventListener('ended', () => setPlayingState(false));
+  audio.addEventListener('ended', () => loadTrack(trackIndex + 1, true));
 
   if (progressBar) {
     progressBar.addEventListener('click', (event) => {
@@ -3372,7 +3195,7 @@ a.field-glyph:hover {
     });
   }
 
-  updateProgress();
+  loadTrack(0, false);
 })();
 (function () {
   const form = document.getElementById('siteNoteForm');
@@ -3676,19 +3499,6 @@ a.field-glyph:hover {
       counterEl.textContent = String(n).padStart(5, '0');
     }, 9000);
   }
-})();
-(function () {
-  const eventsList = document.getElementById('eventsList');
-  document.querySelectorAll('.field-glyph--dead').forEach((glyph) => {
-    glyph.addEventListener('click', () => {
-      glyph.classList.add('is-bump');
-      window.setTimeout(() => glyph.classList.remove('is-bump'), 280);
-      if (!eventsList) return;
-      const li = document.createElement('li');
-      li.textContent = glyph.dataset.glyphEvent || 'glyph · никуда';
-      eventsList.appendChild(li);
-    });
-  });
 })();
 </script>
 

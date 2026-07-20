@@ -249,3 +249,23 @@ GIF WORLD = **korenara** по механике + **garfriend** как модел
 **Что сделано:** тетрадь (5 записей) + guest book (форма, seed в `data/guestbook.json`); preview на main → `#guestbook`.
 
 **Что делать дальше:** FormSubmit endpoint; live-лента (Supabase, опционально).
+
+## 2026-07-14 — korenara-accent test (main footer)
+
+**Что сделано:** odometer `site visits` + `my webring · buttons` — cream patch внутри `.core`. Roadmap вписывания → `DECISIONS.md`.
+
+## 2026-07-21 — Фаза 1 закрыта + zhanna.html v1
+
+**Фаза 1 (main):** intro-блок; FIELD RADIO — 3 трека + ◀ ▶; footer korenara odometer; last updated 21 Jul.
+
+**Фаза 2:** `zhanna.html` v1 — комната персонажа (`css/zhanna.css`, фон луг); gallery + diary + zhanna = 3 комнаты.
+
+**Дальше:** widget/tamagotchi v1; FormSubmit guest book; deploy smoke test.
+
+## 2026-07-21 — about.html + field-glyphs off main
+
+**about.html v1** — комната «зачем сайт» (`css/about.css`, cream doc на поле).
+
+**field-glyphs:** убраны с main (перекрытия / щели); GIF остаются в gallery, blinkies, peeks.
+
+**Коммит:** фаза 1–2 polish как есть — intro, radio 3-track, footer odometer, zhanna, about, roadmap doc.

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6b7354">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>GIF WORLD · статус и путь к MVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --field: #6b7354;
+      --core: rgba(155, 143, 67, 0.95);
+      --cream: #faf6ee;
+      --cream-dark: #e8e0d4;
+      --ink: #1a1a1a;
+      --wine: #58141c;
+      --pink: #9e3d6e;
+      --paper-line: rgba(74, 40, 32, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    html {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Jura', sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--ink);
+      background: linear-gradient(165deg, #7a8260 0%, #6b7354 45%, #5c6348 100%);
+    }
+
+    .doc {
+      max-width: 820px;
+      margin: 32px auto 48px;
+      padding: 0 20px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0 16px;
+      border-radius: 4px;
+    }
+
+    .table-wrap table { margin: 0; }
+
+    .table-wrap::-webkit-scrollbar { height: 6px; }
+    .table-wrap::-webkit-scrollbar-thumb {
+      background: rgba(74, 40, 32, 0.35);
+      border-radius: 3px;
+    }
+
+    .sheet {
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 27px,
+          var(--paper-line) 27px,
+          var(--paper-line) 28px
+        ),
+        linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+      border: 3px solid var(--ink);
+      border-radius: 4px;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        6px 6px 0 rgba(26, 26, 26, 0.35),
+        12px 12px 0 rgba(0, 0, 0, 0.18);
+      padding: 36px 40px 44px;
+    }
+
+    .ticker {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      color: #fffadb;
+      background: var(--ink);
+      padding: 10px 14px;
+      margin: -36px -40px 28px;
+      border-bottom: 2px solid var(--wine);
+      letter-spacing: 0.04em;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(18px, 4vw, 26px);
+      line-height: 1.45;
+      margin: 0 0 8px;
+      text-shadow: 2px 2px 0 rgba(155, 143, 67, 0.5);
+    }
+
+    .meta {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: rgba(26, 26, 26, 0.62);
+      margin: 0 0 28px;
+    }
+
+    h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 11px;
+      margin: 32px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px dashed rgba(74, 40, 32, 0.35);
+      color: var(--wine);
+    }
+
+    h3 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 20px 0 10px;
+      color: rgba(74, 40, 32, 0.8);
+    }
+
+    p { margin: 0 0 12px; }
+
+    .status-pill {
+      display: inline-block;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      padding: 8px 14px;
+      background: var(--core);
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      box-shadow: 3px 3px 0 rgba(74, 40, 32, 0.25);
+      margin-bottom: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+
+      .doc {
+        margin: 12px auto 24px;
+        padding: 0 10px;
+      }
+
+      .grid-2 { grid-template-columns: 1fr; }
+
+      .sheet {
+        padding: 24px 16px 28px;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.6),
+          4px 4px 0 rgba(26, 26, 26, 0.28);
+      }
+
+      .ticker {
+        margin: -24px -16px 20px;
+        font-size: 7px;
+        white-space: normal;
+        line-height: 1.7;
+      }
+
+      h1 { font-size: 16px; }
+      h2 { font-size: 10px; }
+
+      table { font-size: 13px; }
+      th, td { padding: 8px 10px; }
+
+      .session {
+        grid-template-columns: 48px 1fr;
+        gap: 8px;
+      }
+
+      .session-id { font-size: 9px; }
+
+      .status-pill { font-size: 7px; line-height: 1.6; }
+
+      code { word-break: break-all; }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.45);
+      border: 2px solid rgba(26, 26, 26, 0.25);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .card--ok { border-left: 4px solid #4a5238; }
+    .card--wip { border-left: 4px solid #9b8f43; }
+    .card--todo { border-left: 4px solid var(--pink); }
+
+    ul, ol { margin: 0 0 12px; padding-left: 22px; }
+    li { margin-bottom: 6px; }
+
+    .check { color: #4a5238; }
+    .wip { color: #9b8f43; }
+    .empty { color: var(--pink); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      margin: 12px 0 16px;
+    }
+
+    th, td {
+      border: 1px solid rgba(26, 26, 26, 0.2);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      background: rgba(155, 143, 67, 0.35);
+    }
+
+    .session {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px 0;
+      border-bottom: 1px dashed rgba(74, 40, 32, 0.2);
+    }
+
+    .session:last-child { border-bottom: none; }
+
+    .session-id {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px;
+      color: var(--pink);
+      padding-top: 2px;
+    }
+
+    .session strong {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+    }
+
+    .mvp-box {
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(74, 40, 32, 0.03) 3px,
+          rgba(74, 40, 32, 0.03) 4px
+        ),
+        linear-gradient(180deg, #faf6ee 0%, #e8e0d4 100%);
+      border: 2px solid var(--ink);
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.55), 3px 3px 0 rgba(74,40,32,0.22);
+      margin: 16px 0;
+    }
+
+    .mvp-box p:last-child { margin-bottom: 0; }
+
+    .progress {
+      height: 10px;
+      background: rgba(26, 26, 26, 0.12);
+      border: 1px solid rgba(26, 26, 26, 0.25);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 8px 0 4px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4a5238, #9b8f43);
+    }
+
+    .progress-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: rgba(26, 26, 26, 0.62);
+    }
+
+    .save-hint {
+      margin-top: 12px;
+      padding: 12px 16px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(26, 26, 26, 0.82);
+      background: rgba(155, 143, 67, 0.22);
+      border: 2px solid rgba(26, 26, 26, 0.2);
+      border-radius: 8px;
+    }
+
+    .save-hint strong:first-child {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .save-hint a {
+      color: var(--wine);
+    }
+
+    .save-hint ol {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    .save-hint li { margin-bottom: 8px; }
+
+    .save-hint .best {
+      color: var(--wine);
+      font-weight: 600;
+    }
+
+    .footer-note {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 2px dashed rgba(74, 40, 32, 0.35);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: rgba(26, 26, 26, 0.55);
+      text-align: center;
+    }
+
+    @media print {
+      @page { size: A4; margin: 14mm; }
+
+      html, body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background: #6b7354;
+      }
+
+      .doc { margin: 0; padding: 0; max-width: none; }
+
+      .sheet {
+        box-shadow: none;
+        border-width: 2px;
+      }
+
+      .save-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="doc">
+    <article class="sheet">
+      <div class="ticker">GIF WORLD · roadmap · MVP · 21 jul 2026 · field unstable but fine ·</div>
+
+      <h1>статус проекта<br>и путь к MVP</h1>
+      <p class="meta">сводка сессий · фазы · ближайшие шаги · проверка site-checker</p>
+
+      <div class="status-pill">~75% до MVP · срочных поломок нет</div>
+
+      <p>GIF WORLD — цифровой мир, который хочется исследовать. MVP = сайт, который можно показать другу: зашёл, понял атмосферу, походил по комнатам, оставил запись, не попал в пустые заглушки.</p>
+
+      <!-- ─── ПОСЛЕДНИЕ СЕССИИ ─── -->
+      <h2>последние сессии</h2>
+
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Когда</th>
+            <th>Что сделали</th>
+            <th>Коммит</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>июль 2026</td>
+            <td><strong>gallery.html v1</strong> — GIF-стена, marquee, scrollport; field-glyphs разбросаны по main (не в nav)</td>
+            <td><code>ae846a9</code></td>
+          </tr>
+          <tr>
+            <td>июль 2026</td>
+            <td><strong>diary.html v1</strong> — guest book + лента справа; field diary scrollport убран с главной</td>
+            <td><code>242c4de</code></td>
+          </tr>
+          <tr>
+            <td>14 июл</td>
+            <td>Обсуждение korenara — полный scrapbook откатили; решение: акценты <em>внутри</em> виджетов, не замена вайба</td>
+            <td>DECISIONS</td>
+          </tr>
+          <tr>
+            <td>14–21 июл</td>
+            <td><strong>Тест korenara на main</strong> — webring label + cream odometer в footer; фикс: цветок-гифка больше не перекрывает счётчик</td>
+            <td>локально, не закоммичено</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <!-- ─── ФАЗЫ ─── -->
+      <h2>фазы проекта</h2>
+
+      <h3>Фаза 1 — главная v1.5</h3>
+      <div class="progress"><div class="progress-fill" style="width: 90%"></div></div>
+      <p class="progress-label">~90% · контент живой, WIP осознанный</p>
+      <div class="grid-2">
+        <div class="card card--ok">
+          <strong class="check">✓ готово</strong>
+          <ul>
+            <li>GIF / фото starter-pack</li>
+            <li>image of the day, character peeks</li>
+            <li>stickers.exe, site TODO scrollport</li>
+            <li>forecast.exe, spam.exe, SIGNAL CATCH</li>
+            <li>улитка (drag + автоползание)</li>
+            <li>FIELD RADIO (1 трек)</li>
+            <li>footer blinkies + last updated</li>
+            <li>welcome popup (один раз)</li>
+          </ul>
+        </div>
+        <div class="card card--wip">
+          <strong class="wip">~ в процессе</strong>
+          <ul>
+            <li>FIELD RADIO — 2–3 трека</li>
+            <li>WRITE YOUR NOTE → endpoint</li>
+            <li>intro-текст «привет, это мой сайт…»</li>
+            <li>коробка — GIF-лента внутри (opened)</li>
+            <li>korenara footer — тест, не закоммичен</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Фаза 2 — комнаты</h3>
+      <div class="progress"><div class="progress-fill" style="width: 33%"></div></div>
+      <p class="progress-label">2 из 6 · gallery + diary готовы</p>
+      <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Страница</th><th>Статус</th><th>Заметка</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>gallery.html</code></td><td class="check">✓ v1</td><td>GIF-стена; фон пока поле — можно сменить</td></tr>
+          <tr><td><code>diary.html</code></td><td class="check">✓ v1</td><td>guest book + авторская лента; seed в JSON</td></tr>
+          <tr><td><code>zhanna.html</code></td><td class="empty">202</td><td>персонаж уже на main — следующий приоритет</td></tr>
+          <tr><td><code>widget.html</code> / <code>tamagotchi.html</code></td><td class="empty">202</td><td>улитка жива на главной</td></tr>
+          <tr><td><code>secret-door.html</code></td><td class="empty">202</td><td>пасхалка, позже</td></tr>
+          <tr><td><code>anna.html</code></td><td class="empty">202</td><td>после комнаты Жанны</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>Фаза 3 — глубина</h3>
+      <p class="progress-label">после MVP · gateway, music room, tamagotchi ↔ LIVE SYSTEM, scrollports в рамках</p>
+
+      <h3>Korenara-blend (точечно)</h3>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Что</th><th>Где</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>«Лист бумаги» внутри блока</td><td>diary, guest book</td><td></td></tr>
+          <tr><td>2</td><td>Notebook-sidebar</td><td>diary справа</td><td></td></tr>
+          <tr><td>3</td><td>Scrollport в рамке</td><td>site TODO, gallery</td><td></td></tr>
+          <tr><td>4</td><td>Counter odometer + webring label</td><td>main footer</td><td class="check">✓ тест</td></tr>
+          <tr><td>5</td><td>Стикеры absolute</td><td>комнаты</td><td></td></tr>
+          <tr><td>6</td><td>Desktop / Ramen Explorer</td><td>отдельная страница</td><td></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <!-- ─── MVP ─── -->
+      <h2>что такое MVP для нас</h2>
+
+      <div class="mvp-box">
+        <p><strong>MVP GIF WORLD</strong> — сайт, который можно отправить ссылкой:</p>
+        <ol>
+          <li>Главная выглядит живой и «официальной»</li>
+          <li>Минимум <strong>3 настоящие комнаты</strong> (main + gallery + diary + zhanna)</li>
+          <li>Guest book <strong>реально работает</strong> (FormSubmit или аналог)</li>
+          <li>Nav не ведёт в пустые 202 без предупреждения</li>
+          <li>Деплой + smoke test (index → main → комнаты → 404)</li>
+        </ol>
+      </div>
+
+      <h3>что сознательно НЕ в MVP</h3>
+      <ul>
+        <li>Ramen Explorer / рабочий стол</li>
+        <li>Полный scrapbook-редизайн</li>
+        <li>Retro photos в gallery (отложено)</li>
+        <li>Tamagotchi с сытостью в LIVE SYSTEM</li>
+        <li>Rose cursor (parked в отдельных файлах)</li>
+      </ul>
+
+      <!-- ─── БЛИЖАЙШИЕ СЕССИИ ─── -->
+      <h2>ближайшие сессии → MVP</h2>
+
+      <div class="session">
+        <div class="session-id">A</div>
+        <div>
+          <strong>Закоммитить footer + polish main</strong>
+          <p>odometer, webring label, убрать мёртвый CSS, intro-текст. Главная = «официальная».</p>
+        </div>
+      </div>
+      <div class="session">
+        <div class="session-id">B</div>
+        <div>
+          <strong>zhanna.html v1</strong>
+          <p>Фон + 1–2 блока + «← главная». Персонаж уже на main — логичное продолжение.</p>
+        </div>
+      </div>
+      <div class="session">
+        <div class="session-id">C</div>
+        <div>
+          <strong>Guest book endpoint</strong>
+          <p>FormSubmit для diary.html. Опционально: Supabase для live-ленты.</p>
+        </div>
+      </div>
+      <div class="session">
+        <div class="session-id">D</div>
+        <div>
+          <strong>widget.html или tamagotchi.html v1</strong>
+          <p>Убрать мёртвые 202 из nav и блока the snail — хотя бы одна страница про улитку.</p>
+        </div>
+      </div>
+      <div class="session">
+        <div class="session-id">E</div>
+        <div>
+          <strong>Deploy + финальный проход</strong>
+          <p>Push, пройти все ссылки, проверить mobile. <strong>MVP готов.</strong></p>
+        </div>
+      </div>
+
+      <!-- ─── SITE-CHECKER ─── -->
+      <h2>последняя проверка site-checker</h2>
+      <p class="meta">21 июля 2026 · main.html (незакоммиченные правки)</p>
+
+      <div class="grid-2">
+        <div class="card card--ok">
+          <strong class="check">в порядке</strong>
+          <ul>
+            <li>Счётчик fakeCounter работает</li>
+            <li>Odometer читается на оливковом фоне</li>
+            <li>Цветок не перекрывает счётчик</li>
+            <li>13 blinkies, все пути верные</li>
+            <li>Ссылки footer → существующие страницы</li>
+            <li>Другие страницы не трогали</li>
+          </ul>
+        </div>
+        <div class="card card--wip">
+          <strong class="wip">мелочи</strong>
+          <ul>
+            <li>Webring label 6px — мелко на узком экране</li>
+            <li>«webring» без настоящего кольца сайтов</li>
+            <li>Цветок на узком экране может заходить на контент</li>
+            <li>Мёртвый .core-footer-counter в CSS</li>
+            <li>Комментарий «test» в стилях</li>
+          </ul>
+        </div>
+      </div>
+
+      <p><strong>Нужно поправить срочно:</strong> ничего.</p>
+
+      <!-- ─── НЕЗАКОММИЧЕНО ─── -->
+      <h2>локально, ещё не в git</h2>
+      <ul>
+        <li><code>main.html</code> — korenara footer + фикс glyph--core-i</li>
+        <li><code>DECISIONS.md</code>, <code>DEVELOPMENT_LOG.md</code> — roadmap korenara</li>
+      </ul>
+
+      <div class="save-hint">
+        <strong>как смотреть на телефоне / планшете</strong>
+        <ol>
+          <li class="best"><strong>Лучший способ — ссылка в интернете.</strong> Файл лежит на сайте как <code>roadmap.html</code>. После деплоя открой на любом устройстве: <code>твой-сайт.ru/roadmap.html</code> — телефон, планшет, чужой ноутбук, всё одинаково.</li>
+          <li><strong>Без деплоя, за 2 минуты:</strong> зайди на <a href="https://app.netlify.com/drop" target="_blank" rel="noopener">app.netlify.com/drop</a> → перетащи файл <code>roadmap.html</code> → получишь временную ссылку → открой её на телефоне.</li>
+          <li><strong>Только на своём iPhone:</strong> AirDrop файла → «Файлы» → нажми на файл → откроется в Safari. На Android: отправь себе в Telegram → скачай → «Открыть в Chrome».</li>
+        </ol>
+        <p style="margin:10px 0 0">Локальный файл на компе в браузере — ок. На телефоне без ссылки — неудобно; нужен URL или AirDrop.</p>
+      </div>
+
+      <p class="footer-note">
+        GIF WORLD · roadmap doc · 21 jul 2026<br>
+        открыть на сайте: <code>/roadmap.html</code> · шрифты из Google (нужен интернет)
+      </p>
+    </article>
+  </div>
+</body>
+</html>

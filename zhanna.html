@@ -4,19 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>(function(){if(location.protocol!=='file:'){var b=document.createElement('base');b.href=location.origin+'/';document.head.appendChild(b);}})();</script>
-  <title>202 · Жанна</title>
+  <title>zhanna · the snail</title>
   <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/error-room.css">
+  <link rel="stylesheet" href="css/zhanna.css">
 </head>
-<body class="error-room error-room--warm">
-  <div class="error-room-bg" aria-hidden="true"></div>
-  <main class="error-room-card">
-    <p class="error-room-code">202</p>
-    <h1 class="error-room-title">Ошибка: страница еще не создана</h1>
-    <p class="error-room-body">Комната Жанны ещё не построена. Улитка где-то ползает, но её страница — нет.</p>
-    <p class="error-room-body error-room-body--slot">Жанна · ахатина · персонаж сайта</p>
-    <a class="error-room-home" href="main.html">← вернуться на главную</a>
-    <p class="error-room-meta">zhanna · not ready</p>
-  </main>
+<body class="zhanna-room">
+  <div class="zhanna-bg" aria-hidden="true"></div>
+
+  <div class="zhanna-shell">
+    <div class="zhanna-top">
+      <a class="zhanna-back" href="main.html">← главная</a>
+      <p class="zhanna-meta">room · zhanna.exe · v1</p>
+    </div>
+
+    <header class="zhanna-hero">
+      <div class="zhanna-portrait-wrap">
+        <img
+          class="zhanna-portrait"
+          src="images/BIG SMACHNY snail.png"
+          alt="Жанна — улитка ахатина"
+          width="200"
+          height="200"
+        >
+        <p class="zhanna-portrait-caption">BIG SMACHNY · v1</p>
+      </div>
+      <div>
+        <p class="zhanna-kicker">CHARACTER · the snail · ахатина</p>
+        <h1 class="zhanna-title">zhanna</h1>
+        <p class="zhanna-lede">персонаж GIF WORLD. ползает по главной, иногда открывает <code>snail.exe</code>, не торопится и не извиняется. это её комната — пока маленькая, но настоящая.</p>
+      </div>
+    </header>
+
+    <div class="zhanna-grid">
+      <section class="zhanna-panel" aria-label="факты о Жанне">
+        <p class="zhanna-panel-label"><span class="label-a">facts</span> · <span class="label-b">txt</span> · <span class="label-c">не wiki</span></p>
+        <ul class="zhanna-facts">
+          <li>ахатина · главная улитка сайта</li>
+          <li>живёт на <a href="main.html">main.html</a> — drag, автоползание, popup</li>
+          <li>подруга <a href="anna.html">Анна</a> — страница позже</li>
+          <li>на <a href="tamagotchi.html">tamagotchi</a> можно будет погладить / покормить</li>
+          <li>виджет для рабочего стола → <a href="widget.html">widget.html</a></li>
+        </ul>
+        <p class="zhanna-quote">«если улитка смотрит — значит, всё идёт по плану. план: медленно.»</p>
+      </section>
+
+      <section class="zhanna-panel" aria-label="куда дальше">
+        <p class="zhanna-panel-label"><span class="label-a">links</span> · <span class="label-b">from here</span> · <span class="label-c">куда дальше</span></p>
+        <ul class="zhanna-links">
+          <li><a href="main.html#snailTeaser">the snail на главной</a></li>
+          <li><a href="main.html#snailDragWrap">найти улитку на поле</a></li>
+          <li><a href="tamagotchi.html">tamagotchi · погладить</a> <span class="is-wip">(202)</span></li>
+          <li><a href="widget.html">widget · ползающая улитка</a> <span class="is-wip">(202)</span></li>
+          <li><a href="anna.html">anna · подруга</a> <span class="is-wip">(202)</span></li>
+          <li><a href="diary.html">diary · guest book</a></li>
+          <li><a href="gallery.html">gallery · гифки</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <footer class="zhanna-foot">
+      <p>фон: <code>images/луг_и_солнышко.jpeg</code> · сменить в <code>css/zhanna.css</code></p>
+      <p><a href="main.html">← назад в поле</a></p>
+    </footer>
+  </div>
 </body>
 </html>
