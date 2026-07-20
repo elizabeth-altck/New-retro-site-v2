@@ -19,6 +19,12 @@
 
 Можно свободно заменять файлы с теми же именами — разметка в `main.html` подхватит.
 
+## Favicon
+
+| Файл | Источник |
+|------|----------|
+| `favicon.ico`, `images/favicon-16.png`, `images/favicon-32.png`, `images/apple-touch-icon.png` | ресайз из `images/винтаж сердце.png` (то же сердце, что в шапке main) |
+
 ## Chaos pack (2026-07-14)
 
 `images/chaos/` — dancing hamster, fire, spin-cat, stars, construction, fish, hearts, glitter…
