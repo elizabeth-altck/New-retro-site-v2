@@ -2599,11 +2599,28 @@ body {
   margin: 0 0 14px;
 }
 
+.core-footer-blinkie-link {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  line-height: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .core-footer-blinkies img {
   display: block;
   height: 31px;
   width: auto;
   image-rendering: pixelated;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.core-footer-blinkie-link:hover img {
+  transform: scale(1.06) rotate(-1deg);
+  filter: brightness(1.1);
 }
 
 .core-footer-blinkies img.core-footer-blinkie--wide {
@@ -2873,6 +2890,7 @@ body {
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>музыкальная комната</strong> — больше треков, своё место</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>vibe.exe</strong> — переключи настроение поля</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gif roulette</strong> — случайная гифка одним кликом</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>webring blinkies</strong> — не все декоративные, кликни</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>secret door</strong> — дверь закрыта, но можно постучать</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[·]</span><strong>слух</strong> — иногда всплывает реклама. это нормально для 2003.</p>
       </div>
@@ -3129,19 +3147,45 @@ body {
       <footer class="core-footer">
         <p class="core-footer-webring-label">my webring · buttons</p>
         <div class="core-footer-blinkies" aria-label="blinkies">
-          <img class="core-footer-blinkie--wide" src="images/blinkies/uc-banner.gif" alt="under construction" width="128" height="40">
-          <img src="images/blinkies/geocities.gif" alt="Geocities" width="88" height="31">
-          <img src="images/blinkies/email.gif" alt="JUNO free e-mail" width="88" height="31">
-          <img src="images/blinkies/best-viewed.gif" alt="best viewed with" width="88" height="31">
-          <img src="images/blinkies/extra-02.gif" alt="Netscape NEVER" width="88" height="31">
-          <img src="images/blinkies/extra-03.gif" alt="" width="88" height="31">
-          <img src="images/blinkies/extra-04.gif" alt="" width="88" height="31">
-          <img src="images/blinkies/extra-05.gif" alt="" width="88" height="31">
-          <img src="images/blinkies/extra-06.gif" alt="" width="88" height="31">
-          <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-01.gif" alt="I love cookies" width="150" height="20">
-          <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-02.gif" alt="" width="150" height="20">
-          <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-03.gif" alt="" width="150" height="20">
-          <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-04.gif" alt="" width="150" height="20">
+          <a class="core-footer-blinkie-link" href="under-construction.html" target="_blank" rel="noopener" title="under construction · side door">
+            <img class="core-footer-blinkie--wide" src="images/blinkies/uc-banner.gif" alt="under construction" width="128" height="40">
+          </a>
+          <a class="core-footer-blinkie-link" href="gateway.html" target="_blank" rel="noopener" title="gateway · archive mode">
+            <img src="images/blinkies/geocities.gif" alt="Geocities" width="88" height="31">
+          </a>
+          <a class="core-footer-blinkie-link" href="diary.html#guestbook" title="guest book">
+            <img src="images/blinkies/email.gif" alt="JUNO free e-mail" width="88" height="31">
+          </a>
+          <button type="button" class="core-footer-blinkie-link" data-blinkie-popup="best-viewed" title="best viewed with…">
+            <img src="images/blinkies/best-viewed.gif" alt="best viewed with" width="88" height="31">
+          </button>
+          <a class="core-footer-blinkie-link" href="netscape-never.html" target="_blank" rel="noopener" title="netscape never · manifesto">
+            <img src="images/blinkies/extra-02.gif" alt="Netscape NEVER" width="88" height="31">
+          </a>
+          <a class="core-footer-blinkie-link" href="gallery.html" title="gallery">
+            <img src="images/blinkies/extra-03.gif" alt="" width="88" height="31">
+          </a>
+          <a class="core-footer-blinkie-link" href="secret-door.html" title="secret door">
+            <img src="images/blinkies/extra-04.gif" alt="" width="88" height="31">
+          </a>
+          <a class="core-footer-blinkie-link" href="tamagotchi.html" title="tamagotchi">
+            <img src="images/blinkies/extra-05.gif" alt="" width="88" height="31">
+          </a>
+          <a class="core-footer-blinkie-link" href="zhanna.html" title="zhanna">
+            <img src="images/blinkies/extra-06.gif" alt="" width="88" height="31">
+          </a>
+          <a class="core-footer-blinkie-link" href="cookies.html" target="_blank" rel="noopener" title="cookie shrine">
+            <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-01.gif" alt="I love cookies" width="150" height="20">
+          </a>
+          <button type="button" class="core-footer-blinkie-link" data-blinkie-popup="im-cool" title="im cool">
+            <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-02.gif" alt="" width="150" height="20">
+          </button>
+          <a class="core-footer-blinkie-link" href="cookies.html#mmm" target="_blank" rel="noopener" title="mmm cookies">
+            <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-03.gif" alt="" width="150" height="20">
+          </a>
+          <button type="button" class="core-footer-blinkie-link" data-blinkie-popup="webring" title="webring secret">
+            <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-04.gif" alt="" width="150" height="20">
+          </button>
         </div>
         <p class="core-footer-meta">GIF WORLD · 2026 · поле живое</p>
         <div class="core-footer-odometer" aria-label="site visits">
@@ -4841,6 +4885,80 @@ body {
       counterEl.textContent = String(n).padStart(5, '0');
     }, 9000);
   }
+})();
+(function () {
+  const layer = document.getElementById('sitePopupLayer');
+  const eventsList = document.getElementById('eventsList');
+
+  const BLINKIE_POPUPS = {
+    'best-viewed': {
+      titlebar: 'best viewed with',
+      headline: 'ГЛАЗА<br>+ НОСТАЛЬГИЯ',
+      text: 'рекомендуем: монитор 800×600, чай, терпение. mobile тоже можно — поле адаптивное душой.',
+      yes: 'OK',
+      style: 'cyan',
+    },
+    'im-cool': {
+      titlebar: 'IM COOL',
+      headline: 'ТЫ<br>ТОЖЕ',
+      text: 'blinkie одобрил. можно остаться на поле ещё немного.',
+      yes: 'YAY',
+      style: 'hot',
+    },
+    webring: {
+      titlebar: 'webring.exe',
+      headline: 'SIDE<br>DOORS',
+      text: 'не все кнопки в nav. under construction, cookies и netscape never — отдельные окна.',
+      yes: 'АГА',
+      style: 'purple',
+    },
+  };
+
+  if (!layer) return;
+
+  function hidePopup() {
+    layer.hidden = true;
+    layer.setAttribute('aria-hidden', 'true');
+    layer.innerHTML = '';
+  }
+
+  function showBlinkiePopup(key) {
+    const tpl = BLINKIE_POPUPS[key];
+    if (!tpl) return;
+
+    layer.innerHTML = `
+      <div class="site-popup__backdrop" data-blinkie-dismiss></div>
+      <div class="win98-window site-popup__window win98-window--ad-${tpl.style}">
+        <div class="win98-titlebar">${tpl.titlebar}</div>
+        <div class="site-popup__body">
+          <p class="site-popup__headline">${tpl.headline}</p>
+          <p class="site-popup__text">${tpl.text}</p>
+        </div>
+        <div class="site-popup__footer">
+          <button type="button" class="site-popup__btn site-popup__btn--yes" data-blinkie-dismiss>${tpl.yes}</button>
+          <button type="button" class="site-popup__btn site-popup__btn--no" data-blinkie-dismiss>закрыть</button>
+        </div>
+      </div>
+    `;
+    layer.hidden = false;
+    layer.setAttribute('aria-hidden', 'false');
+
+    if (eventsList) {
+      const li = document.createElement('li');
+      li.textContent = 'blinkie: ' + tpl.titlebar;
+      eventsList.appendChild(li);
+    }
+  }
+
+  layer.addEventListener('click', (event) => {
+    if (event.target.closest('[data-blinkie-dismiss]')) hidePopup();
+  });
+
+  document.querySelectorAll('[data-blinkie-popup]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      showBlinkiePopup(btn.getAttribute('data-blinkie-popup'));
+    });
+  });
 })();
 </script>
 <script src="js/tama-widget.js"></script>

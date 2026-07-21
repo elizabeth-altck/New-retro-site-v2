@@ -1,0 +1,88 @@
+/* offbeat pages — не в nav, side doors */
+:root {
+  --offbeat-mono: 'Share Tech Mono', monospace;
+  --offbeat-pixel: 'Press Start 2P', monospace;
+  --offbeat-body: 'Jura', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body.offbeat-room {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--offbeat-body);
+  color: #fffadb;
+  background: #1a1810;
+}
+
+.offbeat-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: url("../images/поле.jpeg") center / cover no-repeat fixed;
+}
+
+.offbeat-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 22, 14, 0.72);
+}
+
+.offbeat-shell {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.offbeat-back {
+  font-family: var(--offbeat-mono);
+  font-size: 12px;
+  color: #e8c86a;
+  text-decoration: none;
+}
+
+.offbeat-back:hover { color: #e8a0c8; }
+
+.offbeat-kicker {
+  font-family: var(--offbeat-mono);
+  font-size: 11px;
+  color: rgba(255, 250, 219, 0.65);
+  margin: 18px 0 8px;
+}
+
+.offbeat-title {
+  font-family: var(--offbeat-pixel);
+  font-size: clamp(14px, 4vw, 20px);
+  line-height: 1.5;
+  margin: 0 0 16px;
+  color: #fff6d8;
+}
+
+.offbeat-body {
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 0 0 14px;
+  color: rgba(242, 242, 242, 0.92);
+}
+
+.offbeat-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.offbeat-strip img {
+  image-rendering: pixelated;
+  border: 1px solid rgba(255, 248, 210, 0.35);
+}
+
+.offbeat-note {
+  font-family: var(--offbeat-mono);
+  font-size: 11px;
+  color: rgba(255, 250, 219, 0.55);
+  margin-top: 24px;
+}

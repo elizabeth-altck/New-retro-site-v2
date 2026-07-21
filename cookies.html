@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){if(location.protocol!=='file:'){var b=document.createElement('base');b.href=location.origin+'/';document.head.appendChild(b);}})();</script>
+  <title>I ❤️ cookies</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/offbeat.css">
+  <style>
+    body.offbeat-room { background: #2a1810; }
+    .offbeat-bg::after { background: rgba(40, 20, 10, 0.78); }
+    .offbeat-title { color: #ffd4a8; }
+    .cookie-btn {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      padding: 8px 12px;
+      margin-top: 8px;
+      border: 2px solid #1a1a1a;
+      background: #e8c86a;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+    }
+    #cookieMsg { font-family: 'Share Tech Mono', monospace; font-size: 12px; min-height: 1.4em; margin-top: 10px; }
+  </style>
+</head>
+<body class="offbeat-room">
+  <div class="offbeat-bg" aria-hidden="true"></div>
+  <div class="offbeat-shell">
+    <a class="offbeat-back" href="main.html">← главная</a>
+    <p class="offbeat-kicker">cookie shrine · side door</p>
+    <h1 class="offbeat-title">I ❤️ COOKIES</h1>
+    <p class="offbeat-body">не browser cookies. настоящие. ну почти. pixel cookies из 2004.</p>
+    <div class="offbeat-strip">
+      <img src="images/blinkies/blinkie-01.gif" alt="" width="150" height="20">
+      <img src="images/blinkies/blinkie-03.gif" alt="" width="150" height="20">
+      <img src="images/blinkies/blinkie-04.gif" alt="" width="150" height="20">
+    </div>
+    <button type="button" class="cookie-btn" id="cookieBtn">взять cookie ✦</button>
+    <p id="cookieMsg">поле ждёт.</p>
+    <p class="offbeat-note" id="mmm">mmm... COOOOOOKIES!</p>
+  </div>
+  <script>
+    (function () {
+      const lines = [
+        'cookie получен. vibe +1.',
+        'улитка тоже хочет. отказано.',
+        'это была pixel cookie. вкус: ностальгия.',
+        'browser cookies не трогали. честно.',
+      ];
+      document.getElementById('cookieBtn')?.addEventListener('click', () => {
+        document.getElementById('cookieMsg').textContent = lines[Math.floor(Math.random() * lines.length)];
+      });
+      if (location.hash === '#mmm') {
+        document.getElementById('mmm').style.color = '#ffd4a8';
+      }
+    })();
+  </script>
+</body>
+</html>
