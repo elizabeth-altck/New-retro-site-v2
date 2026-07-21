@@ -109,7 +109,7 @@
 | `zhanna.html` | — | **room** | комната Жанны v1 (`css/zhanna.css`); фон `луг_и_солнышко.jpeg` |
 | `anna.html` | 202 | warm | ссылка **Анна** |
 | `tamagotchi.html` | — | **room** | tamagotchi v1 (`css/tamagotchi.css`); mood / hunger, localStorage |
-| `widget.html` | 202 | warm | «виджетом» — страница про ползающую улитку |
+| `widget.html` | — | **room** | snail.widget v1 (`css/widget.css`); drag · pet/feed/kick · без «раздавить» |
 
 **Принцип цветокора (Figma):** 404 = холоднее; «страница не создана» = теплее. Число **202** — дизайн-номер, не HTTP-статус.
 

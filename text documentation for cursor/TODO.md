@@ -2,7 +2,7 @@
 
 ## Roadmap (зафиксирован 2026-07-01)
 
-**Статус:** главная v1.5 **закрыта** + **gallery** + **diary** + **zhanna** + **tamagotchi** v1. Дальше — widget / FormSubmit email.
+**Статус:** Фаза 2 почти закрыта — остались **secret-door** и **anna**. Дальше — deploy smoke test.
 
 ### Фаза 1 — главная v1.5 (контент, без новых страниц)
 

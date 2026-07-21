@@ -4,23 +4,171 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>(function(){if(location.protocol!=='file:'){var b=document.createElement('base');b.href=location.origin+'/';document.head.appendChild(b);}})();</script>
-  <title>202 · widget</title>
+  <title>widget · snail.widget</title>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/error-room.css">
+  <link rel="stylesheet" href="css/widget.css">
 </head>
-<body class="error-room error-room--warm">
-  <div class="error-room-bg" aria-hidden="true"></div>
-  <main class="error-room-card">
-    <p class="error-room-code">202</p>
-    <h1 class="error-room-title">Ошибка: страница еще не создана</h1>
-    <p class="error-room-body">Это не реальное сообщение от сервера (наверное), но я поговорю с кем-то из команды. Можете вернуться на главную, а потом снова сюда, если автор решит когда-нибудь добавить всё что нужно.</p>
-    <p class="error-room-body error-room-body--slot">widget · ползающая улитка · snail.exe · страница про виджет — wip</p>
-    <a class="error-room-home" href="main.html">← вернуться на главную</a>
-    <a class="error-room-home" href="main.html#snailDragWrap" style="display:block;margin-top:10px;">найти улитку на главной</a>
-    <p class="error-room-meta">widget · not ready</p>
-  </main>
+<body class="widget-room">
+
+  <div class="widget-shell">
+    <div class="widget-top">
+      <a class="widget-back" href="main.html">← главная</a>
+      <p class="widget-meta">room · snail.widget · v1</p>
+    </div>
+
+    <header class="widget-hero">
+      <p class="widget-kicker">DESKTOP · widget.exe · preview</p>
+      <h1 class="widget-title">widget</h1>
+      <p class="widget-lede">маленькая <a href="zhanna.html">Жанна</a> для «рабочего стола». перетащи в окне · погладь · покорми. без «раздавить» — это только в <a href="tamagotchi.html">tamagotchi</a>.</p>
+    </header>
+
+    <div class="widget-desk" aria-label="рабочий стол preview">
+      <div class="widget-window">
+        <div class="widget-titlebar">
+          <span>snail.widget</span>
+          <span class="widget-titlebar-dots" aria-hidden="true"><span></span><span></span></span>
+        </div>
+        <div class="widget-body">
+          <div class="widget-playfield" id="widgetPlayfield">
+            <div class="widget-snail-wrap" id="widgetSnailWrap">
+              <img class="widget-snail" src="images/snail.png" alt="улитка виджет" width="96" height="48">
+              <span class="widget-sparkles" aria-hidden="true"><span class="s1"></span><span class="s2"></span></span>
+            </div>
+          </div>
+          <p class="widget-status" id="widgetStatus">перетащи улитку · она не против</p>
+          <div class="widget-toolbar">
+            <button type="button" class="widget-btn" data-widget="pet">погладить</button>
+            <button type="button" class="widget-btn" data-widget="feed">покормить</button>
+            <button type="button" class="widget-btn is-muted" data-widget="kick">пнуть</button>
+          </div>
+          <p class="widget-hint">v1 · только preview в браузере · скачиваемый .exe / os widget — позже</p>
+        </div>
+      </div>
+    </div>
+
+    <nav class="widget-links" aria-label="ссылки">
+      <p class="widget-links-label">from here</p>
+      <ul>
+        <li><a href="main.html#snailDragWrap">улитка на главной</a></li>
+        <li><a href="tamagotchi.html">tamagotchi · mood / hunger</a></li>
+        <li><a href="zhanna.html">zhanna · комната</a></li>
+        <li><a href="diary.html">guest book</a></li>
+      </ul>
+    </nav>
+
+    <footer class="widget-foot">
+      <p>фон: win98 teal · v1 preview</p>
+      <p><a href="main.html">← назад в поле</a></p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const field = document.getElementById('widgetPlayfield');
+      const wrap = document.getElementById('widgetSnailWrap');
+      const statusEl = document.getElementById('widgetStatus');
+
+      if (!field || !wrap) return;
+
+      const lines = {
+        pet: ['мягко. раковина довольна.', 'улитка одобряет тактильность.', 'widget: pet registered.'],
+        feed: ['крошки приняты.', 'сытость в пределах виджета.', 'ещё одну крошку?'],
+        kick: ['не надо было.', 'улитка обиделась на 3 сек.', 'widget осуждает.'],
+        drag: ['куда-то ползёт.', 'новая точка на рабочем столе.', 'drag ok.'],
+      };
+
+      let dragActive = false;
+      let dragOffsetX = 0;
+      let dragOffsetY = 0;
+      let dragMoved = false;
+
+      function say(pool) {
+        if (!statusEl || !pool) return;
+        statusEl.textContent = pool[Math.floor(Math.random() * pool.length)];
+      }
+
+      function clampPos(left, top) {
+        const maxLeft = field.clientWidth - wrap.offsetWidth;
+        const maxTop = field.clientHeight - wrap.offsetHeight;
+        return {
+          left: Math.min(maxLeft, Math.max(0, left)),
+          top: Math.min(maxTop, Math.max(0, top)),
+        };
+      }
+
+      function setPos(left, top) {
+        const next = clampPos(left, top);
+        wrap.style.left = next.left + 'px';
+        wrap.style.top = next.top + 'px';
+      }
+
+      function pulse(className, ms) {
+        wrap.classList.remove('is-shy', 'is-hop', 'is-pet');
+        wrap.classList.add(className);
+        window.setTimeout(() => wrap.classList.remove(className), ms);
+      }
+
+      wrap.addEventListener('pointerdown', (event) => {
+        if (event.button !== 0) return;
+        dragActive = true;
+        dragMoved = false;
+        wrap.classList.add('is-dragging');
+        wrap.setPointerCapture(event.pointerId);
+        const rect = wrap.getBoundingClientRect();
+        const fieldRect = field.getBoundingClientRect();
+        dragOffsetX = event.clientX - rect.left;
+        dragOffsetY = event.clientY - rect.top;
+        event.preventDefault();
+      });
+
+      wrap.addEventListener('pointermove', (event) => {
+        if (!dragActive) return;
+        dragMoved = true;
+        const fieldRect = field.getBoundingClientRect();
+        setPos(
+          event.clientX - fieldRect.left - dragOffsetX,
+          event.clientY - fieldRect.top - dragOffsetY
+        );
+      });
+
+      function endDrag(event) {
+        if (!dragActive) return;
+        dragActive = false;
+        wrap.classList.remove('is-dragging');
+        if (wrap.hasPointerCapture(event.pointerId)) {
+          wrap.releasePointerCapture(event.pointerId);
+        }
+        if (dragMoved) say(lines.drag);
+      }
+
+      wrap.addEventListener('pointerup', endDrag);
+      wrap.addEventListener('pointercancel', endDrag);
+
+      wrap.addEventListener('click', () => {
+        if (dragMoved) {
+          dragMoved = false;
+          return;
+        }
+        say(['она смотрит.', 'snail.widget idle.', 'оценивающий вайб.']);
+      });
+
+      document.querySelectorAll('[data-widget]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const action = btn.getAttribute('data-widget');
+          say(lines[action]);
+          if (action === 'pet') pulse('is-pet', 1200);
+          if (action === 'feed') pulse('is-hop', 550);
+          if (action === 'kick') pulse('is-shy', 450);
+        });
+      });
+
+      window.setTimeout(() => {
+        setPos(field.clientWidth * 0.38, field.clientHeight * 0.32);
+      }, 0);
+    })();
+  </script>
 </body>
 </html>

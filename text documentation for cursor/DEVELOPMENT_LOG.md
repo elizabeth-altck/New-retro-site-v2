@@ -276,4 +276,10 @@ GIF WORLD = **korenara** по механике + **garfriend** как модел
 
 **FormSubmit:** `data/site-config.json` + `js/load-site-config.js` → `#guestbookForm`, `#siteNoteForm`. Пока endpoint пустой — поведение как раньше.
 
-**Дальше:** подставить email в site-config · widget.html v1 · deploy smoke test.
+**Дальше:** deploy smoke test · secret-door / anna · guest book email в site-config.
+
+## 2026-07-21 — widget.html v1
+
+**widget.html** — snail.widget preview: win98 окно, drag, pet/feed/kick. Без «раздавить» (остаётся в tamagotchi).
+
+**Стадия:** Фаза 1 закрыта · Фаза 2 — 5/7 комнат (остались secret-door, anna) → готовность к MVP deploy.
