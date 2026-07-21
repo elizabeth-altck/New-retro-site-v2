@@ -107,9 +107,9 @@
 | `diary.html` | — | **room** | тетрадь + guest book v1 (`css/diary.css`); записи в `data/guestbook.json` |
 | `secret-door.html` | 202 | warm | nav → secret door |
 | `zhanna.html` | — | **room** | комната Жанны v1 (`css/zhanna.css`); фон `луг_и_солнышко.jpeg` |
-| `anna.html` | 202 | warm | ссылка **Анна** |
+| `anna.html` | — | **room** | anna v1 (`css/anna.css`); подруга Жанны · `anna-snail.png` |
 | `tamagotchi.html` | — | **room** | tamagotchi v1 (`css/tamagotchi.css`); mood / hunger, localStorage |
-| `widget.html` | — | **room** | snail.widget v1 (`css/widget.css`); drag · pet/feed/kick · без «раздавить» |
+| `widget.html` | — | **launcher** | редирект → `main.html?widget=1` · overlay snail.widget на главной |
 
 **Принцип цветокора (Figma):** 404 = холоднее; «страница не создана» = теплее. Число **202** — дизайн-номер, не HTTP-статус.
 
@@ -149,6 +149,18 @@
 - Погладить / покормить / mood + hunger · `localStorage` ключ `gifworld-snail-tama`
 - ← главная · ссылка на zhanna
 
+## anna.html — комната Анны (2026-07)
+
+Настоящая страница (не 202). `css/anna.css`.
+
+- Портрет `images/characters/anna-snail.png` (PNG RGBA)
+- Подруга zhanna · tamagotchi walk
+- ← главная
+
+## widget — snail.widget overlay (2026-07)
+
+`widget.html` → `main.html?widget=1`. На главной: мягкая панель поверх поля (cream, blur), быстрые ссылки, «на полную главную →». Кнопка **widget** справа снизу открывает снова.
+
 ## Страницы (запланировано — реальный контент)
 
 - Галерея
@@ -170,6 +182,7 @@
 | `images/винтаж сердце.png` | Сердечки в шапке |
 | `images/memory-box/closed.png`, `opened.png` | Коробка-коллаж на главной |
 | `images/snail.png` | Виджет улитки на главной (~320px) |
+| `images/characters/anna-snail.png` | Персонаж Анна · tamagotchi + anna.html |
 | `images/BIG SMACHNY snail.png` | Блок the snail |
 | `images/забор цветы и спокойствие.jpeg` | Фон error-room страниц |
 | `images/field/image-of-day.jpg` | Image of the day (кроп с забора) |

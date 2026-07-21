@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>(function(){if(location.protocol!=='file:'){var b=document.createElement('base');b.href=location.origin+'/';document.head.appendChild(b);}})();</script>
-  <title>tamagotchi · zhanna</title>
+  <title>tamagotchi · zhanna + anna</title>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -17,68 +17,82 @@
   <div class="tama-shell">
     <div class="tama-top">
       <a class="tama-back" href="main.html">← главная</a>
-      <p class="tama-meta">room · tamagotchi.exe · v1</p>
+      <p class="tama-meta">room · tamagotchi.exe · v2</p>
     </div>
 
     <header class="tama-hero">
-      <p class="tama-kicker">CARE · zhanna · ахатина</p>
+      <p class="tama-kicker">CARE · zhanna + anna · луг</p>
       <h1 class="tama-title">tamagotchi</h1>
-      <p class="tama-lede">погладь или покорми <a href="zhanna.html">Жанну</a>. настроение и сытость сохраняются в браузере — позже свяжем с LIVE SYSTEM на главной.</p>
+      <p class="tama-lede">полноценный уголок: корми, гуляй с <a href="anna.html">Анной</a>, смотри реакции обеих улиток. на <a href="main.html#tama-widget">главной</a> — быстрый tamagotchi.quick. позже свяжем с LIVE SYSTEM.</p>
     </header>
 
-    <section class="tama-stage" aria-label="улитка tamagotchi">
-      <p class="tama-stage-label">snail.exe · v1 · local save</p>
+    <section class="tama-stage" aria-label="луг tamagotchi">
+      <p class="tama-stage-label">meadow.exe · local save · v2</p>
 
-      <div class="tama-snail-wrap" id="tamaSnailWrap">
-        <img
-          class="tama-snail"
-          id="tamaSnailImg"
-          src="images/BIG SMACHNY snail.png"
-          alt="Жанна — улитка ахатина"
-          width="200"
-          height="200"
-        >
-        <span class="tama-snail-sparkles" aria-hidden="true">
-          <span class="s1"></span>
-          <span class="s2"></span>
-          <span class="s3"></span>
-        </span>
+      <div class="tama-meadow" id="tamaMeadow">
+        <div class="tama-party" id="tamaParty">
+          <figure class="tama-actor tama-actor--zhanna" id="tamaZhanna">
+            <img class="tama-snail" id="tamaSnailImg" src="images/BIG SMACHNY snail.png" alt="Жанна" width="220" height="220">
+            <figcaption class="tama-actor-name">zhanna</figcaption>
+            <span class="tama-snail-sparkles" aria-hidden="true">
+              <span class="s1"></span><span class="s2"></span><span class="s3"></span>
+            </span>
+            <span class="tama-reaction" id="tamaReaction" hidden aria-live="polite"></span>
+          </figure>
+          <figure class="tama-actor tama-actor--anna" id="tamaAnna">
+            <img class="tama-anna-img" src="images/characters/anna-snail.png" alt="Анна — улитка" width="140" height="70">
+            <figcaption class="tama-actor-name">anna</figcaption>
+            <span class="tama-reaction tama-anna-reaction" id="tamaAnnaReaction" hidden aria-live="polite"></span>
+          </figure>
+        </div>
       </div>
 
-      <p class="tama-status" id="tamaStatus">она смотрит на тебя оценивающе.</p>
+      <p class="tama-status" id="tamaStatus">Жанна смотрит. Анна ползёт где-то рядом.</p>
 
       <div class="tama-stats">
         <div class="tama-stat">
           <p class="tama-stat-label">mood</p>
           <p class="tama-stat-value" id="tamaMoodLabel">judging</p>
-          <div class="tama-stat-bar" aria-hidden="true">
-            <div class="tama-stat-fill" id="tamaMoodBar"></div>
-          </div>
+          <div class="tama-stat-bar" aria-hidden="true"><div class="tama-stat-fill" id="tamaMoodBar"></div></div>
         </div>
         <div class="tama-stat">
           <p class="tama-stat-label">hunger</p>
           <p class="tama-stat-value" id="tamaHungerLabel">peckish</p>
-          <div class="tama-stat-bar" aria-hidden="true">
-            <div class="tama-stat-fill" id="tamaHungerBar"></div>
-          </div>
+          <div class="tama-stat-bar" aria-hidden="true"><div class="tama-stat-fill" id="tamaHungerBar"></div></div>
+        </div>
+        <div class="tama-stat">
+          <p class="tama-stat-label">friendship</p>
+          <p class="tama-stat-value" id="tamaFriendLabel">warm</p>
+          <div class="tama-stat-bar" aria-hidden="true"><div class="tama-stat-fill" id="tamaFriendBar"></div></div>
         </div>
       </div>
 
+      <div class="tama-section-label">еда</div>
+      <div class="tama-food" id="tamaFood">
+        <button type="button" class="tama-btn tama-btn--food" data-food="cucumber">огурец</button>
+        <button type="button" class="tama-btn tama-btn--food" data-food="lettuce">салат</button>
+        <button type="button" class="tama-btn tama-btn--food" data-food="mushroom">гриб</button>
+        <button type="button" class="tama-btn tama-btn--food" data-food="berry">ягода</button>
+      </div>
+
+      <div class="tama-section-label">действия</div>
       <div class="tama-actions">
         <button type="button" class="tama-btn" data-tama="pet">погладить</button>
-        <button type="button" class="tama-btn" data-tama="feed">покормить</button>
+        <button type="button" class="tama-btn" data-tama="walk">гулять с Анной</button>
         <button type="button" class="tama-btn is-muted" data-tama="kick">пнуть</button>
         <button type="button" class="tama-btn is-muted" data-tama="squish">раздавить</button>
+        <button type="button" class="tama-btn tama-btn--revive" id="tamaReviveBtn" hidden data-tama="revive">оживить · позвать Анну</button>
       </div>
     </section>
 
     <nav class="tama-links" aria-label="ссылки">
       <p class="tama-links-label">from here</p>
       <ul>
-        <li><a href="zhanna.html">комната zhanna</a></li>
-        <li><a href="main.html#snailDragWrap">улитка на главной</a></li>
-        <li><a href="widget.html">widget (202)</a></li>
-        <li><a href="diary.html">guest book</a></li>
+        <li><a href="zhanna.html">zhanna</a></li>
+        <li><a href="anna.html">anna</a></li>
+        <li><a href="main.html#tama-widget">tamagotchi.quick</a></li>
+        <li><a href="widget.html">snail.widget</a></li>
+        <li><a href="main.html#snailDragWrap">улитка на main</a></li>
       </ul>
     </nav>
 
@@ -91,64 +105,167 @@
   <script>
     (function () {
       const STORAGE_KEY = 'gifworld-snail-tama';
-      const wrap = document.getElementById('tamaSnailWrap');
+      const meadow = document.getElementById('tamaMeadow');
+      const party = document.getElementById('tamaParty');
+      const zhanna = document.getElementById('tamaZhanna');
+      const anna = document.getElementById('tamaAnna');
+      const reactionEl = document.getElementById('tamaReaction');
+      const annaReactionEl = document.getElementById('tamaAnnaReaction');
       const statusEl = document.getElementById('tamaStatus');
       const moodLabel = document.getElementById('tamaMoodLabel');
       const hungerLabel = document.getElementById('tamaHungerLabel');
+      const friendLabel = document.getElementById('tamaFriendLabel');
       const moodBar = document.getElementById('tamaMoodBar');
       const hungerBar = document.getElementById('tamaHungerBar');
+      const friendBar = document.getElementById('tamaFriendBar');
+      const reviveBtn = document.getElementById('tamaReviveBtn');
+
+      const FOODS = {
+        cucumber: { hunger: -18, mood: 2, lines: ['хрум. огурец ок.', 'сочно. Жанна довольна.', 'огурец — классика поля.'] },
+        lettuce: { hunger: -14, mood: 4, lines: ['листья. медленно жуёт.', 'салат принят.', 'зелень — спокойствие.'] },
+        mushroom: { hunger: -26, mood: 6, lines: ['гриб! глаза загорелись.', 'вкусно. просит ещё.', 'лесной гриб — топ.'] },
+        berry: { hunger: -12, mood: 10, lines: ['ягодка!!', 'сладко. настроение +.', 'маленькая радость.'] },
+      };
 
       const lines = {
-        pet: ['мягко. она довольна (вероятно).', 'раковина блестит сильнее.', 'улитка одобряет тактильность.'],
-        feed: ['съела. просит ещё.', 'крошки поля приняты.', 'сытость +1. пердение — pending.'],
-        kick: ['не надо было. она запомнила.', 'улитка обиделась на 3 секунды.', 'поле осудило это действие.'],
-        squish: ['она... снова целая. странно.', 'squish rejected by physics.', 'улитка возвращается. всегда.'],
+        pet: ['мягко. раковина тёплая.', 'Жанна purr-snail mode.', 'она запомнила это.', 'Анна одобряет с боковой линии.'],
+        kick: ['не надо. обиделась.', 'раковина в retract.', 'поле осудило.', 'Анна: эй, нельзя.'],
+        walk: ['они ползут по лугу.', 'медленная прогулка. идеально.', 'Анна рассказывает что-то. Жанна слушает.', 'дружба +1.'],
+        squishDead: ['...тишина.', 'Жанна сплющена. кажется, без сознания.', 'squish. поле затаило дыхание.'],
+        squishRevive: ['Анна: ЖАННА!!', 'раковина снова выпрямилась.', 'поле вернуло её. не навсегда.', 'Жанна: …я была где-то тёплом.'],
+        revive: ['Анна приползла помочь.', 'ожила. смотрит укоризненно.', 'squish отменён. пока.'],
+      };
+
+      const annaLines = {
+        pet: ['~', 'nice', 'ок', '♥'],
+        kick: ['!', 'эй!', 'стой', '…'],
+        walk: ['~', 'go', 'yaay', '…'],
+        feed: ['м', 'nom?', 'вкусно', '~'],
+        squishDead: ['!!!', 'ЖАННА', '…'],
+        squishRevive: ['!', 'жива!', 'фух'],
+        revive: ['!', 'жива', '~'],
+      };
+
+      const zhannaReact = {
+        pet: ['~', 'purr', '♥'],
+        kick: ['!', '…', 'нет'],
+        walk: ['…', 'go', '~'],
+        feed: ['nom', 'хрум', 'yum'],
+        squishDead: ['…', '—', ''],
+        squishRevive: ['…', '!', '~'],
+        revive: ['!', '~', '…'],
       };
 
       function clamp(n, min, max) {
         return Math.min(max, Math.max(min, n));
       }
 
+      function defaultState() {
+        return {
+          mood: 68,
+          hunger: 42,
+          friendship: 55,
+          pets: 0,
+          feeds: 0,
+          walks: 0,
+          squishCount: 0,
+          alive: true,
+          walking: false,
+        };
+      }
+
       function loadState() {
         try {
           const raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) return { mood: 68, hunger: 42, pets: 0, feeds: 0 };
-          const parsed = JSON.parse(raw);
-          return {
-            mood: clamp(Number(parsed.mood) || 68, 0, 100),
-            hunger: clamp(Number(parsed.hunger) || 42, 0, 100),
-            pets: Number(parsed.pets) || 0,
-            feeds: Number(parsed.feeds) || 0,
-          };
+          if (!raw) return defaultState();
+          return { ...defaultState(), ...JSON.parse(raw) };
         } catch {
-          return { mood: 68, hunger: 42, pets: 0, feeds: 0 };
+          return defaultState();
         }
       }
 
-      function saveState(state) {
+      function saveState() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       }
 
-      function moodWord(value) {
-        if (value >= 85) return 'blissful';
-        if (value >= 65) return 'content';
-        if (value >= 45) return 'judging';
-        if (value >= 25) return 'miffed';
+      function moodWord(v) {
+        if (!state.alive) return 'unconscious';
+        if (v >= 85) return 'blissful';
+        if (v >= 65) return 'content';
+        if (v >= 45) return 'judging';
+        if (v >= 25) return 'miffed';
         return 'tragic';
       }
 
-      function hungerWord(value) {
-        if (value >= 75) return 'starving';
-        if (value >= 50) return 'peckish';
-        if (value >= 25) return 'snacking';
+      function hungerWord(v) {
+        if (v >= 75) return 'starving';
+        if (v >= 50) return 'peckish';
+        if (v >= 25) return 'snacking';
         return 'full';
       }
 
+      function friendWord(v) {
+        if (v >= 80) return 'inseparable';
+        if (v >= 60) return 'warm';
+        if (v >= 40) return 'polite';
+        return 'shy';
+      }
+
       let state = loadState();
+      let walkTimer = null;
+      let squishTimer = null;
+
+      function setReaction(text, ms) {
+        if (!reactionEl) return;
+        reactionEl.hidden = false;
+        reactionEl.textContent = text;
+        window.clearTimeout(setReaction._t);
+        setReaction._t = window.setTimeout(() => {
+          reactionEl.hidden = true;
+        }, ms || 2200);
+      }
+
+      function setAnnaReaction(text, ms) {
+        if (!annaReactionEl) return;
+        annaReactionEl.hidden = false;
+        annaReactionEl.textContent = text;
+        window.clearTimeout(setAnnaReaction._t);
+        setAnnaReaction._t = window.setTimeout(() => {
+          annaReactionEl.hidden = true;
+        }, ms || 2200);
+      }
+
+      function reactBoth(kind, ms) {
+        const pool = zhannaReact[kind];
+        if (pool?.length) setReaction(pool[Math.floor(Math.random() * pool.length)], ms);
+        if (anna?.classList.contains('is-visible') || kind === 'squishDead' || kind === 'squishRevive' || kind === 'revive') {
+          const aPool = annaLines[kind];
+          if (aPool?.length) setAnnaReaction(aPool[Math.floor(Math.random() * aPool.length)], ms);
+        }
+      }
+
+      function say(pool) {
+        if (statusEl && pool?.length) {
+          statusEl.textContent = pool[Math.floor(Math.random() * pool.length)];
+        }
+      }
+
+      function setSnailClass(...classes) {
+        if (!zhanna) return;
+        zhanna.classList.remove('is-shy', 'is-hop', 'is-pet', 'is-eating', 'is-squished', 'is-dead', 'is-happy', 'is-walk');
+        classes.forEach((c) => zhanna.classList.add(c));
+      }
+
+      function setAnnaClass(...classes) {
+        if (!anna) return;
+        anna.classList.remove('is-shy', 'is-hop', 'is-pet', 'is-eating', 'is-walk', 'is-happy');
+        classes.forEach((c) => anna.classList.add(c));
+      }
 
       function renderStats() {
         if (moodLabel) moodLabel.textContent = moodWord(state.mood);
         if (hungerLabel) hungerLabel.textContent = hungerWord(state.hunger);
+        if (friendLabel) friendLabel.textContent = friendWord(state.friendship);
         if (moodBar) {
           moodBar.style.width = state.mood + '%';
           moodBar.classList.toggle('is-low', state.mood < 35);
@@ -157,65 +274,170 @@
           hungerBar.style.width = state.hunger + '%';
           hungerBar.classList.toggle('is-low', state.hunger > 65);
         }
-      }
-
-      function say(action) {
-        const pool = lines[action];
-        if (statusEl && pool) {
-          statusEl.textContent = pool[Math.floor(Math.random() * pool.length)];
+        if (friendBar) {
+          friendBar.style.width = state.friendship + '%';
         }
-      }
-
-      function pulseClass(className, ms) {
-        if (!wrap) return;
-        wrap.classList.remove('is-shy', 'is-hop', 'is-pet');
-        wrap.classList.add(className);
-        window.setTimeout(() => wrap.classList.remove(className), ms);
+        if (reviveBtn) reviveBtn.hidden = state.alive;
+        if (meadow) meadow.classList.toggle('is-walking', state.walking);
+        if (anna) anna.classList.toggle('is-visible', state.walking || state.friendship >= 45 || !state.alive);
+        if (zhanna) {
+          zhanna.classList.toggle('is-dead', !state.alive);
+          zhanna.classList.toggle('is-squished', !state.alive);
+        }
+        document.querySelectorAll('[data-tama], [data-food]').forEach((btn) => {
+          const dead = !state.alive;
+          const walking = state.walking;
+          btn.disabled = dead || walking;
+        });
+        if (reviveBtn) reviveBtn.disabled = false;
       }
 
       function tickHunger() {
+        if (!state.alive || state.walking) return;
         state.hunger = clamp(state.hunger + 1, 0, 100);
-        saveState(state);
+        saveState();
         renderStats();
       }
 
-      renderStats();
-      window.setInterval(tickHunger, 45000);
+      function stopWalk() {
+        if (!state.walking) return;
+        state.walking = false;
+        if (party) party.classList.remove('is-walking');
+        if (meadow) meadow.classList.remove('is-walking');
+        setSnailClass('is-happy');
+        setAnnaClass('is-happy');
+        window.setTimeout(() => {
+          setSnailClass();
+          setAnnaClass();
+        }, 800);
+        renderStats();
+      }
+
+      function startWalk() {
+        if (!state.alive || state.walking) return;
+        state.walking = true;
+        state.mood = clamp(state.mood + 12, 0, 100);
+        state.friendship = clamp(state.friendship + 8, 0, 100);
+        state.walks += 1;
+        say(lines.walk);
+        reactBoth('walk', 3200);
+        setSnailClass('is-walk');
+        setAnnaClass('is-walk');
+        if (party) party.classList.add('is-walking');
+        if (meadow) meadow.classList.add('is-walking');
+        renderStats();
+        saveState();
+        window.clearTimeout(walkTimer);
+        walkTimer = window.setTimeout(() => {
+          stopWalk();
+          say(['вернулись. пыль на раковине.', 'прогулка окончена. vibe +.', 'Анна: было nice.']);
+          saveState();
+        }, 5200);
+      }
+
+      function doSquish() {
+        if (!state.alive) return;
+        state.alive = false;
+        state.mood = clamp(state.mood - 35, 0, 100);
+        state.squishCount += 1;
+        say(lines.squishDead);
+        reactBoth('squishDead', 4000);
+        setSnailClass('is-squished', 'is-dead');
+        setAnnaClass('is-shy');
+        renderStats();
+        saveState();
+        window.clearTimeout(squishTimer);
+        squishTimer = window.setTimeout(() => {
+          if (state.alive) return;
+          say(lines.squishRevive);
+          reactBoth('squishRevive', 2500);
+          setAnnaClass('is-hop');
+        }, 4500);
+      }
+
+      function doRevive() {
+        if (state.alive) return;
+        state.alive = true;
+        state.mood = clamp(state.mood + 20, 0, 100);
+        state.friendship = clamp(state.friendship + 5, 0, 100);
+        say(lines.revive);
+        reactBoth('revive', 2000);
+        setSnailClass('is-hop');
+        setAnnaClass('is-hop');
+        window.setTimeout(() => {
+          setSnailClass('is-pet');
+          setAnnaClass('is-pet');
+        }, 600);
+        renderStats();
+        saveState();
+      }
+
+      document.querySelectorAll('[data-food]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          if (!state.alive || state.walking) return;
+          const key = btn.getAttribute('data-food');
+          const food = FOODS[key];
+          if (!food) return;
+          state.hunger = clamp(state.hunger + food.hunger, 0, 100);
+          state.mood = clamp(state.mood + food.mood, 0, 100);
+          state.feeds += 1;
+          say(food.lines);
+          reactBoth('feed', 1500);
+          setSnailClass('is-eating');
+          setAnnaClass('is-visible');
+          window.setTimeout(() => {
+            setSnailClass(state.mood > 70 ? 'is-happy' : '');
+            setAnnaClass(state.friendship >= 45 ? 'is-visible' : '');
+          }, 900);
+          saveState();
+          renderStats();
+        });
+      });
 
       document.querySelectorAll('[data-tama]').forEach((btn) => {
         btn.addEventListener('click', () => {
           const action = btn.getAttribute('data-tama');
-          say(action);
-
+          if (action === 'revive') {
+            doRevive();
+            return;
+          }
+          if (!state.alive || state.walking) return;
           if (action === 'pet') {
+            say(lines.pet);
             state.mood = clamp(state.mood + 10, 0, 100);
             state.pets += 1;
-            pulseClass('is-pet', 1200);
-          }
-          if (action === 'feed') {
-            state.hunger = clamp(state.hunger - 28, 0, 100);
-            state.mood = clamp(state.mood + 4, 0, 100);
-            state.feeds += 1;
-            pulseClass('is-hop', 550);
-          }
-          if (action === 'kick') {
-            state.mood = clamp(state.mood - 18, 0, 100);
-            pulseClass('is-shy', 450);
-          }
-          if (action === 'squish') {
-            state.mood = clamp(state.mood - 8, 0, 100);
-            pulseClass('is-shy', 450);
+            reactBoth('pet', 1800);
+            setSnailClass('is-pet');
+            setAnnaClass('is-pet');
             window.setTimeout(() => {
-              state.mood = clamp(state.mood + 5, 0, 100);
-              saveState(state);
-              renderStats();
-            }, 600);
+              setSnailClass();
+              setAnnaClass(state.friendship >= 45 ? 'is-visible' : '');
+            }, 1200);
           }
-
-          saveState(state);
+          if (action === 'walk') startWalk();
+          if (action === 'kick') {
+            say(lines.kick);
+            state.mood = clamp(state.mood - 18, 0, 100);
+            reactBoth('kick', 1200);
+            setSnailClass('is-shy');
+            setAnnaClass('is-shy');
+            window.setTimeout(() => {
+              setSnailClass();
+              setAnnaClass(state.friendship >= 45 ? 'is-visible' : '');
+            }, 500);
+          }
+          if (action === 'squish') doSquish();
+          saveState();
           renderStats();
         });
       });
+
+      if (!state.alive) {
+        setSnailClass('is-squished', 'is-dead');
+      }
+
+      renderStats();
+      window.setInterval(tickHunger, 45000);
     })();
   </script>
 </body>

@@ -5,7 +5,7 @@
 | Папка | Содержимое | Примечание |
 |-------|------------|------------|
 | `diary/` | daisy, forest, sparkle, mushroom, flower | semantic search GifCities |
-| `characters/` | frog, butterfly, cat | character peeks на главной |
+| `characters/` | frog, butterfly, cat, **anna-snail.png** | character peeks · Анна в tamagotchi |
 | `blinkies/` | UC banner, Geocities, JUNO email, best-viewed | footer 88×31 / UC |
 | `field/image-of-day.jpg` | кроп из `забор цветы и спокойствие.jpeg` | **своё** фото поля |
 
@@ -31,3 +31,9 @@
 `images/blinkies/extra-*` + `blinkie-*` — больше 88×31 и 150×20.
 
 На главной: блок **GIF CHAOS** + расширенные stickers / peeks / footer.
+
+## Anna · anna-snail.png
+
+| Файл | Источник |
+|------|----------|
+| `images/characters/anna-snail.png` | тот же PNG что `images/snail.png` (RGBA, прозрачный фон) — персонаж **Анна** · tamagotchi + `anna.html` |

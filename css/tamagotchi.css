@@ -107,7 +107,7 @@ body.tama-room {
   position: relative;
   margin: 0 auto 20px;
   padding: 22px 18px 18px;
-  max-width: 420px;
+  max-width: 580px;
   border: 2px solid rgba(255, 250, 219, 0.35);
   background:
     linear-gradient(180deg, rgba(255, 248, 210, 0.14) 0%, rgba(28, 24, 16, 0.55) 100%);
@@ -123,27 +123,153 @@ body.tama-room {
   text-align: center;
 }
 
-.tama-snail-wrap {
+.tama-meadow {
   position: relative;
-  width: min(200px, 56vw);
-  margin: 0 auto 16px;
+  min-height: 260px;
+  margin-bottom: 14px;
+  padding: 16px 10px 12px;
+  overflow: hidden;
+  border: 2px dashed rgba(200, 230, 160, 0.45);
+  background:
+    radial-gradient(circle at 20% 80%, rgba(120, 200, 150, 0.25), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(255, 220, 140, 0.2), transparent 40%),
+    rgba(0, 0, 0, 0.2);
+}
+
+.tama-party {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 28px;
+  min-height: 220px;
+}
+
+.tama-party.is-walking {
+  animation: tamaPartyWalk 5.2s ease-in-out forwards;
+}
+
+.tama-actor {
+  position: relative;
+  margin: 0;
+  text-align: center;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.tama-actor--zhanna {
   animation: tamaBob 3.4s ease-in-out infinite;
 }
 
-.tama-snail-wrap.is-shy {
-  animation: tamaShy 0.45s ease;
+.tama-actor--anna {
+  opacity: 0.35;
+  transform: translateY(8px) scale(0.92);
 }
 
-.tama-snail-wrap.is-hop {
-  animation: tamaHop 0.55s ease;
+.tama-actor--anna.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.tama-actor-name {
+  font-family: var(--tama-font-mono);
+  font-size: 9px;
+  color: rgba(255, 250, 219, 0.65);
+  margin: 6px 0 0;
 }
 
 .tama-snail {
   display: block;
-  width: 100%;
+  width: min(220px, 52vw);
   height: auto;
+  margin: 0 auto;
   image-rendering: pixelated;
   filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.35));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.tama-anna-img {
+  display: block;
+  width: min(140px, 36vw);
+  height: auto;
+  margin: 0 auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.28));
+  transition: transform 0.4s ease;
+}
+
+.tama-actor--anna.is-visible .tama-anna-img {
+  animation: tamaAnnaFloat 2.8s ease-in-out infinite;
+}
+
+.tama-reaction {
+  position: absolute;
+  top: -8px;
+  right: -4px;
+  padding: 4px 8px;
+  font-family: var(--tama-font-pixel);
+  font-size: 7px;
+  background: rgba(255, 250, 219, 0.92);
+  color: #58141c;
+  border: 1px solid #1a1a1a;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+}
+
+.tama-anna-reaction {
+  top: -6px;
+  left: -4px;
+  right: auto;
+  background: rgba(232, 200, 240, 0.92);
+  color: #4a2048;
+}
+
+.tama-actor--zhanna.is-shy .tama-snail {
+  transform: scale(0.92) rotate(-6deg);
+}
+
+.tama-actor--zhanna.is-hop .tama-snail,
+.tama-actor--zhanna.is-pet .tama-snail {
+  transform: translateY(-6px);
+}
+
+.tama-actor--zhanna.is-eating .tama-snail {
+  animation: tamaEat 0.5s ease 2;
+}
+
+.tama-actor--zhanna.is-happy .tama-snail {
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.35)) saturate(1.15);
+}
+
+.tama-actor--zhanna.is-squished .tama-snail,
+.tama-actor--zhanna.is-dead .tama-snail {
+  transform: scale(1.05, 0.22) rotate(2deg);
+  filter: grayscale(0.45) brightness(0.85);
+  animation: none;
+}
+
+.tama-actor--zhanna.is-walk {
+  animation: none;
+}
+
+.tama-meadow.is-walking .tama-actor--zhanna .tama-snail {
+  animation: tamaWalkBob 0.6s ease-in-out infinite;
+}
+
+.tama-actor--anna.is-shy .tama-anna-img {
+  transform: scale(0.9) rotate(5deg);
+}
+
+.tama-actor--anna.is-hop .tama-anna-img,
+.tama-actor--anna.is-pet .tama-anna-img {
+  transform: translateY(-6px);
+}
+
+.tama-actor--anna.is-happy .tama-anna-img {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.28)) saturate(1.12);
+}
+
+.tama-meadow.is-walking .tama-actor--anna .tama-anna-img {
+  animation: tamaAnnaWalk 0.55s ease-in-out infinite;
 }
 
 .tama-snail-sparkles {
@@ -152,7 +278,7 @@ body.tama-room {
   pointer-events: none;
 }
 
-.tama-snail-sparkles span {
+.tama-actor--zhanna .tama-snail-sparkles span {
   position: absolute;
   width: 6px;
   height: 6px;
@@ -161,7 +287,7 @@ body.tama-room {
   opacity: 0;
 }
 
-.tama-snail-wrap.is-pet .tama-snail-sparkles span {
+.tama-actor--zhanna.is-pet .tama-snail-sparkles span {
   animation: tamaSparkle 1.8s ease-in-out infinite;
 }
 
@@ -184,9 +310,40 @@ body.tama-room {
 
 .tama-stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin-bottom: 16px;
+}
+
+.tama-section-label {
+  font-family: var(--tama-font-mono);
+  font-size: 10px;
+  color: rgba(255, 250, 219, 0.58);
+  margin: 0 0 8px;
+  text-transform: lowercase;
+}
+
+.tama-food {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.tama-btn--food {
+  font-size: 11px;
+  background: rgba(200, 230, 160, 0.22);
+}
+
+.tama-btn--revive {
+  background: rgba(232, 160, 200, 0.35);
+  border-color: rgba(255, 200, 220, 0.55);
+}
+
+.tama-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .tama-stat {
@@ -327,8 +484,38 @@ body.tama-room {
   50% { opacity: 1; transform: scale(1.2); }
 }
 
+@keyframes tamaPartyWalk {
+  0% { transform: translateX(-18%); }
+  45% { transform: translateX(12%); }
+  100% { transform: translateX(-4%); }
+}
+
+@keyframes tamaWalkBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes tamaAnnaFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes tamaAnnaWalk {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes tamaEat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(2px) scale(0.98); }
+}
+
 @media (max-width: 520px) {
   .tama-stats {
     grid-template-columns: 1fr;
+  }
+
+  .tama-party {
+    gap: 12px;
   }
 }

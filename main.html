@@ -9,6 +9,7 @@
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tama-widget.css">
 
 <style>
 :root {
@@ -225,6 +226,7 @@ body {
 .left-nav-list li:nth-child(4) a::before { color: #ffd48a; }
 .left-nav-list li:nth-child(5) a::before { color: #e8c86a; }
 .left-nav-list li:nth-child(6) a::before { color: #c8a0e8; }
+.left-nav-list li:nth-child(7) a::before { color: #a0e8c8; }
 
 .left-nav-list a:hover {
   color: #ffffff;
@@ -1791,6 +1793,223 @@ body {
   overflow: hidden;
 }
 
+/* Desktop widget — мягкий быстрый доступ поверх главной */
+.desktop-widget-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 6500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.desktop-widget-layer[hidden] {
+  display: none;
+}
+
+.desktop-widget-layer.is-open {
+  pointer-events: auto;
+}
+
+.desktop-widget-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 38, 28, 0.28);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.desktop-widget-layer.is-open .desktop-widget-backdrop {
+  opacity: 1;
+}
+
+.desktop-widget {
+  position: relative;
+  z-index: 1;
+  width: min(300px, 92vw);
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 250, 219, 0.45);
+  border-radius: 14px;
+  background:
+    linear-gradient(165deg, rgba(255, 250, 235, 0.97) 0%, rgba(255, 244, 210, 0.94) 100%);
+  box-shadow:
+    0 18px 40px rgba(18, 28, 20, 0.22),
+    0 2px 0 rgba(255, 255, 255, 0.65) inset;
+  font-family: 'Jura', sans-serif;
+  color: #2a2820;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  touch-action: none;
+}
+
+.desktop-widget-layer.is-open .desktop-widget {
+  opacity: 1;
+}
+
+.desktop-widget-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px 10px;
+  border-bottom: 1px solid rgba(42, 40, 32, 0.1);
+  cursor: grab;
+  user-select: none;
+}
+
+.desktop-widget-head.is-dragging {
+  cursor: grabbing;
+}
+
+.desktop-widget-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: rgba(200, 230, 160, 0.45);
+  padding: 4px;
+  image-rendering: pixelated;
+}
+
+.desktop-widget-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  line-height: 1.35;
+  margin: 0;
+  color: #3d4a32;
+}
+
+.desktop-widget-sub {
+  font-size: 11px;
+  color: rgba(42, 40, 32, 0.62);
+  margin: 2px 0 0;
+}
+
+.desktop-widget-body {
+  padding: 12px 14px 10px;
+}
+
+.desktop-widget-text {
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 0 0 12px;
+  color: rgba(42, 40, 32, 0.82);
+}
+
+.desktop-widget-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.desktop-widget-nav a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(42, 40, 32, 0.12);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: #3d4a32;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.desktop-widget-nav a:hover {
+  background: rgba(232, 160, 200, 0.22);
+  border-color: rgba(158, 61, 110, 0.28);
+  color: #58141c;
+}
+
+.desktop-widget-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 14px 14px;
+  border-top: 1px solid rgba(42, 40, 32, 0.08);
+}
+
+.desktop-widget-btn {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid rgba(42, 40, 32, 0.16);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.5);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: #3d4a32;
+  cursor: pointer;
+}
+
+.desktop-widget-btn:hover {
+  background: rgba(200, 230, 160, 0.35);
+}
+
+.desktop-widget-btn--primary {
+  background: rgba(200, 230, 160, 0.5);
+  border-color: rgba(61, 74, 50, 0.22);
+}
+
+.desktop-widget-launcher {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 6400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px 8px 8px;
+  border: 1px solid rgba(255, 250, 219, 0.45);
+  border-radius: 999px;
+  background: rgba(28, 24, 18, 0.72);
+  backdrop-filter: blur(6px);
+  color: #fffadb;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.desktop-widget-launcher:hover {
+  transform: translateY(-2px);
+  background: rgba(40, 36, 28, 0.82);
+}
+
+.desktop-widget-launcher img {
+  width: 28px;
+  height: auto;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.desktop-widget-launcher.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+}
+
+@media (max-width: 720px) {
+  .desktop-widget-layer {
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .desktop-widget {
+    width: min(320px, 94vw);
+  }
+}
+
 /* BOTTOM CONTENT — не scrollports */
 .field-bottom-row {
   display: grid;
@@ -2182,6 +2401,7 @@ body {
       <li><a href="diary.html">diary</a></li>
       <li><a href="about.html">about</a></li>
       <li><a href="main.html#fieldRadio">music</a></li>
+      <li><a href="tamagotchi.html">tamagotchi</a></li>
       <li><a href="secret-door.html">secret door</a></li>
     </ul>
   </nav>
@@ -2254,10 +2474,11 @@ body {
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>intro</strong> — «привет, это мой сайт…»</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery.html v1</strong> — GIF-стена · комната</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>music room</strong> — полноценная страница, больше треков</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>tamagotchi</strong> — tamagotchi.html v1 · mood / hunger</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>tamagotchi v2</strong> — еда · Анна · прогулка · squish/revive</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>кастомная 404</strong> — 404.html, cold</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>widget.html v1</strong> — snail.widget · drag · без «раздавить»</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>202 заглушки</strong> — остались secret-door, anna</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>widget</strong> — snail.widget поверх main · быстрый доступ</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>202 заглушки</strong> — остался secret-door</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>anna.html</strong> — комната Анны v1</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>diary.html</strong> — тетрадь + guest book v1</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>zhanna.html</strong> — комната Жанны v1</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>ещё scrollports</strong> — в коробке, в галерее, в music room</p>
@@ -2424,7 +2645,7 @@ body {
             <img class="snail-teaser-img" src="images/BIG SMACHNY snail.png" alt="Жанна — улитка ахатина" width="200" height="200">
             <div>
               <p class="snail-teaser-title">the snail</p>
-              <p class="snail-teaser-text">Персонаж этого сайта — улитка ахатина <a href="zhanna.html">Жанна</a>. У нее есть подруга <a href="anna.html">Анна</a>. На <a href="tamagotchi.html">этой странице</a> ты можешь ее погладить или покормить. Сейчас ты можешь воспользоваться <a href="widget.html">виджетом</a>.</p>
+              <p class="snail-teaser-text">Персонаж этого сайта — улитка ахатина <a href="zhanna.html">Жанна</a>. У нее есть подруга <a href="anna.html">Анна</a>. <a href="#tama-widget">Быстрый tamagotchi</a> открывается прямо здесь — погладить и покормить. <a href="tamagotchi.html">Полная версия</a> — прогулки, еда, squish. <a href="#widget">snail.widget</a> — быстрый доступ к комнатам.</p>
             </div>
           </div>
         </section>
@@ -2539,6 +2760,91 @@ body {
 
 <div class="site-popup-layer" id="sitePopupLayer" hidden aria-hidden="true"></div>
 <div class="site-popup-layer" id="noteMailLayer" hidden aria-hidden="true"></div>
+
+<div class="desktop-widget-layer" id="desktopWidgetLayer" hidden aria-hidden="true">
+  <div class="desktop-widget-backdrop" data-desktop-widget-close aria-hidden="true"></div>
+  <aside class="desktop-widget" id="desktopWidgetPanel" role="dialog" aria-labelledby="desktopWidgetTitle" aria-modal="true">
+    <header class="desktop-widget-head" id="desktopWidgetDragHandle">
+      <img class="desktop-widget-icon" src="images/snail.png" alt="" width="36" height="18">
+      <div>
+        <p class="desktop-widget-title" id="desktopWidgetTitle">snail.widget</p>
+        <p class="desktop-widget-sub">перетащи за шапку · поле не двигается</p>
+      </div>
+    </header>
+    <div class="desktop-widget-body">
+      <p class="desktop-widget-text">не уходи далеко — главная уже тут, просто свёрнута в уголок. куда зайти?</p>
+      <ul class="desktop-widget-nav">
+        <li><a href="gallery.html">gallery</a></li>
+        <li><a href="diary.html">diary</a></li>
+        <li><a href="about.html">about</a></li>
+        <li><a href="zhanna.html">zhanna</a></li>
+        <li><a href="anna.html">anna</a></li>
+        <li><a href="tamagotchi.html">tamagotchi</a></li>
+        <li><a href="main.html#fieldRadio">music</a></li>
+      </ul>
+    </div>
+    <div class="desktop-widget-foot">
+      <button type="button" class="desktop-widget-btn desktop-widget-btn--primary" id="desktopWidgetExplore">остаться тут →</button>
+      <button type="button" class="desktop-widget-btn" data-desktop-widget-close>свернуть</button>
+    </div>
+  </aside>
+</div>
+
+<button type="button" class="desktop-widget-launcher" id="desktopWidgetLauncher" aria-label="открыть snail.widget" aria-expanded="false">
+  <img src="images/snail.png" alt="">
+  <span>widget</span>
+</button>
+
+<div class="tama-widget-layer" id="tamaWidgetLayer" hidden aria-hidden="true">
+  <div class="tama-widget-backdrop" data-tama-widget-close aria-hidden="true"></div>
+  <aside class="tama-widget-panel" id="tamaWidgetPanel" role="dialog" aria-labelledby="tamaWidgetTitle" aria-modal="true">
+    <header class="tama-widget-head" id="tamaWidgetDragHandle">
+      <img class="tama-widget-icon" src="images/BIG SMACHNY snail.png" alt="" width="40" height="40">
+      <div>
+        <p class="tama-widget-title" id="tamaWidgetTitle">tamagotchi.quick</p>
+        <p class="tama-widget-sub">перетащи за шапку · поле не двигается</p>
+      </div>
+    </header>
+    <div class="tama-widget-body">
+      <div class="tama-widget-meadow">
+        <div class="tama-widget-party" id="tamaWidgetParty">
+          <figure class="tama-widget-actor tama-widget-actor--zhanna" id="tamaWidgetZhanna">
+            <img class="tama-widget-snail" id="tamaWidgetSnailImg" src="images/BIG SMACHNY snail.png" alt="Жанна" width="100" height="100">
+            <span class="tama-widget-reaction" id="tamaWidgetReaction" hidden aria-live="polite"></span>
+            <figcaption class="tama-widget-actor-name">zhanna</figcaption>
+          </figure>
+          <figure class="tama-widget-actor tama-widget-actor--anna" id="tamaWidgetAnna">
+            <img class="tama-widget-anna-img" src="images/characters/anna-snail.png" alt="Анна" width="64" height="32">
+            <span class="tama-widget-reaction" id="tamaWidgetAnnaReaction" hidden aria-live="polite"></span>
+            <figcaption class="tama-widget-actor-name">anna</figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="tama-widget-status" id="tamaWidgetStatus">Жанна смотрит. Анна ползёт рядом.</p>
+      <div class="tama-widget-stats">
+        <div class="tama-widget-stat">
+          <p class="tama-widget-stat-label">mood</p>
+          <p class="tama-widget-stat-value" id="tamaWidgetMoodLabel">judging</p>
+          <div class="tama-widget-stat-bar" aria-hidden="true"><div class="tama-widget-stat-fill" id="tamaWidgetMoodBar"></div></div>
+        </div>
+        <div class="tama-widget-stat">
+          <p class="tama-widget-stat-label">hunger</p>
+          <p class="tama-widget-stat-value" id="tamaWidgetHungerLabel">peckish</p>
+          <div class="tama-widget-stat-bar" aria-hidden="true"><div class="tama-widget-stat-fill" id="tamaWidgetHungerBar"></div></div>
+        </div>
+      </div>
+      <div class="tama-widget-actions">
+        <button type="button" class="tama-widget-btn" data-tama-quick="pet">погладить</button>
+        <button type="button" class="tama-widget-btn" data-tama-quick="feed">покормить</button>
+        <button type="button" class="tama-widget-btn" data-tama-quick="walk">прогулка</button>
+      </div>
+      <div class="tama-widget-foot">
+        <a class="tama-widget-full" href="tamagotchi.html">полный tamagotchi →</a>
+        <button type="button" class="tama-widget-btn" data-tama-widget-close>свернуть</button>
+      </div>
+    </div>
+  </aside>
+</div>
 
 <div class="snail-drag-wrap" id="snailDragWrap">
   <button type="button" class="snail-object" id="snailObject" aria-label="улитка ползает сама — перетащи куда хочешь">
@@ -3561,6 +3867,196 @@ body {
   setTimeout(showWelcomePopup, 1400);
 })();
 (function () {
+  const layer = document.getElementById('desktopWidgetLayer');
+  const panel = document.getElementById('desktopWidgetPanel');
+  const dragHandle = document.getElementById('desktopWidgetDragHandle');
+  const launcher = document.getElementById('desktopWidgetLauncher');
+  const exploreBtn = document.getElementById('desktopWidgetExplore');
+  const params = new URLSearchParams(window.location.search);
+  const wantsWidget = params.get('widget') === '1' || window.location.hash === '#widget';
+  const SCROLL_KEY = 'gifworld-main-scroll-y';
+  const isMainPage = /(?:^|\/)main\.html$/.test(window.location.pathname)
+    || window.location.pathname.endsWith('/');
+
+  if (!layer || !launcher || !panel) return;
+
+  let savedScrollY = 0;
+  let dragActive = false;
+  let dragOffsetX = 0;
+  let dragOffsetY = 0;
+  let panelOffsetX = 0;
+  let panelOffsetY = 0;
+
+  function lockPageScroll() {
+    savedScrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${savedScrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+  }
+
+  function unlockPageScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    window.scrollTo(0, savedScrollY);
+  }
+
+  function markWidgetInUrl() {
+    const path = window.location.pathname || 'main.html';
+    window.history.replaceState({}, '', `${path}?widget=1`);
+  }
+
+  function clearWidgetFromUrl() {
+    if (params.has('widget') || window.location.hash === '#widget') {
+      const path = window.location.pathname || 'main.html';
+      window.history.replaceState({}, '', path);
+    }
+  }
+
+  function setOpen(open) {
+    if (open) lockPageScroll();
+    else unlockPageScroll();
+
+    layer.hidden = !open;
+    layer.classList.toggle('is-open', open);
+    layer.setAttribute('aria-hidden', open ? 'false' : 'true');
+    launcher.classList.toggle('is-hidden', open);
+    launcher.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+    if (!open) {
+      panelOffsetX = 0;
+      panelOffsetY = 0;
+      panel.style.transform = '';
+    }
+  }
+
+  function openWidget() {
+    const tamaLayer = document.getElementById('tamaWidgetLayer');
+    if (tamaLayer && !tamaLayer.hidden && window.GifWorldTamaWidget) {
+      window.GifWorldTamaWidget.close();
+    }
+    setOpen(true);
+  }
+
+  function closeWidget() {
+    setOpen(false);
+    clearWidgetFromUrl();
+  }
+
+  launcher.addEventListener('click', () => openWidget());
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest(
+      'a[href="#widget"], a[href="main.html#widget"], a[href="widget.html"], a[href="./widget.html"]'
+    );
+    if (!link) return;
+
+    const href = link.getAttribute('href') || '';
+    const opensWidgetOnMain = href === '#widget' || href === 'main.html#widget'
+      || href === 'widget.html' || href === './widget.html';
+    const modifiedClick = event.metaKey || event.ctrlKey || event.shiftKey || event.button === 1;
+
+    if (isMainPage && opensWidgetOnMain) {
+      if (modifiedClick) {
+        try {
+          sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
+        } catch (_) {}
+        return;
+      }
+      event.preventDefault();
+      openWidget();
+      markWidgetInUrl();
+      return;
+    }
+
+    if (!isMainPage && (href === '#widget' || href === 'main.html#widget')) {
+      event.preventDefault();
+      openWidget();
+      window.history.replaceState({}, '', `${window.location.pathname}${window.location.search}#widget`);
+    }
+  });
+
+  layer.addEventListener('click', (event) => {
+    if (event.target.closest('[data-desktop-widget-close]')) closeWidget();
+  });
+
+  if (exploreBtn) {
+    exploreBtn.addEventListener('click', () => closeWidget());
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !layer.hidden) closeWidget();
+  });
+
+  if (dragHandle) {
+    dragHandle.addEventListener('pointerdown', (event) => {
+      if (event.button !== 0) return;
+      dragActive = true;
+      dragHandle.classList.add('is-dragging');
+      dragHandle.setPointerCapture(event.pointerId);
+      dragOffsetX = event.clientX - panelOffsetX;
+      dragOffsetY = event.clientY - panelOffsetY;
+      event.preventDefault();
+    });
+
+    dragHandle.addEventListener('pointermove', (event) => {
+      if (!dragActive) return;
+      panelOffsetX = event.clientX - dragOffsetX;
+      panelOffsetY = event.clientY - dragOffsetY;
+      panel.style.transform = `translate(${panelOffsetX}px, ${panelOffsetY}px)`;
+    });
+
+    function endDrag(event) {
+      if (!dragActive) return;
+      dragActive = false;
+      dragHandle.classList.remove('is-dragging');
+      if (dragHandle.hasPointerCapture(event.pointerId)) {
+        dragHandle.releasePointerCapture(event.pointerId);
+      }
+    }
+
+    dragHandle.addEventListener('pointerup', endDrag);
+    dragHandle.addEventListener('pointercancel', endDrag);
+  }
+
+  function scheduleWidgetOpen() {
+    window.setTimeout(() => openWidget(), wantsWidget ? 400 : 900);
+  }
+
+  if (wantsWidget) {
+    try {
+      const saved = sessionStorage.getItem(SCROLL_KEY);
+      if (saved != null) {
+        const y = parseInt(saved, 10);
+        if (!Number.isNaN(y)) window.scrollTo(0, y);
+        sessionStorage.removeItem(SCROLL_KEY);
+      }
+    } catch (_) {}
+
+    try {
+      if (localStorage.getItem('gifworld-welcome-seen') === '1') {
+        scheduleWidgetOpen();
+      } else {
+        const welcomeLayer = document.getElementById('sitePopupLayer');
+        const observer = new MutationObserver(() => {
+          if (welcomeLayer?.hidden) {
+            observer.disconnect();
+            scheduleWidgetOpen();
+          }
+        });
+        if (welcomeLayer) observer.observe(welcomeLayer, { attributes: true, attributeFilter: ['hidden'] });
+        window.setTimeout(scheduleWidgetOpen, 3200);
+      }
+    } catch (_) {
+      scheduleWidgetOpen();
+    }
+  }
+})();
+(function () {
   const hotlineEl = document.getElementById('fieldHotline');
   const hotlineBtn = document.getElementById('fieldHotlineNext');
   const counterEl = document.getElementById('fakeCounter');
@@ -3600,6 +4096,6 @@ body {
   }
 })();
 </script>
-
+<script src="js/tama-widget.js"></script>
 </body>
 </html>

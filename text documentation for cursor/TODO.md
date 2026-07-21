@@ -2,7 +2,7 @@
 
 ## Roadmap (зафиксирован 2026-07-01)
 
-**Статус:** Фаза 2 почти закрыта — остались **secret-door** и **anna**. Дальше — deploy smoke test.
+**Статус:** Фаза 2 почти закрыта — остался **secret-door**. Дальше — deploy smoke test.
 
 ### Фаза 1 — главная v1.5 (контент, без новых страниц)
 
@@ -41,9 +41,9 @@
 - [x] **diary.html** v1 — тетрадь автора + guest book (форма, `data/guestbook.json`)
 - [x] **zhanna.html** v1
 - [x] **tamagotchi.html** v1 — mood / hunger, localStorage
-- [ ] **widget.html** v1
+- [x] **widget** — snail.widget overlay на main + launcher `widget.html`
+- [x] **anna.html** v1
 - [ ] **secret-door.html** v1
-- [ ] **anna.html** v1
 
 ---
 
