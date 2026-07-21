@@ -1665,6 +1665,122 @@ body {
   pointer-events: none;
 }
 
+/* Редкие spam-окна поверх страницы (не только в блоке) */
+.field-spam-float-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6500;
+}
+
+.field-spam-float {
+  position: fixed;
+  width: min(196px, 44vw);
+  pointer-events: auto;
+  animation: adSpawnIn 0.32s ease;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.35);
+}
+
+.field-spam-float.is-bobbing {
+  animation: adBob 2.8s ease-in-out infinite;
+}
+
+.field-spam-float.is-leaving {
+  opacity: 0;
+  transform: scale(0.9) translateY(8px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  pointer-events: none;
+}
+
+/* Указатель в левой колонке */
+.field-signpost {
+  margin-top: 18px;
+  padding: 12px 10px;
+  border: 1px dashed rgba(245, 236, 212, 0.35);
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.field-signpost-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  letter-spacing: 0.04em;
+  color: #e8c86a;
+  margin: 0 0 10px;
+}
+
+.field-signpost-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.field-signpost-list li {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.field-signpost-list a {
+  color: #fffadb;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255, 250, 219, 0.35);
+}
+
+.field-signpost-list a:hover {
+  color: #e8a0c8;
+  border-bottom-color: #e8a0c8;
+}
+
+.field-signpost-note {
+  margin: 10px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(242, 242, 242, 0.72);
+}
+
+/* Лента «что сегодня на поле» */
+.field-today-world {
+  margin-top: 20px;
+}
+
+.field-today-list {
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  border: 2px dashed rgba(35, 32, 20, 0.5);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(74, 40, 32, 0.03) 3px,
+      rgba(74, 40, 32, 0.03) 4px
+    ),
+    linear-gradient(180deg, rgba(250, 246, 238, 0.92) 0%, rgba(232, 224, 212, 0.88) 100%);
+}
+
+.field-today-list li {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 6px 0;
+  border-bottom: 1px dotted rgba(26, 26, 26, 0.22);
+  color: #1a1a1a;
+}
+
+.field-today-list li:last-child {
+  border-bottom: none;
+}
+
+.field-today-list a {
+  color: #58141c;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(88, 20, 28, 0.35);
+}
+
+.field-today-list a:hover {
+  color: #9e3d6e;
+}
+
 /* Center popup on load — не fullscreen */
 .site-popup-layer {
   position: fixed;
@@ -2441,6 +2557,17 @@ body {
       <input type="range" id="fieldRadioVolume" min="0" max="100" value="72" aria-label="громкость">
     </div>
   </div>
+
+  <aside class="field-signpost" aria-label="указатель с поля">
+    <p class="field-signpost-label">указатель</p>
+    <ul class="field-signpost-list">
+      <li><a href="zhanna.html">→ комната zhanna</a></li>
+      <li><a href="anna.html">→ комната anna</a></li>
+      <li><a href="gallery.html">→ gallery</a></li>
+      <li><a href="tamagotchi.html">→ tamagotchi</a></li>
+    </ul>
+    <p class="field-signpost-note">улитки ползут медленно. ты — необязана.</p>
+  </aside>
 </div>
 
 <!-- CENTER -->
@@ -2464,27 +2591,26 @@ body {
       <button type="button" class="signal-game-btn" id="gameStart">START</button>
     </div>
 
-    <section class="mini-world field-scrollport-world" aria-label="список дел поля">
-      <p class="mini-world-label"><span class="label-a">поле</span> · <span class="label-b">список дел</span> · <span class="label-c">листай ↓</span></p>
+    <section class="mini-world field-scrollport-world" aria-label="что уже на поле">
+      <p class="mini-world-label"><span class="label-a">поле</span> · <span class="label-b">что уже здесь</span> · <span class="label-c">листай ↓</span></p>
       <div class="scrollport" id="fieldScrollport">
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>радио на поле</strong> — три трека, переключай ◀ ▶</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>улитка на главной</strong> — ползает, её можно перетащить</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>коробка с сюрпризами</strong> — открывается, если навести</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>прогноз</strong> — окошки, как в старом интернете</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>the snail</strong> — Жанна и Анна, уход за улитками</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>галерея GIF</strong> — отдельная комната</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>записка полю</strong> — блокнот + pop-up</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>фото дня</strong> — полароид с поля</p>
-        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>авторский дневник</strong> — скоро больше записей</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>заглянуть за угол</strong> — лягушка, бабочка, кот</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>blinkies внизу</strong> — маленькие баннеры</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>стикеры</strong> — лента милых картинок</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>привет на главной</strong> — коротко про сайт</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>радио слева</strong> — три трека, переключай ◀ ▶</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>улитка на поле</strong> — ползает, её можно перетащить</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>коробка</strong> — наведи, чтобы открыть</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>прогноз</strong> — окошки в духе Win98</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>the snail</strong> — Жанна, Анна, уход за улитками</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery</strong> — комната с гифками</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>guest book</strong> — записка в diary</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>фото дня</strong> — полароид внизу</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>игра с сигналами</strong> — лови мигающие символы</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>стикеры и blinkies</strong> — лента и баннеры</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>tamagotchi</strong> — корми, гуляй, squish (да, можно)</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>комнаты Жанны и Анны</strong> — персонажи живут отдельно</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>дневник / guest book</strong> — записки в diary</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>комнаты zhanna и anna</strong> — персонажи живут отдельно</p>
+        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>авторский дневник</strong> — скоро больше записей</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>соседи поля</strong> — лягушка, бабочка, кот внизу</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>музыкальная комната</strong> — больше треков, своё место</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>secret door</strong> — ещё не открыта</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>secret door</strong> — дверь закрыта, но можно постучать</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[·]</span><strong>слух</strong> — иногда всплывает реклама. это нормально для 2003.</p>
       </div>
     </section>
 
@@ -2612,6 +2738,7 @@ body {
     <div class="field-lower-world">
 
       <section class="mini-world ad-spam-world" id="adSpamWorld" aria-label="реклама поля">
+        <p class="mini-world-label"><span class="label-a">spam.exe</span> · <span class="label-b">реклама поля</span> · <span class="label-c">закрой — появится новое</span></p>
         <div class="ad-spam-field" id="adSpamField">
           <p class="ad-spam-hint" id="adSpamHint">закрой окно — появится новое</p>
         </div>
@@ -2645,6 +2772,16 @@ body {
           </div>
         </section>
       </div>
+
+      <section class="mini-world field-today-world" id="fieldToday" aria-label="что сегодня на поле">
+        <p class="mini-world-label"><span class="label-a">поле</span> · <span class="label-b">сегодня</span> · <span class="label-c">коротко</span></p>
+        <ul class="field-today-list" id="fieldTodayList">
+          <li>настроение: солнечно, с лёгким «???»</li>
+          <li>улитки: Жанна смотрит, Анна ползёт рядом → <a href="tamagotchi.html">tamagotchi</a></li>
+          <li>можно оставить записку в <a href="diary.html#guestbook">guest book</a></li>
+          <li>новые гифки лежат в <a href="gallery.html">gallery</a></li>
+        </ul>
+      </section>
 
       <section class="mini-world field-hotline-world" aria-label="hotline">
         <blockquote class="field-hotline" id="fieldHotline">если интернет пахнет травой — ты не ошиблась адресом.</blockquote>
@@ -2751,6 +2888,8 @@ body {
 </div>
 
 </div>
+
+<div class="field-spam-float-layer" id="fieldSpamFloatLayer" aria-live="polite"></div>
 
 <div class="site-popup-layer" id="sitePopupLayer" hidden aria-hidden="true"></div>
 <div class="site-popup-layer" id="noteMailLayer" hidden aria-hidden="true"></div>
@@ -4049,6 +4188,114 @@ body {
       scheduleWidgetOpen();
     }
   }
+})();
+(function () {
+  const layer = document.getElementById('fieldSpamFloatLayer');
+  const eventsList = document.getElementById('eventsList');
+  if (!layer) return;
+
+  const FLOAT_TEMPLATES = [
+    { titlebar: 'spam.exe', headline: 'ВЫ ВЫИГРАЛИ<br>0 УЛИТОК', text: 'поздравляем. приз уже уехал.', yes: 'ОК', style: 'hot' },
+    { titlebar: 'update field', headline: 'ОБНОВИ<br>СВОЁ ПОЛЕ', text: 'версия 0.4. перезагрузка не нужна.', yes: 'OK', style: 'cyan' },
+    { titlebar: 'free vibe', headline: '+1 VIBE<br>ДОБАВЛЕН', text: 'скачано в твоё настроение.', yes: 'NICE', style: 'lime' },
+    { titlebar: 'snail alert', headline: 'УЛИТКА<br>СМОТРИТ', text: 'она видела, как ты скроллила.', yes: 'ПРОСТИ', style: 'purple' },
+    { titlebar: 'cookies???', headline: 'ПОЛЕ ИСПОЛЬЗУЕТ<br>ТРАВИНКИ', text: 'принять? всегда принимают.', yes: 'YUM', style: 'gold' },
+  ];
+
+  const CORNERS = [
+    { bottom: '72px', right: '16px' },
+    { bottom: '88px', left: '16px' },
+    { top: '120px', right: '20px' },
+  ];
+
+  let lastShown = 0;
+  let floatActive = false;
+  const MIN_GAP_MS = 85000;
+  const FIRST_MS = 52000;
+
+  function pick(list) {
+    return list[Math.floor(Math.random() * list.length)];
+  }
+
+  function uiBlockingOpen() {
+    return ['desktopWidgetLayer', 'tamaWidgetLayer', 'sitePopupLayer', 'noteMailLayer'].some((id) => {
+      const el = document.getElementById(id);
+      return el && !el.hidden;
+    });
+  }
+
+  function canShow() {
+    if (document.hidden || floatActive || uiBlockingOpen()) return false;
+    return Date.now() - lastShown >= MIN_GAP_MS;
+  }
+
+  function dismissFloat(el) {
+    if (!el?.isConnected) return;
+    el.classList.add('is-leaving');
+    window.setTimeout(() => el.remove(), 280);
+    floatActive = false;
+  }
+
+  function showFloatSpam() {
+    if (!canShow()) return;
+
+    const tpl = pick(FLOAT_TEMPLATES);
+    const pos = pick(CORNERS);
+    const el = document.createElement('div');
+    el.className = `field-spam-float win98-window win98-window--ad-${tpl.style}${Math.random() > 0.5 ? ' is-bobbing' : ''}`;
+    el.style.bottom = pos.bottom || 'auto';
+    el.style.top = pos.top || 'auto';
+    el.style.left = pos.left || 'auto';
+    el.style.right = pos.right || 'auto';
+
+    el.innerHTML = `
+      <div class="win98-titlebar">${tpl.titlebar}</div>
+      <div class="ad-body">
+        <p class="ad-headline">${tpl.headline}</p>
+        <p class="ad-text">${tpl.text}</p>
+        <div class="ad-cta-row">
+          <button type="button" class="ad-cta-btn ad-cta-btn--yes" data-float-spam-action>${tpl.yes}</button>
+          <button type="button" class="ad-cta-btn ad-cta-btn--no" data-float-spam-dismiss>×</button>
+        </div>
+      </div>
+    `;
+
+    layer.appendChild(el);
+    floatActive = true;
+    lastShown = Date.now();
+
+    el.querySelector('[data-float-spam-dismiss]')?.addEventListener('click', () => dismissFloat(el));
+    el.querySelector('[data-float-spam-action]')?.addEventListener('click', () => {
+      if (eventsList) {
+        const li = document.createElement('li');
+        li.textContent = 'всплыла реклама поля';
+        eventsList.appendChild(li);
+      }
+      dismissFloat(el);
+    });
+
+    window.setTimeout(() => dismissFloat(el), 14000);
+  }
+
+  window.setTimeout(() => {
+    if (Math.random() < 0.85) showFloatSpam();
+  }, FIRST_MS);
+
+  window.setInterval(() => {
+    if (Math.random() < 0.35) showFloatSpam();
+  }, 110000);
+
+  let scrollTimer = null;
+  window.addEventListener(
+    'scroll',
+    () => {
+      window.clearTimeout(scrollTimer);
+      scrollTimer = window.setTimeout(() => {
+        if (window.scrollY > 600 && Math.random() < 0.22) showFloatSpam();
+      }, 1800);
+    },
+    { passive: true }
+  );
 })();
 (function () {
   const hotlineEl = document.getElementById('fieldHotline');
