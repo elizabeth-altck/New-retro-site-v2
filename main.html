@@ -1737,6 +1737,68 @@ body {
   color: rgba(242, 242, 242, 0.72);
 }
 
+/* Полевой слух — правая колонка */
+.field-whisper {
+  margin-top: 18px;
+  padding: 12px 10px;
+  border: 1px dashed rgba(232, 160, 200, 0.38);
+  background: rgba(0, 0, 0, 0.24);
+}
+
+.field-whisper-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  letter-spacing: 0.04em;
+  color: #e8a0c8;
+  margin: 0 0 8px;
+}
+
+.field-whisper-gif {
+  display: block;
+  width: 36px;
+  height: 36px;
+  margin: 0 0 8px;
+  image-rendering: pixelated;
+}
+
+.field-whisper-text {
+  margin: 0 0 10px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(242, 242, 242, 0.9);
+}
+
+.field-whisper-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  padding: 5px 8px;
+  border: 1px solid rgba(245, 236, 212, 0.45);
+  background: rgba(255, 248, 210, 0.12);
+  color: #fffadb;
+  cursor: pointer;
+}
+
+.field-whisper-btn:hover {
+  background: rgba(232, 160, 200, 0.22);
+  border-color: #e8a0c8;
+}
+
+.field-whisper-links {
+  margin: 10px 0 0;
+  font-size: 13px;
+}
+
+.field-whisper-links a {
+  color: #e8c86a;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(232, 200, 106, 0.4);
+}
+
+.field-whisper-links a:hover {
+  color: #e8a0c8;
+}
+
 /* Лента «что сегодня на поле» */
 .field-today-world {
   margin-top: 20px;
@@ -1779,6 +1841,186 @@ body {
 
 .field-today-list a:hover {
   color: #9e3d6e;
+}
+
+/* vibe.exe — настроение поля */
+.field-vibe-world {
+  margin: 18px auto 0;
+  max-width: 420px;
+  text-align: center;
+}
+
+.field-vibe-status {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  margin: 0 0 10px;
+  color: #1a1a1a;
+}
+
+.field-vibe-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.field-vibe-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  padding: 7px 10px;
+  border: 2px solid #1a1a1a;
+  background: rgba(255, 248, 210, 0.72);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.field-vibe-btn.is-active {
+  background: #e8a0c8;
+  box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.field-vibe-btn:active {
+  transform: translate(1px, 1px);
+}
+
+/* GIF roulette */
+.field-roulette-world {
+  margin-top: 20px;
+}
+
+.field-roulette {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 2px dashed rgba(35, 32, 20, 0.5);
+  background: rgba(255, 248, 210, 0.35);
+}
+
+.field-roulette-slot {
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #1a1a1a;
+  background: rgba(0, 0, 0, 0.12);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+.field-roulette-slot.is-spinning img {
+  animation: rouletteSpin 0.45s ease-in-out;
+}
+
+@keyframes rouletteSpin {
+  0% { transform: rotate(0deg) scale(0.8); opacity: 0.4; }
+  100% { transform: rotate(360deg) scale(1); opacity: 1; }
+}
+
+.field-roulette-slot img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.field-roulette-btn {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  padding: 8px 12px;
+  border: 2px solid #1a1a1a;
+  background: #e8c86a;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.field-roulette-label {
+  flex: 1 1 140px;
+  margin: 0;
+  font-family: 'Jura', sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #1a1a1a;
+}
+
+/* Удача поля */
+.field-lucky-world {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.field-lucky-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  line-height: 1.6;
+  padding: 10px 14px;
+  border: 2px solid #1a1a1a;
+  background: linear-gradient(180deg, #faf6ee, #e8dcc8);
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+.field-lucky-btn.is-pop {
+  animation: luckyPop 0.35s ease;
+}
+
+@keyframes luckyPop {
+  50% { transform: scale(1.06); }
+}
+
+.field-lucky-msg {
+  margin: 10px 0 0;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  color: #1a1a1a;
+  min-height: 1.4em;
+}
+
+/* Персонажи — кликабельные */
+.field-character-btn {
+  display: block;
+  padding: 0;
+  margin: 0 auto;
+  border: none;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.field-character-btn:hover .field-character-img {
+  transform: rotate(var(--peek-tilt, 0deg)) scale(1.06);
+}
+
+.field-character-img {
+  transition: transform 0.2s ease;
+}
+
+.field-character-bubble {
+  margin: 6px 0 0;
+  padding: 4px 6px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px;
+  line-height: 1.35;
+  color: #1a1a1a;
+  background: rgba(255, 248, 210, 0.92);
+  border: 1px solid rgba(26, 26, 26, 0.45);
+  max-width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.field-character-bubble[hidden] {
+  display: none;
+}
+
+.polaroid.is-shake {
+  animation: polaroidShake 0.42s ease;
+}
+
+@keyframes polaroidShake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
 }
 
 /* Center popup on load — не fullscreen */
@@ -2147,6 +2389,16 @@ body {
   box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.42);
   transform: rotate(-1.2deg);
   max-width: 300px;
+}
+
+.polaroid-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 .polaroid img {
@@ -2581,6 +2833,16 @@ body {
       <p>привет. это GIF WORLD — моё цифровое поле: гифки, музыка, улитка и странные кнопки. можно зайти в <a href="gallery.html">gallery</a>, оставить записку в <a href="diary.html#guestbook">guest book</a> или почитать <a href="about.html">about</a>.</p>
     </section>
 
+    <section class="mini-world field-vibe-world" id="fieldVibe" aria-label="настроение поля">
+      <p class="mini-world-label"><span class="label-a">vibe.exe</span> · <span class="label-b">настроение</span> · <span class="label-c">кликни</span></p>
+      <p class="field-vibe-status" id="fieldVibeStatus">сейчас: спокойно</p>
+      <div class="field-vibe-btns">
+        <button type="button" class="field-vibe-btn is-active" data-vibe="calm">🌿 спокойно</button>
+        <button type="button" class="field-vibe-btn" data-vibe="chaos">🔥 хаос</button>
+        <button type="button" class="field-vibe-btn" data-vibe="mystery">✨ ???</button>
+      </div>
+    </section>
+
     <div class="mini-world signal-game" id="signalGame">
       <div class="signal-game-stats">
         <span>SCORE: <strong id="gameScore">0</strong></span>
@@ -2609,6 +2871,8 @@ body {
         <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>авторский дневник</strong> — скоро больше записей</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>соседи поля</strong> — лягушка, бабочка, кот внизу</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>музыкальная комната</strong> — больше треков, своё место</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>vibe.exe</strong> — переключи настроение поля</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gif roulette</strong> — случайная гифка одним кликом</p>
         <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>secret door</strong> — дверь закрыта, но можно постучать</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[·]</span><strong>слух</strong> — иногда всплывает реклама. это нормально для 2003.</p>
       </div>
@@ -2746,7 +3010,8 @@ body {
 
       <div class="field-bottom-row">
         <section class="mini-world image-of-day-world" id="imageOfDay" aria-label="фото дня">
-          <figure class="polaroid">
+          <figure class="polaroid" id="fieldPolaroid">
+            <button type="button" class="polaroid-btn" id="polaroidBtn" aria-label="потрясти полароид">
             <img
               class="polaroid-img"
               id="imageOfDaySlot"
@@ -2755,9 +3020,10 @@ body {
               width="640"
               height="480"
             >
+            </button>
             <figcaption>
               <span class="polaroid-date">14 · 07</span>
-              <span class="polaroid-desc">забор, белые цветы, поле на закате. пахнет пылью и спокойствием.</span>
+              <span class="polaroid-desc" id="polaroidDesc">забор, белые цветы, поле на закате. пахнет пылью и спокойствием.</span>
             </figcaption>
           </figure>
         </section>
@@ -2783,6 +3049,23 @@ body {
         </ul>
       </section>
 
+      <section class="mini-world field-roulette-world" id="fieldRoulette" aria-label="gif roulette">
+        <p class="mini-world-label"><span class="label-a">gif roulette</span> · <span class="label-b">один клик</span> · <span class="label-c">удачи</span></p>
+        <div class="field-roulette">
+          <div class="field-roulette-slot" id="fieldRouletteSlot">
+            <img id="fieldRouletteImg" src="images/chaos/dance-01.gif" alt="" width="72" height="72">
+          </div>
+          <button type="button" class="field-roulette-btn" id="fieldRouletteBtn">крутить →</button>
+          <p class="field-roulette-label" id="fieldRouletteLabel">случайная гифка с поля</p>
+        </div>
+      </section>
+
+      <section class="mini-world field-lucky-world" id="fieldLucky" aria-label="удача поля">
+        <p class="mini-world-label"><span class="label-a">lucky.field</span> · <span class="label-b">нажми</span> · <span class="label-c">без гарантий</span></p>
+        <button type="button" class="field-lucky-btn" id="fieldLuckyBtn">погладить поле ✦</button>
+        <p class="field-lucky-msg" id="fieldLuckyMsg">поле ждёт.</p>
+      </section>
+
       <section class="mini-world field-hotline-world" aria-label="hotline">
         <blockquote class="field-hotline" id="fieldHotline">если интернет пахнет травой — ты не ошиблась адресом.</blockquote>
         <button type="button" class="field-hotline-btn" id="fieldHotlineNext">ещё одну →</button>
@@ -2799,30 +3082,48 @@ body {
 
       <div class="field-character-peeks" aria-label="персонажи поля">
         <div class="field-character-slot">
-          <img class="field-character-img" src="images/characters/friend-frog.gif" alt="лягушка" width="88" height="88">
+          <button type="button" class="field-character-btn" data-char="frog" style="--peek-tilt:-4deg">
+            <img class="field-character-img" src="images/characters/friend-frog.gif" alt="лягушка" width="88" height="88">
+          </button>
           <p class="field-character-label">frog.exe</p>
+          <p class="field-character-bubble" hidden></p>
         </div>
         <div class="field-character-slot">
-          <img class="field-character-img" src="images/characters/friend-butterfly.gif" alt="бабочка" width="88" height="88">
+          <button type="button" class="field-character-btn" data-char="flutter" style="--peek-tilt:3deg">
+            <img class="field-character-img" src="images/characters/friend-butterfly.gif" alt="бабочка" width="88" height="88">
+          </button>
           <p class="field-character-label">flutter</p>
+          <p class="field-character-bubble" hidden></p>
         </div>
         <div class="field-character-slot">
-          <img class="field-character-img" src="images/characters/mystery-cat.gif" alt="кот" width="88" height="88">
+          <button type="button" class="field-character-btn" data-char="cat" style="--peek-tilt:-2deg">
+            <img class="field-character-img" src="images/characters/mystery-cat.gif" alt="кот" width="88" height="88">
+          </button>
           <p class="field-character-label">??? cat</p>
+          <p class="field-character-bubble" hidden></p>
         </div>
         <div class="field-character-slot">
-          <img class="field-character-img" src="images/chaos/dance-01.gif" alt="hamster" width="88" height="88">
+          <button type="button" class="field-character-btn" data-char="hamster" style="--peek-tilt:5deg">
+            <img class="field-character-img" src="images/chaos/dance-01.gif" alt="hamster" width="88" height="88">
+          </button>
           <p class="field-character-label">hamst3r</p>
+          <p class="field-character-bubble" hidden></p>
         </div>
         <div class="field-character-slot">
-          <img class="field-character-img" src="images/chaos/spin-cat.gif" alt="yarn cat" width="88" height="88">
+          <button type="button" class="field-character-btn" data-char="yarn" style="--peek-tilt:-3deg">
+            <img class="field-character-img" src="images/chaos/spin-cat.gif" alt="yarn cat" width="88" height="88">
+          </button>
           <p class="field-character-label">yarn.exe</p>
+          <p class="field-character-bubble" hidden></p>
         </div>
         <div class="field-character-slot">
-          <img class="field-character-img" src="images/chaos/fish.gif" alt="fish" width="88" height="88">
+          <button type="button" class="field-character-btn" data-char="fish" style="--peek-tilt:2deg">
+            <img class="field-character-img" src="images/chaos/fish.gif" alt="fish" width="88" height="88">
+          </button>
           <p class="field-character-label">bloop</p>
+          <p class="field-character-bubble" hidden></p>
         </div>
-        <p class="field-character-hint">соседи по полю · слишком много GIF — так и задумано</p>
+        <p class="field-character-hint">кликни на соседа — он что-нибудь скажет</p>
       </div>
 
       <footer class="core-footer">
@@ -2885,6 +3186,16 @@ body {
     <p class="field-stats-line"><strong>ads in box:</strong> ∞</p>
     <p class="field-stats-line"><strong>weather:</strong> sunny / ???</p>
   </div>
+
+  <aside class="field-whisper" aria-label="полевой слух">
+    <p class="field-whisper-label">полевой слух</p>
+    <img class="field-whisper-gif" src="images/chaos/star.gif" alt="" width="36" height="36">
+    <p class="field-whisper-text" id="fieldWhisperText">за secret door что-то шуршит. или это ветер.</p>
+    <button type="button" class="field-whisper-btn" id="fieldWhisperNext">ещё слух →</button>
+    <p class="field-whisper-links">
+      <a href="diary.html">diary</a> · <a href="about.html">about</a> · <a href="secret-door.html">secret door</a>
+    </p>
+  </aside>
 </div>
 
 </div>
@@ -4203,15 +4514,15 @@ body {
   ];
 
   const CORNERS = [
-    { bottom: '72px', right: '16px' },
+    { bottom: '148px', right: '16px' },
     { bottom: '88px', left: '16px' },
-    { top: '120px', right: '20px' },
+    { top: '132px', right: '20px' },
   ];
 
   let lastShown = 0;
   let floatActive = false;
-  const MIN_GAP_MS = 85000;
-  const FIRST_MS = 52000;
+  const MIN_GAP_MS = 65000;
+  const FIRST_MS = 22000;
 
   function pick(list) {
     return list[Math.floor(Math.random() * list.length)];
@@ -4237,7 +4548,7 @@ body {
   }
 
   function showFloatSpam() {
-    if (!canShow()) return;
+    if (!canShow()) return false;
 
     const tpl = pick(FLOAT_TEMPLATES);
     const pos = pick(CORNERS);
@@ -4274,16 +4585,50 @@ body {
       dismissFloat(el);
     });
 
-    window.setTimeout(() => dismissFloat(el), 14000);
+    window.setTimeout(() => dismissFloat(el), 16000);
+    return true;
   }
 
-  window.setTimeout(() => {
-    if (Math.random() < 0.85) showFloatSpam();
-  }, FIRST_MS);
+  function scheduleFirstFloat() {
+    window.setTimeout(() => showFloatSpam(), FIRST_MS);
+  }
+
+  function bindAfterWelcome() {
+    const welcomeLayer = document.getElementById('sitePopupLayer');
+    let scheduled = false;
+
+    function runOnce() {
+      if (scheduled) return;
+      scheduled = true;
+      scheduleFirstFloat();
+    }
+
+    try {
+      if (localStorage.getItem('gifworld-welcome-seen') === '1') {
+        runOnce();
+        return;
+      }
+    } catch (_) { /* ignore */ }
+
+    if (!welcomeLayer || welcomeLayer.hidden) {
+      runOnce();
+      return;
+    }
+
+    const observer = new MutationObserver(() => {
+      if (welcomeLayer.hidden) {
+        observer.disconnect();
+        runOnce();
+      }
+    });
+    observer.observe(welcomeLayer, { attributes: true, attributeFilter: ['hidden'] });
+  }
+
+  bindAfterWelcome();
 
   window.setInterval(() => {
-    if (Math.random() < 0.35) showFloatSpam();
-  }, 110000);
+    if (Math.random() < 0.55) showFloatSpam();
+  }, 90000);
 
   let scrollTimer = null;
   window.addEventListener(
@@ -4291,11 +4636,172 @@ body {
     () => {
       window.clearTimeout(scrollTimer);
       scrollTimer = window.setTimeout(() => {
-        if (window.scrollY > 600 && Math.random() < 0.22) showFloatSpam();
-      }, 1800);
+        if (window.scrollY > 420 && Math.random() < 0.38) showFloatSpam();
+      }, 1400);
     },
     { passive: true }
   );
+})();
+(function () {
+  const vibeStatus = document.getElementById('fieldVibeStatus');
+  const vibeBtns = document.querySelectorAll('[data-vibe]');
+  const eventsList = document.getElementById('eventsList');
+
+  const VIBE_MAP = {
+    calm: { label: 'спокойно', pct: '73%', event: 'vibe: спокойно' },
+    chaos: { label: 'хаос', pct: '112%', event: 'vibe: хаос включён' },
+    mystery: { label: '???', pct: '∞%', event: 'vibe: ???' },
+  };
+
+  function addEvent(text) {
+    if (!eventsList) return;
+    const li = document.createElement('li');
+    li.textContent = text;
+    eventsList.appendChild(li);
+  }
+
+  vibeBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-vibe');
+      const vibe = VIBE_MAP[key];
+      if (!vibe) return;
+      vibeBtns.forEach((b) => b.classList.toggle('is-active', b === btn));
+      if (vibeStatus) vibeStatus.textContent = 'сейчас: ' + vibe.label;
+      document.querySelectorAll('#fieldStats .field-stats-line').forEach((line) => {
+        if (line.textContent.includes('vibe')) {
+          line.innerHTML = '<strong>vibe:</strong> ' + vibe.pct;
+        }
+      });
+      addEvent(vibe.event);
+    });
+  });
+
+  const rouletteBtn = document.getElementById('fieldRouletteBtn');
+  const rouletteSlot = document.getElementById('fieldRouletteSlot');
+  const rouletteImg = document.getElementById('fieldRouletteImg');
+  const rouletteLabel = document.getElementById('fieldRouletteLabel');
+  const ROULETTE_GIFS = [
+    { src: 'images/chaos/dance-01.gif', caption: 'танец поля' },
+    { src: 'images/chaos/fire.gif', caption: 'слишком горячо' },
+    { src: 'images/chaos/spin-cat.gif', caption: 'кот крутится' },
+    { src: 'images/chaos/fish.gif', caption: 'бloop approved' },
+    { src: 'images/chaos/star.gif', caption: 'звезда одобряет' },
+    { src: 'images/diary/04-mushroom.gif', caption: 'гриб дня' },
+    { src: 'images/rose.gif', caption: 'роза из закромов' },
+  ];
+
+  if (rouletteBtn && rouletteImg) {
+    rouletteBtn.addEventListener('click', () => {
+      rouletteSlot?.classList.add('is-spinning');
+      let pick = ROULETTE_GIFS[Math.floor(Math.random() * ROULETTE_GIFS.length)];
+      if (pick.src === rouletteImg.getAttribute('src')) {
+        pick = ROULETTE_GIFS[(ROULETTE_GIFS.indexOf(pick) + 1) % ROULETTE_GIFS.length];
+      }
+      rouletteImg.src = pick.src;
+      if (rouletteLabel) rouletteLabel.textContent = pick.caption;
+      window.setTimeout(() => rouletteSlot?.classList.remove('is-spinning'), 450);
+      addEvent('roulette: ' + pick.caption);
+    });
+  }
+
+  const luckyBtn = document.getElementById('fieldLuckyBtn');
+  const luckyMsg = document.getElementById('fieldLuckyMsg');
+  const LUCKY_LINES = [
+    'поле мягкое. +1 спокойствие.',
+    'улитка где-то одобрила.',
+    'ничего не произошло. идеальный день.',
+    'вайб записан в EVENTS.',
+    'сегодня тебе можно ничего не делать.',
+    'удача: средняя. но миленькая.',
+  ];
+
+  if (luckyBtn && luckyMsg) {
+    luckyBtn.addEventListener('click', () => {
+      luckyBtn.classList.remove('is-pop');
+      void luckyBtn.offsetWidth;
+      luckyBtn.classList.add('is-pop');
+      const line = LUCKY_LINES[Math.floor(Math.random() * LUCKY_LINES.length)];
+      luckyMsg.textContent = line;
+      addEvent('lucky.field: нажато');
+    });
+  }
+
+  const polaroid = document.getElementById('fieldPolaroid');
+  const polaroidBtn = document.getElementById('polaroidBtn');
+  const polaroidDesc = document.getElementById('polaroidDesc');
+  const POLAROID_LINES = [
+    'забор, белые цветы, поле на закате. пахнет пылью и спокойствием.',
+    'тот же забор. но сегодня он выглядит мудрее.',
+    'цветы не двигаются. это их стратегия.',
+    'закат записан. пересмотр бесплатный.',
+    'фото дня не спорит. оно просто есть.',
+  ];
+
+  if (polaroidBtn && polaroid) {
+    polaroidBtn.addEventListener('click', () => {
+      polaroid.classList.remove('is-shake');
+      void polaroid.offsetWidth;
+      polaroid.classList.add('is-shake');
+      if (polaroidDesc) {
+        let next = POLAROID_LINES[Math.floor(Math.random() * POLAROID_LINES.length)];
+        if (next === polaroidDesc.textContent) {
+          next = POLAROID_LINES[(POLAROID_LINES.indexOf(next) + 1) % POLAROID_LINES.length];
+        }
+        polaroidDesc.textContent = next;
+      }
+      addEvent('полaroid: потрясли');
+    });
+  }
+
+  const CHAR_LINES = {
+    frog: ['ква.', '…ква?', 'лягушка занята.'],
+    flutter: ['*махает*', 'пролетела мимо.', 'бабочка не опаздывает.'],
+    cat: ['…', 'мя.', '???'],
+    hamster: ['танцует!', 'ещё!', 'хамster.exe running'],
+    yarn: ['крутится.', 'мягко.', 'yarn approved'],
+    fish: ['blub.', 'плыл.', 'рыба молчит eloquentно.'],
+  };
+
+  document.querySelectorAll('[data-char]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-char');
+      const lines = CHAR_LINES[key];
+      const bubble = btn.closest('.field-character-slot')?.querySelector('.field-character-bubble');
+      if (!lines || !bubble) return;
+      bubble.textContent = lines[Math.floor(Math.random() * lines.length)];
+      bubble.hidden = false;
+      addEvent('сосед поля: ' + key);
+      window.setTimeout(() => {
+        bubble.hidden = true;
+      }, 2600);
+    });
+  });
+})();
+(function () {
+  const whisperEl = document.getElementById('fieldWhisperText');
+  const whisperBtn = document.getElementById('fieldWhisperNext');
+
+  const WHISPER_LINES = [
+    'за secret door что-то шуршит. или это ветер.',
+    'улитка видела, как ты скроллила. она не осуждает. почти.',
+    'в gallery сегодня особенно много мигания. это комплимент.',
+    'кто-то оставил записку в diary. поле довольно.',
+    'radio.exe иногда ловит сигнал из 2007. не пугайся.',
+    'реклама может всплыть в углу. закрой — появится ещё. логика поля.',
+    'anna зовёт на прогулку. медленно, но зовёт.',
+  ];
+
+  function pick(list) {
+    return list[Math.floor(Math.random() * list.length)];
+  }
+
+  if (whisperBtn && whisperEl) {
+    whisperBtn.addEventListener('click', () => {
+      let next = pick(WHISPER_LINES);
+      if (next === whisperEl.textContent) next = pick(WHISPER_LINES);
+      whisperEl.textContent = next;
+    });
+  }
 })();
 (function () {
   const hotlineEl = document.getElementById('fieldHotline');
