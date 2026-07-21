@@ -2317,40 +2317,58 @@ body {
   border-color: rgba(61, 74, 50, 0.22);
 }
 
-.desktop-widget-launcher {
+.desktop-widget-launcher,
+.wip-notice-launcher {
   position: fixed;
-  right: 18px;
-  bottom: 18px;
   z-index: 6400;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px 8px 8px;
-  border: 1px solid rgba(255, 250, 219, 0.45);
+  gap: 10px;
+  padding: 11px 18px 11px 11px;
+  min-height: 50px;
+  border: 2px solid rgba(255, 250, 219, 0.55);
   border-radius: 999px;
-  background: rgba(28, 24, 18, 0.72);
-  backdrop-filter: blur(6px);
+  background: rgba(28, 24, 18, 0.82);
+  backdrop-filter: blur(8px);
   color: #fffadb;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 11px;
+  font-size: 13px;
+  letter-spacing: 0.02em;
   cursor: pointer;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
-  transition: transform 0.15s ease, background 0.15s ease;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
 }
 
-.desktop-widget-launcher:hover {
-  transform: translateY(-2px);
-  background: rgba(40, 36, 28, 0.82);
+.desktop-widget-launcher {
+  right: 16px;
+  bottom: 16px;
 }
 
-.desktop-widget-launcher img {
-  width: 28px;
-  height: auto;
+.wip-notice-launcher {
+  left: 16px;
+  bottom: 16px;
+  z-index: 6390;
+}
+
+.desktop-widget-launcher:hover,
+.wip-notice-launcher:hover {
+  transform: translateY(-3px);
+  background: rgba(44, 38, 28, 0.9);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.38);
+}
+
+.desktop-widget-launcher img,
+.wip-notice-launcher img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
   image-rendering: pixelated;
   display: block;
+  flex-shrink: 0;
 }
 
-.desktop-widget-launcher.is-hidden {
+.desktop-widget-launcher.is-hidden,
+.wip-notice-launcher.is-hidden {
   opacity: 0;
   pointer-events: none;
   transform: translateY(8px);
@@ -2366,6 +2384,133 @@ body {
   .desktop-widget {
     width: min(320px, 94vw);
   }
+
+  .wip-notice-launcher {
+    bottom: 84px;
+    left: 10px;
+    max-width: calc(100vw - 24px);
+  }
+
+  .desktop-widget-launcher {
+    right: 10px;
+    bottom: 16px;
+  }
+}
+
+/* WIP notice — мягкое окошко «сайт ещё растёт» */
+.wip-notice-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 6600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.wip-notice-layer[hidden] {
+  display: none;
+}
+
+.wip-notice-layer.is-open {
+  pointer-events: auto;
+}
+
+.wip-notice-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 38, 28, 0.26);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.wip-notice-layer.is-open .wip-notice-backdrop {
+  opacity: 1;
+}
+
+.wip-notice-panel {
+  position: relative;
+  z-index: 1;
+  width: min(300px, 92vw);
+  border: 1px solid rgba(255, 250, 219, 0.45);
+  border-radius: 14px;
+  background:
+    linear-gradient(165deg, rgba(255, 250, 235, 0.98) 0%, rgba(255, 244, 210, 0.95) 100%);
+  box-shadow:
+    0 18px 40px rgba(18, 28, 20, 0.22),
+    0 2px 0 rgba(255, 255, 255, 0.65) inset;
+  font-family: 'Jura', sans-serif;
+  color: #2a2820;
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.wip-notice-layer.is-open .wip-notice-panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.wip-notice-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px 10px;
+  border-bottom: 1px solid rgba(42, 40, 32, 0.1);
+}
+
+.wip-notice-icon {
+  width: 36px;
+  height: auto;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+.wip-notice-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+  margin: 0;
+  color: #3d4a32;
+}
+
+.wip-notice-sub {
+  font-size: 11px;
+  color: rgba(42, 40, 32, 0.62);
+  margin: 2px 0 0;
+}
+
+.wip-notice-body {
+  padding: 14px 14px 12px;
+}
+
+.wip-notice-text {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  color: rgba(42, 40, 32, 0.88);
+}
+
+.wip-notice-foot {
+  padding: 0 14px 14px;
+}
+
+.wip-notice-btn {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid rgba(42, 40, 32, 0.16);
+  border-radius: 9px;
+  background: rgba(200, 230, 160, 0.45);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: #3d4a32;
+  cursor: pointer;
+}
+
+.wip-notice-btn:hover {
+  background: rgba(232, 160, 200, 0.25);
 }
 
 /* BOTTOM CONTENT — не scrollports */
@@ -3225,8 +3370,9 @@ body {
 
   <div class="field-stats" id="fieldStats" aria-label="field stats">
     <p class="field-stats-label">статы поля</p>
-    <p class="field-stats-line"><strong>vibe:</strong> 73%</p>
-    <p class="field-stats-line"><strong>snail mood:</strong> judging</p>
+    <p class="field-stats-line" id="fieldStatVibe"><strong>vibe:</strong> 73%</p>
+    <p class="field-stats-line"><strong>snail mood:</strong> <span id="fieldSnailMoodValue">смотрит</span></p>
+    <p class="field-stats-line"><strong>snail hunger:</strong> <span id="fieldSnailHungerValue">перекус</span></p>
     <p class="field-stats-line"><strong>ads in box:</strong> ∞</p>
     <p class="field-stats-line"><strong>weather:</strong> sunny / ???</p>
   </div>
@@ -3281,6 +3427,30 @@ body {
 <button type="button" class="desktop-widget-launcher" id="desktopWidgetLauncher" aria-label="открыть быстрый доступ" aria-expanded="false">
   <img src="images/snail.png" alt="">
   <span>widget</span>
+</button>
+
+<div class="wip-notice-layer" id="wipNoticeLayer" hidden aria-hidden="true">
+  <div class="wip-notice-backdrop" data-wip-notice-close aria-hidden="true"></div>
+  <aside class="wip-notice-panel" role="dialog" aria-labelledby="wipNoticeTitle" aria-modal="true">
+    <header class="wip-notice-head">
+      <img class="wip-notice-icon" src="images/blinkies/uc-banner.gif" alt="" width="36" height="28">
+      <div>
+        <p class="wip-notice-title" id="wipNoticeTitle">поле · wip</p>
+        <p class="wip-notice-sub">сайт ещё растёт</p>
+      </div>
+    </header>
+    <div class="wip-notice-body">
+      <p class="wip-notice-text">GIF WORLD ещё обновляется. это не финальная версия — комнаты, кнопки и улитки могут меняться. заглядывай снова, тут будет больше.</p>
+    </div>
+    <div class="wip-notice-foot">
+      <button type="button" class="wip-notice-btn" data-wip-notice-close>понятно ✦</button>
+    </div>
+  </aside>
+</div>
+
+<button type="button" class="wip-notice-launcher" id="wipNoticeLauncher" aria-label="сайт ещё обновляется" aria-expanded="false">
+  <img src="images/chaos/construction.gif" alt="" width="28" height="28">
+  <span>wip</span>
 </button>
 
 <div class="tama-widget-layer" id="tamaWidgetLayer" hidden aria-hidden="true">
@@ -4573,7 +4743,7 @@ body {
   }
 
   function uiBlockingOpen() {
-    return ['desktopWidgetLayer', 'tamaWidgetLayer', 'sitePopupLayer', 'noteMailLayer'].some((id) => {
+    return ['desktopWidgetLayer', 'tamaWidgetLayer', 'sitePopupLayer', 'noteMailLayer', 'wipNoticeLayer'].some((id) => {
       const el = document.getElementById(id);
       return el && !el.hidden;
     });
@@ -4711,11 +4881,8 @@ body {
       if (!vibe) return;
       vibeBtns.forEach((b) => b.classList.toggle('is-active', b === btn));
       if (vibeStatus) vibeStatus.textContent = 'сейчас: ' + vibe.label;
-      document.querySelectorAll('#fieldStats .field-stats-line').forEach((line) => {
-        if (line.textContent.includes('vibe')) {
-          line.innerHTML = '<strong>vibe:</strong> ' + vibe.pct;
-        }
-      });
+      const vibeLine = document.getElementById('fieldStatVibe');
+      if (vibeLine) vibeLine.innerHTML = '<strong>vibe:</strong> ' + vibe.pct;
       addEvent(vibe.event);
     });
   });
@@ -4960,7 +5127,40 @@ body {
     });
   });
 })();
+(function () {
+  const layer = document.getElementById('wipNoticeLayer');
+  const launcher = document.getElementById('wipNoticeLauncher');
+
+  if (!layer || !launcher) return;
+
+  function openWipNotice() {
+    layer.hidden = false;
+    layer.classList.add('is-open');
+    layer.setAttribute('aria-hidden', 'false');
+    launcher.classList.add('is-hidden');
+    launcher.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeWipNotice() {
+    layer.classList.remove('is-open');
+    layer.hidden = true;
+    layer.setAttribute('aria-hidden', 'true');
+    launcher.classList.remove('is-hidden');
+    launcher.setAttribute('aria-expanded', 'false');
+  }
+
+  launcher.addEventListener('click', openWipNotice);
+
+  layer.addEventListener('click', (event) => {
+    if (event.target.closest('[data-wip-notice-close]')) closeWipNotice();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && layer.classList.contains('is-open')) closeWipNotice();
+  });
+})();
 </script>
+<script src="js/field-live-sync.js"></script>
 <script src="js/tama-widget.js"></script>
 </body>
 </html>
