@@ -2191,6 +2191,16 @@ body {
   border-bottom: none;
 }
 
+.guest-book-more {
+  margin: 0 0 10px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+}
+
+.guest-book-more a {
+  color: #3d4a32;
+}
+
 .guest-book-name {
   font-family: 'Press Start 2P', monospace;
   font-size: 7px;
@@ -2408,7 +2418,7 @@ body {
 
   <div class="field-radio" id="fieldRadio" aria-label="music player">
     <p class="field-radio-label">music.exe · FIELD RADIO</p>
-    <p class="field-radio-status" id="fieldRadioStatus">signal: idle</p>
+    <p class="field-radio-status" id="fieldRadioStatus">тишина</p>
     <p class="field-radio-track" id="fieldRadioTrack">rainy lofi city</p>
     <div class="field-radio-track-nav">
       <button type="button" class="field-radio-track-btn field-radio-tip" id="fieldRadioPrev" data-tip="предыдущий трек" aria-label="предыдущий трек">◀</button>
@@ -2445,7 +2455,6 @@ body {
     </section>
 
     <div class="mini-world signal-game" id="signalGame">
-      <p class="mini-world-label"><span class="label-a">SIGNAL</span> <span class="label-b">CATCH</span> · <span class="label-c">mini-zone</span></p>
       <div class="signal-game-stats">
         <span>SCORE: <strong id="gameScore">0</strong></span>
         <span>TIME: <strong id="gameTime">30</strong>s</span>
@@ -2455,39 +2464,32 @@ body {
       <button type="button" class="signal-game-btn" id="gameStart">START</button>
     </div>
 
-    <section class="mini-world field-scrollport-world" aria-label="site todo scrollport">
-      <p class="mini-world-label"><span class="label-a">scrollport</span> · <span class="label-b">site TODO</span> · <span class="label-c">что добавлю на сайт</span></p>
+    <section class="mini-world field-scrollport-world" aria-label="список дел поля">
+      <p class="mini-world-label"><span class="label-a">поле</span> · <span class="label-b">список дел</span> · <span class="label-c">листай ↓</span></p>
       <div class="scrollport" id="fieldScrollport">
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>FIELD RADIO</strong> — 3 трека · переключение ◀ ▶</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>улитка</strong> — виджет, ползание, drag, snail.exe</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>коробка</strong> — hover open, потом контент внутри</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>forecast.exe</strong> — win98 окна, look up позже → коллекция</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>the snail</strong> — блок Жанна + ссылки на заглушки</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery</strong> — gallery.html v1 (GIF-комната)</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>WRITE YOUR NOTE</strong> — pop-up · почта · mailto</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>image of the day</strong> — полароид + фото из поля</p>
-        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>авторский diary</strong> — нормальные записи позже (guest book уже на diary.html)</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>character peeks</strong> — frog · butterfly · cat</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>footer blinkies</strong> — 88×31 + UC banner</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>stickers.exe</strong> — mini GIF-лента</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>field-glyphs</strong> — убрано с main; GIF остаются в gallery, blinkies, peeks</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>intro</strong> — «привет, это мой сайт…»</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery.html v1</strong> — GIF-стена · комната</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>music room</strong> — полноценная страница, больше треков</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>tamagotchi v2</strong> — еда · Анна · прогулка · squish/revive</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>кастомная 404</strong> — 404.html, cold</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>widget</strong> — snail.widget поверх main · быстрый доступ</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>202 заглушки</strong> — остался secret-door</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>anna.html</strong> — комната Анны v1</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>diary.html</strong> — тетрадь + guest book v1</p>
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>zhanna.html</strong> — комната Жанны v1</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>ещё scrollports</strong> — в коробке, в галерее, в music room</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>радио на поле</strong> — три трека, переключай ◀ ▶</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>улитка на главной</strong> — ползает, её можно перетащить</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>коробка с сюрпризами</strong> — открывается, если навести</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>прогноз</strong> — окошки, как в старом интернете</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>the snail</strong> — Жанна и Анна, уход за улитками</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>галерея GIF</strong> — отдельная комната</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>записка полю</strong> — блокнот + pop-up</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>фото дня</strong> — полароид с поля</p>
+        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>авторский дневник</strong> — скоро больше записей</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>заглянуть за угол</strong> — лягушка, бабочка, кот</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>blinkies внизу</strong> — маленькие баннеры</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>стикеры</strong> — лента милых картинок</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>привет на главной</strong> — коротко про сайт</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>tamagotchi</strong> — корми, гуляй, squish (да, можно)</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>комнаты Жанны и Анны</strong> — персонажи живут отдельно</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>дневник / guest book</strong> — записки в diary</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>музыкальная комната</strong> — больше треков, своё место</p>
+        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>secret door</strong> — ещё не открыта</p>
       </div>
     </section>
 
-    <!-- PNG из Figma → images/memory-box/closed.png и opened.png -->
     <section class="object-world memory-box-world" aria-label="коробка-коллаж">
-      <p class="object-world-caption">object · коробка · наведи, чтобы открыть</p>
+      <p class="object-world-caption">коробка · наведи, чтобы открыть</p>
 
       <div class="core-objects-row">
         <div class="memory-box-shell" id="memoryBoxShell" tabindex="0" role="button" aria-label="коробка-коллаж, наведи или нажми">
@@ -2507,11 +2509,7 @@ body {
               height="auto"
             >
             <span class="memory-box-fallback" aria-hidden="true">
-              <span class="memory-box-fallback-label">
-                images/memory-box/<br>
-                closed.png<br>
-                opened.png
-              </span>
+              <span class="memory-box-fallback-label">коробка</span>
             </span>
           </div>
         </div>
@@ -2613,16 +2611,14 @@ body {
 
     <div class="field-lower-world">
 
-      <section class="mini-world ad-spam-world" id="adSpamWorld" aria-label="навязчивая реклама поля">
-        <p class="mini-world-label"><span class="label-a">spam.exe</span> · <span class="label-b">popup ads</span> · <span class="label-c">генерация внутри блока</span></p>
+      <section class="mini-world ad-spam-world" id="adSpamWorld" aria-label="реклама поля">
         <div class="ad-spam-field" id="adSpamField">
-          <p class="ad-spam-hint" id="adSpamHint">окна появляются только здесь · esc не работает</p>
+          <p class="ad-spam-hint" id="adSpamHint">закрой окно — появится новое</p>
         </div>
       </section>
 
       <div class="field-bottom-row">
-        <section class="mini-world image-of-day-world" id="imageOfDay" aria-label="image of the day">
-          <p class="mini-world-label"><span class="label-a">image</span> · <span class="label-b">of the day</span> · <span class="label-c">фото дня</span></p>
+        <section class="mini-world image-of-day-world" id="imageOfDay" aria-label="фото дня">
           <figure class="polaroid">
             <img
               class="polaroid-img"
@@ -2640,29 +2636,27 @@ body {
         </section>
 
         <section class="mini-world snail-teaser-world" id="snailTeaser" aria-label="the snail">
-          <p class="mini-world-label"><span class="label-a">character</span> · <span class="label-b">the snail</span> · <span class="label-c">жанна</span></p>
           <div class="snail-teaser">
             <img class="snail-teaser-img" src="images/BIG SMACHNY snail.png" alt="Жанна — улитка ахатина" width="200" height="200">
             <div>
               <p class="snail-teaser-title">the snail</p>
-              <p class="snail-teaser-text">Персонаж этого сайта — улитка ахатина <a href="zhanna.html">Жанна</a>. У нее есть подруга <a href="anna.html">Анна</a>. <a href="#tama-widget">Быстрый tamagotchi</a> открывается прямо здесь — погладить и покормить. <a href="tamagotchi.html">Полная версия</a> — прогулки, еда, squish. <a href="#widget">snail.widget</a> — быстрый доступ к комнатам.</p>
+              <p class="snail-teaser-text">Персонаж этого сайта — улитка ахатина <a href="zhanna.html">Жанна</a>. У нее есть подруга <a href="anna.html">Анна</a>. На <a href="tamagotchi.html">этой странице</a> ты можешь ее погладить или покормить. Сейчас ты можешь воспользоваться <a href="#tama-widget">виджетом</a>.</p>
             </div>
           </div>
         </section>
       </div>
 
       <section class="mini-world field-hotline-world" aria-label="hotline">
-        <p class="mini-world-label"><span class="label-a">hotline.txt</span> · <span class="label-b">поле говорит</span> · <span class="label-c">случайная мысль</span></p>
         <blockquote class="field-hotline" id="fieldHotline">если интернет пахнет травой — ты не ошиблась адресом.</blockquote>
         <button type="button" class="field-hotline-btn" id="fieldHotlineNext">ещё одну →</button>
       </section>
 
-      <section class="mini-world guest-book-world" id="guestBookPreview" aria-label="guest book preview">
-        <p class="mini-world-label"><span class="label-a">guest book</span> · <span class="label-b">preview</span> · <span class="label-c"><a href="diary.html#guestbook">оставить записку →</a></span></p>
+      <section class="mini-world guest-book-world" id="guestBookPreview" aria-label="guest book">
+        <p class="guest-book-more"><a href="diary.html#guestbook">оставить записку →</a></p>
         <ul class="guest-book-preview">
           <li><span class="guest-book-name">moth_03</span><span class="guest-book-msg">зашла посмотреть улитку. осталась.</span></li>
           <li><span class="guest-book-name">field_rat</span><span class="guest-book-msg">vibe честный. как 2007.</span></li>
-          <li><span class="guest-book-name">полевой гость</span><span class="guest-book-msg">diary = guest book. можно оставить записку.</span></li>
+          <li><span class="guest-book-name">полевой гость</span><span class="guest-book-msg">оставила записку в тетради. вернусь.</span></li>
         </ul>
       </section>
 
@@ -2711,7 +2705,7 @@ body {
           <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-03.gif" alt="" width="150" height="20">
           <img class="core-footer-blinkie--wide" src="images/blinkies/blinkie-04.gif" alt="" width="150" height="20">
         </div>
-        <p class="core-footer-meta">last updated · 21 Jul 2026 · more GIFs · less chill</p>
+        <p class="core-footer-meta">GIF WORLD · 2026 · поле живое</p>
         <div class="core-footer-odometer" aria-label="site visits">
           <p class="core-footer-odometer-label">site visits</p>
           <p class="core-footer-odometer-num"><span id="fakeCounter">00427</span></p>
@@ -2742,13 +2736,13 @@ body {
 
     <p class="right-line"><strong>EVENTS:</strong></p>
     <ul id="eventsList">
-      <li>hotdog broadcast active</li>
-      <li>unknown signal detected</li>
+      <li>эфир: hotdog</li>
+      <li>неизвестный сигнал</li>
     </ul>
   </div>
 
   <div class="field-stats" id="fieldStats" aria-label="field stats">
-    <p class="field-stats-label">field_stats.txt</p>
+    <p class="field-stats-label">статы поля</p>
     <p class="field-stats-line"><strong>vibe:</strong> 73%</p>
     <p class="field-stats-line"><strong>snail mood:</strong> judging</p>
     <p class="field-stats-line"><strong>ads in box:</strong> ∞</p>
@@ -2767,8 +2761,8 @@ body {
     <header class="desktop-widget-head" id="desktopWidgetDragHandle">
       <img class="desktop-widget-icon" src="images/snail.png" alt="" width="36" height="18">
       <div>
-        <p class="desktop-widget-title" id="desktopWidgetTitle">snail.widget</p>
-        <p class="desktop-widget-sub">перетащи за шапку · поле не двигается</p>
+        <p class="desktop-widget-title" id="desktopWidgetTitle">быстрый доступ</p>
+        <p class="desktop-widget-sub">куда зайти с главной</p>
       </div>
     </header>
     <div class="desktop-widget-body">
@@ -2790,7 +2784,7 @@ body {
   </aside>
 </div>
 
-<button type="button" class="desktop-widget-launcher" id="desktopWidgetLauncher" aria-label="открыть snail.widget" aria-expanded="false">
+<button type="button" class="desktop-widget-launcher" id="desktopWidgetLauncher" aria-label="открыть быстрый доступ" aria-expanded="false">
   <img src="images/snail.png" alt="">
   <span>widget</span>
 </button>
@@ -2801,8 +2795,8 @@ body {
     <header class="tama-widget-head" id="tamaWidgetDragHandle">
       <img class="tama-widget-icon" src="images/BIG SMACHNY snail.png" alt="" width="40" height="40">
       <div>
-        <p class="tama-widget-title" id="tamaWidgetTitle">tamagotchi.quick</p>
-        <p class="tama-widget-sub">перетащи за шапку · поле не двигается</p>
+        <p class="tama-widget-title" id="tamaWidgetTitle">виджет · улитки</p>
+        <p class="tama-widget-sub">быстро погладить или покормить · полная версия ниже</p>
       </div>
     </header>
     <div class="tama-widget-body">
@@ -2814,7 +2808,7 @@ body {
             <figcaption class="tama-widget-actor-name">zhanna</figcaption>
           </figure>
           <figure class="tama-widget-actor tama-widget-actor--anna" id="tamaWidgetAnna">
-            <img class="tama-widget-anna-img" src="images/characters/anna-snail.png" alt="Анна" width="64" height="32">
+            <img class="tama-widget-snail" src="images/characters/anna-snail.png" alt="Анна" width="90" height="90">
             <span class="tama-widget-reaction" id="tamaWidgetAnnaReaction" hidden aria-live="polite"></span>
             <figcaption class="tama-widget-actor-name">anna</figcaption>
           </figure>
@@ -2834,12 +2828,12 @@ body {
         </div>
       </div>
       <div class="tama-widget-actions">
-        <button type="button" class="tama-widget-btn" data-tama-quick="pet">погладить</button>
-        <button type="button" class="tama-widget-btn" data-tama-quick="feed">покормить</button>
-        <button type="button" class="tama-widget-btn" data-tama-quick="walk">прогулка</button>
+        <button type="button" class="tama-widget-btn" data-tama-quick="pet"><span aria-hidden="true">✋</span> погладить</button>
+        <button type="button" class="tama-widget-btn" data-tama-quick="feed"><span aria-hidden="true">🥒</span> покормить</button>
+        <button type="button" class="tama-widget-btn" data-tama-quick="walk"><span aria-hidden="true">🌿</span> прогулка</button>
       </div>
       <div class="tama-widget-foot">
-        <a class="tama-widget-full" href="tamagotchi.html">полный tamagotchi →</a>
+        <a class="tama-widget-full" href="tamagotchi.html">полный уход →</a>
         <button type="button" class="tama-widget-btn" data-tama-widget-close>свернуть</button>
       </div>
     </div>
@@ -2873,9 +2867,9 @@ body {
   const glyphs = ['■', '▲', '●', '◆', '★'];
   const colors = ['#e8a0c8', '#8fd4a8', '#9ec5e8', '#e8c86a', '#d4a0e8'];
   const milestones = {
-    5: 'signal reflex detected',
-    10: 'field responds to your clicks',
-    15: 'mini-zone mastery unlocked (maybe)'
+    5: 'рефлекс сигнала',
+    10: 'поле откликается на клики',
+    15: 'мастерство зоны (может быть)'
   };
   const loggedMilestones = new Set();
 
@@ -2953,7 +2947,7 @@ body {
 
     if (score >= 10) {
       hintEl.textContent = 'сигнал стабилизирован. система впечатлена (нет).';
-      addEvent('signal catch: high activity');
+      addEvent('ловля сигналов: много очков');
     } else if (score >= 5) {
       hintEl.textContent = 'неплохо. поле чуть менее нестабильно.';
     } else {
@@ -3007,7 +3001,7 @@ body {
   function markOpened() {
     if (openedOnce) return;
     openedOnce = true;
-    addEvent('memory box opened');
+    addEvent('коробка открыта');
   }
 
   function updateFallback() {
@@ -3159,7 +3153,7 @@ body {
   function flySnail() {
     if (dragging) return;
     snail.classList.add('is-fly');
-    addEvent('snail achieved brief flight');
+    addEvent('улитка на секунду полетела');
     window.setTimeout(() => snail.classList.remove('is-fly'), 1100);
   }
 
@@ -3350,7 +3344,7 @@ body {
       const action = btn.getAttribute('data-win98');
       if (action === 'close' && collectionWindow) {
         collectionWindow.classList.add('is-closed');
-        addEvent('collection window closed (not really)');
+        addEvent('окно коллекции закрыто (не совсем)');
         return;
       }
       if (action === 'file') {
@@ -3371,7 +3365,7 @@ body {
         'новая вселенная загружается... 404 forever.',
       ];
       showWin98Popup('Look up', lines[Math.floor(Math.random() * lines.length)]);
-      addEvent('forecast: look up pressed');
+      addEvent('прогноз: нажали look up');
     });
   }
 
@@ -3408,10 +3402,10 @@ body {
         window.setTimeout(() => snail.classList.remove('is-shy'), 450);
       }
       if (action === 'pet') {
-        addEvent('snail: petted');
+        addEvent('улитка: погладили');
       }
       if (action === 'kick') {
-        addEvent('snail: kicked (rude)');
+        addEvent('улитка: пнули (грубо)');
       }
     });
   });
@@ -3467,7 +3461,7 @@ body {
     radio.classList.toggle('is-playing', playing);
     toggleBtn.textContent = playing ? 'STOP' : 'PLAY';
     toggleBtn.setAttribute('data-tip', playing ? 'остановить трек' : 'воспроизвести трек');
-    if (statusEl) statusEl.textContent = playing ? 'signal: broadcasting' : 'signal: idle';
+    if (statusEl) statusEl.textContent = playing ? 'в эфире' : 'тишина';
   }
 
   function updateTrackUi() {
@@ -3488,11 +3482,11 @@ body {
         setPlayingState(true);
         if (eventsList) {
           const li = document.createElement('li');
-          li.textContent = 'field radio: ' + PLAYLIST[trackIndex].title;
+          li.textContent = 'радио: ' + PLAYLIST[trackIndex].title;
           eventsList.appendChild(li);
         }
       }).catch(() => {
-        if (statusEl) statusEl.textContent = 'signal: blocked';
+        if (statusEl) statusEl.textContent = 'нет сигнала';
         setPlayingState(false);
       });
     } else {
@@ -3509,11 +3503,11 @@ body {
           setPlayingState(true);
           if (eventsList) {
             const li = document.createElement('li');
-            li.textContent = 'field radio: ' + PLAYLIST[trackIndex].title + ' on';
+            li.textContent = 'радио: ' + PLAYLIST[trackIndex].title + ' · играет';
             eventsList.appendChild(li);
           }
         }).catch(() => {
-          if (statusEl) statusEl.textContent = 'signal: blocked';
+          if (statusEl) statusEl.textContent = 'нет сигнала';
         });
       }
     } else {
@@ -3652,7 +3646,7 @@ body {
 
       if (eventsList) {
         const li = document.createElement('li');
-        li.textContent = 'note → mailto · ' + email.split('@')[0] + '@…';
+        li.textContent = 'записка ушла · ' + email.split('@')[0] + '@…';
         eventsList.appendChild(li);
       }
     });
@@ -3765,7 +3759,7 @@ body {
     const actionBtn = event.target.closest('[data-ad-action]');
     if (!actionBtn) return;
 
-    addEvent('mini ad clicked');
+    addEvent('клик по рекламе');
     if (Math.random() < 0.35) createFieldAd();
   });
 
@@ -3804,14 +3798,14 @@ body {
     {
       titlebar: 'field online',
       headline: 'СИГНАЛ<br>ПОЧТИ СТАБИЛЬНЫЙ',
-      text: 'ну почти. внизу spam.exe — окна только внутри своего блока.',
+      text: 'ну почти. листай вниз — там ещё сюрпризы.',
       yes: 'ПОГНАЛИ',
       style: 'lime',
     },
     {
       titlebar: 'mystery popup',
       headline: 'СКОРО ТУТ<br>ЧЕТО БУДЕТ',
-      text: 'а пока — это окно по центру. не на весь экран. как ты и хотела.',
+      text: 'а пока — просто окно посреди поля. закрой и исследуй.',
       yes: 'ЛОЛ',
       style: 'purple',
     },
@@ -3855,7 +3849,7 @@ body {
     layer.setAttribute('aria-hidden', 'false');
     if (eventsList) {
       const li = document.createElement('li');
-      li.textContent = 'welcome popup shown';
+      li.textContent = 'приветственное окно';
       eventsList.appendChild(li);
     }
   }

@@ -139,7 +139,7 @@
       hungerBar.classList.toggle('is-low', state.hunger > 65);
     }
     if (anna) {
-      anna.classList.toggle('is-visible', state.friendship >= 40 || state.walking || !state.alive);
+      anna.classList.add('is-visible');
     }
     if (zhanna) {
       zhanna.classList.toggle('is-squished', !state.alive);

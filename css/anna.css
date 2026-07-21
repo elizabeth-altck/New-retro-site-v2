@@ -94,7 +94,7 @@ body.anna-room {
 .anna-portrait {
   display: block;
   width: 100%;
-  max-width: 200px;
+  max-width: 220px;
   margin: 0 auto;
   image-rendering: pixelated;
   filter: drop-shadow(4px 6px 0 rgba(0, 0, 0, 0.35));
