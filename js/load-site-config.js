@@ -7,13 +7,9 @@
 
   global.applySiteFormEndpoints = function applySiteFormEndpoints(config) {
     const guestbook = document.getElementById('guestbookForm');
-    const siteNote = document.getElementById('siteNoteForm');
 
     if (guestbook && config) {
       guestbook.dataset.endpoint = normalizeEndpoint(config.guestbookEndpoint);
-    }
-    if (siteNote && config) {
-      siteNote.dataset.endpoint = normalizeEndpoint(config.siteNoteEndpoint);
     }
   };
 

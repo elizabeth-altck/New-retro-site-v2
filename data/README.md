@@ -6,17 +6,18 @@
 
 ## site-config.json
 
-Endpoint'ы для FormSubmit (без секретов в коде страниц):
+Endpoint для **guest book** на `diary.html` (FormSubmit → письма **тебе**):
 
 ```json
 {
-  "guestbookEndpoint": "https://formsubmit.co/ajax/YOUR@EMAIL.com",
-  "siteNoteEndpoint": "https://formsubmit.co/ajax/YOUR@EMAIL.com"
+  "guestbookEndpoint": "https://formsubmit.co/ajax/YOUR@EMAIL.com"
 }
 ```
 
-1. Скопируй `site-config.example.json` → `site-config.json` (уже есть с пустыми строками).
-2. Подставь свой email в URL после активации FormSubmit.
-3. Формы на `diary.html` и `main.html` (#guestbookForm, #siteNoteForm) подхватят endpoint при загрузке.
+**WRITE YOUR NOTE** на `main.html` — отдельная механика: pop-up с почтой гостя → открывается его почтовик (`mailto:`). Авто-отправка без клика «Отправить» в Gmail потребует EmailJS / Resend позже.
 
-Пустые строки = режим v1: guest book показывает «поле получило», WRITE YOUR NOTE пишет в localStorage.
+1. Скопируй `site-config.example.json` → `site-config.json`.
+2. Подставь email только для guest book.
+3. `#guestbookForm` на diary подхватит endpoint при загрузке.
+
+Пустой `guestbookEndpoint` = «поле получило», запись в ленту после ручной модерации.

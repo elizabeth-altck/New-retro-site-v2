@@ -8,8 +8,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-<script src="js/load-site-config.js"></script>
-
 <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 <style>
@@ -1121,6 +1119,10 @@ body {
   color: #2d7a52;
 }
 
+.site-note-status.is-err {
+  color: #58141c;
+}
+
 .site-note-hint {
   font-size: 9px;
   line-height: 1.35;
@@ -1750,6 +1752,45 @@ body {
   color: #1a1a1a;
 }
 
+.site-popup__label {
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  color: rgba(255, 250, 219, 0.78);
+  margin: 0 0 6px;
+}
+
+.site-popup__input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  border: 2px solid #1a1a1a;
+  background: #fff6d8;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: #1a1a1a;
+}
+
+.site-popup__input:focus {
+  outline: 2px solid #e8a0c8;
+  outline-offset: 1px;
+}
+
+.site-popup__preview {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  line-height: 1.45;
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px dashed rgba(255, 250, 219, 0.28);
+  color: rgba(255, 250, 219, 0.88);
+  max-height: 4.5em;
+  overflow: hidden;
+}
+
 /* BOTTOM CONTENT — не scrollports */
 .field-bottom-row {
   display: grid;
@@ -2203,7 +2244,7 @@ body {
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>forecast.exe</strong> — win98 окна, look up позже → коллекция</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>the snail</strong> — блок Жанна + ссылки на заглушки</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gallery</strong> — gallery.html v1 (GIF-комната)</p>
-        <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>WRITE YOUR NOTE</strong> — блокнот на главной</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>WRITE YOUR NOTE</strong> — pop-up · почта · mailto</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>image of the day</strong> — полароид + фото из поля</p>
         <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>авторский diary</strong> — нормальные записи позже (guest book уже на diary.html)</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>character peeks</strong> — frog · butterfly · cat</p>
@@ -2307,21 +2348,21 @@ body {
 
             <section class="site-note" id="siteNote" aria-label="write your note">
               <p class="site-note-label">WRITE YOUR NOTE</p>
-              <form class="site-note-paper" id="siteNoteForm" data-endpoint="">
+              <form class="site-note-paper" id="siteNoteForm">
                 <textarea
                   class="site-note-input"
                   id="siteNoteInput"
                   name="message"
-                  placeholder="Waiting..."
+                  placeholder="напиши записку себе с поля…"
                   maxlength="500"
                   rows="3"
                   required
                 ></textarea>
                 <div class="site-note-actions">
-                  <button type="submit" class="site-note-btn" id="siteNoteSend">send to field</button>
+                  <button type="submit" class="site-note-btn" id="siteNoteSend">отправить →</button>
                 </div>
                 <p class="site-note-status" id="siteNoteStatus" hidden></p>
-                <p class="site-note-hint">заметка улетит на почту, когда подключим endpoint · пока — в поле локально</p>
+                <p class="site-note-hint">поп-up спросит твою почту · Gmail, Яндекс — что угодно</p>
               </form>
             </section>
           </div>
@@ -2496,6 +2537,7 @@ body {
 </div>
 
 <div class="site-popup-layer" id="sitePopupLayer" hidden aria-hidden="true"></div>
+<div class="site-popup-layer" id="noteMailLayer" hidden aria-hidden="true"></div>
 
 <div class="snail-drag-wrap" id="snailDragWrap">
   <button type="button" class="snail-object" id="snailObject" aria-label="улитка ползает сама — перетащи куда хочешь">
@@ -3208,68 +3250,116 @@ body {
   const input = document.getElementById('siteNoteInput');
   const statusEl = document.getElementById('siteNoteStatus');
   const eventsList = document.getElementById('eventsList');
+  const layer = document.getElementById('noteMailLayer');
   const STORAGE_KEY = 'gifworld_notes';
 
-  if (!form || !input) return;
-
-  loadSiteFormEndpoints();
+  if (!form || !input || !layer) return;
 
   function showStatus(text, isOk) {
     if (!statusEl) return;
     statusEl.hidden = false;
     statusEl.textContent = text;
     statusEl.classList.toggle('is-ok', isOk);
+    statusEl.classList.toggle('is-err', !isOk);
   }
 
   function saveLocal(text) {
-    const notes = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    notes.push({ text, at: new Date().toISOString() });
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+    try {
+      const notes = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      notes.push({ text, at: new Date().toISOString() });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+    } catch (_) { /* ignore */ }
   }
 
-  form.addEventListener('submit', async (event) => {
+  function isValidEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+
+  function hideNotePopup() {
+    layer.hidden = true;
+    layer.setAttribute('aria-hidden', 'true');
+    layer.innerHTML = '';
+  }
+
+  function openNoteMailPopup(noteText) {
+    const preview = noteText.length > 120 ? noteText.slice(0, 117) + '…' : noteText;
+
+    layer.innerHTML = `
+      <div class="site-popup__backdrop" data-note-mail-dismiss></div>
+      <div class="win98-window site-popup__window win98-window--ad-cyan">
+        <div class="win98-titlebar">note.exe · куда прислать?</div>
+        <div class="site-popup__body">
+          <p class="site-popup__headline">ТВОЯ<br>ПОЧТА</p>
+          <p class="site-popup__text">записка уйдёт на адрес, который введёшь ниже. откроется почта — нажми «Отправить» там.</p>
+          <p class="site-popup__preview">${preview.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
+          <label class="site-popup__label" for="noteMailInput">email · gmail · yandex · что угодно</label>
+          <input class="site-popup__input" type="email" id="noteMailInput" name="email" placeholder="you@gmail.com" autocomplete="email" required>
+        </div>
+        <div class="site-popup__footer">
+          <button type="button" class="site-popup__btn site-popup__btn--yes" id="noteMailSend">прислать →</button>
+          <button type="button" class="site-popup__btn site-popup__btn--no" data-note-mail-dismiss>отмена</button>
+        </div>
+      </div>
+    `;
+
+    layer.hidden = false;
+    layer.setAttribute('aria-hidden', 'false');
+
+    const emailInput = document.getElementById('noteMailInput');
+    const sendBtn = document.getElementById('noteMailSend');
+
+    if (emailInput) {
+      window.setTimeout(() => emailInput.focus(), 80);
+      emailInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          sendBtn?.click();
+        }
+      });
+    }
+
+    sendBtn?.addEventListener('click', () => {
+      const email = emailInput?.value.trim() || '';
+      if (!isValidEmail(email)) {
+        if (emailInput) {
+          emailInput.focus();
+          emailInput.setCustomValidity('нужен нормальный email');
+          emailInput.reportValidity();
+          emailInput.setCustomValidity('');
+        }
+        return;
+      }
+
+      const subject = encodeURIComponent('GIF WORLD · записка с поля');
+      const body = encodeURIComponent(
+        'записка с old net vibe:\n\n' + noteText + '\n\n— поле · gif world'
+      );
+      const mailto = `mailto:${encodeURIComponent(email)}?subject=${subject}&body=${body}`;
+
+      saveLocal(noteText);
+      window.location.href = mailto;
+
+      hideNotePopup();
+      input.value = '';
+      showStatus('открылась почта ✦ нажми «Отправить» там', true);
+
+      if (eventsList) {
+        const li = document.createElement('li');
+        li.textContent = 'note → mailto · ' + email.split('@')[0] + '@…';
+        eventsList.appendChild(li);
+      }
+    });
+  }
+
+  layer.addEventListener('click', (event) => {
+    if (event.target.closest('[data-note-mail-dismiss]')) hideNotePopup();
+  });
+
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
     const text = input.value.trim();
     if (!text) return;
-
-    const endpoint = form.dataset.endpoint;
-    if (endpoint) {
-      try {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify({
-            message: text,
-            _subject: 'GIF WORLD · note from site',
-          }),
-        });
-        if (response.ok) {
-          showStatus('отправлено ✦ поле получило заметку', true);
-          input.value = '';
-          if (eventsList) {
-            const li = document.createElement('li');
-            li.textContent = 'visitor note received';
-            eventsList.appendChild(li);
-          }
-          return;
-        }
-      } catch (error) {
-        showStatus('поле не ответило. попробуй позже.', false);
-        return;
-      }
-    }
-
-    saveLocal(text);
-    showStatus('записано в поле (локально, пока без почты)', true);
-    input.value = '';
-    if (eventsList) {
-      const li = document.createElement('li');
-      li.textContent = 'note saved locally';
-      eventsList.appendChild(li);
-    }
+    openNoteMailPopup(text);
   });
 })();
 (function () {
