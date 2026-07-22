@@ -1,3 +1,5 @@
 {
-  "guestbookEndpoint": "https://formsubmit.co/ajax/YOUR@EMAIL.com"
+  "noteEndpoint": "",
+  "supabaseUrl": "",
+  "supabaseAnonKey": ""
 }

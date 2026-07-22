@@ -1,149 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <title>Gateway</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){if(location.protocol!=='file:'){var b=document.createElement('base');b.href=location.origin+'/';document.head.appendChild(b);}})();</script>
+  <title>gateway · GIF WORLD</title>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Press Start 2P', monospace;
-      /* Press Start 2P supports Cyrillic, so no separate Russian font is required. */
-      color: white;
-
-      background: black;
-    }
-
-    /* 🔥 верхняя панель */
-    .topbar {
-      background: rgba(0,0,0,0.85);
-      border-bottom: 2px solid white;
-      padding: 10px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    /* 🌙 контейнер */
-    .container {
-      padding: 40px;
-    }
-
-    /* 🧱 блоки */
-    .block {
-      border: 2px solid white;
-      padding: 20px;
-      margin-bottom: 20px;
-      background: rgba(255,255,255,0.05);
-    }
-
-    h1 {
-      font-size: 18px;
-      text-transform: uppercase;
-    }
-
-    p {
-      font-size: 10px;
-      opacity: 0.8;
-      line-height: 1.6;
-      text-transform: uppercase;
-    }
-
-    /* 🔥 бегущая строка */
-    .marquee {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.8);
-      padding: 10px 0;
-      overflow: hidden;
-      font-size: 10px;
-    }
-
-    .marquee span {
-      display: inline-block;
-      white-space: nowrap;
-      animation: scroll 12s linear infinite;
-      padding-left: 100%;
-    }
-
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-
-    /* 🎮 кнопка назад */
-    a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .back {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px;
-      border: 2px solid white;
-      font-size: 10px;
-    }
-
-    .back:hover {
-      background: white;
-      color: black;
-    }
-
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/gateway.css">
+  <script src="js/field-radio-global.js"></script>
 </head>
+<body class="gateway-room">
+  <div class="gateway-bg" aria-hidden="true"></div>
 
-<body>
+  <main class="gateway-shell">
+    <p class="gateway-kicker">archive mode · signal stable</p>
+    <h1 class="gateway-title">ты у входа<br>в GIF WORLD</h1>
+    <p class="gateway-text">это не главная — это порог. за дверью поле: гифки, улитка, странные кнопки и музыка, которая играет, даже если ты не просила.</p>
+    <p class="gateway-text">можно войти сразу. можно сначала заглянуть в gallery или diary — они рядом, не далеко.</p>
 
-  <div class="topbar">
-    MAIN SYSTEM ACTIVE • SIGNAL STABLE • ARCHIVE MODE ON
+    <a class="gateway-door" href="main.html">войти в поле →</a>
+
+    <ul class="gateway-links">
+      <li><a href="gallery.html">gallery</a></li>
+      <li><a href="diary.html">diary</a></li>
+      <li><a href="music.html">music room</a></li>
+      <li><a href="about.html">about</a></li>
+    </ul>
+  </main>
+
+  <div class="gateway-marquee" aria-hidden="true">
+    <span>GIF WORLD · archive online · добро пожаловать · поле ждёт · signal stable ·</span>
   </div>
-
-  <div class="container">
-
-    <div class="block">
-      <h1>WELCOME INSIDE</h1>
-      <p>
-        YOU ENTERED THE MAIN SPACE.<br>
-        THIS IS A PERSONAL ARCHIVE AND CREATIVE SPACE.<br>
-        MUSIC, MEMORIES, DRAWINGS AND ATMOSPHERE LIVE HERE.
-      </p>
-      <p>
-        ДОБРО ПОЖАЛОВАТЬ ВНУТРЬ.<br>
-        ЭТО ЛИЧНОЕ ПРОСТРАНСТВО И НЕБОЛЬШОЙ АРХИВ.<br>
-        ЗДЕСЬ СОБРАНЫ МУЗЫКА, ВОСПОМИНАНИЯ, РИСУНКИ И АТМОСФЕРА.
-      </p>
-    </div>
-
-    <div class="block">
-      <h1>SECTIONS</h1>
-      <p>
-        • GALLERY<br>
-        • MUSIC ROOM<br>
-        • ARCHIVE<br>
-        • EXPERIMENTS
-      </p>
-      <p>
-        • ГАЛЕРЕЯ<br>
-        • МУЗЫКАЛЬНАЯ КОМНАТА<br>
-        • АРХИВ<br>
-        • ЭКСПЕРИМЕНТЫ
-      </p>
-    </div>
-
-    <a class="back" href="main.html">ENTER THE MAIN WORLD →</a>
-
-  </div>
-
-  <div class="marquee">
-    <span>WELCOME TO THE ARCHIVE • ДОБРО ПОЖАЛОВАТЬ В АРХИВ • RETRO SYSTEM ONLINE • SIGNAL STABLE •</span>
-  </div>
-
+  <script>FieldRadio.initBackground();</script>
 </body>
 </html>

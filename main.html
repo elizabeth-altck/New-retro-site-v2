@@ -10,6 +10,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tama-widget.css">
+<script src="js/field-radio-global.js"></script>
 
 <style>
 :root {
@@ -497,8 +498,12 @@ body {
 }
 
 .right-body {
-  flex: 1;
+  flex: 0 0 auto;
   min-height: 0;
+}
+
+#eventsList {
+  min-height: 72px;
 }
 
 /* SCROLLPORT — внутренний скролл внутри блока */
@@ -1730,6 +1735,11 @@ body {
   border-bottom-color: #e8a0c8;
 }
 
+.field-signpost-secret {
+  opacity: 0.72;
+  font-style: italic;
+}
+
 .field-signpost-note {
   margin: 10px 0 0;
   font-size: 12px;
@@ -2909,6 +2919,166 @@ body {
   }
 }
 
+/* Sidebar field fill — реклама и соседи на всю высоту колонки */
+.sidebar-field-fill {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 12px;
+  padding-bottom: 8px;
+  border-top: 1px dashed rgba(245, 236, 212, 0.18);
+  min-height: 120px;
+  align-self: stretch;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 52px,
+      rgba(255, 255, 255, 0.025) 52px,
+      rgba(255, 255, 255, 0.025) 53px
+    );
+}
+
+.right-sidebar-bottom {
+  margin-top: auto;
+  padding-top: 12px;
+  flex-shrink: 0;
+  border-top: 1px dashed rgba(245, 236, 212, 0.18);
+}
+
+.sidebar-field-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  letter-spacing: 0.06em;
+  color: rgba(232, 200, 106, 0.85);
+  margin: 4px 0 2px;
+  text-transform: lowercase;
+}
+
+.sidebar-ad-card {
+  border: 2px solid;
+  border-color: #fff #808080 #808080 #fff;
+  background: #c0c0c0;
+  font-family: Tahoma, 'Segoe UI', sans-serif;
+  font-size: 11px;
+  color: #000;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.65);
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.sidebar-ad-card.is-pop {
+  transform: scale(0.96);
+}
+
+.sidebar-ad-head {
+  padding: 3px 6px;
+  font-weight: bold;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid #808080;
+  background: linear-gradient(180deg, #000080, #1084d0);
+  color: #fff;
+}
+
+.sidebar-ad-card--hot .sidebar-ad-head {
+  background: linear-gradient(180deg, #800000, #c03030);
+}
+
+.sidebar-ad-card--gold .sidebar-ad-head {
+  background: linear-gradient(180deg, #806000, #c0a030);
+  color: #fffadb;
+}
+
+.sidebar-ad-card--cyan .sidebar-ad-head {
+  background: linear-gradient(180deg, #006080, #00a0c0);
+}
+
+.sidebar-ad-card--lime .sidebar-ad-head {
+  background: linear-gradient(180deg, #206020, #40a040);
+}
+
+.sidebar-ad-card--purple .sidebar-ad-head {
+  background: linear-gradient(180deg, #400060, #8040a0);
+}
+
+.sidebar-ad-body {
+  padding: 6px 8px 8px;
+  line-height: 1.35;
+  background: #d4d0c8;
+}
+
+.sidebar-ad-btn {
+  display: block;
+  margin-top: 6px;
+  padding: 2px 10px;
+  font-size: 10px;
+  font-family: inherit;
+  border: 2px solid;
+  border-color: #fff #404040 #404040 #fff;
+  background: #c0c0c0;
+  cursor: pointer;
+}
+
+.sidebar-ad-btn:hover {
+  background: #d8d8d8;
+}
+
+.sidebar-ad-btn:active {
+  border-color: #404040 #fff #fff #404040;
+  padding: 3px 9px 1px 11px;
+}
+
+.sidebar-neighbors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.sidebar-neighbor {
+  margin: 0;
+  text-align: center;
+  font-size: 9px;
+  font-family: 'Share Tech Mono', monospace;
+  color: rgba(242, 242, 242, 0.8);
+}
+
+.sidebar-neighbor img {
+  display: block;
+  margin: 0 auto 3px;
+  image-rendering: pixelated;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.sidebar-neighbor a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sidebar-neighbor a:hover img {
+  border-color: #e8a0c8;
+}
+
+.sidebar-blinkie-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.sidebar-blinkie-stack img {
+  image-rendering: pixelated;
+}
+
+@media (max-width: 860px) {
+  .sidebar-field-fill {
+    display: none;
+  }
+}
+
 </style>
 </head>
 
@@ -2940,9 +3110,8 @@ body {
       <li><a href="gallery.html">gallery</a></li>
       <li><a href="diary.html">diary</a></li>
       <li><a href="about.html">about</a></li>
-      <li><a href="main.html#fieldRadio">music</a></li>
+      <li><a href="music.html">music</a></li>
       <li><a href="tamagotchi.html">tamagotchi</a></li>
-      <li><a href="secret-door.html">secret door</a></li>
     </ul>
   </nav>
 
@@ -2952,7 +3121,7 @@ body {
     <p class="field-radio-track" id="fieldRadioTrack">rainy lofi city</p>
     <div class="field-radio-track-nav">
       <button type="button" class="field-radio-track-btn field-radio-tip" id="fieldRadioPrev" data-tip="предыдущий трек" aria-label="предыдущий трек">◀</button>
-      <span class="field-radio-track-num" id="fieldRadioTrackNum">1 / 3</span>
+      <span class="field-radio-track-num" id="fieldRadioTrackNum">1 / 6</span>
       <button type="button" class="field-radio-track-btn field-radio-tip" id="fieldRadioNext" data-tip="следующий трек" aria-label="следующий трек">▶</button>
     </div>
     <div class="field-radio-eq" aria-hidden="true">
@@ -2979,9 +3148,12 @@ body {
       <li><a href="anna.html">→ комната anna</a></li>
       <li><a href="gallery.html">→ gallery</a></li>
       <li><a href="tamagotchi.html">→ tamagotchi</a></li>
+      <li><a href="secret-door.html" class="field-signpost-secret">→ где-то шуршит</a></li>
     </ul>
     <p class="field-signpost-note">улитки ползут медленно. ты — необязана.</p>
   </aside>
+
+  <div class="sidebar-field-fill" id="leftSidebarFill" aria-label="реклама поля слева"></div>
 </div>
 
 <!-- CENTER -->
@@ -3018,7 +3190,7 @@ body {
     <section class="mini-world field-scrollport-world" aria-label="что уже на поле">
       <p class="mini-world-label"><span class="label-a">поле</span> · <span class="label-b">что уже здесь</span> · <span class="label-c">листай ↓</span></p>
       <div class="scrollport" id="fieldScrollport">
-        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>радио слева</strong> — три трека, переключай ◀ ▶</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>радио слева</strong> — три трека, переключай ◀ ▶ · играет между страницами · <a href="music.html">music room</a></p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>улитка на поле</strong> — ползает, её можно перетащить</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>коробка</strong> — наведи, чтобы открыть</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>прогноз</strong> — окошки в духе Win98</p>
@@ -3032,7 +3204,7 @@ body {
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>комнаты zhanna и anna</strong> — персонажи живут отдельно</p>
         <p class="scrollport-item scrollport-item--wip"><span class="scrollport-mark">[~]</span><strong>авторский дневник</strong> — скоро больше записей</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>соседи поля</strong> — лягушка, бабочка, кот внизу</p>
-        <p class="scrollport-item"><span class="scrollport-mark">[ ]</span><strong>музыкальная комната</strong> — больше треков, своё место</p>
+        <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>музыкальная комната</strong> — <a href="music.html">music room</a> · плейлист и плеер</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>vibe.exe</strong> — переключи настроение поля</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>gif roulette</strong> — случайная гифка одним кликом</p>
         <p class="scrollport-item scrollport-item--done"><span class="scrollport-mark">[x]</span><strong>webring blinkies</strong> — не все декоративные, кликни</p>
@@ -3121,7 +3293,7 @@ body {
 
             <section class="site-note" id="siteNote" aria-label="write your note">
               <p class="site-note-label">WRITE YOUR NOTE</p>
-              <form class="site-note-paper" id="siteNoteForm">
+              <form class="site-note-paper" id="siteNoteForm" data-endpoint="">
                 <textarea
                   class="site-note-input"
                   id="siteNoteInput"
@@ -3339,7 +3511,7 @@ body {
         </div>
         <p class="core-footer-note">best viewed if you're nostalgic · made in the field · too many gifs on purpose</p>
         <p class="core-footer-links">
-          <a href="gallery.html">gallery</a> · <a href="diary.html">diary</a> · <a href="about.html">about</a> · <a href="main.html#fieldRadio">music</a> · <a href="secret-door.html">secret door</a>
+          <a href="gallery.html">gallery</a> · <a href="diary.html">diary</a> · <a href="about.html">about</a> · <a href="music.html">music</a>
         </p>
       </footer>
 
@@ -3368,6 +3540,9 @@ body {
     </ul>
   </div>
 
+  <div class="sidebar-field-fill" id="rightSidebarFill" aria-label="соседи и реклама справа"></div>
+
+  <div class="right-sidebar-bottom">
   <div class="field-stats" id="fieldStats" aria-label="field stats">
     <p class="field-stats-label">статы поля</p>
     <p class="field-stats-line" id="fieldStatVibe"><strong>vibe:</strong> 73%</p>
@@ -3383,9 +3558,10 @@ body {
     <p class="field-whisper-text" id="fieldWhisperText">за secret door что-то шуршит. или это ветер.</p>
     <button type="button" class="field-whisper-btn" id="fieldWhisperNext">ещё слух →</button>
     <p class="field-whisper-links">
-      <a href="diary.html">diary</a> · <a href="about.html">about</a> · <a href="secret-door.html">secret door</a>
+      <a href="diary.html">diary</a> · <a href="about.html">about</a>
     </p>
   </aside>
+  </div>
 </div>
 
 </div>
@@ -3414,7 +3590,7 @@ body {
         <li><a href="zhanna.html">zhanna</a></li>
         <li><a href="anna.html">anna</a></li>
         <li><a href="tamagotchi.html">tamagotchi</a></li>
-        <li><a href="main.html#fieldRadio">music</a></li>
+        <li><a href="music.html">music room</a></li>
       </ul>
     </div>
     <div class="desktop-widget-foot">
@@ -4081,136 +4257,6 @@ body {
   }
 })();
 (function () {
-  const radio = document.getElementById('fieldRadio');
-  const audio = document.getElementById('fieldAudio');
-  const toggleBtn = document.getElementById('fieldRadioToggle');
-  const prevBtn = document.getElementById('fieldRadioPrev');
-  const nextBtn = document.getElementById('fieldRadioNext');
-  const trackEl = document.getElementById('fieldRadioTrack');
-  const trackNumEl = document.getElementById('fieldRadioTrackNum');
-  const progressBar = document.getElementById('fieldRadioProgress');
-  const progressFill = document.getElementById('fieldRadioProgressFill');
-  const timeEl = document.getElementById('fieldRadioTime');
-  const volumeInput = document.getElementById('fieldRadioVolume');
-  const statusEl = document.getElementById('fieldRadioStatus');
-  const eventsList = document.getElementById('eventsList');
-
-  const PLAYLIST = [
-    { title: 'rainy lofi city', src: 'music/rainy-lofi-city-lofi-music-332746.mp3' },
-    { title: 'carefree field', src: 'music/carefree-field.mp3' },
-    { title: 'daily beetle', src: 'music/daily-beetle-field.mp3' },
-  ];
-
-  if (!radio || !audio || !toggleBtn) return;
-
-  let trackIndex = 0;
-  let wasPlaying = false;
-
-  function formatTime(sec) {
-    if (!Number.isFinite(sec)) return '0:00';
-    const m = Math.floor(sec / 60);
-    const s = Math.floor(sec % 60);
-    return m + ':' + String(s).padStart(2, '0');
-  }
-
-  function updateProgress() {
-    const duration = audio.duration || 0;
-    const current = audio.currentTime || 0;
-    const pct = duration ? (current / duration) * 100 : 0;
-    if (progressFill) progressFill.style.width = pct + '%';
-    if (timeEl) timeEl.textContent = formatTime(current) + ' / ' + formatTime(duration);
-  }
-
-  function setPlayingState(playing) {
-    radio.classList.toggle('is-playing', playing);
-    toggleBtn.textContent = playing ? 'STOP' : 'PLAY';
-    toggleBtn.setAttribute('data-tip', playing ? 'остановить трек' : 'воспроизвести трек');
-    if (statusEl) statusEl.textContent = playing ? 'в эфире' : 'тишина';
-  }
-
-  function updateTrackUi() {
-    const track = PLAYLIST[trackIndex];
-    if (trackEl) trackEl.textContent = track.title;
-    if (trackNumEl) trackNumEl.textContent = (trackIndex + 1) + ' / ' + PLAYLIST.length;
-  }
-
-  function loadTrack(index, autoplay) {
-    trackIndex = (index + PLAYLIST.length) % PLAYLIST.length;
-    wasPlaying = autoplay || !audio.paused;
-    audio.pause();
-    audio.src = PLAYLIST[trackIndex].src;
-    audio.load();
-    updateTrackUi();
-    if (wasPlaying) {
-      audio.play().then(() => {
-        setPlayingState(true);
-        if (eventsList) {
-          const li = document.createElement('li');
-          li.textContent = 'радио: ' + PLAYLIST[trackIndex].title;
-          eventsList.appendChild(li);
-        }
-      }).catch(() => {
-        if (statusEl) statusEl.textContent = 'нет сигнала';
-        setPlayingState(false);
-      });
-    } else {
-      setPlayingState(false);
-      updateProgress();
-    }
-  }
-
-  toggleBtn.addEventListener('click', () => {
-    if (audio.paused) {
-      if (!audio.src) loadTrack(trackIndex, true);
-      else {
-        audio.play().then(() => {
-          setPlayingState(true);
-          if (eventsList) {
-            const li = document.createElement('li');
-            li.textContent = 'радио: ' + PLAYLIST[trackIndex].title + ' · играет';
-            eventsList.appendChild(li);
-          }
-        }).catch(() => {
-          if (statusEl) statusEl.textContent = 'нет сигнала';
-        });
-      }
-    } else {
-      audio.pause();
-      setPlayingState(false);
-    }
-  });
-
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => loadTrack(trackIndex - 1, true));
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => loadTrack(trackIndex + 1, true));
-  }
-
-  audio.addEventListener('timeupdate', updateProgress);
-  audio.addEventListener('loadedmetadata', updateProgress);
-  audio.addEventListener('ended', () => loadTrack(trackIndex + 1, true));
-
-  if (progressBar) {
-    progressBar.addEventListener('click', (event) => {
-      const rect = progressBar.getBoundingClientRect();
-      const ratio = (event.clientX - rect.left) / rect.width;
-      if (audio.duration) audio.currentTime = ratio * audio.duration;
-      updateProgress();
-    });
-  }
-
-  if (volumeInput) {
-    audio.volume = Number(volumeInput.value) / 100;
-    volumeInput.addEventListener('input', () => {
-      audio.volume = Number(volumeInput.value) / 100;
-    });
-  }
-
-  loadTrack(0, false);
-})();
-(function () {
   const form = document.getElementById('siteNoteForm');
   const input = document.getElementById('siteNoteInput');
   const statusEl = document.getElementById('siteNoteStatus');
@@ -4320,10 +4366,41 @@ body {
     if (event.target.closest('[data-note-mail-dismiss]')) hideNotePopup();
   });
 
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const text = input.value.trim();
     if (!text) return;
+
+    const endpoint = form.dataset.endpoint;
+    if (endpoint) {
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            message: text,
+            _subject: 'GIF WORLD · записка с поля',
+            _template: 'table',
+          }),
+        });
+        if (!response.ok) throw new Error('send failed');
+        saveLocal(text);
+        input.value = '';
+        showStatus('поле получило ✦ записка улетела', true);
+        if (eventsList) {
+          const li = document.createElement('li');
+          li.textContent = 'записка отправлена с поля';
+          eventsList.appendChild(li);
+        }
+      } catch {
+        showStatus('не улетело · попробуй позже', false);
+      }
+      return;
+    }
+
     openNoteMailPopup(text);
   });
 })();
@@ -5160,7 +5237,35 @@ body {
   });
 })();
 </script>
+<script src="js/load-site-config.js"></script>
+<script>
+loadSiteFormEndpoints();
+</script>
 <script src="js/field-live-sync.js"></script>
+<script>
+FieldRadio.initPlayer({
+  audioId: 'fieldAudio',
+  radio: document.getElementById('fieldRadio'),
+  toggleBtn: document.getElementById('fieldRadioToggle'),
+  prevBtn: document.getElementById('fieldRadioPrev'),
+  nextBtn: document.getElementById('fieldRadioNext'),
+  trackEl: document.getElementById('fieldRadioTrack'),
+  trackNumEl: document.getElementById('fieldRadioTrackNum'),
+  progressBar: document.getElementById('fieldRadioProgress'),
+  progressFill: document.getElementById('fieldRadioProgressFill'),
+  timeEl: document.getElementById('fieldRadioTime'),
+  volumeInput: document.getElementById('fieldRadioVolume'),
+  statusEl: document.getElementById('fieldRadioStatus'),
+  onPlay: (title) => {
+    const eventsList = document.getElementById('eventsList');
+    if (!eventsList) return;
+    const li = document.createElement('li');
+    li.textContent = 'радио: ' + title + ' · играет';
+    eventsList.appendChild(li);
+  },
+});
+</script>
+<script src="js/sidebar-field.js"></script>
 <script src="js/tama-widget.js"></script>
 </body>
 </html>

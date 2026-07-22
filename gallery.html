@@ -10,6 +10,7 @@
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/gallery.css">
+  <script src="js/field-radio-global.js"></script>
 </head>
 <body class="gallery-room">
   <div class="gallery-bg" aria-hidden="true"></div>
@@ -22,7 +23,7 @@
     <header class="gallery-hero">
       <p class="gallery-kicker">GIF WORLD · archive corner</p>
       <h1 class="gallery-title">gallery</h1>
-      <p class="gallery-lede">комната гифок. тут они лежат криво, мигают и не извиняются. фон пока — поле; если найдёшь другой кадр — просто подменим.</p>
+      <p class="gallery-lede">комната гифок. тут они лежат криво, мигают и не извиняются. фон — закатное поле; roulette ниже выдаёт случайную находку.</p>
     </header>
 
     <div class="gallery-marquee" aria-hidden="true">
@@ -78,6 +79,15 @@
       <a class="gallery-tile" href="#"><img src="images/rose.gif" alt=""></a>
     </div>
 
+    <section class="gallery-roulette" aria-label="gif roulette">
+      <p class="gallery-roulette-label">gif roulette · один клик</p>
+      <div class="gallery-roulette-slot" id="galleryRouletteSlot">
+        <img id="galleryRouletteImg" src="images/chaos/dance-01.gif" alt="" width="96" height="96">
+      </div>
+      <p class="gallery-roulette-caption" id="galleryRouletteCaption">танец поля</p>
+      <button type="button" class="gallery-roulette-btn" id="galleryRouletteBtn">крутить →</button>
+    </section>
+
     <section class="gallery-scrollport" aria-label="ещё гифки">
       <p class="gallery-scrollport-label">ещё кусочки · листай →</p>
       <div class="gallery-scrollport-row">
@@ -97,7 +107,7 @@
     </section>
 
     <footer class="gallery-foot">
-      <p>скоро: больше finds · roulette · свои фото</p>
+      <p>скоро: больше finds · свои фото</p>
       <p><a href="main.html">← назад в поле</a></p>
     </footer>
   </div>
@@ -110,7 +120,37 @@
         e.preventDefault();
         tile.style.setProperty('--tilt', (Math.random() * 10 - 5).toFixed(1) + 'deg');
       });
+
+      const ROULETTE = [
+        { src: 'images/chaos/dance-01.gif', caption: 'танец поля' },
+        { src: 'images/chaos/fire.gif', caption: 'слишком горячо' },
+        { src: 'images/chaos/spin-cat.gif', caption: 'кот крутится' },
+        { src: 'images/chaos/fish.gif', caption: 'bloop approved' },
+        { src: 'images/chaos/star.gif', caption: 'звезда одобряет' },
+        { src: 'images/diary/04-mushroom.gif', caption: 'гриб дня' },
+        { src: 'images/rose.gif', caption: 'роза из закромов' },
+        { src: 'images/chaos/tiny-dance.gif', caption: 'микро-танец' },
+      ];
+
+      const btn = document.getElementById('galleryRouletteBtn');
+      const slot = document.getElementById('galleryRouletteSlot');
+      const img = document.getElementById('galleryRouletteImg');
+      const label = document.getElementById('galleryRouletteCaption');
+
+      if (!btn || !img) return;
+
+      btn.addEventListener('click', () => {
+        slot?.classList.add('is-spinning');
+        let pick = ROULETTE[Math.floor(Math.random() * ROULETTE.length)];
+        if (pick.src === img.getAttribute('src')) {
+          pick = ROULETTE[(ROULETTE.indexOf(pick) + 1) % ROULETTE.length];
+        }
+        img.src = pick.src;
+        if (label) label.textContent = pick.caption;
+        window.setTimeout(() => slot?.classList.remove('is-spinning'), 420);
+      });
     })();
   </script>
+  <script>FieldRadio.initBackground();</script>
 </body>
 </html>

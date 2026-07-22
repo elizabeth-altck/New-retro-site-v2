@@ -4,7 +4,7 @@
   --gallery-font-pixel: 'Press Start 2P', monospace;
   --gallery-font-body: 'Jura', sans-serif;
   /* Сменить фон: подставь свой файл и поменяй путь (или замени images/gallery-bg.jpeg) */
-  --gallery-bg: url("../images/поле.jpeg");
+  --gallery-bg: url("../images/забор цветы и спокойствие.jpeg");
 }
 
 * {
@@ -237,6 +237,69 @@ body.gallery-room {
 
 .gallery-foot a {
   color: #e8c86a;
+}
+
+.gallery-roulette {
+  margin-top: 18px;
+  padding: 14px 12px 16px;
+  text-align: center;
+  background: rgba(88, 20, 28, 0.35);
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.gallery-roulette-label {
+  font-family: var(--gallery-font-pixel);
+  font-size: 9px;
+  color: #e8a0c8;
+  margin: 0 0 12px;
+}
+
+.gallery-roulette-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  min-width: 120px;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: rgba(255, 248, 210, 0.92);
+  border: 2px solid #1a1a1a;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease;
+}
+
+.gallery-roulette-slot.is-spinning {
+  transform: rotate(4deg) scale(0.96);
+}
+
+.gallery-roulette-slot img {
+  max-height: 96px;
+  width: auto;
+  image-rendering: pixelated;
+}
+
+.gallery-roulette-caption {
+  font-family: var(--gallery-font-mono);
+  font-size: 13px;
+  color: rgba(255, 250, 219, 0.85);
+  margin: 0 0 12px;
+}
+
+.gallery-roulette-btn {
+  font-family: var(--gallery-font-pixel);
+  font-size: 9px;
+  padding: 10px 16px;
+  border: 2px solid #1a1a1a;
+  background: rgba(255, 248, 210, 0.92);
+  color: #1a1a1a;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+.gallery-roulette-btn:hover {
+  background: #fffadb;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 560px) {

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){if(location.protocol!=='file:'){var b=document.createElement('base');b.href=location.origin+'/';document.head.appendChild(b);}})();</script>
+  <title>music room · GIF WORLD</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/music.css">
+  <script src="js/field-radio-global.js"></script>
+</head>
+<body class="music-room">
+  <div class="music-bg" aria-hidden="true"></div>
+
+  <div class="music-shell">
+    <a class="music-back" href="main.html">← главная</a>
+
+    <header class="music-hero">
+      <p class="music-kicker">GIF WORLD · music room</p>
+      <h1 class="music-title">music.exe</h1>
+      <p class="music-lede">комната для фоновых треков поля. нажми play — музыка продолжит играть, если перейдёшь в gallery, diary или другие комнаты.</p>
+    </header>
+
+    <section class="music-player" aria-label="плеер">
+      <p class="music-player-label">now playing</p>
+      <p class="music-now" id="musicNowTitle">rainy lofi city</p>
+      <p class="music-status" id="musicStatus">тишина</p>
+      <div class="music-controls">
+        <button type="button" class="music-btn" id="musicToggle">PLAY</button>
+        <div class="music-track-nav">
+          <button type="button" class="music-track-btn" id="musicPrev" aria-label="предыдущий">◀</button>
+          <span id="musicTrackNum">1 / 6</span>
+          <button type="button" class="music-track-btn" id="musicNext" aria-label="следующий">▶</button>
+        </div>
+        <div class="music-progress" id="musicProgress" role="slider" aria-label="перемотка">
+          <span class="music-progress-fill" id="musicProgressFill"></span>
+        </div>
+      </div>
+      <p class="music-time" id="musicTime">0:00 / 0:00</p>
+      <audio id="musicAudio" preload="metadata"></audio>
+    </section>
+
+    <section class="music-scrollport" aria-label="плейлист">
+      <p class="music-scrollport-label">playlist · листай ↓</p>
+      <div class="music-playlist" id="musicPlaylist"></div>
+    </section>
+
+    <footer class="music-foot">
+      <p>на главной — <a href="main.html#fieldRadio">FIELD RADIO</a> в левой колонке</p>
+      <p><a href="main.html">← назад в поле</a></p>
+    </footer>
+  </div>
+
+  <script>
+    FieldRadio.initPlayer({
+      audioId: 'musicAudio',
+      toggleBtn: document.getElementById('musicToggle'),
+      prevBtn: document.getElementById('musicPrev'),
+      nextBtn: document.getElementById('musicNext'),
+      titleEl: document.getElementById('musicNowTitle'),
+      trackNumEl: document.getElementById('musicTrackNum'),
+      musicStatusEl: document.getElementById('musicStatus'),
+      musicToggleBtn: document.getElementById('musicToggle'),
+      progressBar: document.getElementById('musicProgress'),
+      progressFill: document.getElementById('musicProgressFill'),
+      timeEl: document.getElementById('musicTime'),
+      playlistEl: document.getElementById('musicPlaylist'),
+    });
+  </script>
+</body>
+</html>

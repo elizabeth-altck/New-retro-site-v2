@@ -19,7 +19,7 @@ body.offbeat-room {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: url("../images/поле.jpeg") center / cover no-repeat fixed;
+  background: url("../images/забор цветы и спокойствие.jpeg") center / cover no-repeat fixed;
 }
 
 .offbeat-bg::after {

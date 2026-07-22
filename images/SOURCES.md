@@ -7,6 +7,7 @@
 | `diary/` | daisy, forest, sparkle, mushroom, flower | semantic search GifCities |
 | `characters/` | frog, butterfly, cat, **anna-snail.png** | character peeks · Анна в tamagotchi |
 | `blinkies/` | UC banner, Geocities, JUNO email, best-viewed | footer 88×31 / UC |
+| `blinkies/wall/` | **wall-*.gif** — оригинальные 88×31 для sidebar «стена» | сгенерированы `scripts/generate-wall-blinkies.py` |
 | `field/image-of-day.jpg` | кроп из `забор цветы и спокойствие.jpeg` | **своё** фото поля |
 
 ## Music (FIELD RADIO)
@@ -15,7 +16,9 @@
 |------|----------|----------|
 | `music/rainy-lofi-city-lofi-music-332746.mp3` | legacy с прошлого сайта | — |
 | `music/carefree-field.mp3` | [Kevin MacLeod — Carefree](https://incompetech.com) | CC BY 4.0 |
-| `music/daily-beetle-field.mp3` | [Kevin MacLeod — Daily Beetle](https://incompetech.com) | CC BY 4.0 |
+| `music/chill-wave.mp3` | [Kevin MacLeod — Chill Wave](https://incompetech.com) | CC BY 4.0 |
+| `music/easy-lemon.mp3` | [Kevin MacLeod — Easy Lemon](https://incompetech.com) | CC BY 4.0 |
+| `music/local-forecast-elevator.mp3` | [Kevin MacLeod — Local Forecast - Elevator](https://incompetech.com) | CC BY 4.0 |
 
 Можно свободно заменять файлы с теми же именами — разметка в `main.html` подхватит.
 

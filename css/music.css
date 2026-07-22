@@ -1,0 +1,238 @@
+:root {
+  --music-mono: 'Share Tech Mono', monospace;
+  --music-pixel: 'Press Start 2P', monospace;
+  --music-body: 'Jura', sans-serif;
+  --music-bg: url("../images/забор цветы и спокойствие.jpeg");
+}
+
+* { box-sizing: border-box; }
+
+body.music-room {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--music-body);
+  color: #fffadb;
+  background: #12100c;
+}
+
+.music-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--music-bg) center / cover no-repeat fixed;
+}
+
+.music-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(88, 20, 28, 0.35), transparent 50%),
+    linear-gradient(180deg, rgba(10, 8, 6, 0.55) 0%, rgba(18, 14, 10, 0.78) 100%);
+}
+
+.music-shell {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 94vw);
+  margin: 0 auto;
+  padding: 22px 0 48px;
+}
+
+.music-back {
+  font-family: var(--music-mono);
+  font-size: 14px;
+  color: #fffadb;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255, 250, 219, 0.55);
+}
+
+.music-back:hover {
+  color: #e8c86a;
+}
+
+.music-hero {
+  margin: 18px 0 20px;
+  padding: 18px 16px;
+  background: rgba(0, 0, 0, 0.58);
+  border: 3px solid #1a1a1a;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45);
+}
+
+.music-kicker {
+  font-family: var(--music-mono);
+  font-size: 12px;
+  color: #e8c86a;
+  margin: 0 0 10px;
+}
+
+.music-title {
+  font-family: var(--music-pixel);
+  font-size: clamp(16px, 4vw, 24px);
+  line-height: 1.5;
+  margin: 0 0 10px;
+  text-shadow: 2px 2px 0 #58141c;
+}
+
+.music-lede {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+  color: rgba(255, 250, 219, 0.88);
+}
+
+.music-player {
+  padding: 16px 14px 18px;
+  background: rgba(155, 143, 67, 0.22);
+  border: 3px solid #1a1a1a;
+  box-shadow: inset 1px 1px 0 rgba(255, 250, 219, 0.12);
+}
+
+.music-player-label {
+  font-family: var(--music-pixel);
+  font-size: 9px;
+  color: #e8a0c8;
+  margin: 0 0 12px;
+}
+
+.music-now {
+  font-family: var(--music-mono);
+  font-size: 15px;
+  margin: 0 0 4px;
+}
+
+.music-status {
+  font-family: var(--music-mono);
+  font-size: 12px;
+  color: rgba(255, 250, 219, 0.65);
+  margin: 0 0 14px;
+}
+
+.music-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+.music-btn {
+  font-family: var(--music-pixel);
+  font-size: 9px;
+  padding: 10px 14px;
+  border: 2px solid #1a1a1a;
+  background: rgba(255, 248, 210, 0.92);
+  color: #1a1a1a;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+.music-btn:hover {
+  background: #fffadb;
+  transform: translateY(-1px);
+}
+
+.music-track-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--music-mono);
+  font-size: 13px;
+}
+
+.music-track-btn {
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(255, 250, 219, 0.45);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fffadb;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.music-track-btn:hover {
+  border-color: #e8c86a;
+  color: #e8c86a;
+}
+
+.music-progress {
+  flex: 1 1 140px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 250, 219, 0.25);
+  cursor: pointer;
+}
+
+.music-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #9e3d6e, #e8c86a);
+}
+
+.music-time {
+  font-family: var(--music-mono);
+  font-size: 11px;
+  color: rgba(255, 250, 219, 0.7);
+  margin: 10px 0 0;
+}
+
+.music-scrollport {
+  margin-top: 18px;
+  padding: 12px 10px 14px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px dashed rgba(255, 250, 219, 0.35);
+}
+
+.music-scrollport-label {
+  font-family: var(--music-pixel);
+  font-size: 8px;
+  color: #8fd4a8;
+  margin: 0 0 10px;
+}
+
+.music-playlist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.music-playlist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 250, 219, 0.25);
+  background: rgba(0, 0, 0, 0.28);
+  font-family: var(--music-mono);
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+  color: #fffadb;
+}
+
+.music-playlist-item:hover,
+.music-playlist-item.is-active {
+  border-color: #e8c86a;
+  background: rgba(232, 200, 106, 0.12);
+}
+
+.music-playlist-item span {
+  opacity: 0.55;
+  font-size: 11px;
+}
+
+.music-foot {
+  margin-top: 22px;
+  text-align: center;
+  font-family: var(--music-mono);
+  font-size: 12px;
+  color: rgba(255, 250, 219, 0.6);
+}
+
+.music-foot a {
+  color: #e8c86a;
+}

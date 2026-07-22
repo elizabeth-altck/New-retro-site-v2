@@ -1,3 +1,5 @@
 {
-  "guestbookEndpoint": ""
+  "noteEndpoint": "",
+  "supabaseUrl": "",
+  "supabaseAnonKey": ""
 }

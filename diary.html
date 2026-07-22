@@ -10,6 +10,7 @@
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400;500;600&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/diary.css">
+  <script src="js/field-radio-global.js"></script>
 </head>
 <body class="diary-room">
   <div class="diary-bg" aria-hidden="true"></div>
@@ -30,7 +31,7 @@
         <section class="diary-section diary-guestbook" id="guestbook" aria-label="guest book">
           <p class="diary-section-label"><span class="label-a">guest book</span> · <span class="label-b">впечатления</span> · <span class="label-c">без регистрации</span></p>
 
-          <form class="diary-guest-form" id="guestbookForm" data-endpoint="">
+          <form class="diary-guest-form" id="guestbookForm">
             <div class="diary-guest-field">
               <label for="guestName">имя</label>
               <input class="diary-guest-name" type="text" id="guestName" name="name" maxlength="32" placeholder="аноним · moth · кто угодно" autocomplete="nickname">
@@ -47,7 +48,7 @@
               <button type="submit" class="diary-guest-btn" id="guestSubmit">отправить в поле →</button>
             </div>
             <p class="diary-guest-status" id="guestStatus" hidden></p>
-            <p class="diary-guest-hint">записка попадёт в ленту справа после проверки</p>
+            <p class="diary-guest-hint">записки видят все · обновляются сразу · ♥ 👍 👎 — локально</p>
           </form>
         </section>
       </div>
@@ -81,131 +82,7 @@
     </footer>
   </div>
 
-  <script src="js/load-site-config.js"></script>
-  <script>
-    (function () {
-      const form = document.getElementById('guestbookForm');
-      const nameInput = document.getElementById('guestName');
-      const msgInput = document.getElementById('guestMessage');
-      const hpInput = document.getElementById('guestWebsite');
-      const statusEl = document.getElementById('guestStatus');
-      const listEl = document.getElementById('guestList');
-      const emptyEl = document.getElementById('guestEmpty');
-      const submitBtn = document.getElementById('guestSubmit');
-
-      function showStatus(text, isOk) {
-        if (!statusEl) return;
-        statusEl.hidden = false;
-        statusEl.textContent = text;
-        statusEl.classList.toggle('is-ok', isOk);
-        statusEl.classList.toggle('is-err', !isOk);
-      }
-
-      function formatDate(iso) {
-        if (!iso) return '';
-        const d = new Date(iso);
-        if (Number.isNaN(d.getTime())) return iso;
-        return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' });
-      }
-
-      function renderMessage(entry, isPending) {
-        const li = document.createElement('li');
-        li.className = 'diary-guest-item' + (isPending ? ' is-pending' : '');
-
-        const head = document.createElement('div');
-        head.className = 'diary-guest-item-head';
-
-        const name = document.createElement('span');
-        name.className = 'diary-guest-item-name';
-        name.textContent = entry.name || 'полевой гость';
-
-        const meta = document.createElement('span');
-        meta.className = 'diary-guest-item-meta';
-        meta.textContent = formatDate(entry.at);
-
-        head.appendChild(name);
-        head.appendChild(meta);
-
-        const text = document.createElement('p');
-        text.className = 'diary-guest-item-text';
-        text.textContent = entry.text;
-
-        li.appendChild(head);
-        li.appendChild(text);
-        return li;
-      }
-
-      function renderList(messages) {
-        if (!listEl) return;
-        listEl.innerHTML = '';
-        if (!messages.length) {
-          if (emptyEl) emptyEl.hidden = false;
-          return;
-        }
-        if (emptyEl) emptyEl.hidden = true;
-        messages.forEach((entry) => {
-          listEl.appendChild(renderMessage(entry, false));
-        });
-      }
-
-      fetch('data/guestbook.json')
-        .then((r) => (r.ok ? r.json() : { messages: [] }))
-        .then((data) => renderList(data.messages || []))
-        .catch(() => renderList([]));
-
-      loadSiteFormEndpoints();
-
-      if (!form || !msgInput) return;
-
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        if (hpInput && hpInput.value.trim()) return;
-
-        const text = msgInput.value.trim();
-        if (!text) return;
-
-        const name = (nameInput?.value.trim() || 'полевой гость').slice(0, 32);
-        const endpoint = form.dataset.endpoint;
-        const entry = { name, text, at: new Date().toISOString() };
-
-        if (submitBtn) submitBtn.disabled = true;
-
-        if (endpoint) {
-          try {
-            const response = await fetch(endpoint, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-              },
-              body: JSON.stringify({
-                name,
-                message: text,
-                _subject: 'GIF WORLD · guest book',
-                _template: 'table',
-              }),
-            });
-            if (!response.ok) throw new Error('send failed');
-            showStatus('поле получило ✦ появится в ленте после проверки', true);
-          } catch {
-            showStatus('не улетело · попробуй позже', false);
-            if (submitBtn) submitBtn.disabled = false;
-            return;
-          }
-        } else {
-          showStatus('поле получило ✦ появится после проверки', true);
-        }
-
-        if (listEl) {
-          if (emptyEl) emptyEl.hidden = true;
-          listEl.prepend(renderMessage(entry, true));
-        }
-
-        msgInput.value = '';
-        if (nameInput) nameInput.value = '';
-        if (submitBtn) submitBtn.disabled = false;
-      });
-    })();
-  </script>
+  <script src="js/guestbook.js"></script>
+  <script>FieldRadio.initBackground();</script>
 </body>
 </html>
