@@ -172,7 +172,7 @@
 - **Открытие:** наведение (desktop) — crossfade closed → opened; тап / Enter — toggle на touch.
 - Статичная зернистость поверх фото (`overlay`, без анимации).
 - Первое открытие → событие `memory box opened` в `#eventsList`.
-- Внутренний контент коробки (gif, заметки) — ещё не свёрстан, только смена PNG.
+- **Только смена PNG.** GIF-лента / scrollport / заметки внутри коробки — **не делаем** (решение автора).
 
 ## forecast.exe (Win98 object-world)
 
