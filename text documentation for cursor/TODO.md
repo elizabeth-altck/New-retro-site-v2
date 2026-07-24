@@ -1,5 +1,11 @@
 # TODO
 
+## После технического MVP
+
+→ **`PLAN_POSLE_MVP_OSHCHUSHCHENIE.md`** — план «ощущение» (голос, updates, chatterbox, scrapbook, комнаты). Открывать, когда деплoy + guest book + smoke test уже закрыты.
+
+---
+
 ## Roadmap (зафиксирован 2026-07-01)
 
 **Статус:** Фаза 2 почти закрыта — остался **secret-door**. Дальше — deploy smoke test.
