@@ -283,3 +283,11 @@ GIF WORLD = **korenara** по механике + **garfriend** как модел
 **widget.html** — snail.widget preview: win98 окно, drag, pet/feed/kick. Без «раздавить» (остаётся в tamagotchi).
 
 **Стадия:** Фаза 1 закрыта · Фаза 2 — 5/7 комнат (остались secret-door, anna) → готовность к MVP deploy.
+
+## 2026-07-23 — коробка: без GIF-ленты (отмена WIP)
+
+**Что сделано:** из TODO / Фазы 3 / roadmap / MVP-статуса убран план «GIF-лента / scrollport внутри коробки». Зафиксировано в `DECISIONS.md`: коробка = только PNG closed/opened; не трогать без явного запроса. `stickers.exe` остаётся отдельно в слоте.
+
+**Почему:** автор уже отказывалась; в коде ленты внутри коробки не было — только повтор WIP в доках.
+
+**Что делать дальше:** MVP — smoke test / guest book config; коробку не наполнять.

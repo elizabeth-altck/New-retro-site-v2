@@ -47,9 +47,9 @@
 - **SIGNAL CATCH** — мини-игра под заголовком
 - **site TODO scrollport** — прокручиваемый список планов развития сайта
 - **GIF CHAOS** — хаотичная лента GIF + marquee blinkies (под SIGNAL CATCH)
-- **Коробка-коллаж** — ~360px, слева: hover/tap `closed.png` ↔ `opened.png`
+- **Коробка-коллаж** — ~360px, слева: hover/tap `closed.png` ↔ `opened.png` (только смена PNG, без GIF/контента внутри)
 - **forecast.exe (Win98)** — Forecast + «НОВАЯ КОЛЛЕКЦИЯ»
-- **stickers.exe** — mini GIF-лента (`#cuteScrollport`)
+- **stickers.exe** — mini GIF-лента (`#cuteScrollport`) рядом с коробкой в слоте, **не** внутри коробки
 - **WRITE YOUR NOTE** (`#siteNote`) — форма заметок (localStorage / FormSubmit)
 - **field diary scrollport** (`#diaryScrollport`) — горизонтальный дневник + 5 GIF art
 - **spam.exe** (`#adSpamField`) — бесконечная генерация mini win98 только внутри блока
@@ -61,7 +61,7 @@
 - **character peeks** — frog · butterfly · cat
 - **welcome popup** (`#sitePopupLayer`) — один раз при первом визите (`localStorage`); не при каждом возврате на main
 - **Улитка** (`#snailDragWrap`) — `position: absolute` на body, автоползание + drag, `snail.exe`
-- **Ещё не свёрстано:** scrollport TODO · note endpoint · коробка внутри
+- **WIP (не коробка):** note endpoint при необходимости
 
 ### Правая колонка
 

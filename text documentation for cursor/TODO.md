@@ -24,9 +24,9 @@
 - [x] **stickers.exe** — mini GIF-лента вместо «скоро тут чето будет»
 - [x] Обновить **site TODO scrollport** по мере закрытия пунктов
 
-**Осталось / WIP на главной:** WRITE YOUR NOTE endpoint · коробка GIF-лента внутри
+**Осталось / WIP на главной:** WRITE YOUR NOTE endpoint (если ещё нужен)
 
-**Итог фазы:** главную можно показывать как «официальную»; WIP только там, где осознанно (scrollport TODO · note endpoint).
+**Итог фазы:** главную можно показывать как «официальную»; коробка = только PNG closed/opened, без внутреннего контента.
 
 ---
 
@@ -61,8 +61,9 @@
 - [ ] music room / плейлист в forecast или отдельная комната
 - [ ] WRITE YOUR NOTE — отправка на почту гостя
 - [ ] tamagotchi ↔ LIVE SYSTEM (сытость, настроение)
-- [ ] scrollport в коробке (opened) — GIF-лента
 - [ ] intro-блок на главной (если понадобится)
+
+~~scrollport / GIF-лента в коробке~~ — **отменено** (коробку не трогаем, только PNG)
 
 ---
 
@@ -82,7 +83,7 @@
   - [x] Боковые колонки (nav + LIVE SYSTEM)
   - [x] Центральный блок `.core` — базовая оболочка и **my site**
   - [x] Мини-игра SIGNAL CATCH
-  - [x] Коробка-коллаж (hover open, зернистость; контент внутри — позже)
+  - [x] Коробка-коллаж (hover open, зернистость; без внутреннего контента)
   - [x] forecast.exe (Win98 окна в `#coreObjectsSlot`)
   - [x] Улитка (виджет: absolute, drag, автоползание, ~320px)
   - [x] **FIELD RADIO** — 3 трека, переключение ◀ ▶ (`music/`)
@@ -124,8 +125,8 @@
 ### Scrollport (мини-зоны с внутренним скроллом)
 
 - [x] Первый пример на главной — site TODO
-- [x] stickers.exe — horizontal mini scrollport (GIF thumbs)
-- [ ] Scrollport в коробке (открытая) — GIF-лента
+- [x] stickers.exe — horizontal mini scrollport (GIF thumbs) — **отдельно** от коробки, в `#coreObjectsSlot`
+- ~~Scrollport в коробке (открытая) — GIF-лента~~ — **отменено**
 - [ ] Scrollport в forecast / music room — плейлист, лог, наклейки
 
 ---
