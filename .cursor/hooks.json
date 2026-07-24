@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeSubmitPrompt": [
+      {
+        "command": ".cursor/hooks/track-turn-start.sh",
+        "matcher": "UserPromptSubmit"
+      }
+    ],
+    "afterFileEdit": [
+      {
+        "command": ".cursor/hooks/track-file-edit.sh"
+      }
+    ],
+    "stop": [
+      {
+        "command": ".cursor/hooks/quality-review.sh",
+        "loop_limit": 1
+      }
+    ]
+  }
+}
